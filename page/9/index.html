@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -101,7 +101,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/sh/" data-id="ciztqajm7002c48ddnyqc22jq" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/sh/" data-id="ciztrj01l0029b0ddlr32cpfg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,42 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/lnpp/" data-id="ciztqajm2002848ddo3d6ana9" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-centos/nat" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/centos/nat/" class="article-date">
-  <time datetime="2017-03-03T11:20:16.244Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="本文将详细描述网络、互联基本知识的理解"><a href="#本文将详细描述网络、互联基本知识的理解" class="headerlink" title="本文将详细描述网络、互联基本知识的理解"></a>本文将详细描述网络、互联基本知识的理解</h4><h5 id="关键词-ip-NAT-port-iptables-route-gateway-eth0"><a href="#关键词-ip-NAT-port-iptables-route-gateway-eth0" class="headerlink" title="关键词 ip NAT port iptables route gateway eth0"></a>关键词 ip NAT port iptables route gateway eth0</h5><ol>
-<li>正常的ip都是唯一的，ipv4 = 8bit.8bit.8bit.8bit 加上掩码可以得到网络号，利用掩码不仅可以得到网络号，还可以得到ip网段范围，简写方法是8bit.0.0.0/8 说明前面8位是有效，后面的是匹配范围</li>
-<li>应用程序间的通信即两个进程间的通信，即ip+port = sorcket，对于一个进程不同窗口情况，是有一个区别于port的source port 在单个程序进程内分流</li>
-<li>ip之间之所以能相互通信，是因为地址唯一，（公网地址），路由就是实现让不同ip间通信的东西，他通过判断路由表中的匹配，决定该封包要发往哪里，在linux中，也有一个自己的route 表，保存了默认网关等，决定了数据封包如何在路由间一跳传到下一跳。直到找到目标地址为止</li>
-<li>ipv4的地址不够用危机，于是出现了NAT，该技术使处于局域网中的电脑可以上网，nat原理是在封包到达处于公网的nat服务后，将局域网中的ip(等重新封装一层?)替换成这个公网的ip，于是可以上网，当数据发送回来时，再替换成源ip，于是可以了</li>
-<li>iptables是linux防火墙的过滤规则，决定了封包的input forward output的命运，packer filter机制通过判断封包的各种属性来应用到定义的iptables 中，决定是否accpet 或 reject 封包，属性可以是source ip destination ip interface (interface 是一种代表物理硬件的约定，如lo 代表localhost ppp+ 代表ppptd 拨号，eth0 代表网卡)，<a href="http://www.netfilter.org/documentation/HOWTO/cn/packet-filtering-HOWTO-6.html" target="_blank" rel="external">iptables官网</a></li>
-<li>gateway 是一种处理下一跳设备的简称，如，在路由器中的主机，该路由器就是这些主机的网关，因为它帮助把封包传下去，（因为路由器路由规则决定好了）</li>
-<li>GRE 路由协议封装，实现两个不同局域网间的主机通信，<a href="http://h2ofly.blog.51cto.com/6834926/1544860" target="_blank" rel="external">参考</a></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/nat/" data-id="ciztqajm6002b48dd765amyoh" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/lnpp/" data-id="ciztrj01h0025b0ddlicoc219" class="article-share-link">Share</a>
       
       
     </footer>
@@ -243,7 +208,86 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/mysql/" data-id="ciztqajm3002948dd9phabhrz" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/mysql/" data-id="ciztrj01k0028b0ddrszwazex" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/nat" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/nat/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.244Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="本文将详细描述网络、互联基本知识的理解"><a href="#本文将详细描述网络、互联基本知识的理解" class="headerlink" title="本文将详细描述网络、互联基本知识的理解"></a>本文将详细描述网络、互联基本知识的理解</h4><h5 id="关键词-ip-NAT-port-iptables-route-gateway-eth0"><a href="#关键词-ip-NAT-port-iptables-route-gateway-eth0" class="headerlink" title="关键词 ip NAT port iptables route gateway eth0"></a>关键词 ip NAT port iptables route gateway eth0</h5><ol>
+<li>正常的ip都是唯一的，ipv4 = 8bit.8bit.8bit.8bit 加上掩码可以得到网络号，利用掩码不仅可以得到网络号，还可以得到ip网段范围，简写方法是8bit.0.0.0/8 说明前面8位是有效，后面的是匹配范围</li>
+<li>应用程序间的通信即两个进程间的通信，即ip+port = sorcket，对于一个进程不同窗口情况，是有一个区别于port的source port 在单个程序进程内分流</li>
+<li>ip之间之所以能相互通信，是因为地址唯一，（公网地址），路由就是实现让不同ip间通信的东西，他通过判断路由表中的匹配，决定该封包要发往哪里，在linux中，也有一个自己的route 表，保存了默认网关等，决定了数据封包如何在路由间一跳传到下一跳。直到找到目标地址为止</li>
+<li>ipv4的地址不够用危机，于是出现了NAT，该技术使处于局域网中的电脑可以上网，nat原理是在封包到达处于公网的nat服务后，将局域网中的ip(等重新封装一层?)替换成这个公网的ip，于是可以上网，当数据发送回来时，再替换成源ip，于是可以了</li>
+<li>iptables是linux防火墙的过滤规则，决定了封包的input forward output的命运，packer filter机制通过判断封包的各种属性来应用到定义的iptables 中，决定是否accpet 或 reject 封包，属性可以是source ip destination ip interface (interface 是一种代表物理硬件的约定，如lo 代表localhost ppp+ 代表ppptd 拨号，eth0 代表网卡)，<a href="http://www.netfilter.org/documentation/HOWTO/cn/packet-filtering-HOWTO-6.html" target="_blank" rel="external">iptables官网</a></li>
+<li>gateway 是一种处理下一跳设备的简称，如，在路由器中的主机，该路由器就是这些主机的网关，因为它帮助把封包传下去，（因为路由器路由规则决定好了）</li>
+<li>GRE 路由协议封装，实现两个不同局域网间的主机通信，<a href="http://h2ofly.blog.51cto.com/6834926/1544860" target="_blank" rel="external">参考</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/nat/" data-id="ciztrj01m002ab0dd4zdu529s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/linux_dir" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/linux_dir/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.243Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="title-linux-下的目录结构"><a href="#title-linux-下的目录结构" class="headerlink" title="title:linux 下的目录结构"></a>title:linux 下的目录结构</h2><h3 id="Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。"><a href="#Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。" class="headerlink" title="Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。"></a>Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。</h3><h3 id="目录结构，由-下分主要分为以下几大目录"><a href="#目录结构，由-下分主要分为以下几大目录" class="headerlink" title="目录结构，由 / 下分主要分为以下几大目录"></a>目录结构，由 / 下分主要分为以下几大目录</h3><ol>
+<li>/bin ,bin是二进制文件，这里一般有系统的命令，如ps ,ls,等,bin下的文件就等于命令</li>
+<li>/boot ,  启动重要脚本</li>
+<li>/sbin,用户的二进制文件，如reboot，ifconfig</li>
+<li>/etc,所有程序的配置文件，一般是/etc/software/xxx_config</li>
+<li>/dev,设备文件，如usb连接的任何设备</li>
+<li>/proc,进程信息，是个虚拟文件系统，保存着目前正在运行的多种信息</li>
+<li>/var,变量文件，如系统日志/var/log,网上下载的一些包和库，/var/lib,邮件,/var/mail,多次重启需要的临时文件,/var/tmp,</li>
+<li>/tmp,临时文件，每次重启都要删除</li>
+<li>/usr,用户程序目录，包含了/usr/bin,二进制执行入口（类似exe）/usr/sbin,与usr/bin类似；它和系统更相关点，（二进制文件都在xx/bin中），/usr/lib,软件依赖库，提供给xx/[s]bin用的，/usr/loacl或者/usr/include,包含了程序安装后的内容，</li>
+<li>/home,家目录，包含了每个用户的档案入口点，如/home/user </li>
+<li>/lib,系统库，给/bin,/sbin提供支持，还有/lib64</li>
+<li>/mnt,挂载点</li>
+<li>/opt,额外可选插件，附加程序等，类似和系统相关较强的附加程序</li>
+<li>/media,娱乐文件</li>
+<li>/usr/share/doc/ 下有许多man文件</li>
+</ol>
+<p>以上目录，对应的每个软件都有的bin lib var man</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/linux_dir/" data-id="ciztrj01j0027b0ddt4ve0nud" class="article-share-link">Share</a>
       
       
     </footer>
@@ -303,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/linuxCompile/" data-id="ciztqajm5002a48dd1vz4lw33" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/linuxCompile/" data-id="ciztrj01i0026b0ddjk4aehat" class="article-share-link">Share</a>
       
       
     </footer>
@@ -313,41 +357,44 @@
 
 
   
-    <article id="post-centos/linux_dir" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-centos/linux.sofware.install" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/03/centos/linux_dir/" class="article-date">
-  <time datetime="2017-03-03T11:20:16.243Z" itemprop="datePublished">2017-03-03</time>
+    <a href="/2017/03/03/centos/linux.sofware.install/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.242Z" itemprop="datePublished">2017-03-03</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/centos/linux.sofware.install/">linux 下安装软件的几种方法</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="title-linux-下的目录结构"><a href="#title-linux-下的目录结构" class="headerlink" title="title:linux 下的目录结构"></a>title:linux 下的目录结构</h2><h3 id="Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。"><a href="#Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。" class="headerlink" title="Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。"></a>Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。</h3><h3 id="目录结构，由-下分主要分为以下几大目录"><a href="#目录结构，由-下分主要分为以下几大目录" class="headerlink" title="目录结构，由 / 下分主要分为以下几大目录"></a>目录结构，由 / 下分主要分为以下几大目录</h3><ol>
-<li>/bin ,bin是二进制文件，这里一般有系统的命令，如ps ,ls,等,bin下的文件就等于命令</li>
-<li>/boot ,  启动重要脚本</li>
-<li>/sbin,用户的二进制文件，如reboot，ifconfig</li>
-<li>/etc,所有程序的配置文件，一般是/etc/software/xxx_config</li>
-<li>/dev,设备文件，如usb连接的任何设备</li>
-<li>/proc,进程信息，是个虚拟文件系统，保存着目前正在运行的多种信息</li>
-<li>/var,变量文件，如系统日志/var/log,网上下载的一些包和库，/var/lib,邮件,/var/mail,多次重启需要的临时文件,/var/tmp,</li>
-<li>/tmp,临时文件，每次重启都要删除</li>
-<li>/usr,用户程序目录，包含了/usr/bin,二进制执行入口（类似exe）/usr/sbin,与usr/bin类似；它和系统更相关点，（二进制文件都在xx/bin中），/usr/lib,软件依赖库，提供给xx/[s]bin用的，/usr/loacl或者/usr/include,包含了程序安装后的内容，</li>
-<li>/home,家目录，包含了每个用户的档案入口点，如/home/user </li>
-<li>/lib,系统库，给/bin,/sbin提供支持，还有/lib64</li>
-<li>/mnt,挂载点</li>
-<li>/opt,额外可选插件，附加程序等，类似和系统相关较强的附加程序</li>
-<li>/media,娱乐文件</li>
-<li>/usr/share/doc/ 下有许多man文件</li>
+        <h4 id="by-lumin-10-02-2016"><a href="#by-lumin-10-02-2016" class="headerlink" title="by lumin  10.02.2016"></a>by lumin  10.02.2016</h4><p>永远要记得查看这里日记</p>
+<hr>
+<h4 id="下载二进制安装包"><a href="#下载二进制安装包" class="headerlink" title="下载二进制安装包"></a>下载二进制安装包</h4><ol>
+<li>rpm 包是redhat系列的安装包，ubuntu要想使用需要使用alien工具转换为deb包</li>
+<li>deb包是ubuntu的专利，在图形界面点击就可以像win一样安装</li>
+<li>Linux Binaries (.tar.xz) 这种安装包是已经编译好的，解压既可以./运行, xz -d file.tar.z 解压，然后tar -xvf file.tar</li>
 </ol>
-<p>以上目录，对应的每个软件都有的bin lib var man</p>
+<h4 id="使用包管理器"><a href="#使用包管理器" class="headerlink" title="使用包管理器"></a>使用包管理器</h4><ol>
+<li></li>
+</ol>
+<h4 id="使用源码"><a href="#使用源码" class="headerlink" title="使用源码"></a>使用源码</h4><p>tar.gz后缀一般是源码，需要make make install 等<br>一般步骤是：sudo ./configure、make、make install </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/linux_dir/" data-id="ciztqajm0002748ddv8uivtq9" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/linux.sofware.install/" data-id="ciztrj01g0024b0dd5ir9a6v9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -437,54 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/linuxCammand/" data-id="ciztqajm0002648ddsx9bcwcr" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-centos/linux.sofware.install" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/centos/linux.sofware.install/" class="article-date">
-  <time datetime="2017-03-03T11:20:16.242Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/03/centos/linux.sofware.install/">linux 下安装软件的几种方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="by-lumin-10-02-2016"><a href="#by-lumin-10-02-2016" class="headerlink" title="by lumin  10.02.2016"></a>by lumin  10.02.2016</h4><p>永远要记得查看这里日记</p>
-<hr>
-<h4 id="下载二进制安装包"><a href="#下载二进制安装包" class="headerlink" title="下载二进制安装包"></a>下载二进制安装包</h4><ol>
-<li>rpm 包是redhat系列的安装包，ubuntu要想使用需要使用alien工具转换为deb包</li>
-<li>deb包是ubuntu的专利，在图形界面点击就可以像win一样安装</li>
-<li>Linux Binaries (.tar.xz) 这种安装包是已经编译好的，解压既可以./运行, xz -d file.tar.z 解压，然后tar -xvf file.tar</li>
-</ol>
-<h4 id="使用包管理器"><a href="#使用包管理器" class="headerlink" title="使用包管理器"></a>使用包管理器</h4><ol>
-<li></li>
-</ol>
-<h4 id="使用源码"><a href="#使用源码" class="headerlink" title="使用源码"></a>使用源码</h4><p>tar.gz后缀一般是源码，需要make make install 等<br>一般步骤是：sudo ./configure、make、make install </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/linux.sofware.install/" data-id="ciztqajlz002548dd1ctiysys" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/linuxCammand/" data-id="ciztrj01f0023b0dd2qcndcmq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -521,7 +521,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/command/" data-id="ciztqajly002448dduo2u2ewn" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/command/" data-id="ciztrj01f0022b0ddnxqb9boq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -531,9 +531,9 @@
 
 
   
-    <article id="post-centos/bingfa" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-centos/basic" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/03/centos/bingfa/" class="article-date">
+    <a href="/2017/03/03/centos/basic/" class="article-date">
   <time datetime="2017-03-03T11:20:16.240Z" itemprop="datePublished">2017-03-03</time>
 </a>
     
@@ -543,18 +543,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h6 id="php-redis-处理高并发"><a href="#php-redis-处理高并发" class="headerlink" title="php + redis 处理高并发"></a>php + redis 处理高并发</h6><hr>
-<p>利用队列处理高并发，就像排队一样，其实和锁是一样(?)，但是队列更容易理解，队列是原子操作</p>
+        <h5 id="用户与用户组"><a href="#用户与用户组" class="headerlink" title="用户与用户组"></a>用户与用户组</h5><ol>
+<li>语言本地化<br>//export LANG=zh_CN.gbk<br>export LANG=zh_CN<br>LC_CTYPE=”zh_CN.gbk”</li>
+</ol>
+<p>/etc/passwd保存用户id   /etc/group 保存用户组id等; /etc/passwd 保存用户id对应的基本信息，里面对应好了user 和 group id，以及保存了该用户的一些基本信息，密码分开在/etc/shadow中<br><em>登陆流程</em></p>
 <ol>
-<li>将库存加入队列，每下一个单前pop一个值，能pop说明库存还有</li>
-<li>分三个队列，等待用户，已购买用户，库存，开一个进程不断从等待用户中取出并判断是否在已购买队列中，再决定是否下单，减少库存</li>
-<li>从库存队列中pop出后，实际上还需要在数据库中对库存减1，如果其中出错就需要对队列+1</li>
+<li><p>先找寻 /etc/passwd 里面是否有你输入的账号？如果没有则跳出，如果有的话则将该账号对应的 UID 与 GID (在 /etc/group 中) 读出来，另外，该账号的家目录与 shell 配置也一并读出；</p>
+</li>
+<li><p>再来则是核对口令表啦！这时 Linux 会进入 /etc/shadow 里面找出对应的账号与 UID，然后核对一下你刚刚输入的口令与里头的口令是否相符？</p>
+</li>
+<li><p>如果一切都 OK 的话，就进入 Shell 控管的阶段啰！</p>
+</li>
+</ol>
+<p>useradd -u 指定小于500 即系统账号 ，useradd时可能会发生Creating mailbox file:因为默认会在邮箱内做一些事情<br>userdel -r 删除某个账号<br>passwd 改变当前账户密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1. 假设有个组是g1，你想创建一个用户zs，创建之后这个用户zs就属于g1，可以使用以下命令：</div><div class="line">useradd -G g1 zs 或者</div><div class="line">useradd -g g1 zs</div><div class="line">没错，一个是大写G，一个是小写g，不同的是，使用大写，那么意思是新建的用户zs同时属于自己的zs组，也属于g1组，而小写g的意思就是zs只属于g1组。</div><div class="line">2. 假设有个组是g1，现在已经有一个用户zs，现在想更改zs的组，可以使用:</div><div class="line">usermod -g g1 zs 或者</div><div class="line">usermod -G g1 zs</div><div class="line">大小写的意思同上。</div></pre></td></tr></table></figure></p>
+<p>也可以直接加group名到/etc/group中指定的地方<br>/etc/ssh/sshd_config PasswordAuthentication no禁止密码登陆<br>service sshd restart</p>
+<ol>
+<li><p>每一个进程程序启动后，都会自己进入一个系统账号在后台运行，如php-fpm 以www运行，这样就可以自动操作具有该权限的目录</p>
+</li>
+<li><p>ps -ef  查看所有进程的具体信息</p>
+</li>
+<li><p>kill pid  kill -INT pid 杀死所有pid进程，并且所有该pid的子进程</p>
+</li>
+<li><p>两次tab键，查看可用命令</p>
+</li>
+<li>防火墙/etc/init.d/iptables status查看防火墙状态</li>
+<li><p>iptables -L -V 查看防火墙规则和状态<a href="http://blog.csdn.net/zhangzhizhen1988/article/details/8105386" target="_blank" rel="external">参考</a>设置防火墙规则<br>netstat -an | grep 23 (查看是否打开23端口)</p>
+</li>
+<li><p>netstat -lnp查看进程和端口关联状态</p>
+</li>
+<li>sockect = ip:port<br><strong>ip</strong>详解</li>
+<li>ip = 网络号+主机号，ip + 掩码与运算即可获取网络号，ip+掩码的精简形式是: ip/32 表示多少个8如4个8表示255.255.255.255，用精简形式还可以做ip规则匹配，另外网关是一个重要的东西</li>
+<li>ipv6用128位表示，每处分16位:分隔<br><a href="http://blog.csdn.net/yxwmzouzou/article/details/46643609" target="_blank" rel="external">http://blog.csdn.net/yxwmzouzou/article/details/46643609</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"># uname -a # 查看内核/操作系统/CPU信息 </div><div class="line"># head -n 1 /etc/issue # 查看操作系统版本 </div><div class="line"># cat /proc/cpuinfo # 查看CPU信息 </div><div class="line"># hostname # 查看计算机名 </div><div class="line"># lspci -tv # 列出所有PCI设备 </div><div class="line"># lsusb -tv # 列出所有USB设备 </div><div class="line"># lsmod # 列出加载的内核模块 </div><div class="line"># env # 查看环境变量资源 </div><div class="line"># free -m # 查看内存使用量和交换区使用量 </div><div class="line"># df -h # 查看各分区使用情况 </div><div class="line"># du -sh &lt;目录名&gt; # 查看指定目录的大小 </div><div class="line"># grep MemTotal /proc/meminfo # 查看内存总量 </div><div class="line"># grep MemFree /proc/meminfo # 查看空闲内存量 </div><div class="line"># uptime # 查看系统运行时间、用户数、负载 </div><div class="line"># cat /proc/loadavg # 查看系统负载磁盘和分区 </div><div class="line"># mount | column -t # 查看挂接的分区状态 </div><div class="line"># fdisk -l # 查看所有分区 </div><div class="line"># swapon -s # 查看所有交换分区 </div><div class="line"># hdparm -i /dev/hda # 查看磁盘参数(仅适用于IDE设备) </div><div class="line"># dmesg | grep IDE # 查看启动时IDE设备检测状况网络 </div><div class="line"># ifconfig # 查看所有网络接口的属性 </div><div class="line"># iptables -L # 查看防火墙设置 </div><div class="line"># route -n # 查看路由表 </div><div class="line"># netstat -lntp # 查看所有监听端口 </div><div class="line"># netstat -antp # 查看所有已经建立的连接 </div><div class="line"># netstat -s # 查看网络统计信息进程 </div><div class="line"># ps -ef # 查看所有进程 </div><div class="line"># top # 实时显示进程状态用户 </div><div class="line"># w # 查看活动用户 </div><div class="line"># id &lt;用户名&gt; # 查看指定用户信息 </div><div class="line"># last # 查看用户登录日志 </div><div class="line"># cut -d: -f1 /etc/passwd # 查看系统所有用户 </div><div class="line"># cut -d: -f1 /etc/group # 查看系统所有组 </div><div class="line"># crontab -l # 查看当前用户的计划任务服务 </div><div class="line"># chkconfig –list # 列出所有系统服务 </div><div class="line"># chkconfig –list | grep on # 列出所有启动的系统服务程序 </div><div class="line"># rpm -qa # 查看所有安装的软件包</div></pre></td></tr></table></figure>
+</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/bingfa/" data-id="ciztqajlx002348dd4zhgmrye" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/basic/" data-id="ciztrj01d0020b0ddzkm89raf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -593,7 +619,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -630,7 +656,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 John Doe<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
