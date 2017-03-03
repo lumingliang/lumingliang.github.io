@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: git  的用法
+
+apt-get install git 
+配置本地的git用户名与邮箱，git config –global user.name “Your Name”$ git config –global user.email “email@example.com”
+mkdir new ,cd new ,
+git init , 在当期目录下新建空仓库
+git add foo.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/git/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title: git  的用法
+
+apt-get install git 
+配置本地的git用户名与邮箱，git config –global user.name “Your Name”$ git config –global user.email “email@example.com”
+mkdir new ,cd new ,
+git init , 在当期目录下新建空仓库
+git add foo.">
+<meta property="og:updated_time" content="2016-08-23T12:26:21.897Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title: git  的用法
+
+apt-get install git 
+配置本地的git用户名与邮箱，git config –global user.name “Your Name”$ git config –global user.email “email@example.com”
+mkdir new ,cd new ,
+git init , 在当期目录下新建空仓库
+git add foo.">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/git/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.275Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: git  的用法</p>
+<ol>
+<li>apt-get install git </li>
+<li>配置本地的git用户名与邮箱，git config –global user.name “Your Name”<br>$ git config –global user.email “email@example.com”</li>
+<li>mkdir new ,cd new ,</li>
+<li>git init , 在当期目录下新建空仓库</li>
+<li>git add foo.txt , git add foo/* ,  添加一些东西到缓存区<br> 5.1 git rm –cache /path to file/ ,删除缓冲区文件<br> 5.2 git rm -f /path/ ,先删除缓存，还会从物理中删除<br> 5.3 touch 创建文件<br> 5.4 -f 是强制，-r是递归删除</li>
+<li>git status ,查看现在缓存区的状态，知道是否已经提交到工作区</li>
+<li>git commit -m ‘some discription’; 正式提交到工作区，得到了一个新版本</li>
+<li>git log 查看各个版本,最后的版本在上</li>
+<li>重复以上git add ,git commit ，得到2版本，</li>
+<li>git reset commit_id ,将版本恢复到某个，可以在git log  中查看,其中HEAD 代表最新版本，HEAD~,代表最新开始倒数第二个，</li>
+<li>git remote add origin git@github.com:lumingliang/l5_good.git ,添加origin(当前状态)与远程 配对<br>git push -u origin master, 将origin传到远程<br>//用 ssh ，将东西推送到github</li>
+<li>注意，ssh ,将已有或者新建的公玥传到github ,的ssh中，实现无密码传送</li>
+<li><p>git remote remove foo ,删除某个remote;</p>
+</li>
+<li><p>git remote查看有多什么remote, git remote -v 显示更详细</p>
+</li>
+</ol>
+<h4 id="每次提交的版本就像一条时间线，每一次提交，时间线就向前走一步，而master主分支就指向当前的最新点，如果创建了其他dev分支，那么该分支会创建一个指向当前的指针，切换到该dev分支，后面的提交都是只对该指针有效，dev会向前，但是master不会。直到合并后，才会。"><a href="#每次提交的版本就像一条时间线，每一次提交，时间线就向前走一步，而master主分支就指向当前的最新点，如果创建了其他dev分支，那么该分支会创建一个指向当前的指针，切换到该dev分支，后面的提交都是只对该指针有效，dev会向前，但是master不会。直到合并后，才会。" class="headerlink" title="每次提交的版本就像一条时间线，每一次提交，时间线就向前走一步，而master主分支就指向当前的最新点，如果创建了其他dev分支，那么该分支会创建一个指向当前的指针，切换到该dev分支，后面的提交都是只对该指针有效，dev会向前，但是master不会。直到合并后，才会。"></a>每次提交的版本就像一条时间线，每一次提交，时间线就向前走一步，而master主分支就指向当前的最新点，如果创建了其他dev分支，那么该分支会创建一个指向当前的指针，切换到该dev分支，后面的提交都是只对该指针有效，dev会向前，但是master不会。直到合并后，才会。</h4><ol>
+<li>git branch 查看当前所在分支</li>
+<li>git branch <name> 创建分支</name></li>
+<li>git checkout <name> 切换分支</name></li>
+<li>git checkout -b <name> 创建并切换分支</name></li>
+<li>git merge <name> 合并某分支到当前(一般切换到master把dev分支合并到master)</name></li>
+<li>git branch -d <name> 删除分支</name></li>
+</ol>
+<h4 id="但是当主分支和dev都有新的提交时，合并就会有冲突，git会支出两次提交的不同内容"><a href="#但是当主分支和dev都有新的提交时，合并就会有冲突，git会支出两次提交的不同内容" class="headerlink" title="但是当主分支和dev都有新的提交时，合并就会有冲突，git会支出两次提交的不同内容"></a>但是当主分支和dev都有新的提交时，合并就会有冲突，git会支出两次提交的不同内容</h4><ol>
+<li>git status会看到合并失败的信息，(two branch are both modified),这时候可以查看该冲突文件内容，会看到git的标志，修改后，再合并，git会以当前修改的版本为基准合并，git log可以看到合并图</li>
+</ol>
+<h4 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h4><p>多人协作是多人一起在同一个分支或不同分支开发，然后都可以用pull看到对方的代码，就像有个自动的代码更新一样，你只需要提交自己的更新，然后解决冲突，最后把所有合并到master,基本步骤如下。</p>
+<ol>
+<li>有个原始的master, 在master上创建dev分支，A :git clone得到该master分支，如果A的密钥跟远程origin()的对口，那么就可以用git remote -v查看推送权限</li>
+<li>A有了推送权限后，可以用git checkout -b deb origin/dev 创建本地的dev分支对应远程的origin/dev 分支，当修改后，commit再push到origin即可</li>
+<li>如果push不成功，那么就是有文件的提交跟origin dev的最新提交冲突，需要pull下来解决冲突再提交</li>
+<li>git pull,(如果失败，说明没有建立本地dev到远程 origin/dev的链接),git branch –set -upstream dev origin/dev来创建,这时再git pull就成功了，</li>
+<li>pull回来之后，需要解决冲突，方法是，打开本地冲突文件，就会标志出冲突地方，然后修改，最后git commit -m “merge &amp; fix conflit hello.py”后，再push 这样就可以了<br>缓存区 =&gt; 工作区 是git管理，而源码只有一个状态，可以用git来实现对源码与缓存区，缓存区与工作区间的同步,远程提交，只提交源码，缓存区与工作区用来进行版本管理与还原</li>
+</ol>
+<p>缓存区监控源码修改，如果源码修改了没有放入缓存区，缓存区会显示没有更新,</p>
+<h5 id="版本还原"><a href="#版本还原" class="headerlink" title="版本还原"></a>版本还原</h5><ol>
+<li>git reset HEAD^ 将工作区的版本还原为上一个版本，这时源码没有改变，只是工作区保存的版本变少了，此时缓存区显示当前修改没有提交，这里就相当于没有执行git commit一样,有利于远程提交，因为远程提交的是工作区里面的最新版本，并不是当前源码<br>(1) 回退所有内容到上一个版本<br>git reset HEAD^<br>(2) 回退a.py这个文件的版本到上一个版本<br>git reset HEAD^ a.py<br>(3) 向前回退到第3个版本<br>git reset –soft HEAD~3<br>(4) 将本地的状态回退到和远程的一样<br>git reset –hard origin/master<br>(5) 回退到某个版本<br>git reset 057d<br>(7) 回退到上一次提交的状态，按照某一次的commit完全反向的进行一次commit<br>git revert HEAD   </li>
+</ol>
+<p> git reset –mixed：此为默认方式，不带任何参数的git reset，即时这种方式，它回退到某个版本，只保留源码，回退commit和index信息</p>
+<pre><code>git reset --soft：回退到某个版本，只回退了commit的信息，不会恢复到index file一级。如果还要提交，直接commit即可
+
+git reset --hard：彻底回退到某个版本，本地的源码也会变为上一个版本的内容
+</code></pre><ol>
+<li>如果要实现源码还原需要用git reset –hard git_log_id(git log后复制id即可)</li>
+</ol>
+<h3 id="设置终端"><a href="#设置终端" class="headerlink" title="设置终端"></a>设置终端</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// 先清除掉.ssh目录下的钥匙,*(为了创建默认，如果技术成熟也可以用新的名)</div><div class="line">//在默认~/.ssh/下创建默认的钥匙</div><div class="line">ssh-keygen -t rsa -C &quot;angelen10@163.com&quot;</div><div class="line">//运行ssh代理</div><div class="line">eval &quot;$(ssh-agent -s)&quot;</div><div class="line">//添加钥匙到代理</div><div class="line">ssh-add ~/.ssh/id_rsa</div><div class="line">//应该是利用代理后台运作，当运行ssh时，会自动搜寻该钥匙并给服务端验证</div><div class="line"></div><div class="line">//当然别忘了</div><div class="line"> clip &lt; ~/.ssh/id_rsa.pub</div><div class="line"> //复制钥匙到剪切板，后粘贴到github指定地方</div></pre></td></tr></table></figure>
+<h3 id="部署hexo项目到github-io-需要注意以下"><a href="#部署hexo项目到github-io-需要注意以下" class="headerlink" title="部署hexo项目到github.io,需要注意以下"></a>部署hexo项目到github.io,需要注意以下</h3><ol>
+<li><p>_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:lumingliang/lumingliang.github.io.git</div><div class="line">  branch: master</div><div class="line">  //注意空格</div></pre></td></tr></table></figure>
+</li>
+<li><p>每个账户只有一个github.io网站，该项目下的文件夹作为链接分页，每个文件夹下都有一个index.html,以达到url跳转</p>
+</li>
+</ol>
+<h4 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a>常见问题解决</h4><h5 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h5><p>实际上，本地与远程是分离的，但是本地能push到远程，前提是本地的所有东西必须先进于远程。</p>
+<p>有两种情况，远程有些文件新于本地，本地也有先于远程的东西，那么应该做的是：<br>先git pull [‘这里是该origin,一个本地可以拥有多个origin,但是没必要’], [master, 远程的分支] [master, /本地的分支];</p>
+<p>pull后提示有没有冲突，说明远程的所有文件已经在本地存在了，那么再commit一遍，于是本地的状态是有远程的所有东西。 就可以push了</p>
+<p>还有一种情况，本地保留的版本是前天的，但是昨天有人修改了并push该文件到远程，今天我修改了并尝试push，这时就会push不上，解决方法是，pull一下，然后回提示哪些文件需要解决冲突。接着进入该文件，就会标识有冲突的地方，这样只要再改一下并add, commit即可push </p>
+<h5 id="git-比较提交前后的异同"><a href="#git-比较提交前后的异同" class="headerlink" title="git 比较提交前后的异同"></a>git 比较提交前后的异同</h5><p>进入目录 git diff 后可以看出哪个文件改了</p>
+<p>git status 可以看出哪个文件改了没有提交<br>git checkout – file 可以撤销这次对某个文件的更改</p>
+<h5 id="git-进阶"><a href="#git-进阶" class="headerlink" title="git 进阶"></a>git 进阶</h5><ol>
+<li>建立分支 git branch ( 查看所有分支，* 是目前指向的分支 ), git branch branchName 创建一个新的分支 </li>
+<li>git checkout branchName 切换到某一个分支，</li>
+<li>git checkout commitName  版本回退到某一个commit</li>
+<li>git checkout -b branchName 创建并切换到该新分支</li>
+<li><p>git reset (HAED|commitName|branchName) fileName 将某个文件撤出stag缓存区, 进入缓存区的文件，即使后来删了工作区的对应文件，还是会随着commit 提交到版本库中</p>
+</li>
+<li><p>一般删除一个文件，需要先git rm (-f) fileName 撤销跟踪，再删除rm<br> git rm –cached fileName 仅从git仓库中删除</p>
+</li>
+<li>git log –pretty=format:”%h %s” –graph 查看分支情况<br> git lg</li>
+<li>git merg 分支合并</li>
+<li>git reset haed // 将暂存区中的内容回退到上一个版本，工作区内容没有变化,对应git add , git reset commitName 后haed 会指向该commmit</li>
+<li>git reset –hard commitName 可以直接将本地的工作区和commit回退到该commmit, 并丢弃前面的commit</li>
+</ol>
+<p>git log –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset’ –abbrev-commit –date=relative</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/git/" data-id="ciztqajiw000j48ddtgqjnnl1" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/go/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          golang learning
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/filling/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">记录身体自损情况</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

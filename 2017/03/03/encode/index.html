@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="讲述有关编码的问题基本概述计算机只能处理数字，如果需要处理文本，必须把文本转化为数字，8位一个bytes,共有0到255个整数，就可以利用这255个整数表示255个字符，最初ASCII表示所有英文字母和一些符号，（编译器，电脑知道什么时候这些整数表示真正的数字，什么时候代表符号）
+字符’0’和 数字0是不一样的
+‘A’在ASCII中十进制是65，二进制是01000001, 但是 Unicode是十">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/encode/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="讲述有关编码的问题基本概述计算机只能处理数字，如果需要处理文本，必须把文本转化为数字，8位一个bytes,共有0到255个整数，就可以利用这255个整数表示255个字符，最初ASCII表示所有英文字母和一些符号，（编译器，电脑知道什么时候这些整数表示真正的数字，什么时候代表符号）
+字符’0’和 数字0是不一样的
+‘A’在ASCII中十进制是65，二进制是01000001, 但是 Unicode是十">
+<meta property="og:updated_time" content="2016-03-07T01:56:32.832Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="讲述有关编码的问题基本概述计算机只能处理数字，如果需要处理文本，必须把文本转化为数字，8位一个bytes,共有0到255个整数，就可以利用这255个整数表示255个字符，最初ASCII表示所有英文字母和一些符号，（编译器，电脑知道什么时候这些整数表示真正的数字，什么时候代表符号）
+字符’0’和 数字0是不一样的
+‘A’在ASCII中十进制是65，二进制是01000001, 但是 Unicode是十">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-encode" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/encode/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.273Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="讲述有关编码的问题"><a href="#讲述有关编码的问题" class="headerlink" title="讲述有关编码的问题"></a>讲述有关编码的问题</h3><h4 id="基本概述"><a href="#基本概述" class="headerlink" title="基本概述"></a>基本概述</h4><p>计算机只能处理数字，如果需要处理文本，必须把文本转化为数字，8位一个bytes,共有0到255个整数，就可以利用这255个整数表示255个字符，最初ASCII表示所有英文字母和一些符号，（编译器，电脑知道什么时候这些整数表示真正的数字，什么时候代表符号）</p>
+<p>字符’0’和 数字0是不一样的</p>
+<p>‘A’在ASCII中十进制是65，二进制是01000001, 但是 Unicode是十六位，因此，聪明的办法是Unicode中再前面补0来表示A,补8个0;但是这样会浪费内存，于是动态长度的UTF8出现了，即常用的英文字母被编码成1个字节，汉字通常是3个字节，只有很生僻的字符才会被编码成4-6个字节。如果你要传输的文本包含大量英文字符，用UTF-8编码就能节省空间：</p>
+<p>UTF-8编码有一个额外的好处，就是ASCII编码实际上可以被看成是UTF-8编码的一部分，所以，大量只支持ASCII编码的历史遗留软件可以在UTF-8编码下继续工作。</p>
+<p>在计算机内存中，统一使用Unicode编码，当需要保存到硬盘或者需要传输的时候，就转换为UTF-8编码。如：用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件：</p>
+<h3 id="nodejs只支持utf-8编码-对于node-js-buffer流编码转换问题"><a href="#nodejs只支持utf-8编码-对于node-js-buffer流编码转换问题" class="headerlink" title="nodejs只支持utf-8编码,对于node js buffer流编码转换问题"></a>nodejs只支持utf-8编码,对于node js buffer流编码转换问题</h3><p><a href="https://segmentfault.com/a/1190000002787763" target="_blank" rel="external">参考</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/encode/" data-id="ciztqajik000e48dd5xta8fxn" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/englishCache/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/dependencyInjection/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="PSQL的使用等安装是使用yum 安装来的快安装后的工作
+注意点template1 是psql里面的模板，用来建立数据库，类似还有template0，template1可以用来当数据库连接，template0不行，在创建数据库时，使用的默认模板是template1
+常用命令12345678su - postgres 进入postgres的用户，postgre安装好时会默认创建一个系统用户 post">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/postgre/main/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="PSQL的使用等安装是使用yum 安装来的快安装后的工作
+注意点template1 是psql里面的模板，用来建立数据库，类似还有template0，template1可以用来当数据库连接，template0不行，在创建数据库时，使用的默认模板是template1
+常用命令12345678su - postgres 进入postgres的用户，postgre安装好时会默认创建一个系统用户 post">
+<meta property="og:updated_time" content="2016-12-14T13:25:01.380Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="PSQL的使用等安装是使用yum 安装来的快安装后的工作
+注意点template1 是psql里面的模板，用来建立数据库，类似还有template0，template1可以用来当数据库连接，template0不行，在创建数据库时，使用的默认模板是template1
+常用命令12345678su - postgres 进入postgres的用户，postgre安装好时会默认创建一个系统用户 post">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-postgre/main" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/postgre/main/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.257Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="PSQL的使用等"><a href="#PSQL的使用等" class="headerlink" title="PSQL的使用等"></a>PSQL的使用等</h2><p>安装是使用yum 安装来的快<br>安装后的工作</p>
+<h5 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h5><p>template1 是psql里面的模板，用来建立数据库，类似还有template0，template1可以用来当数据库连接，template0不行，在创建数据库时，使用的默认模板是template1</p>
+<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">su - postgres 进入postgres的用户，postgre安装好时会默认创建一个系统用户 postgres</div><div class="line">psql 进入psql默认呢数据库</div><div class="line">psql test 进入test数据库</div><div class="line"></div><div class="line">进入psql ,记得所有命令都加上;</div><div class="line">\l 列出所以数据库</div><div class="line">select pg_database_size(&apos;test&apos;); 查看数据库大小</div><div class="line">\dt 查看所有表</div></pre></td></tr></table></figure>
+<h5 id="配置外网连接"><a href="#配置外网连接" class="headerlink" title="配置外网连接"></a>配置外网连接</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">关键是配置好</div><div class="line"></div><div class="line">/var/lib/pgsql/9.3/data/pg_hba.conf</div><div class="line">和</div><div class="line">/var/lib/pgsql/9.3/data/postgresql.conf</div><div class="line"></div><div class="line">以及打开防火墙</div><div class="line">开启端口5432 </div><div class="line">/sbin/iptables -I INPUT -p tcp --dport 5432 -j ACCEPT</div><div class="line">/etc/rc.d/init.d/iptables save 保存修改</div><div class="line">/etc/init.d/iptables status 查看状态</div><div class="line">/etc/init.d/iptables restart 重启防火墙</div><div class="line">也可以直接在</div><div class="line">/etc/sysconfig/iptables加入一行</div><div class="line">-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 8080 -j ACCEPT</div></pre></td></tr></table></figure>
+<p>数据库备份<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">pg_dump -h localhost -U lumin test &gt; D:/1.sql</div><div class="line"></div><div class="line">psql -U username  databasename &lt; /data/dum.sql</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/postgre/main/" data-id="ciztqajmp002n48ddqaqt8ggl" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/yii/activeRecord/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/js/decimalConversion/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">js的进制转换</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

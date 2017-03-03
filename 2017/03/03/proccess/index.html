@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>学习unix 类系统的进程 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基本概念
+程序在进程中运行，每运行一个程序，一段脚本，都产生一个新的进程，进程在物理上可以看做是内存的一段空间
+每一个用户都有一个大的内存空间，对于这个用户的程序就在这段空间运行
+如果不借助于系统调用，用户仍然可以调用到cpu，可以计算，字符串操作
+但如果想要实现更复杂的，如声音，磁盘，读写文件，那么就必须通过系统调用，因为系统通过调用c语言内核，管理者这些资源
+用户程序间接的通过调用c内核来实现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习unix 类系统的进程">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/proccess/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="基本概念
+程序在进程中运行，每运行一个程序，一段脚本，都产生一个新的进程，进程在物理上可以看做是内存的一段空间
+每一个用户都有一个大的内存空间，对于这个用户的程序就在这段空间运行
+如果不借助于系统调用，用户仍然可以调用到cpu，可以计算，字符串操作
+但如果想要实现更复杂的，如声音，磁盘，读写文件，那么就必须通过系统调用，因为系统通过调用c语言内核，管理者这些资源
+用户程序间接的通过调用c内核来实现">
+<meta property="og:updated_time" content="2015-11-26T13:14:54.979Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习unix 类系统的进程">
+<meta name="twitter:description" content="基本概念
+程序在进程中运行，每运行一个程序，一段脚本，都产生一个新的进程，进程在物理上可以看做是内存的一段空间
+每一个用户都有一个大的内存空间，对于这个用户的程序就在这段空间运行
+如果不借助于系统调用，用户仍然可以调用到cpu，可以计算，字符串操作
+但如果想要实现更复杂的，如声音，磁盘，读写文件，那么就必须通过系统调用，因为系统通过调用c语言内核，管理者这些资源
+用户程序间接的通过调用c内核来实现">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-proccess" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/proccess/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.297Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      学习unix 类系统的进程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ol>
+<li>程序在进程中运行，每运行一个程序，一段脚本，都产生一个新的进程，进程在物理上可以看做是内存的一段空间</li>
+<li>每一个用户都有一个大的内存空间，对于这个用户的程序就在这段空间运行</li>
+<li>如果不借助于系统调用，用户仍然可以调用到cpu，可以计算，字符串操作</li>
+<li>但如果想要实现更复杂的，如声音，磁盘，读写文件，那么就必须通过系统调用，因为系统通过调用c语言内核，管理者这些资源</li>
+<li>用户程序间接的通过调用c内核来实现磁盘，读写等操作，这些操作都是非常神奇的，因为它就像人的大脑有了双手，有了眼睛一样<h3 id="参考手册"><a href="#参考手册" class="headerlink" title="参考手册"></a>参考手册</h3></li>
+<li>man man 是系统的参考手册</li>
+<li>该手册一共可以分为4节<br> 2.1. 一般命令<br> 2.2. 系统调用<br> 2.3. c库函数<br> 2.4. 特殊文件</li>
+<li>如$ man 2 getpid 就是查找有关第二节的getpid的内容</li>
+</ol>
+<h3 id="进程都有一个pid，在ruby中可以通过puts-或-puts-process-pid-得到ruby的进程号"><a href="#进程都有一个pid，在ruby中可以通过puts-或-puts-process-pid-得到ruby的进程号" class="headerlink" title="进程都有一个pid，在ruby中可以通过puts $$ 或 puts process.pid 得到ruby的进程号"></a>进程都有一个pid，在ruby中可以通过puts $$ 或 puts process.pid 得到ruby的进程号</h3><h3 id="进程都有一个父进程-如启动一个终端，那么所有在终端里面运行的进程都是它的子进程，而且一个脚本也可以作为父进程启动多个子进程"><a href="#进程都有一个父进程-如启动一个终端，那么所有在终端里面运行的进程都是它的子进程，而且一个脚本也可以作为父进程启动多个子进程" class="headerlink" title="进程都有一个父进程,如启动一个终端，那么所有在终端里面运行的进程都是它的子进程，而且一个脚本也可以作为父进程启动多个子进程"></a>进程都有一个父进程,如启动一个终端，那么所有在终端里面运行的进程都是它的子进程，而且一个脚本也可以作为父进程启动多个子进程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">puts Process.ppid</div></pre></td></tr></table></figure>
+<h3 id="每个进程下的调用都称作文件，每个进程开启的东西都用一个文件描述符-file-descriptor-number-来表示它-对于普通的文件，这里称作文件，对于-设备，管道，套接字-这些文件的时候，称作资源"><a href="#每个进程下的调用都称作文件，每个进程开启的东西都用一个文件描述符-file-descriptor-number-来表示它-对于普通的文件，这里称作文件，对于-设备，管道，套接字-这些文件的时候，称作资源" class="headerlink" title="每个进程下的调用都称作文件，每个进程开启的东西都用一个文件描述符(file descriptor number)来表示它, 对于普通的文件，这里称作文件，对于(设备，管道，套接字)这些文件的时候，称作资源"></a>每个进程下的调用都称作文件，每个进程开启的东西都用一个文件描述符(file descriptor number)来表示它, 对于普通的文件，这里称作文件，对于(设备，管道，套接字)这些文件的时候，称作资源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">passwd = File.open(&apos;/etc/passwd&apos;) # 获取一个资源，同时得到一个 file descriptor number</div><div class="line">puts passwd.fileno # 输出这个资源的f d n</div><div class="line">passwd.close # 关闭资源，同时 f d n 将失去</div><div class="line">puts passwd.fileno # 此时再输出，将会异常</div></pre></td></tr></table></figure>
+<h4 id="每个进程开的时候，都会分配了三个标准资源-他们是STDIN-标准输入-STDOUT-STDERR-标准错误"><a href="#每个进程开的时候，都会分配了三个标准资源-他们是STDIN-标准输入-STDOUT-STDERR-标准错误" class="headerlink" title="每个进程开的时候，都会分配了三个标准资源,他们是STDIN(标准输入),STDOUT,STDERR(标准错误)"></a>每个进程开的时候，都会分配了三个标准资源,他们是STDIN(标准输入),STDOUT,STDERR(标准错误)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">puts STDIN.fileno </div><div class="line">	=&gt; 0</div><div class="line">puts STDOUT.fileno </div><div class="line">	=&gt; 1</div></pre></td></tr></table></figure>
+<h4 id="文件描述符是使用套接字-TCP-IP-下的socket接口-、管道等进行网络编程的核心，也就是文件操作系统的核心"><a href="#文件描述符是使用套接字-TCP-IP-下的socket接口-、管道等进行网络编程的核心，也就是文件操作系统的核心" class="headerlink" title="文件描述符是使用套接字(TCP/IP 下的socket接口)、管道等进行网络编程的核心，也就是文件操作系统的核心"></a>文件描述符是使用套接字(TCP/IP 下的socket接口)、管道等进行网络编程的核心，也就是文件操作系统的核心</h4><h4 id="ruby中的IO-类不少方法对应着同名的系统调用，如-open-2-close-2-等"><a href="#ruby中的IO-类不少方法对应着同名的系统调用，如-open-2-close-2-等" class="headerlink" title="ruby中的IO 类不少方法对应着同名的系统调用，如 open(2) close(2) 等"></a>ruby中的IO 类不少方法对应着同名的系统调用，如 open(2) close(2) 等</h4><h3 id="进程皆有环境，即环境变量"><a href="#进程皆有环境，即环境变量" class="headerlink" title="进程皆有环境，即环境变量"></a>进程皆有环境，即环境变量</h3><ol>
+<li><p>子进程继承所有父进程的环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ export NEWENV=&apos;new env&apos;</div><div class="line">irb # 启动irb进程</div><div class="line">&gt; puts ENV[&apos;NEWENV&apos;]</div><div class="line">	=&gt; new env</div><div class="line"># 或者这样</div><div class="line">&gt; ENV[&apos;new&apos;] = &apos;new env by ruby&apos;</div><div class="line">&gt; system &apos;echo $new&apos;</div><div class="line"> =&gt; &apos;new env by ruby&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>环境变量就是键值对 key =&gt; value (数组) 不是真正的hash</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">puts ENV.has_key?(&apos;PATH&apos;) =&gt; true</div><div class="line">ENV.is_a(Hash) =&gt;false</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="进程皆有参数"><a href="#进程皆有参数" class="headerlink" title="进程皆有参数"></a>进程皆有参数</h3><h4 id="ARGV-是一个特殊数组，保存着命令行输入，作为传递到进程的参数-其他语言可能实现方式不一样，但都有-argv"><a href="#ARGV-是一个特殊数组，保存着命令行输入，作为传递到进程的参数-其他语言可能实现方式不一样，但都有-argv" class="headerlink" title="ARGV 是一个特殊数组，保存着命令行输入，作为传递到进程的参数, 其他语言可能实现方式不一样，但都有 argv"></a>ARGV 是一个特殊数组，保存着命令行输入，作为传递到进程的参数, 其他语言可能实现方式不一样，但都有 argv</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ cat argv.rb</div><div class="line">p ARGV # p 段落输出ARGV 这个参数，是一个数组 </div><div class="line">$ ruby argv.rb foo bar -va</div><div class="line">[&apos;foo&apos;, &apos;bar&apos;, &apos;-va&apos;]</div><div class="line"> </div><div class="line">p ARGV</div><div class="line">p ARGV[0] #获取命令行第一个参数</div><div class="line">ARGV.include?(&apos;c&apos;) &amp;&amp; p ARGV[ARGV.index(&apos;c&apos;) + 1] # 获取某个参数值的索引</div></pre></td></tr></table></figure>
+<h3 id="退出进程-、所有进程在退出时都会产生一个退出码，表示不同信息，其中0表示顺利结束，其他都是错误码"><a href="#退出进程-、所有进程在退出时都会产生一个退出码，表示不同信息，其中0表示顺利结束，其他都是错误码" class="headerlink" title="退出进程,、所有进程在退出时都会产生一个退出码，表示不同信息，其中0表示顺利结束，其他都是错误码"></a>退出进程,、所有进程在退出时都会产生一个退出码，表示不同信息，其中0表示顺利结束，其他都是错误码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">at_exit &#123; puts &apos;last&apos; &#125; # Kenel#at_exit 方法将在退出时候调用</div><div class="line">exit	</div><div class="line"></div><div class="line">at_exit &#123; puts &apos;last&apos; &#125; # Kenel#at_exit 方法将在退出时候调用</div><div class="line">abort &apos;something went long&apos; # Kenel#abort方法，退出并且输出错误</div><div class="line"></div><div class="line">raise &apos;jel&apos; # 抛出一个异常，将退出码设置为1，任然会执行at_exit方法</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/proccess/" data-id="ciztqajjp001448dd1b4vsmyq" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/promise/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          promise的最新较好实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/php/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">介绍php的有关学习，包括语法，配置，以及扩展等</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>IP/TCP,详解 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="TCP/IP 是指一个协议群，为了让不同电脑直接交流信息用的,TCP/IP协议由上到下，由高级到低级，层层包装，最上面的是应用层http,ftp等，然后是传输层tcp | udp ,再下来是网络层IP,负责对数据加上IP地址和其他数据，第四层是数据链路层，负责加上一个以太网的协议头，最后为数据传输做准备，接下来就是硬件层了包括网络制式，网卡定义等。 数据发送端负责把数据从上而下封装到底层，而客户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IP/TCP,详解">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/TCPIP/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="TCP/IP 是指一个协议群，为了让不同电脑直接交流信息用的,TCP/IP协议由上到下，由高级到低级，层层包装，最上面的是应用层http,ftp等，然后是传输层tcp | udp ,再下来是网络层IP,负责对数据加上IP地址和其他数据，第四层是数据链路层，负责加上一个以太网的协议头，最后为数据传输做准备，接下来就是硬件层了包括网络制式，网卡定义等。 数据发送端负责把数据从上而下封装到底层，而客户">
+<meta property="og:updated_time" content="2016-03-16T00:12:01.757Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IP/TCP,详解">
+<meta name="twitter:description" content="TCP/IP 是指一个协议群，为了让不同电脑直接交流信息用的,TCP/IP协议由上到下，由高级到低级，层层包装，最上面的是应用层http,ftp等，然后是传输层tcp | udp ,再下来是网络层IP,负责对数据加上IP地址和其他数据，第四层是数据链路层，负责加上一个以太网的协议头，最后为数据传输做准备，接下来就是硬件层了包括网络制式，网卡定义等。 数据发送端负责把数据从上而下封装到底层，而客户">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-TCPIP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/TCPIP/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.225Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      IP/TCP,详解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>TCP/IP 是指一个协议群，为了让不同电脑直接交流信息用的,TCP/IP协议由上到下，由高级到低级，层层包装，最上面的是应用层http,ftp等，然后是传输层tcp | udp ,再下来是网络层IP,负责对数据加上IP地址和其他数据，第四层是数据链路层，负责加上一个以太网的协议头，最后为数据传输做准备，接下来就是硬件层了包括网络制式，网卡定义等。 数据发送端负责把数据从上而下封装到底层，而客户端按照协议解开</p>
+</li>
+<li><p>IP地址: 每一个节点都必须有独立ip地址，是一个32位的255.255.255.255，样式</p>
+</li>
+<li><p>域名系统，负责把域名解析成ip地址，</p>
+</li>
+<li><p>RFC， 是tcp/ip的标准文档，是tcp/ip协议群的文档，有6000多个，但需要学习的只有十几个，</p>
+</li>
+<li><p>应用编程接口，socket 和 TLI,</p>
+</li>
+<li><p>网关：目的是为了实现不同网段ip地址的主机通信，如主机一是在192.168.1.1~192. 168.1.254，主机2是在，192.168.2.1~192.168.2.254，那么久被判为两个不同的网络，要实现这两个网段通信，就必须通过网关，网关便是具有路由功能的设备，可以是路由器，开了路由的服务器，或者代理服务器，主机一把数据发送到网关设备的ip地址上即可，</p>
+</li>
+<li><p>ip有网络号+主机号形成 地址划分，4个字节，每个字节8位，共32位，如w.x.y.z </p>
+</li>
+</ol>
+<p>，同一个网络中的主机网络号相同，主机号在同一个网络中是唯一的，A类ip的网络号是w ,B类是 w.x，C类是w.x.y.(也就是局域网)<br><br> 子网掩码，为了区别主机号和网络号，ip 地址与子网掩码做与操作，若值相等则两个ip处于同一网段</p>
+<ol>
+<li><p>tcp/ip协议群，socket 接口， tcp/udp, http,长连接，短连接 ,比较全面的解答<a href="http://my.oschina.net/OutOfMemory/blog/95803" target="_blank" rel="external">参考</a></p>
+</li>
+<li><p>http ,等协议，其实都可以进行长连接，只是根据协议的约定，能否保持稳定性问题，如tcp 的三次握手，而http 建立在tcp上，当然也要三次握手，而握手后，是无状态的，也就是每个http请求(或者说是连接) ,都是相互独立的，更生动的来说，如果同一个客户端发布了两次http请求，服务端并不知道这两次请求分别做了什么事，如，第一次客户登录，而第二次服务器不知道客户已经登录，于是出现了session和cookie,用来保持 http请求的多次状态.当然实现状态维持还有其他方法，如隐藏表单域，重写URL</p>
+</li>
+<li><p>http 为何原始设计是长连接，因为每个连接，实际上是端口+ip ,因此每次新连接都需要开一个独立的窗口，那么人多的话，端口就绝对不够用了，但是由于每次创建新链接的时间需要三次握手，还有其他文件头的琐事，因此占用时间多，资源多，利用长连接，便可以保持本次链接，下次要是同一ip的包过来，就不需要三次握手了</p>
+</li>
+<li><p>session的内在机制，绑定ip并且实现对每个ip建立一个对象维持其状态，等待下一个请求来临时候，检查该请求所在ip是否在已经保存的对象中，并取出其状态情况</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/TCPIP/" data-id="ciztqajhs000148ddxvrq3pka" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/c/basic/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/telnet/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">tcp协议的深入学习，</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

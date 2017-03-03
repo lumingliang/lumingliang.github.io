@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="代码总结jl模块将原来一个用户一份简历改为对多份
+
+利用hasMany() 对应多个，在resume model 的fields中加入关联hasMany(getSomeField)field，$models = findAll后，当调用yii的Json::encode($models)时会自动调用toArray方法，从而自动得到了和它关联的多个item，查询后findAll()取出
+对某个item">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/haitou/summary/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="代码总结jl模块将原来一个用户一份简历改为对多份
+
+利用hasMany() 对应多个，在resume model 的fields中加入关联hasMany(getSomeField)field，$models = findAll后，当调用yii的Json::encode($models)时会自动调用toArray方法，从而自动得到了和它关联的多个item，查询后findAll()取出
+对某个item">
+<meta property="og:updated_time" content="2016-10-26T09:39:13.645Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="代码总结jl模块将原来一个用户一份简历改为对多份
+
+利用hasMany() 对应多个，在resume model 的fields中加入关联hasMany(getSomeField)field，$models = findAll后，当调用yii的Json::encode($models)时会自动调用toArray方法，从而自动得到了和它关联的多个item，查询后findAll()取出
+对某个item">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-haitou/summary" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/haitou/summary/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.250Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="代码总结"><a href="#代码总结" class="headerlink" title="代码总结"></a>代码总结</h4><h5 id="jl模块"><a href="#jl模块" class="headerlink" title="jl模块"></a>jl模块</h5><p>将原来一个用户一份简历改为对多份</p>
+<ol>
+<li>利用hasMany() 对应多个，在resume model 的fields中加入关联hasMany(getSomeField)field，$models = findAll后，当调用yii的Json::encode($models)时会自动调用toArray方法，从而自动得到了和它关联的多个item，查询后findAll()取出</li>
+<li>对某个item编辑时，只需要传递id，简历id，根据action参数来觉得是修改还是删除，如果是新增，那就还需要在插入时加入简历id</li>
+<li>注意的在每次进行item编辑时，都要检查权限，如是否是用户本人操作<h5 id="wxx"><a href="#wxx" class="headerlink" title="wxx"></a>wxx</h5>加入了hr审核和修改官方公司模块</li>
+<li>利用gii生成最原始的model，searchForm，controller</li>
+<li>对1中的进行修改，dataProvider和gridView的使用</li>
+<li>注意在yii中的model，定义好scenario，以及rules，才能利用load方法向model中导入get，post数据，如果发现某个数据导入失败，应检查这两者，严格定义好合适的规则</li>
+<li>yii save失败原因是validat没有通过<h5 id="company"><a href="#company" class="headerlink" title="company"></a>company</h5>用户的注册登录、发布简章、简历模块、群管理模块</li>
+<li>企业注册登陆逻辑的调整，逻辑关键地方可以看代码注释</li>
+<li>发布简章、刷新简章逻辑的调整</li>
+<li>简历搜索加入了对userinfo的搜索，当搜索条件小于等于2时，用resume表搜索，否则用userinfo搜索，主要是Query中，alias,like,joinWith,(alias.collum)的使用</li>
+<li>简历导出加入了导出pdf，获取前台的搜索条件，得到resume ids后，利用yii render取得html，并用\mPDF转为pdf，php \zipArchive的使用，以及异步执行exec，用户无需等待即可返回，等完成后，系统发送通知</li>
+<li>群管理模块主要是gii+gridView，其中导入excel邀请用户注册，是对\phpExcel使用，首先获取用户信息数组，随后进行一系列逻辑判断知道发送email、短信邀请用户注册<h5 id="图片处理类"><a href="#图片处理类" class="headerlink" title="图片处理类"></a>图片处理类</h5></li>
+<li>imagine类，利用php imagine图片处理类库，从上往下扫描，以5px为步长根据设定容差判断图片像素是否是白点，遇到第一个不是白点后坐标缩小一个步长，步长变为1，继续寻找第一个不是白点，这个坐标即上边界</li>
+<li>以此类推，将图片顺时针旋转90，180,270度后，得到右，下，左边界坐标</li>
+<li>图片放入椭圆中，利用图片原来宽高比和焦半径公式算出缩放后的宽高</li>
+<li>paste, resize, getColorAt等方法使用<h5 id="几个简单的helper类"><a href="#几个简单的helper类" class="headerlink" title="几个简单的helper类"></a>几个简单的helper类</h5></li>
+<li>Emailhelper 用于发送邮件，注册邮件发送、注册码验证</li>
+<li>MessageHelper 用于发送消息，拉人入群等</li>
+<li>FileUploadHelper 文件上传放入以年月日为级别的目录下，并返回下载链接</li>
+<li>可以看下代码注释<h5 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h5></li>
+<li>批量拉人入群，批量制作群图标，发送公告等console操作。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/haitou/summary/" data-id="ciztqajmh002h48ddgqoewxgn" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/ionic/basic/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/haitou/thingsDo/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

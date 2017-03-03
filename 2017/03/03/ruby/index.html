@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>以下是ruby的学习过程，包括简要的语法，和ruby的核心模块 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装ruby
+可以从apt等包管理器安装,集成了所有和ruby有关的插件工具,省事,但会比较老版本
+可以用官方的    installer ,集成了所有工具并且有全新的版本可选
+源码编译安装1234567# 下载源码后./configure #By default, this will install Ruby into /usr/local. To change, pass the --pref">
+<meta property="og:type" content="article">
+<meta property="og:title" content="以下是ruby的学习过程，包括简要的语法，和ruby的核心模块">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/ruby/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装ruby
+可以从apt等包管理器安装,集成了所有和ruby有关的插件工具,省事,但会比较老版本
+可以用官方的    installer ,集成了所有工具并且有全新的版本可选
+源码编译安装1234567# 下载源码后./configure #By default, this will install Ruby into /usr/local. To change, pass the --pref">
+<meta property="og:updated_time" content="2015-11-26T07:14:39.558Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="以下是ruby的学习过程，包括简要的语法，和ruby的核心模块">
+<meta name="twitter:description" content="安装ruby
+可以从apt等包管理器安装,集成了所有和ruby有关的插件工具,省事,但会比较老版本
+可以用官方的    installer ,集成了所有工具并且有全新的版本可选
+源码编译安装1234567# 下载源码后./configure #By default, this will install Ruby into /usr/local. To change, pass the --pref">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ruby" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/ruby/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.221Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      以下是ruby的学习过程，包括简要的语法，和ruby的核心模块
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装ruby"><a href="#安装ruby" class="headerlink" title="安装ruby"></a>安装ruby</h3><ol>
+<li>可以从apt等包管理器安装,集成了所有和ruby有关的插件工具,省事,但会比较老版本</li>
+<li>可以用官方的    installer ,集成了所有工具并且有全新的版本可选</li>
+<li>源码编译安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 下载源码后</div><div class="line">./configure #By default, this will install Ruby into /usr/local. To change, pass the --prefix=DIR option to the ./configure script.</div><div class="line">	# 自定义安装路径</div><div class="line">make </div><div class="line">make install</div><div class="line"></div><div class="line"># 安装好后，打开irb，是一个ruby的终端控制台，可以自动缩进代码！</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="ruby的基本变量结构"><a href="#ruby的基本变量结构" class="headerlink" title="ruby的基本变量结构"></a>ruby的基本变量结构</h3><ol>
+<li>ruby 内所有结构从数字到方法，再到对象，都是一个类的对象(这里要区别于json对象，和js的对象，它与js对象很类似，不过更确切的应该是和php等类C语言的类和对象对应)</li>
+<li>以下是一些简洁的加减乘除，以及ruby的所有数据类型，以及逻辑控制的代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"># 计算</div><div class="line">2+6 # 输出8</div><div class="line"># 字符串</div><div class="line">name = &apos;lumin&apos;</div><div class="line">name # 输出name</div><div class="line"># 任何内容都是对象，或者说都是某一个类的实例</div><div class="line">name.reverse # 调用name的reverse方法，reverse方法再很多变量结构中都可以使用，当然，如果是数组，就先将数组化为字符串，再使用reverse方法</div><div class="line">name.length # </div><div class="line">40.to_s.reverse # 先将40变成字符串再翻转</div><div class="line"># 还有一些类似的转换方法</div><div class="line">to_i #变成整数</div><div class="line">to_a #converts value to array</div><div class="line">## 表示是上面的注释，这几个方法实践时候找不准能用的数据类型</div><div class="line"></div><div class="line">[12,45,56].max #找有序数组中的最大值</div><div class="line"></div><div class="line"># 强大，把字符串分割成数组</div><div class="line">lumin = &apos;lu ming liang&apos;</div><div class="line">lumin[&apos;lu&apos;] = &apos;zeng&apos;</div><div class="line">lumin </div><div class="line">	=&gt; zeng ming liang</div><div class="line">poem.lines.to_a.revser # 将一个段落化为行再化为数组，再翻转</div><div class="line">poem.lines.to_a.reverse.join # 继续上面，但最终又化为字符串！</div><div class="line">## 注意，类似poem.lines.to_a这类连续方法并不改变poem原来的值，但如果发生赋值就改变了</div><div class="line"></div><div class="line">poem.include ?&apos;my hand&apos; # 查看字符串是否拥有某个词</div><div class="line">poem.downcase # 转化大写为小写</div><div class="line"></div><div class="line">#hash </div><div class="line">books = &#123;&#125;</div><div class="line">books[&apos;one&apos;] = :some string</div><div class="line">books[&apos;one&apos;]</div><div class="line">	=&gt; some string</div><div class="line">books[&apos;another&apos;] = &apos;string&apos;</div><div class="line"></div><div class="line"># 另外一种使用hash的方法</div><div class="line">ratings = Hash.new(0) #new,新建一个hash实例，0，隐形日后每个key对应的值的初始值是0</div><div class="line">books.values.each &#123; |rate| ratings[rate] += 1 &#125; #books,是list, |rate| 管道传值每一个books.values </div><div class="line"># int+=4 ,是ruby中惯用</div><div class="line"></div><div class="line">5.times &#123; print &apos;olay&apos; &#125; # 5次打印，也可以不写print </div><div class="line"></div><div class="line">&#123;&#125; 可以用do ... end 代替</div><div class="line"></div><div class="line"># 目录</div><div class="line">Dir.enties &apos;/&apos; #列出目录/的所有</div><div class="line">Dir[&apos;/.*txt&apos;] # 查找是否有 */.txt文件</div><div class="line">print File.read(&apos;/comics.txt&apos;) # 读取文件</div><div class="line">FileUtils.cp(&apos;/comics.txt&apos;, &apos;/Home/comics.txt&apos;) # 复制文件</div><div class="line">File.mtime(&quot;/Home/comics.txt&quot;) # 查看文件最后修改时间</div><div class="line"></div><div class="line"></div><div class="line"># 函数定义</div><div class="line">def load_comics( path )</div><div class="line">  comics = &#123;&#125;</div><div class="line">  File.foreach(path) do |line|</div><div class="line">    name, url = line.split(&apos;: &apos;) # line.split 根据: 分割字符串为数组，并存到name,url 中</div><div class="line">    comics[name] = url.strip #strip -- This quick method removes extra spaces around the url. Just in case.</div><div class="line">  end</div><div class="line">  comics</div><div class="line">end</div><div class="line"></div><div class="line">#包的使用 </div><div class="line">require something </div><div class="line">something.method</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/ruby/" data-id="ciztqajk1001b48dd4ag7s2mk" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/seo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          seo  的相关技术
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/rescue/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">研究递归算法的使用和原理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

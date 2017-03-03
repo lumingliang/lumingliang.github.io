@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="服务器配置相关####### lnpp linux6.8+ nginx1.1 postgresql9.6 php7 sphinx2.2
+
+注意nginx在windwos下的配置
+12345root /cygdrive/f/lumin/yii/frontend/web/; // 使用cygdrive形式定义好web目录// 使用windows小写路径形式传递index文件位置fastcgi_para">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/centos/lnpp/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="服务器配置相关####### lnpp linux6.8+ nginx1.1 postgresql9.6 php7 sphinx2.2
+
+注意nginx在windwos下的配置
+12345root /cygdrive/f/lumin/yii/frontend/web/; // 使用cygdrive形式定义好web目录// 使用windows小写路径形式传递index文件位置fastcgi_para">
+<meta property="og:updated_time" content="2016-12-22T03:23:53.303Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="服务器配置相关####### lnpp linux6.8+ nginx1.1 postgresql9.6 php7 sphinx2.2
+
+注意nginx在windwos下的配置
+12345root /cygdrive/f/lumin/yii/frontend/web/; // 使用cygdrive形式定义好web目录// 使用windows小写路径形式传递index文件位置fastcgi_para">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-centos/lnpp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/lnpp/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.244Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="服务器配置相关"><a href="#服务器配置相关" class="headerlink" title="服务器配置相关"></a>服务器配置相关</h6><p>####### lnpp linux6.8+ nginx1.1 postgresql9.6 php7 sphinx2.2</p>
+<ol>
+<li><p>注意nginx在windwos下的配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">root /cygdrive/f/lumin/yii/frontend/web/; // 使用cygdrive形式定义好web目录</div><div class="line">// 使用windows小写路径形式传递index文件位置</div><div class="line">fastcgi_param  SCRIPT_FILENAME  f:/lumin/yii/frontend/web/$fastcgi_script_name;</div><div class="line">// 使用cygdrive形式定义access_log</div><div class="line">access_log  /cygdrive/c/nginx/logs/b.dev.access.log;</div></pre></td></tr></table></figure>
+</li>
+<li><p>两者必须同时严格定义</p>
+<h6 id="centos-6-下"><a href="#centos-6-下" class="headerlink" title="centos 6 下"></a>centos 6 下</h6></li>
+</ol>
+<p><strong>在编译php等需要指定某个依赖的dir时，其实有两种方法，如果是应用prefix 安装的依赖那么直接告诉它该路径即可，如果是利用yum安装的，先whereis一下，找出他的目录分配，而这个目录分配其实是有规律的，如，分配在/usr/下的各个子目录 bin man lib lib64 include下，编译是会自动往下面的目录找东西，其实跟安装在prefix的效果是一样的</strong></p>
+<ol>
+<li>wget <a href="http://au2.php.net/distributions/php-7.0.13.tar.bz2" target="_blank" rel="external">http://au2.php.net/distributions/php-7.0.13.tar.bz2</a></li>
+<li>tar    -jxvf  php-7.0.13.tar.bz2</li>
+</ol>
+<p>安装postgresql</p>
+<ol>
+<li>获取源码解压</li>
+<li>./configure –help</li>
+<li>./configure –prefix=/usr/loca/pgsql</li>
+<li>发现有依赖没装，查看安装文档，或看提示，并npm -qa | grep 一下看看是否已安装， yum search 看看该依赖的所有相关包</li>
+<li>make , make install</li>
+<li>安装文档和其他小工具 make install-word等</li>
+<li>安装后的环境变量配置，修改/ect/profile 加入 PATH=$PATH:/usr/local/soft等<br>(8. export LIBRARY_PATH=LIBDIR1:LIBDIR2:$LIBRARY_PATH 设定编译时的动态库位置) // 可不设这里</li>
+<li>export LD_LIBRARY_PATH=LIBDIR1:LIBDIR2:$LD_LIBRARY_PATH // 设定编译后的动态库位置，以便能让别的程序找到<br>** 对于LD_LIBRARY_PATH 等这些前面未设置的变量，需要/etc/profile中用export LD_LIBRARY_PATH=/usr/local/pgsql/lib 来定义才能被使用</li>
+<li>共享库一般在<br>ln -s /usr/pgsql-9.4/lib/libpq.so.5 /usr/lib64/libpq.so.5 // 64 位两个都要<br>ln -s /usr/pgsql-9.4/lib/libpq.so.5 /usr/lib/libpq.so.5<br>vi /etc/ld.so.conf</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">adduser postgres // postgres 不能用root启动</div><div class="line">mkdir /usr/local/pgsql/data</div><div class="line">chown postgres /usr/local/pgsql/data</div><div class="line">su - postgres</div><div class="line">/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data</div><div class="line"></div><div class="line">修改版 </div><div class="line">    initdb -E UTF-8 -D /usr/local/pgsql/data --locale=zh_CN.UTF-8</div><div class="line">(initdb -E EUC_CN -D data7 --locale=zh_CN)</div><div class="line">locale 决定在哪个国家，-E 是字符集 charater type 或 encoding 或charater encoding </div><div class="line">collate 排序 排序参数还有cytpe 排序一般是和charater encoding 绑定的</div><div class="line">psql -l 查看所有数据库情况</div><div class="line">创建一个role</div><div class="line">create role lumin  CREATEDB login password &apos;123456&apos;;</div><div class="line">createdb -U lumin test</div><div class="line"></div><div class="line">/usr/local/pgsql/bin/postgres -D /usr/local/pgsql/data &gt;logfile 2&gt;&amp;1 &amp;</div><div class="line">/usr/local/pgsql/bin/createdb test</div><div class="line">/usr/local/pgsql/bin/psql test</div><div class="line"> pg_ctl reload  -D /usr/local/pgsql/data &gt;logfile 2&gt;&amp;1 &amp;</div><div class="line"></div><div class="line">/sbin/iptables -I INPUT -p tcp --dport 5432 -j ACCEPT</div><div class="line">/etc/rc.d/init.d/iptables save 保存修改</div><div class="line">/etc/init.d/iptables status 查看状态</div><div class="line">/etc/init.d/iptables restart 重启防火墙</div><div class="line"></div><div class="line"> 导入数据</div><div class="line"> dropdb test</div><div class="line">createdb -U lumin test</div><div class="line">psql test</div><div class="line">\i /usr/local/pgsql/1.sql</div></pre></td></tr></table></figure>
+<h5 id="php-7"><a href="#php-7" class="headerlink" title="php-7"></a>php-7</h5><p>phpize 是用来编译pecl extension的，当一个source不是pecl extension则不能用它<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ cd extname</div><div class="line">$ phpize</div><div class="line">$ ./configure</div><div class="line">$ make</div><div class="line">make install</div><div class="line">这种安装往往会得到一个ext.so文件，自动放在php.ini中的ext配置目录下，可能不需要继续在php.ini中指定即可</div></pre></td></tr></table></figure></p>
+<p>pecl 安装一些外部的库的扩展，extension，如gd，往往都需要依赖源库的安装<br>pear 也可以安装php库，目前两者区别在于pear对php7的库支持更多<br>php 安装后，可以用pecl安装额外的库支持，如gd等，比较方便<br>依赖的扩展zlib 压缩，openssl 作加密，datetime php core自带，fileinfo , gd 相关的png, jpg各种surport, pcre perl 一样的兼容正则表达式<br>intl 国际化，同时也是icu的一个包装，即依赖ICU库ICU只是一个库<br>iconv 字符集转化，内建<br>exif 读取图片meta，内建<br>hash 提取内容的唯一摘要，内建<br>zlib 压缩，需要在编译时–with-zlib<br>openssl 生成密码等，需要编译时 –with-openssl ，另有mcypt加密，这个已经不维护，可以不用它，系统/usr下自带yum安装了openssl，但是在编译时with-openssl=/usr 反而不工作，最后去除了这个使用它自动查找就可以了<br>ctype 验证字符集是否正确，内建，其实这是一个c函数库–enable-ctype内建，并default<br>zip 可用pecl安装/usr/local/php/lib/php/extensions/no-debug-non-zts-20151012/zip.so<br>json 也是内建的<br>libxml 编译时，自动带–with 需要依赖libxml2安装<br>curl 内建，必须加，注意编译往往需要用到的是依赖的源码，如include，lib下的文件<br>cenlader 日历，需要编译加入–enable-calendar<br>xdebug pecl安装后 zend_extension=/usr/local/php/lib/php/extensions/no-debug-non-zts-20151012/xdebug.so<br>在php源码包中找pdo_mysql，手动进入目录编译，得到  /usr/local/php/lib/php/extensions/no-debug-non-zts-20151012/<br>mb_string 多类型字符转化，即一个带有多个字符集编码的字符串操作，编译时–enable-mbstring<br>sapi server api 与服务器cli交互的api<br> ./configure –prefix=/usr/local/php –with-pdo-mysql –with-pgsql –enable-fpm –with-pdo-pgsql<br> ./configure –prefix=/usr/local/php –with-pdo-mysql –with-pgsql –enable-fpm –with-pdo-pgsql with-pdo-mysql with-<br> ./configure –prefix=/usr/local/php7 –with-pdo-mysql=/usr –with-pgsql –enable-fpm –with-pdo-pgsql –with-zlib=/usr –with-openssl=/usr –with-curl=/usr –without-pdo-sqlite –enable-zip<br> // 初步使用<br>‘./configure’ ‘–prefix=/usr/local/php7’ ‘–with-pdo-mysql’ ‘–with-pgsql’ ‘–enable-fpm’ ‘–with-pdo-pgsql’ ‘–with-zlib’ ‘–with-openssl’ ‘–with-curl’ ‘–without-pdo-sqlite’ ‘–enable-zip<br>./configure –prefix=/usr/local/php –enable-mbstring –with-pdo-mysql –with-pgsql –enable-fpm –with-pdo-pgsql –with-zlib –with-openssl –with-curl –without-pdo-sqlite –disable-sqlite3 –enable-zip<br> 编译时内存不足用<a href="https://www.centos.org/docs/5/html/5.2/Deployment_Guide/s2-swap-creating-file.html" target="_blank" rel="external">参考</a></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">**若 php 安装在特殊目录 $php_prefix, 则请在 configure 后加上 --with-php-config=$php_prefix/bin/php-config**说明了如果安装在其他目录，可能还需要分别指定各个所需的目录，如include等</div><div class="line"></div><div class="line"> dd if=/dev/zero of=/swapfile bs=1024 count=1024000 // 添加1000M 的swapfile</div><div class="line">mkswap /swapfile</div><div class="line">swapon /swapfile // 让swapfile立即生效</div><div class="line">To enable it at boot time, edit /etc/fstab to include the following entry</div><div class="line">/swapfile swap swap defaults 0 0</div><div class="line"> cat /proc/swaps or free // 查看是否已经生效</div><div class="line"></div><div class="line"> **php extension dir :$  php -i | grep extension_dir即可查看，一般不用主动修改</div><div class="line">./php -i|grep include_path</div></pre></td></tr></table></figure>
+<h5 id="安装imageimagick"><a href="#安装imageimagick" class="headerlink" title="安装imageimagick"></a>安装imageimagick</h5><p>有些安装./configure –help并没有说明–with-png 等所需要的依赖，此时查看官方文档也没有说明该依赖，这时需要google查一下，到底需要什么依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yum install tcl-devel libpng-devel libjpeg-devel ghostscript-devel bzip2-devel freetype-devel libtiff-devel</div><div class="line">yum install ImageMagick-devel // 有了上面那个即可，这个并未使用</div><div class="line">http://www.imagemagick.org/download/delegates/</div></pre></td></tr></table></figure></p>
+<h5 id="安装nginx的编译包"><a href="#安装nginx的编译包" class="headerlink" title="安装nginx的编译包"></a>安装nginx的编译包</h5> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">vi /etc/yum.repos.d/nginx.repo</div><div class="line">[nginx]</div><div class="line">name=nginx repo</div><div class="line">baseurl=http://nginx.org/packages/OS/OSRELEASE/$basearch/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div><div class="line">yum install nginx</div></pre></td></tr></table></figure>
+<p> nginx 配置中，user nginx www 代表了用户和组</p>
+<h5 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h5><p>由于在centos默认仓库上的git版本落后，所以用源码安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> wget https://github.com/git/git/archive/v2.9.3.tar.gz</div><div class="line">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel</div><div class="line">yum install gcc perl-ExtUtils-MakeMaker</div><div class="line">cd git-2.8.1</div><div class="line">make prefix=/usr/local/git all</div><div class="line">make prefix=/usr/local/git install</div></pre></td></tr></table></figure></p>
+<h5 id="部署yii"><a href="#部署yii" class="headerlink" title="部署yii"></a>部署yii</h5><ol>
+<li>注意git .gitignore的每层都要配置好，对于vendor目录，本地.gitignore一定要与服务器的同步一致</li>
+</ol>
+<h5 id="部署yii-1"><a href="#部署yii-1" class="headerlink" title="部署yii"></a>部署yii</h5><ol>
+<li>注意git .gitignore一定要与服务器的同步一致</li>
+</ol>
+<h5 id="php-异步编程"><a href="#php-异步编程" class="headerlink" title="php 异步编程"></a>php 异步编程</h5><ol>
+<li>php 的扩展大多依赖某个c库，其实就是c的源码，因为都是利用源码编译的。</li>
+<li>php 是建立在c语言之上的，有很多类、extension都是直接对c函数库的封装</li>
+<li>libevent 是一个c库，用来异步编程</li>
+<li>swoole是国人写的一个c库，绑定了php，区别于普通的php extension，很强大</li>
+</ol>
+<h5 id="安装sphinx"><a href="#安装sphinx" class="headerlink" title="安装sphinx"></a>安装sphinx</h5><p>安装官网<a href="http://sphinxsearchcn.github.io/" target="_blank" rel="external">http://sphinxsearchcn.github.io/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/lnpp/" data-id="ciztqajm2002848ddo3d6ana9" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/centos/sh/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/centos/nat/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

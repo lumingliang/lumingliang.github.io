@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>typescript的学习和应用 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ts是一个js的超集，即js所有原生代码可以在ts中运行，（编译通过），ts代码需要利用ts编译器转化为js代码，再运行js中实际上就是多了一个标记，如c，c++，go的类型标志，每声明一个变量，就要标志一下这个变量的类型，好让别人也让自己知道，（因为会编译为js代码，所以实际上这些标志是为了更好的语义性，以便适合开发更大型的应用），还有类和接口都需要基于变量，类型的声明，每定一条函数，首先要知道">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typescript的学习和应用">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/ts/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ts是一个js的超集，即js所有原生代码可以在ts中运行，（编译通过），ts代码需要利用ts编译器转化为js代码，再运行js中实际上就是多了一个标记，如c，c++，go的类型标志，每声明一个变量，就要标志一下这个变量的类型，好让别人也让自己知道，（因为会编译为js代码，所以实际上这些标志是为了更好的语义性，以便适合开发更大型的应用），还有类和接口都需要基于变量，类型的声明，每定一条函数，首先要知道">
+<meta property="og:updated_time" content="2016-01-20T12:32:53.986Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="typescript的学习和应用">
+<meta name="twitter:description" content="ts是一个js的超集，即js所有原生代码可以在ts中运行，（编译通过），ts代码需要利用ts编译器转化为js代码，再运行js中实际上就是多了一个标记，如c，c++，go的类型标志，每声明一个变量，就要标志一下这个变量的类型，好让别人也让自己知道，（因为会编译为js代码，所以实际上这些标志是为了更好的语义性，以便适合开发更大型的应用），还有类和接口都需要基于变量，类型的声明，每定一条函数，首先要知道">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ts" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/ts/" class="article-date">
+  <time datetime="2017-03-03T11:30:10.568Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      typescript的学习和应用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="ts是一个js的超集，即js所有原生代码可以在ts中运行，（编译通过），ts代码需要利用ts编译器转化为js代码，再运行"><a href="#ts是一个js的超集，即js所有原生代码可以在ts中运行，（编译通过），ts代码需要利用ts编译器转化为js代码，再运行" class="headerlink" title="ts是一个js的超集，即js所有原生代码可以在ts中运行，（编译通过），ts代码需要利用ts编译器转化为js代码，再运行"></a>ts是一个js的超集，即js所有原生代码可以在ts中运行，（编译通过），ts代码需要利用ts编译器转化为js代码，再运行</h4><p>js中实际上就是多了一个标记，如c，c++，go的类型标志，每声明一个变量，就要标志一下这个变量的类型，好让别人也让自己知道，（因为会编译为js代码，所以实际上这些标志是为了更好的语义性，以便适合开发更大型的应用），还有类和接口都需要基于变量，类型的声明，每定一条函数，首先要知道函数的输入（参数）类型，以及返回值（输出）类型，这就是一种利于写代码和思考的标志形式。<br>//js是逐条逐句解析，并动态分配内存的，所以是动态语言，所以各种变量的类型可以随时改动，但是c,c++,go是编译后，第一次运行就分配好了所有的内存（每个变量的内存，所以是静态语言，动作也比js块）;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/ts/" data-id="ciztqn9yc0001z8dda3pgjrn5" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/ultisnips/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          a good discription  of utisnips use
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/thread-Process-fibers/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">学习进程，线程，纤程的区别和内涵</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

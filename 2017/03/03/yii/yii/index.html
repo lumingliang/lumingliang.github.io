@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>讲述yii的架构和一些有用用法 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="yii是一个超高集成化的php框架。严格mvc架构，对于建站是紧密的前后端，并且提供了优雅的restful服务。对于建站，提供了常用的html助手模板；并且拥有比较全的ROM。
+yii 中三个比较重要的内容，组件(一系列功能类), 小部件(一系列与php端生成交互view片段的助手类), 模块(拥有mvc内容的独立小模块),其实这些在laravel中都可以称为服务，还有一个比较有用的特点是，yii">
+<meta property="og:type" content="article">
+<meta property="og:title" content="讲述yii的架构和一些有用用法">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/yii/yii/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="yii是一个超高集成化的php框架。严格mvc架构，对于建站是紧密的前后端，并且提供了优雅的restful服务。对于建站，提供了常用的html助手模板；并且拥有比较全的ROM。
+yii 中三个比较重要的内容，组件(一系列功能类), 小部件(一系列与php端生成交互view片段的助手类), 模块(拥有mvc内容的独立小模块),其实这些在laravel中都可以称为服务，还有一个比较有用的特点是，yii">
+<meta property="og:updated_time" content="2016-05-04T13:29:39.498Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="讲述yii的架构和一些有用用法">
+<meta name="twitter:description" content="yii是一个超高集成化的php框架。严格mvc架构，对于建站是紧密的前后端，并且提供了优雅的restful服务。对于建站，提供了常用的html助手模板；并且拥有比较全的ROM。
+yii 中三个比较重要的内容，组件(一系列功能类), 小部件(一系列与php端生成交互view片段的助手类), 模块(拥有mvc内容的独立小模块),其实这些在laravel中都可以称为服务，还有一个比较有用的特点是，yii">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-yii/yii" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/yii/yii/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.262Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      讲述yii的架构和一些有用用法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="yii"><a href="#yii" class="headerlink" title="yii"></a>yii</h4><p>是一个超高集成化的php框架。严格mvc架构，对于建站是紧密的前后端，并且提供了优雅的restful服务。对于建站，提供了常用的html助手模板；并且拥有比较全的ROM。</p>
+<p>yii 中三个比较重要的内容，组件(一系列功能类), 小部件(一系列与php端生成交互view片段的助手类), 模块(拥有mvc内容的独立小模块),其实这些在laravel中都可以称为服务，还有一个比较有用的特点是，yii中的model是包含了表单和数据库交互两种类型的。业务逻辑(如验证等写在model或者全局中)</p>
+<h5 id="入口script"><a href="#入口script" class="headerlink" title="入口script"></a>入口script</h5><p>每个应用都有一个入口script,在yii中</p>
+<ol>
+<li>该script先定义一些constants,如degbug(拥有更多的消息), err_handler(错误级别等),</li>
+<li>注册composer autoloader</li>
+<li>inclue(引入) yii 类文件, 引入配置文件，引入环境配置文件。</li>
+<li>创建application实例</li>
+<li>run() 方法运行</li>
+</ol>
+<h5 id="请求声明周期"><a href="#请求声明周期" class="headerlink" title="请求声明周期"></a>请求声明周期</h5><ol>
+<li>开始的初始化，入口文件配置，run等。</li>
+<li>加载组件request.component ，并利用它处理请求url路由匹配等。</li>
+<li>到达controller ,执行mvc模式事情，其中会调用组件,widget等助手类，直接产出html片段</li>
+<li>module其实就是一个包，里面包含了route, 小型mvc等</li>
+<li>途中会经过多个filter,然后最后调用response.componet</li>
+</ol>
+<h5 id="表单数据"><a href="#表单数据" class="headerlink" title="表单数据"></a>表单数据</h5><p>与laravel不一样的是，表单数据laravel中是直接将数据变为一个请求数组，而yii中将其数据看做是模型model,yii中有两个model，另一个是Activerecord;这个是与数据库相关的。</p>
+<h5 id="数据库交互"><a href="#数据库交互" class="headerlink" title="数据库交互"></a>数据库交互</h5><p>请求来临时，先是接收请求，然后是根据配置连接数据库，接着引用该数据库连接，然后创建一个属于该请求的activerecord实例，controller内调用该实例的方法，并返回view。</p>
+<p>**必须先创建好数据库和表，接着保证php安装了PDO扩展，以及相应的mysql-pdo扩展，</p>
+<p>配置config/web.php,该文件会被config/web.php包含 </p>
+<ol>
+<li>查询find() 会查找所有，或者是通过多条函数拼接成一个查询语句，提高查询效率，</li>
+<li>controller中的 page等方法,取得查询必要数据并返回给视图,视图接收后由weget助手打印出来</li>
+</ol>
+<p>数据库交互有两种方法，一个是orm一个是db</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Yii::$app-&gt;db // 获取yii数据库连接实例</div></pre></td></tr></table></figure>
+<h4 id="整体架构介绍"><a href="#整体架构介绍" class="headerlink" title="整体架构介绍"></a>整体架构介绍</h4><h5 id="请求来临时，先进入入口文件，入口文件中会初始化一个application实例，该实例包含了所有必要的东西。application有一些重要的属性，如id-basePath-可以被其他地方引用"><a href="#请求来临时，先进入入口文件，入口文件中会初始化一个application实例，该实例包含了所有必要的东西。application有一些重要的属性，如id-basePath-可以被其他地方引用" class="headerlink" title="请求来临时，先进入入口文件，入口文件中会初始化一个application实例，该实例包含了所有必要的东西。application有一些重要的属性，如id,basePath(可以被其他地方引用)"></a>请求来临时，先进入入口文件，入口文件中会初始化一个application实例，该实例包含了所有必要的东西。application有一些重要的属性，如id,basePath(可以被其他地方引用)</h5><h5 id="bootstrap-里面就像laravel的bootstrap一样，可以在里面定义一开始就要运行的类、组件、以及相应的配置。"><a href="#bootstrap-里面就像laravel的bootstrap一样，可以在里面定义一开始就要运行的类、组件、以及相应的配置。" class="headerlink" title="bootstrap 里面就像laravel的bootstrap一样，可以在里面定义一开始就要运行的类、组件、以及相应的配置。"></a>bootstrap 里面就像laravel的bootstrap一样，可以在里面定义一开始就要运行的类、组件、以及相应的配置。</h5><p>不管是类、组件等在bootstrap中注册，(注册时可以附加配置),之后都可以根据Yii::id(id是该组件的id，或者说别名), 然后就可以在其他地方使用</p>
+<p>controllermap 属性，默认应该在config/web.php中，这里可以指定控制器匹配，如在url中r=some 就是匹配somecontroller</p>
+<p>module属性，配置model别名和配置</p>
+<h5 id="事件behavior"><a href="#事件behavior" class="headerlink" title="事件behavior"></a>事件behavior</h5><p>一个请求来的太快，事件其实就是在从请求到响应中的钩子，某个运行段时会启动某些类的方法。这里面会经过好多类，各个类都有不同的功能，php全部使用数组作为配置，标记等</p>
+<h5 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h5><p>骆驼峰或者-</p>
+<h5 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h5><p>actions就是controller的方法，这个方法可以分为两种一种是内联的，即写在controller中，一种是单一动作，可以被大家共用，因为它附加在yii\base\action类中,实际上就是把需要重用的action写在一个大家都易于访问的地方 </p>
+<p>定义单一action需要继承yii\base\action类，并把该action写在该方法中，然后使用时，要在当前controller中用actions()方法使用,只要在actions方法中有了应有声明，那么就可以使用该声明中的多个action</p>
+<h5 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h5><p>laravel中model直接包含了属性(对于数据库表的域),还有model从基类继承过来，会拥有很多内置的方法，这些方法直接将取得的数据放入属性中。</p>
+<p>model中可以定义使用场景，以及生成标签，一些常用的功能，最主要的，有rules方法，会自动验证各个域(属性)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">批量赋值,一个表单可以用一个模型来表示</div><div class="line"></div><div class="line">$model = new \app\models\ContactForm;</div><div class="line">$model-&gt;attributes = \Yii::$app-&gt;request-&gt;post(&apos;ContactForm&apos;);</div></pre></td></tr></table></figure>
+<p>还有一种情况，就是批量赋值时有些属性可以批量，有些不允许批量，yii中safe unsafe</p>
+<p>还有一个数据输出(fields)，如laravel中方便的toJson方法，可以作为接口向外输出规则数据。数据输出可以定制输出的域，及在所有属性中你想输出哪个，不想输出哪个可以设定</p>
+<p>model最佳实践，因为随著业务逻辑的增加，model会越来越厚，然后最好是把一些公用的model逻辑写在一个basemodel中，到时候继承即可</p>
+<h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><p>yii 视图和laravel有很大的区别，使用yii的视图和weget可以在没有或者很少js的条件下，创建一个经典bootstrap视图</p>
+<p>视图其实就是php echo ，在控制器或者某个地方调用render方法即可得到视图，视图可以以数组形式注入一些变量，当然视图默认注入了$this,和$model变量。使操纵极为方便</p>
+<h5 id="layout-yii中的布局非常好用，布局是一个application-gt-module-gt-controller-中会标识好layout-层层寻找，最后会寻找在application中定义的layout-在使用render方法时，如render-‘-main’-就是绝对路径，会直接找application中的layout"><a href="#layout-yii中的布局非常好用，布局是一个application-gt-module-gt-controller-中会标识好layout-层层寻找，最后会寻找在application中定义的layout-在使用render方法时，如render-‘-main’-就是绝对路径，会直接找application中的layout" class="headerlink" title="layout yii中的布局非常好用，布局是一个application &gt; module &gt; controller 中会标识好layout,层层寻找，最后会寻找在application中定义的layout,在使用render方法时，如render(‘/main’) 就是绝对路径，会直接找application中的layout"></a>layout yii中的布局非常好用，布局是一个application &gt; module &gt; controller 中会标识好layout,层层寻找，最后会寻找在application中定义的layout,在使用render方法时，如render(‘/main’) 就是绝对路径，会直接找application中的layout</h5><p>新的layout可以镶嵌base layout<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php $this-&gt;beginContent(&apos;@app/views/layouts/base.php&apos;); ?&gt;  // 声明baselayout </div><div class="line"></div><div class="line">...child layout content here...</div><div class="line"></div><div class="line">&lt;?php $this-&gt;endContent(); ?&gt;</div></pre></td></tr></table></figure></p>
+<p>此外，<strong>在view中也可以使用render方法</strong>，渲染其他小视图</p>
+<p><strong> 定义block </strong> block也比较方便强大，yii中视图一般由两部分构成: view + layout ,在view中定义block,可以在layout中显示，极为方便</p>
+<p>静态页面视图，静态页面可以使用传统的render方式，但是试想一个目录下有多个静态页面，那么每个文件都得定义一个render action会比较繁琐，所以，最好的办法是使用actions    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class SiteController extends Controller</div><div class="line">&#123;</div><div class="line">    public function actions()</div><div class="line">    &#123;</div><div class="line">        return [</div><div class="line">		// page目录下的都是静态文件，yii会自动搜寻</div><div class="line">            &apos;page&apos; =&gt; [</div><div class="line">                &apos;class&apos; =&gt; &apos;yii\web\ViewAction&apos;,</div><div class="line">            ],</div><div class="line">        ];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如在@app/views/site/pages 目录下有个about静态视图，那么可以用路由<a href="http://localhost/index.php?r=site%2Fpage&amp;view=about" target="_blank" rel="external">http://localhost/index.php?r=site%2Fpage&amp;view=about</a> 访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public function actions()</div><div class="line">&#123;</div><div class="line">	return [</div><div class="line">		&apos;error&apos; =&gt; [</div><div class="line">			&apos;class&apos; =&gt; &apos;yii\web\ErrorAction&apos;,</div><div class="line">		],</div><div class="line">		&apos;captcha&apos; =&gt; [</div><div class="line">			&apos;class&apos; =&gt; &apos;yii\captcha\CaptchaAction&apos;,</div><div class="line">			&apos;fixedVerifyCode&apos; =&gt; YII_ENV_TEST ? &apos;testme&apos; : null,</div><div class="line">		],</div><div class="line">		// page为路由前置参数</div><div class="line">		&apos;page&apos; =&gt; [</div><div class="line">			&apos;class&apos; =&gt; &apos;yii\web\ViewAction&apos;,</div><div class="line">		],</div><div class="line">	];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>于是所有在pages下的文件都可以访问了</p>
+<h4 id="module"><a href="#module" class="headerlink" title="module"></a>module</h4><p> 一个module就类似一个子组件(从apllication镶嵌而来),拥有自己的mvc架构;并且有自己的私有配置class，每个moudule的资源如组件，小部件等都可以被其他module访问</p>
+<p>module只需要在application全局注册位置即可使用，内部结构和用法和application一致，另外module可以内部镶嵌，同时路由写法也是需要前置module id作为路径，最好是module id和module名一致</p>
+<p>module使用di来自动启动</p>
+<p>module视图中的layout怎么配置?</p>
+<h4 id="fiter"><a href="#fiter" class="headerlink" title="fiter"></a>fiter</h4><p>fiter是在application , module, controller中处理前后运行的代码(类)等，在里面配置后，可以每次运行,类似中间件</p>
+<p>controller 的 behaviors()中定义了哪些action会使用filter</p>
+<p>创建filter时需要定义beforeAction, afterAction两个方法，在里面就是这个filter的处理前后逻辑</p>
+<p>其中如验证用户，监测http请求是post get等都是写在filter里面,yii中有很多有用的内置filter</p>
+<h4 id="wegets"><a href="#wegets" class="headerlink" title="wegets"></a>wegets</h4><p>weget是一些视图相关的插件，就是类似jquery插件，而且这些插件可以直接在服务端配置渲染，非常方便，基本无js操作</p>
+<p>小部件的创建就是在一个适当的目录里面有个小部件类，该小部件类有两个重要的方法，一个是init用来配置属性，一个是run() ,用来渲染视图，在run()方法中也可以使用render,渲染镶嵌更多视图,默认情况下，weget中调用的view的路径是在wegetPath/views目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">// 创建在app\component下</div><div class="line">namespace app\components;</div><div class="line"></div><div class="line">use yii\base\Widget;</div><div class="line">use yii\helpers\Html;</div><div class="line"></div><div class="line">class HelloWidget extends Widget</div><div class="line">&#123;</div><div class="line">    public function init()</div><div class="line">    &#123;</div><div class="line">        parent::init();</div><div class="line">        ob_start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public function run()</div><div class="line">    &#123;</div><div class="line">        $content = ob_get_clean();</div><div class="line">        return Html::encode($content);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">// 使用</div><div class="line"></div><div class="line">&lt;?php</div><div class="line">use app\components\HelloWidget;</div><div class="line">?&gt;</div><div class="line">&lt;?php HelloWidget::begin(); ?&gt;</div><div class="line"></div><div class="line">    content that may contain &lt;tag&gt;&apos;s</div><div class="line"></div><div class="line">&lt;?php HelloWidget::end(); ?&gt;</div></pre></td></tr></table></figure>
+<h4 id="web-js-css-img-资源管理"><a href="#web-js-css-img-资源管理" class="headerlink" title="web(js, css,img)资源管理"></a>web(js, css,img)资源管理</h4><p>yii中有一个完善的资源管理机制，如使用DatePicker小部件时，由程序自动寻找相应的js文件等，当相应的资源有了更新后，会直接自动链接到更新的资源。</p>
+<h5 id="Asset-Class"><a href="#Asset-Class" class="headerlink" title="Asset Class"></a>Asset Class</h5><p>资源类，每份资源都是一个独立的文件夹，里面包含了css,js等，这些资源的位置、加载时的钩子等都写在一个配置类中。</p>
+<p>yii中对资源做了一个分类，因为为了更好的代码管理</p>
+<ol>
+<li>source assets (在view中  等)</li>
+<li>publish assets ( 在web目录下，常常需要把source 资源复制到 web目录下，这个一般由yii自动完成 )</li>
+<li>external assets ( 一些额外的资源 )</li>
+</ol>
+<p>assets依赖是跟必须先打开jquery才能用jquery ui是一样的。必须先打开前面的资源，再打开现在的资源 </p>
+<p>另外还可以通过设定$cssOptions 等来确定ie几下会使用这个资源(其实就是 创建一个html判别)</p>
+<p>Assets 实际上就是yii调用一个类来生成读取资源的代码，该类的调用写在视图中，用来自动调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">use app\assets\AppAsset;</div><div class="line">AppAsset::register($this);  // $this represents the view object</div></pre></td></tr></table></figure></p>
+<p>yii 会读取里面的配置，来对资源进行加载</p>
+<p>如果在wiget中调用该Assets类，那么需要指定该wiget所属的视图，以便yii根据类把资源引用url代码注入到视图的head等中。</p>
+<p>AppAsset::register($this-&gt;view);  // $this represents the view object</p>
+<p>可以在配置中对每个assets类进行从新配置,以便适应更动态的要求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&apos;components&apos; =&gt; [</div><div class="line">        &apos;assetManager&apos; =&gt; [</div><div class="line">            &apos;bundles&apos; =&gt; [</div><div class="line">                &apos;all&apos; =&gt; [</div><div class="line">                    &apos;class&apos; =&gt; &apos;yii\web\AssetBundle&apos;,</div><div class="line">                    &apos;basePath&apos; =&gt; &apos;@webroot/assets&apos;,</div><div class="line">                    &apos;baseUrl&apos; =&gt; &apos;@web/assets&apos;,</div><div class="line">                    &apos;css&apos; =&gt; [&apos;all-xyz.css&apos;],</div><div class="line">                    &apos;js&apos; =&gt; [&apos;all-xyz.js&apos;],</div><div class="line">                ],</div><div class="line">                &apos;A&apos; =&gt; [&apos;css&apos; =&gt; [], &apos;js&apos; =&gt; [], &apos;depends&apos; =&gt; [&apos;all&apos;]],</div><div class="line">                &apos;B&apos; =&gt; [&apos;css&apos; =&gt; [], &apos;js&apos; =&gt; [], &apos;depends&apos; =&gt; [&apos;all&apos;]],</div><div class="line">                &apos;C&apos; =&gt; [&apos;css&apos; =&gt; [], &apos;js&apos; =&gt; [], &apos;depends&apos; =&gt; [&apos;all&apos;]],</div><div class="line">                &apos;D&apos; =&gt; [&apos;css&apos; =&gt; [], &apos;js&apos; =&gt; [], &apos;depends&apos; =&gt; [&apos;all&apos;]],</div><div class="line">            ],</div><div class="line">        ],</div><div class="line">    ],</div></pre></td></tr></table></figure></p>
+<h5 id="urlmanager"><a href="#urlmanager" class="headerlink" title="urlmanager"></a>urlmanager</h5><p>即路由相关类，是属于一个类似数据库连接的组件类，当访问来到时，会调用该urlmanager来解析钱来的额url，得到prameters等，同时也可以利用它来产生相应的url。</p>
+<p>可以配置多个urlmanager，然后可以利用某个特定的urlmanager rules规则来产生url，当前对于特定的app，只有一个urlmanager处理url解析。urlmanager只是个别名，需要在里面配置某个url解析类，如基类。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/yii/yii/" data-id="ciztqajmx002v48ddg9n3uv81" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/asynAndprosess/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          介绍单线程，多线程，与异步的内在机制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/yii/tip/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">some tips for yii learn</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

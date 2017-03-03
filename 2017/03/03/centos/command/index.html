@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="重启网卡123/etc/init.d/network restartservice network start  service network status
+和网络配置有关的文件配置网关、设定ip为静态12345678910/etc/sysconfig/network-scripts/ifcfg-eth0DEVICE=&amp;quot;eth0&amp;quot;HWADDR=&amp;quot;00:0C:29:F">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/centos/command/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="重启网卡123/etc/init.d/network restartservice network start  service network status
+和网络配置有关的文件配置网关、设定ip为静态12345678910/etc/sysconfig/network-scripts/ifcfg-eth0DEVICE=&amp;quot;eth0&amp;quot;HWADDR=&amp;quot;00:0C:29:F">
+<meta property="og:updated_time" content="2016-12-02T01:41:21.391Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="重启网卡123/etc/init.d/network restartservice network start  service network status
+和网络配置有关的文件配置网关、设定ip为静态12345678910/etc/sysconfig/network-scripts/ifcfg-eth0DEVICE=&amp;quot;eth0&amp;quot;HWADDR=&amp;quot;00:0C:29:F">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-centos/command" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/command/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.241Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>重启网卡<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/network restart</div><div class="line">service network start  </div><div class="line">service network status</div></pre></td></tr></table></figure></p>
+<p>和网络配置有关的文件<br>配置网关、设定ip为静态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/etc/sysconfig/network-scripts/ifcfg-eth0</div><div class="line"></div><div class="line">DEVICE=&quot;eth0&quot;</div><div class="line">HWADDR=&quot;00:0C:29:FD:FF:2A&quot;</div><div class="line">NM_CONTROLLED=&quot;yes&quot;</div><div class="line">ONBOOT=&quot;yes&quot;</div><div class="line">IPADDR=192.168.1.31</div><div class="line">NETMASK=255.255.255.0</div><div class="line">GATEWAY=192.168.1.1</div><div class="line">BOOTPROTO=static</div></pre></td></tr></table></figure></p>
+<p>配置dns<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/etc/resolv.conf </div><div class="line">nameserver 202.96.134.133</div><div class="line">nameserver 8.8.8.8</div></pre></td></tr></table></figure></p>
+<p>临时配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ifconfig eth0 10.1.1.10 netmask 255.0.0.0</div></pre></td></tr></table></figure></p>
+<p>寻找程序所在地方<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">whereis (在环境变量中找)</div><div class="line">locale (利用每天更新的库)</div><div class="line">find (查找磁盘上的任何东西，可以用正则、简写、函数等)</div><div class="line">tar 打包</div><div class="line">gzip 对tar后压缩</div><div class="line">bzip2 对tar后压缩</div><div class="line">xz</div><div class="line">压　缩：tar -jcv -f filename.tar.bz2 file</div><div class="line">查　询：tar -jtv -f filename.tar.bz2</div><div class="line">解压缩：tar -jxv -f filename.tar.bz2 -C dir(欲解压缩的目录)</div><div class="line">查看文件大小 du -h max-lengh=1</div><div class="line">查看磁盘 df -h</div></pre></td></tr></table></figure></p>
+<p>源码安装: 配置得makefile 得了它后调用make(自动调用gcc)编译,make install 安装到指定位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure --help 查看配置</div></pre></td></tr></table></figure></p>
+<p>如果是默认安装，会分散安装到/usr/bin usr/lib usr/share/man /etc/ 目录下<br>因此为了方便管理，最好手动设定prefix，安装到/usr/local/software目录下，源码copy到usr/local/src/soft/下，然后在/etc/man_db.conf中加入一条，告诉它man目录和bin目录<br>.so 动态函数库<br>.a 静态函数库<br>在linux中有许多函数、函数库都是被各种程序共同使用的，于是把它放到一些目录中，以便给程序运行时调用。其中.so结尾的是动态函数库，在程序运行时载入，平时只记录它所在的位置<br>静态函数（库）会再编译时直接整合到了安装后的二进制文件中，优点是可以直接独立运行。不需要再次依赖。但不利于升级。<br>./configure 用到的–with-extension=dir 一般是用到一个包的源码库，所以一般把该路径指向该源码的lib中，当然也要看help例外<br>一般添加新的功能进去需要重新编译</p>
+<h5 id="linux-下的目录结构"><a href="#linux-下的目录结构" class="headerlink" title="linux 下的目录结构"></a>linux 下的目录结构</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/</div><div class="line">/sbin</div><div class="line">/home</div><div class="line">/opt 第三方软件目录，类似d盘(需要手动)</div><div class="line">/tmp</div><div class="line">/mnt</div><div class="line">/bin 系统程序ls rm 等</div><div class="line">/var 可变的，log等文件</div><div class="line">/etc 所有软件的默认配置都放在这个目录下 </div><div class="line">/usr 下有/bin /lib /local/bin 类似C盘prografiles，一般软件都会默认分散安装到这里</div></pre></td></tr></table></figure>
+<h5 id="常用命令备份"><a href="#常用命令备份" class="headerlink" title="常用命令备份"></a>常用命令备份</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">删除当前目录下所有 *.txt文件，除了test.txt</div><div class="line"></div><div class="line">rm `ls *.txt|egrep -v test.txt`</div><div class="line">#或者</div><div class="line">rm `ls *.txt|awk &apos;&#123;if($0 != &quot;test.txt&quot;) print $0&#125;&apos;`</div><div class="line">#排除多个文件</div><div class="line">rm `ls *.txt|egrep -v &apos;(test.txt|fff.txt|ppp.txt)&apos;`</div><div class="line">rm -f `ls *.log.1|egrep -v &apos;(access-2010-09-06.log|error-2010-09-06.log)&apos;`</div><div class="line">rm -f `ls *.log|egrep -v &apos;(access-2010-09-06.log|error-2010-09-06.log)&apos;`</div><div class="line">rm -f `ls *.log|egrep -v &apos;(20100906.log)&apos;`</div><div class="line">rm `find . -name *.txt | egrep -v ‘（test.txt|fff.txt|ppp.txt)&apos;`</div><div class="line">egrep 是grep 的扩展，还可以使用附加的正则表示式元字符</div><div class="line">rpm -qa | grep readline 查看是否安装有某个包</div><div class="line">yum search readline 当缺少某个包时，如果自己解决，那就搜索一下当前是否有该包，如果有，那么全网搜索一下该包的相关包，并看具体信息决定是否增加安装</div></pre></td></tr></table></figure>
+<h5 id="linux-生疏必要软件-命令"><a href="#linux-生疏必要软件-命令" class="headerlink" title="linux 生疏必要软件/命令"></a>linux 生疏必要软件/命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iconv 文件编码转码</div></pre></td></tr></table></figure>
+<p> nohup ../yii /temp/major-group &gt; major.out 2&gt;&amp;1 &amp;<br> ps -ef |grep yii</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/command/" data-id="ciztqajly002448dduo2u2ewn" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/centos/linux.sofware.install/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          linux 下安装软件的几种方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/centos/bingfa/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

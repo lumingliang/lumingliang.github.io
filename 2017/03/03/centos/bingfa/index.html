@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="php + redis 处理高并发
+利用队列处理高并发，就像排队一样，其实和锁是一样(?)，但是队列更容易理解，队列是原子操作
+
+将库存加入队列，每下一个单前pop一个值，能pop说明库存还有
+分三个队列，等待用户，已购买用户，库存，开一个进程不断从等待用户中取出并判断是否在已购买队列中，再决定是否下单，减少库存
+从库存队列中pop出后，实际上还需要在数据库中对库存减1，如果其中出错就需要对队列+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/centos/bingfa/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="php + redis 处理高并发
+利用队列处理高并发，就像排队一样，其实和锁是一样(?)，但是队列更容易理解，队列是原子操作
+
+将库存加入队列，每下一个单前pop一个值，能pop说明库存还有
+分三个队列，等待用户，已购买用户，库存，开一个进程不断从等待用户中取出并判断是否在已购买队列中，再决定是否下单，减少库存
+从库存队列中pop出后，实际上还需要在数据库中对库存减1，如果其中出错就需要对队列+">
+<meta property="og:updated_time" content="2017-01-04T13:33:22.398Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="php + redis 处理高并发
+利用队列处理高并发，就像排队一样，其实和锁是一样(?)，但是队列更容易理解，队列是原子操作
+
+将库存加入队列，每下一个单前pop一个值，能pop说明库存还有
+分三个队列，等待用户，已购买用户，库存，开一个进程不断从等待用户中取出并判断是否在已购买队列中，再决定是否下单，减少库存
+从库存队列中pop出后，实际上还需要在数据库中对库存减1，如果其中出错就需要对队列+">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-centos/bingfa" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/bingfa/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.240Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="php-redis-处理高并发"><a href="#php-redis-处理高并发" class="headerlink" title="php + redis 处理高并发"></a>php + redis 处理高并发</h6><hr>
+<p>利用队列处理高并发，就像排队一样，其实和锁是一样(?)，但是队列更容易理解，队列是原子操作</p>
+<ol>
+<li>将库存加入队列，每下一个单前pop一个值，能pop说明库存还有</li>
+<li>分三个队列，等待用户，已购买用户，库存，开一个进程不断从等待用户中取出并判断是否在已购买队列中，再决定是否下单，减少库存</li>
+<li>从库存队列中pop出后，实际上还需要在数据库中对库存减1，如果其中出错就需要对队列+1</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/bingfa/" data-id="ciztqajlx002348dd4zhgmrye" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/centos/command/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/centos/basic/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

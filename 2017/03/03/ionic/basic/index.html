@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基本环境的设定和配置
+nodejs 安装好
+安装阿里的源
+cnpm install -g ionic cordova
+ionic start –v2 projectName tabs
+如果4 遇到问题，切断后，cnpm install
+ionic serve试试问题
+安装java
+12345Java_Home  D:\Java\jdk1.8.0_111CLASSPATH .;%Java_Home%">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/ionic/basic/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="基本环境的设定和配置
+nodejs 安装好
+安装阿里的源
+cnpm install -g ionic cordova
+ionic start –v2 projectName tabs
+如果4 遇到问题，切断后，cnpm install
+ionic serve试试问题
+安装java
+12345Java_Home  D:\Java\jdk1.8.0_111CLASSPATH .;%Java_Home%">
+<meta property="og:updated_time" content="2017-01-14T03:59:53.563Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="基本环境的设定和配置
+nodejs 安装好
+安装阿里的源
+cnpm install -g ionic cordova
+ionic start –v2 projectName tabs
+如果4 遇到问题，切断后，cnpm install
+ionic serve试试问题
+安装java
+12345Java_Home  D:\Java\jdk1.8.0_111CLASSPATH .;%Java_Home%">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ionic/basic" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/ionic/basic/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.252Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="基本环境的设定和配置"><a href="#基本环境的设定和配置" class="headerlink" title="基本环境的设定和配置"></a>基本环境的设定和配置</h5><ol>
+<li>nodejs 安装好</li>
+<li>安装阿里的源</li>
+<li>cnpm install -g ionic cordova</li>
+<li>ionic start –v2 projectName tabs</li>
+<li>如果4 遇到问题，切断后，cnpm install</li>
+<li>ionic serve试试问题</li>
+<li><p>安装java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Java_Home  D:\Java\jdk1.8.0_111</div><div class="line">CLASSPATH .;%Java_Home%\bin;%Java_Home%\lib\dt.jar;%Java_Home%\lib\tools.jar</div><div class="line">Path ;%Java_Home%\bin;%Java_Home%\jre\bin;</div><div class="line">Path C:\Users\Administrator\AppData\Local\Android\Sdk\tools;C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools</div><div class="line">ANDROID_HOME C:\Users\Administrator\AppData\Local\Android\Sdk</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装andoid studio ，安装后会自动整合Java_Home，选择common，安装好各种需要的东西</p>
+</li>
+<li>打开android studio，可以点击类似下载的箭头图标来安装相关android sdk包，skd里面有很多包，都是要安装的</li>
+<li><p>关键点，应付墙等<br><em>下载grandle-all.zip包，把该包放到upload下，并修改F:\mye\platforms\android\cordova\lib\builders\GradleBuilder.js的 var distributionUrl = process.env[‘CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL’] || ‘<a href="http://upload.local.jiliha.com/gradle-2.14.1-all.zip" target="_blank" rel="external">http://upload.local.jiliha.com/gradle-2.14.1-all.zip</a>‘;
+</em>修改F:\mye\platforms\android\CordovaLib\build.gradle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">repositories &#123;</div><div class="line">  jcenter &#123;url &quot;http://jcenter.bintray.com/&quot;&#125;</div><div class="line">  //  mavenCentral()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>*修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">repositories &#123;</div><div class="line">  jcenter &#123;url &quot;http://jcenter.bintray.com/&quot;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    classpath &apos;com.android.tools.build:gradle:2.2.0&apos;</div><div class="line">&#125;</div><div class="line"></div><div class="line">repositories &#123;</div><div class="line">  jcenter &#123;url &quot;http://jcenter.bintray.com/&quot;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>模拟器使用<br>；</p>
+</li>
+<li><p>添加crosswalk 支持</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cordova plugin add cordova-plugin-crosswalk-webview</div><div class="line">cordova build android</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装的插件有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whiteList 用于访问http，如果没有这个插件将无法访问http的</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/ionic/basic/" data-id="ciztqajmk002k48dd5luqulna" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/ionic/error/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/haitou/summary/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

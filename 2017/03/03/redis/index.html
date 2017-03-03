@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>redis 的学习 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="以下是redis的入门用法redis是一个运行在内存的键值对持久性数据库，仅仅通过扁平的键值结构来实现缓存或者高级大型网站的快速读写数据库基本用法1234567891011121314151617181920212223242526272829303132333435363738394041424344454647 SET name &amp;apos;value&amp;apos; set name1 1 in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis 的学习">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/redis/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="以下是redis的入门用法redis是一个运行在内存的键值对持久性数据库，仅仅通过扁平的键值结构来实现缓存或者高级大型网站的快速读写数据库基本用法1234567891011121314151617181920212223242526272829303132333435363738394041424344454647 SET name &amp;apos;value&amp;apos; set name1 1 in">
+<meta property="og:updated_time" content="2015-11-25T11:05:18.070Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis 的学习">
+<meta name="twitter:description" content="以下是redis的入门用法redis是一个运行在内存的键值对持久性数据库，仅仅通过扁平的键值结构来实现缓存或者高级大型网站的快速读写数据库基本用法1234567891011121314151617181920212223242526272829303132333435363738394041424344454647 SET name &amp;apos;value&amp;apos; set name1 1 in">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/redis/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.299Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      redis 的学习
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="以下是redis的入门用法"><a href="#以下是redis的入门用法" class="headerlink" title="以下是redis的入门用法"></a>以下是redis的入门用法</h3><h4 id="redis是一个运行在内存的键值对持久性数据库，仅仅通过扁平的键值结构来实现缓存或者高级大型网站的快速读写数据库"><a href="#redis是一个运行在内存的键值对持久性数据库，仅仅通过扁平的键值结构来实现缓存或者高级大型网站的快速读写数据库" class="headerlink" title="redis是一个运行在内存的键值对持久性数据库，仅仅通过扁平的键值结构来实现缓存或者高级大型网站的快速读写数据库"></a>redis是一个运行在内存的键值对持久性数据库，仅仅通过扁平的键值结构来实现缓存或者高级大型网站的快速读写数据库</h4><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> SET name &apos;value&apos;</div><div class="line"> set name1 1</div><div class="line"> incr name1   // -&gt; 2</div><div class="line"> del name  // -&gt; integer 1 // name已经删除了</div><div class="line"> get name1 // -&gt;2</div><div class="line"> expire name 100 // integer 1 // 表示操作一个数据，设定name的生存时间为100s</div><div class="line"> ttl name // -&gt;int 返回name的生存时间还剩多少，若已经过期（已经被删除），返回-2,若返回-1说明name这个key并没有设定生存时间 </div><div class="line"> //若del tt返回 integer 0 ,说明这个key不存在(没有set)</div><div class="line"></div><div class="line"> -------</div><div class="line"> list </div><div class="line"></div><div class="line"> list有点类似于无键名数组[&apos;22&apos;,&apos;rr&apos;,&apos;44&apos;]</div><div class="line"> rpush newlist &apos;value&apos; //创建一个新list并往后增加一个值，</div><div class="line"> lpush &apos;key&apos; value // 往左(往前增加一个值) ,如果没有这个key 则新增一个</div><div class="line"> lrange key index1 index2 ,根据索引从哪到哪取出list</div><div class="line"> //如 lrange key 0 -1 //取出该key下list的全部 </div><div class="line"> // lrange key 0 0 //取出list中第0个</div><div class="line"></div><div class="line">** 对于很多操作，redis都是按照如果本身为空，则新增一个 **</div><div class="line"> rpop key ,返回并删除最后一个值，</div><div class="line"> lpop key ,返回并删除第一个值</div><div class="line"></div><div class="line"> -----</div><div class="line"> set  </div><div class="line"></div><div class="line"> set 和list 的区别是，无序，而且每个值只能出现一次</div><div class="line"></div><div class="line"> 有这几个常用命令 SADD &apos;newset&apos; &apos;value&apos; </div><div class="line"></div><div class="line"> sismember &apos;set&apos; value ,测试一个值是否在set中已经存在</div><div class="line"></div><div class="line"> smembers set ,列出set中所有</div><div class="line"> sunion set set1 合并连个set并返回合并后的所有</div><div class="line"> srem set &apos;value&apos; 删除set中某个值</div><div class="line"></div><div class="line"> ----</div><div class="line"></div><div class="line">#### zinter set1 set2 set3 //寻找各个set的交集</div><div class="line"></div><div class="line">sorted set </div><div class="line"></div><div class="line">//有序的set，因为set是无序的，所以无法通过多少到多少取出他们，于是引入了一个score，是一个数字，用来对set中的每个值排序</div><div class="line">zadd hackers time[可以是当前时间戳] value</div><div class="line">zrange hackers 0 -1 // 会按照time这个score 的大小排序</div><div class="line">zrangebyscore key min[-inf,[33 , (33   ] max withscores [limit offset count] //按照score排序</div></pre></td></tr></table></figure>
+<p> ZRANGEBYSCORE salary -inf +inf WITHSCORES  limit 0 3  // 选取salary中所有数据后再limit<br> ZADD myzset 0 a 0 b 0 c 0 d 0 e 0 f 0 g<br> ZRANGEBYLEX myzset - [c  //zrangebylex //按照sort set 内的元素排序 ，用法与上者类似 </p>
+<hr>
+<p> hash </p>
+<p> 用来模拟对象,are maps between <strong>strings</strong> fiels and <strong>strings</strong> values </p>
+<p> hset user:1 name ‘jj’<br> hset user:1 email ‘jfdj’ //name 不允许和email 一样，也就是hash内的键(string files)必须唯一<br> hmset user:1 name dfjjf email jfdj // 同时设定多个值<br> hset user:1 password ‘jfjdk’<br> hgetall user:1  //返回该hash的所有数据，注意返回的形式是1)name 2)jj 3)email 4)jfdj 连贯的<br> hget user:2 name  // 只取出name field<br> hset user:1 name jfdj email fjdf //一次设定多个键值</p>
+<p> //hset 内的元增加，为了防止两个用户同时取出一个键值，并对其修改后没达到应有的效果，对值得增加应采用元增加，<br> 它的原理是，一次取出后，在没有修改前它是受保护的，不能由两个动作同时取出并增值赋值</p>
+<p> hset u:0 vists 0<br> hincrby u:0 vists 1[n] //返回增加后的数值 0+n<br> hdel u:0 visets 删除某个键值</p>
+<p> ```</p>
+<h3 id="redis只可以根据键找出值，而不能根据值找出键，当然知道了键，并找出值，键值都有了"><a href="#redis只可以根据键找出值，而不能根据值找出键，当然知道了键，并找出值，键值都有了" class="headerlink" title="redis只可以根据键找出值，而不能根据值找出键，当然知道了键，并找出值，键值都有了"></a>redis只可以根据键找出值，而不能根据值找出键，当然知道了键，并找出值，键值都有了</h3><h3 id="清除所有内容"><a href="#清除所有内容" class="headerlink" title="清除所有内容"></a>清除所有内容</h3><p>flushall</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/redis/" data-id="ciztqajjz001a48ddrz35j22v" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/repository/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/py/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="bash脚本的语法
+头部#!/bin/bash 指明执行程序是/bin/bash
+定义变量直接定义，=前后无空格，使用变量用$() 或直接，使用终端命令结果作为输入时，一般用$().
+简写流程控制用 [  ];包括
+读取用户输入
+1234while :; do echo    read -p &amp;quot;Please input username: &amp;quot; VPN_USER     [ -n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/centos/sh/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="bash脚本的语法
+头部#!/bin/bash 指明执行程序是/bin/bash
+定义变量直接定义，=前后无空格，使用变量用$() 或直接，使用终端命令结果作为输入时，一般用$().
+简写流程控制用 [  ];包括
+读取用户输入
+1234while :; do echo    read -p &amp;quot;Please input username: &amp;quot; VPN_USER     [ -n">
+<meta property="og:updated_time" content="2017-02-28T03:04:11.315Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="bash脚本的语法
+头部#!/bin/bash 指明执行程序是/bin/bash
+定义变量直接定义，=前后无空格，使用变量用$() 或直接，使用终端命令结果作为输入时，一般用$().
+简写流程控制用 [  ];包括
+读取用户输入
+1234while :; do echo    read -p &amp;quot;Please input username: &amp;quot; VPN_USER     [ -n">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-centos/sh" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/sh/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.245Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="bash脚本的语法"><a href="#bash脚本的语法" class="headerlink" title="bash脚本的语法"></a>bash脚本的语法</h6><ol>
+<li>头部#!/bin/bash 指明执行程序是/bin/bash</li>
+<li>定义变量直接定义，=前后无空格，使用变量用$() 或直接，使用终端命令结果作为输入时，一般用$().</li>
+<li>简写流程控制用 [  ];包括</li>
+<li><p>读取用户输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">while :; do echo</div><div class="line">    read -p &quot;Please input username: &quot; VPN_USER </div><div class="line">    [ -n &quot;$VPN_USER&quot; ] &amp;&amp; break</div><div class="line">done</div></pre></td></tr></table></figure>
+</li>
+<li><p>shell 运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">a=&quot;abc&quot;</div><div class="line">b=&quot;efg&quot;</div><div class="line"></div><div class="line">if [ $a = $b ]</div><div class="line">then</div><div class="line">   echo &quot;$a = $b : a 等于 b&quot;</div><div class="line">else</div><div class="line">   echo &quot;$a = $b: a 不等于 b&quot;</div><div class="line">fi</div><div class="line">if [ $a != $b ]</div><div class="line">then</div><div class="line">   echo &quot;$a != $b : a 不等于 b&quot;</div><div class="line">else</div><div class="line">   echo &quot;$a != $b: a 等于 b&quot;</div><div class="line">fi</div><div class="line">if [ -z $a ]</div><div class="line">then</div><div class="line">   echo &quot;-z $a : 字符串长度为 0&quot;</div><div class="line">else</div><div class="line">   echo &quot;-z $a : 字符串长度不为 0&quot;</div><div class="line">fi</div><div class="line">if [ -n $a ]</div><div class="line">then</div><div class="line">   echo &quot;-n $a : 字符串长度不为 0&quot;</div><div class="line">else</div><div class="line">   echo &quot;-n $a : 字符串长度为 0&quot;</div><div class="line">fi</div><div class="line">if [ $a ]</div><div class="line">then</div><div class="line">   echo &quot;$a : 字符串不为空&quot;</div><div class="line">else</div><div class="line">   echo &quot;$a : 字符串为空&quot;</div><div class="line">fi</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">-eq	检测两个数是否相等，相等返回 true。	[ $a -eq $b ] 返回 false。</div><div class="line">-ne	检测两个数是否相等，不相等返回 true。	[ $a -ne $b ] 返回 true。</div><div class="line">-gt	检测左边的数是否大于右边的，如果是，则返回 true。	[ $a -gt $b ] 返回 false。</div><div class="line">-lt	检测左边的数是否小于右边的，如果是，则返回 true。	[ $a -lt $b ] 返回 true。</div><div class="line">-ge	检测左边的数是否大于等于右边的，如果是，则返回 true。	[ $a -ge $b ] 返回 false。</div><div class="line">-le	检测左边的数是否小于等于右边的，如果是，则返回 true。	[ $a -le $b ] 返回 true。</div><div class="line"></div><div class="line">!	非运算，表达式为 true 则返回 false，否则返回 true。	[ ! false ] 返回 true。</div><div class="line">-o	或运算，有一个表达式为 true 则返回 true。	[ $a -lt 20 -o $b -gt 100 ] 返回 true。</div><div class="line">-a	与运算，两个表达式都为 true 才返回 true。	[ $a -lt 20 -a $b -gt 100 ] 返回 false。</div><div class="line"></div><div class="line">&amp;&amp;	逻辑的 AND	[[ $a -lt 100 &amp;&amp; $b -gt 100 ]] 返回 false</div><div class="line">||	逻辑的 OR	[[ $a -lt 100 || $b -gt 100 ]] 返回 true</div><div class="line"></div><div class="line">=	检测两个字符串是否相等，相等返回 true。	[ $a = $b ] 返回 false。</div><div class="line">!=	检测两个字符串是否相等，不相等返回 true。	[ $a != $b ] 返回 true。</div><div class="line">-z	检测字符串长度是否为0，为0返回 true。	[ -z $a ] 返回 false。</div><div class="line">-n	检测字符串长度是否为0，不为0返回 true。	[ -n $a ] 返回 true。</div><div class="line">str	检测字符串是否为空，不为空返回 true。	[ $a ] 返回 true。</div><div class="line"></div><div class="line">-b file	检测文件是否是块设备文件，如果是，则返回 true。	[ -b $file ] 返回 false。</div><div class="line">-c file	检测文件是否是字符设备文件，如果是，则返回 true。	[ -c $file ] 返回 false。</div><div class="line">-d file	检测文件是否是目录，如果是，则返回 true。	[ -d $file ] 返回 false。</div><div class="line">-f file	检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。	[ -f $file ] 返回 true。</div><div class="line">-g file	检测文件是否设置了 SGID 位，如果是，则返回 true。	[ -g $file ] 返回 false。</div><div class="line">-k file	检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。	[ -k $file ] 返回 false。</div><div class="line">-p file	检测文件是否是有名管道，如果是，则返回 true。	[ -p $file ] 返回 false。</div><div class="line">-u file	检测文件是否设置了 SUID 位，如果是，则返回 true。	[ -u $file ] 返回 false。</div><div class="line">-r file	检测文件是否可读，如果是，则返回 true。	[ -r $file ] 返回 true。</div><div class="line">-w file	检测文件是否可写，如果是，则返回 true。	[ -w $file ] 返回 true。</div><div class="line">-x file	检测文件是否可执行，如果是，则返回 true。	[ -x $file ] 返回 true。</div><div class="line">-s file	检测文件是否为空（文件大小是否大于0），不为空返回 true。	[ -s $file ] 返回 true。</div><div class="line">-e file	检测文件（包括目录）是否存在，如果是，则返回 true。	[ -e $file ] 返回 true。</div></pre></td></tr></table></figure>
+<ol>
+<li><p>表达式常用``括住</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"># author:菜鸟教程</div><div class="line"># url:www.runoob.com</div><div class="line"></div><div class="line">a=10</div><div class="line">b=20</div><div class="line"></div><div class="line">val=`expr $a + $b`</div><div class="line">echo &quot;a + b : $val&quot;</div><div class="line"></div><div class="line">val=`expr $a - $b`</div><div class="line">echo &quot;a - b : $val&quot;</div><div class="line"></div><div class="line">val=`expr $a \* $b`</div><div class="line">echo &quot;a * b : $val&quot;</div><div class="line"></div><div class="line">val=`expr $b / $a`</div><div class="line">echo &quot;b / a : $val&quot;</div><div class="line"></div><div class="line">val=`expr $b % $a`</div><div class="line">echo &quot;b % a : $val&quot;</div><div class="line"></div><div class="line">if [ $a == $b ]</div><div class="line">then</div><div class="line">   echo &quot;a 等于 b&quot;</div><div class="line">fi</div><div class="line">if [ $a != $b ]</div><div class="line">then</div><div class="line">   echo &quot;a 不等于 b&quot;</div><div class="line">fi</div></pre></td></tr></table></figure>
+</li>
+<li><p>输入输出流的重定向，1为输出，2为错误，0输入（键盘）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">command &gt;file： 标准输出重定向到一个文件,错误仍然输出屏幕 </div><div class="line">command &gt;&gt;file： 标准输出重定向到一个文件(追加) </div><div class="line">command 1&gt;file1： 标准输出重定向到一个文件 </div><div class="line">command 2&gt;&gt;file2：标准错误重定向到一个文件(追加) </div><div class="line">command 1&gt;file 2&gt;&amp;1：标准输出和标准错误一起重定向到一个文件 </div><div class="line">command&gt;&gt;file 2&gt;&amp;1: 标准输出和标准错误一起重定向到一个文件(追加) </div><div class="line">command &lt; file1 &gt;file2：以file1做为标准输入，file2做为标准输出 </div><div class="line">command &lt;file： 以file做为文件标准输入 </div><div class="line">注：上面的command&gt;file 2&gt;&amp;1可以修改为command&gt;file 2&gt;&gt;file</div></pre></td></tr></table></figure>
+</li>
+<li><p>crontab -e 编辑当前用户的cron文件，在/var/spool/cron/下，名为username，加*/1表示每分钟，不然表示在1分的时候</p>
+</li>
+<li>定义php执行脚本的话，用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env php</div><div class="line">&lt;?php</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/sh/" data-id="ciztqajm7002c48ddnyqc22jq" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/centos/ubuntuUse/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/centos/lnpp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

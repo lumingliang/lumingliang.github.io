@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="tiltle:主要是一些小知识
+apt-cg install package
+apt-cyg的安装
+123wget http://apt-cyg.googlecode.com/svn/trunk/apt-cygchmod +x apt-cygmv apt-cyg /usr/local/bin/
+
+使用
+12345678apt-cyg install bcapt-cyg find php //查找a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/cygwin/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="tiltle:主要是一些小知识
+apt-cg install package
+apt-cyg的安装
+123wget http://apt-cyg.googlecode.com/svn/trunk/apt-cygchmod +x apt-cygmv apt-cyg /usr/local/bin/
+
+使用
+12345678apt-cyg install bcapt-cyg find php //查找a">
+<meta property="og:updated_time" content="2015-11-06T09:21:34.847Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="tiltle:主要是一些小知识
+apt-cg install package
+apt-cyg的安装
+123wget http://apt-cyg.googlecode.com/svn/trunk/apt-cygchmod +x apt-cygmv apt-cyg /usr/local/bin/
+
+使用
+12345678apt-cyg install bcapt-cyg find php //查找a">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-cygwin" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/cygwin/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.270Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="tiltle-主要是一些小知识"><a href="#tiltle-主要是一些小知识" class="headerlink" title="tiltle:主要是一些小知识"></a>tiltle:主要是一些小知识</h2><ol>
+<li>apt-cg install package</li>
+<li><p>apt-cyg的安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget http://apt-cyg.googlecode.com/svn/trunk/apt-cyg</div><div class="line">chmod +x apt-cyg</div><div class="line">mv apt-cyg /usr/local/bin/</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">apt-cyg install bc</div><div class="line">apt-cyg find php //查找</div><div class="line"></div><div class="line">apt-cyg -c /cygdrive/d/downloads/cygwin -m http://mirrors.163.com/cygwin/ find php //指定源查找,c ,设定缓存目录</div><div class="line"></div><div class="line">apt-cyg -m ftp://ftp.cygwinports.org/pub/cygwinports find php</div><div class="line"></div><div class="line">apt-cyg update --mirror http://mirrors.163.com/cygwin/  //更新源</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>###注意，因为nodejs官方不支持新版本的cygwin nodejs，所以也没必要安装了！，最好是利用在win7下的nodejs和npm，可以在cyg界面执行编译等命令！！</p>
+<h4 id="cygwin-下安装nodejs"><a href="#cygwin-下安装nodejs" class="headerlink" title="cygwin 下安装nodejs ,"></a>cygwin 下安装nodejs ,</h4><ol>
+<li><a href="http://cygwin.com/setup.exe" target="_blank" rel="external">官网下载</a></li>
+<li>安装cygwin几个要点</li>
+</ol>
+<p>（1）Install from Internet,安装程序在后面步骤会下载大量文件。<br>（2）Root Directory，是Cygwin的安装目录。<br>（3）Local Package Directory，是存放所有下载文件的目录，子目录名即下载镜像网址，子目录下的release</p>
+<p><strong>注意安装后创建的快捷方式不准确，需要加上exe</strong></p>
+<ol>
+<li>镜像<br><a href="http://mirrors.163.com/cygwin" target="_blank" rel="external">http://mirrors.163.com/cygwin</a><br><a href="http://mirrors.sohu.com/cygwin/" target="_blank" rel="external">http://mirrors.sohu.com/cygwin/</a></li>
+<li><p>安装g++,make,git,vim,curl,wget,python(全部安装)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">gcc-g++: C++ compiler</div><div class="line">gcc-mingw-g++: Mingw32 support headers and libraries for GCC C++</div><div class="line">gcc4-g++: G++ subpackage</div><div class="line">git: Fast Version Control System – core files（它可以从 github 下载软件最新版源码)</div><div class="line">make: The GNU version of the ‘make’ utility</div><div class="line">openssl-devel: The OpenSSL development environment,</div><div class="line">pkg-config: A utility used to retrieve information about installed libraries</div><div class="line">zlib-devel: The zlib compression/decompression library (development)</div></pre></td></tr></table></figure>
+</li>
+<li><p>要正常编译nodejs，必须先在Cywgin的ASH模式下执行rebaseall。步骤如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">（1）cmd命令行</div><div class="line">（2）进入cygwin安装目录下的bin子目录</div><div class="line">（3）运行ash进入shell模式</div><div class="line">（4）./rebaseall -v</div><div class="line">（5）没有错误，完成，exit退出ash，关闭命令行窗口</div></pre></td></tr></table></figure>
+</li>
+<li><p>编译安装nodejs,这里是最后支持的版本了，新版本无法编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wget http://nodejs.org/dist/node-v0.4.12.tar.gz</div><div class="line">tar xvfz node-v0.4.12.tar.gz</div><div class="line">cd node-v0.4.12/</div><div class="line">./configure  //会提示openssl 未找到;;;</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置DNS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cygwin内部是使用windows的DNS查询，而nodejs另外使用的是c-ares库来解析DNS，这个库会读取/etc/resolv.conf里的nameserver配置，而默认是没有这个文件的，需要自己建立并配置好DNS服务器的IP地址，这里使用Google Public DNS服务器的IP地址：8.8.8.8和8.8.4.4。</div><div class="line"></div><div class="line">$ vi /ect/resolv.conf</div><div class="line"></div><div class="line">nameserver 8.8.8.8</div><div class="line">nameserver 8.8.4.4</div></pre></td></tr></table></figure>
+</li>
+<li><p>$node -v 查看版本</p>
+</li>
+<li><p>安装npm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">npm下载、安装、使用</div><div class="line"></div><div class="line">npm是nodejs的软件包管理器，可以用它安装所需软件包并发布自己为nodejs写的软件包，它还管理软件包的依赖关系并做了其它一些很酷的事情。</div><div class="line">（1）一行命令下载并安装npm</div><div class="line"></div><div class="line">$ curl http://npmjs.org/install.sh | sh</div><div class="line"></div><div class="line">（2）npm安装node扩展包，同样是一行命令下载并安装好软件包</div><div class="line"></div><div class="line">$ npm install &lt;包名&gt;</div><div class="line"></div><div class="line">例如安装mysql：npm install mysql</div></pre></td></tr></table></figure>
+</li>
+<li><p>cygwin配置</p>
+<h4 id="配置硬盘挂载-ln-s-cygdrive-d-d"><a href="#配置硬盘挂载-ln-s-cygdrive-d-d" class="headerlink" title="配置硬盘挂载 ln -s /cygdrive/d /d"></a>配置硬盘挂载 ln -s /cygdrive/d /d</h4><p>参考<a href="http://www.cnblogs.com/astwish/articles/3700459.html" target="_blank" rel="external">cygwin配置</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/cygwin/" data-id="ciztqajib000a48dd57s4pdwy" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/cSample/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/composer/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

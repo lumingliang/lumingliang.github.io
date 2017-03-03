@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>学习网络的传递，数据包的路由，等一些列知识 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="预备知识
+This HOWTO assumes that readers possess a prior understanding of basic networking concepts such as IP addresses, DNS names, netmasks, subnets, IP routing, routers, network interfaces, LANs, gatew">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习网络的传递，数据包的路由，等一些列知识">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/inernet/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="预备知识
+This HOWTO assumes that readers possess a prior understanding of basic networking concepts such as IP addresses, DNS names, netmasks, subnets, IP routing, routers, network interfaces, LANs, gatew">
+<meta property="og:updated_time" content="2016-05-07T03:04:34.770Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习网络的传递，数据包的路由，等一些列知识">
+<meta name="twitter:description" content="预备知识
+This HOWTO assumes that readers possess a prior understanding of basic networking concepts such as IP addresses, DNS names, netmasks, subnets, IP routing, routers, network interfaces, LANs, gatew">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-inernet" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/inernet/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.282Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      学习网络的传递，数据包的路由，等一些列知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h5><ol>
+<li><p>This HOWTO assumes that readers possess a prior understanding of basic networking concepts such as IP addresses, DNS names, netmasks, subnets, IP routing, routers, network interfaces, LANs, gateways, and firewall rules.</p>
+</li>
+<li><p>与，全真才是真，</p>
+</li>
+</ol>
+<p>3, ipv4 地址分为32位，每一位都是0或者1.，ip = 网络号位+ 主机位.<br>子掩码是为了区分ip的网络号和主机号，<br>A 类ip : 8为网络号，(256种网络号，每个网络号下有2的24次方个主机号，也就 是A类网络可以容纳很多主机) ,</p>
+<p>B 类 ，C 类， D类，</p>
+<p>通过子网掩码可以划分子网，如A类ip，子网掩码是前8个1，后24个0 ，可以把子网掩码写成前9个1，后23个0 ，这样由任一网络号划分下来，都得到了两个新的网络号，利用子网掩码就可以区分。<br><a href="http://zhidao.baidu.com/question/474301179.html" target="_blank" rel="external">参考</a></p>
+<ol>
+<li>route: 目的地址，(可以有多个)</li>
+<li>routing: 决定数据包到达每一个吓一跳的最好路径和转发接口，由一组三法来实现，这组算法就是路由协议(有静态[人工路由表], 和动态)</li>
+<li>router : 路由器，可以储存route，并有操作系统来实现路由 协议</li>
+<li>路由通告: 指路由器通过通告将自己的网段告诉其他路由设备，是目的地址的发起者或源</li>
+<li>路由转发: 路由器根据目的地址将报文发给发起者或源(下一个路由器) </li>
+<li>参考<a href="http://wenku.baidu.com/link?url=ccHCG38DsT77wtgvVIR5IVfLCAgcXU-RK3Gs4EYy-ifxaO22saHT9VL5AwotmQp4Drf67n9427X5Pm7pJHuZVmxlIzjFwYdbyu6OC9qEp4u" target="_blank" rel="external">华为基础教程</a> </li>
+<li></li>
+</ol>
+<h5 id="https-协议理解"><a href="#https-协议理解" class="headerlink" title="https 协议理解"></a>https 协议理解</h5><p>http协议其实就是一个信息传送的过程，客户端(浏览器)向服务器发送一个请求url，服务器就根据url返回它要的信息</p>
+<p>https 协议与它有些不一样，就是在于https多了个加密的过程： </p>
+<p>浏览器发送 https请求到服务器443端口，服务器中保留着数字证书,数字证书其实就是一对公私钥匙，这时服务器向浏览器发一个公钥匙，这个公钥匙可以想象为一个锁头，浏览器可以用它锁住一个随机值，但是这个随机值只有服务器的唯一私钥匙才能解开，服务器拿到加密后的随机值皆可以对其解密，接着用这个解密后的随机值对称加密返回去的数据，</p>
+<p>对称加密是指将数据通过私钥匙混在一起(这里私钥匙就是随机数),只有知道私钥匙才可以解开</p>
+<p><a href="http://www.jb51.net/network/68135.html" target="_blank" rel="external">参考</a><br><a href="http://www.jb51.net/network/68135.html" target="_blank" rel="external">http://www.jb51.net/network/68135.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/inernet/" data-id="ciztqajj4000o48dd3l18hcno" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/image/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/gulp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

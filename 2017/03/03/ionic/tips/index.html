@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="跨域问题
+跨域问题是因为浏览器的限制，区别不同域名不允许访问
+解决跨域方法jsonp，cros，一般现代浏览器已经允许cros，只需要后端配合，对于复杂的cros，浏览器先询问cors.domain看是否允许跨域，如果允许则返回相应的文件头，再进行真正的http请求。当然这里有个注意的是跨域cookie没有带去，所以需要一定的技术在请求头强制加入cookie，yii可能已经允许了
+设置代理，即将t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/ionic/tips/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="跨域问题
+跨域问题是因为浏览器的限制，区别不同域名不允许访问
+解决跨域方法jsonp，cros，一般现代浏览器已经允许cros，只需要后端配合，对于复杂的cros，浏览器先询问cors.domain看是否允许跨域，如果允许则返回相应的文件头，再进行真正的http请求。当然这里有个注意的是跨域cookie没有带去，所以需要一定的技术在请求头强制加入cookie，yii可能已经允许了
+设置代理，即将t">
+<meta property="og:updated_time" content="2017-01-14T04:18:40.139Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="跨域问题
+跨域问题是因为浏览器的限制，区别不同域名不允许访问
+解决跨域方法jsonp，cros，一般现代浏览器已经允许cros，只需要后端配合，对于复杂的cros，浏览器先询问cors.domain看是否允许跨域，如果允许则返回相应的文件头，再进行真正的http请求。当然这里有个注意的是跨域cookie没有带去，所以需要一定的技术在请求头强制加入cookie，yii可能已经允许了
+设置代理，即将t">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ionic/tips" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/ionic/tips/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.253Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h5><ol>
+<li>跨域问题是因为浏览器的限制，区别不同域名不允许访问</li>
+<li>解决跨域方法jsonp，cros，一般现代浏览器已经允许cros，只需要后端配合，对于复杂的cros，浏览器先询问cors.domain看是否允许跨域，如果允许则返回相应的文件头，再进行真正的http请求。当然这里有个注意的是跨域cookie没有带去，所以需要一定的技术在请求头强制加入cookie，yii可能已经允许了</li>
+<li>设置代理，即将this.com/api通过代理转发到other.com/api上</li>
+<li><p>ionic中配置代理服务,ionic.config.json中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;proxies&quot;: [&#123;</div><div class="line">  &quot;path&quot;: &quot;/api&quot;,</div><div class="line">  &quot;proxyUrl&quot;: &quot;http://www.local.jiliha.com&quot;</div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+</li>
+<li><p>ionic运行在设备上，因为是直接通过//file:访问页面的，所以不存在跨域问题</p>
+</li>
+<li>ionic 的页面跳转可能会不允许非本站跳转，可以尝试whiteList插件</li>
+<li><p>参考<a href="http://www.cnblogs.com/aweifly/p/5647819.html" target="_blank" rel="external">cros跨域</a><br><a href="https://my.oschina.net/blogshi/blog/303758" target="_blank" rel="external">ng cros跨域</a><br><a href="http://ionichina.com/topic/54f051698cbbaa7a56a49f98" target="_blank" rel="external">代理跨域</a></p>
+</li>
+<li><p>用vscode编写ts，安装vim，js-css-format扩展<br> <em>format 使用方法，a+s+f 或者F1输入 Formatter得到配置文件
+ </em>C+p 可以输入一切想要的</p>
+</li>
+<li><p>常用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ionic serve </div><div class="line">ionic build minify</div></pre></td></tr></table></figure>
+</li>
+<li><p>必备插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">cordova-plugin-compat 1.1.0 &quot;Compat&quot;</div><div class="line">cordova-plugin-console 1.0.5 &quot;Console&quot;</div><div class="line">cordova-plugin-contacts 2.2.1 &quot;Contacts&quot;</div><div class="line">cordova-plugin-crosswalk-webview 2.2.0 &quot;Crosswalk WebView Engine&quot;</div><div class="line">cordova-plugin-device 1.1.4 &quot;Device&quot;</div><div class="line">cordova-plugin-splashscreen 4.0.1 &quot;Splashscreen&quot;</div><div class="line">cordova-plugin-statusbar 2.2.1 &quot;StatusBar&quot;</div><div class="line">cordova-plugin-whitelist 1.3.1 &quot;Whitelist&quot;</div><div class="line">ionic-plugin-keyboard 2.2.1 &quot;Keyboard&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改ionic cofing.xml文件，使Splashscreen 不自动隐藏</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/ionic/tips/" data-id="ciztqajmn002m48ddyf235s4u" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/jiagou/basic/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/ionic/error/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

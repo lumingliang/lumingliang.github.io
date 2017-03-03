@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: 记录微信接入的各种注意问题
+微信公众平台是一个可以利用微信登录、微信超级appjs jdk、以及微信服务器提供的各种接口的平台。使app更加健壮，达到cordova的效果
+下面讲解接入流程
+
+各个第三方的接入流程其实都是类似的，如首先需要验证你服务器地址的有效性，然后才能成为开发者。(一切后续事情才可以进行);
+验证服务器地址有效性的方法一般是在该平台的后台控制面板中设置一个toke">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/weixin/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title: 记录微信接入的各种注意问题
+微信公众平台是一个可以利用微信登录、微信超级appjs jdk、以及微信服务器提供的各种接口的平台。使app更加健壮，达到cordova的效果
+下面讲解接入流程
+
+各个第三方的接入流程其实都是类似的，如首先需要验证你服务器地址的有效性，然后才能成为开发者。(一切后续事情才可以进行);
+验证服务器地址有效性的方法一般是在该平台的后台控制面板中设置一个toke">
+<meta property="og:updated_time" content="2016-05-07T13:36:38.778Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title: 记录微信接入的各种注意问题
+微信公众平台是一个可以利用微信登录、微信超级appjs jdk、以及微信服务器提供的各种接口的平台。使app更加健壮，达到cordova的效果
+下面讲解接入流程
+
+各个第三方的接入流程其实都是类似的，如首先需要验证你服务器地址的有效性，然后才能成为开发者。(一切后续事情才可以进行);
+验证服务器地址有效性的方法一般是在该平台的后台控制面板中设置一个toke">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-weixin" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/weixin/" class="article-date">
+  <time datetime="2017-03-03T11:32:03.878Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: 记录微信接入的各种注意问题</p>
+<p>微信公众平台是一个可以利用微信登录、微信超级appjs jdk、以及微信服务器提供的各种接口的平台。使app更加健壮，达到cordova的效果</p>
+<p>下面讲解接入流程</p>
+<ol>
+<li>各个第三方的接入流程其实都是类似的，如首先需要验证你服务器地址的有效性，然后才能成为开发者。(一切后续事情才可以进行);</li>
+<li>验证服务器地址有效性的方法一般是在该平台的后台控制面板中设置一个token, url，然后你需要在自己的服务器上有一个文件响应该url，url中也包含了token配对等信息。</li>
+<li>微信中必须成为公众号才有更高的权限使用更多的接口，当然他也给没有成为公众号的人提供了一个测试功能，只要验证自己的服务器地址有效性，(token) ,以及填写安全域名即可，安全域名是指所有接口的调用，必须在该域名下才行。</li>
+<li>验证url有效性后，就是获取access-token了，access-token就是后续调用接口的唯一标识密码。一切接口的使用都需要附加该access_token的信息或者派生信息.</li>
+</ol>
+<h5 id="微信开放平台涉及的内容"><a href="#微信开放平台涉及的内容" class="headerlink" title="微信开放平台涉及的内容"></a>微信开放平台涉及的内容</h5><ol>
+<li>移动应用接口，应该是移动appsdk，可与微信服务器间进行通信</li>
+<li>网站应用，普通网站应用，可以利用微信auth2.0登录。获取用户信息等。</li>
+<li>公众号，可以获取有关公众号的更多api，如分享等</li>
+<li>公众号第三方开发平台，这个平台代替微信来对多个公众号进行管理，可以对多个公众号进行定制。</li>
+</ol>
+<h5 id="auth2-0规范详解"><a href="#auth2-0规范详解" class="headerlink" title="auth2.0规范详解"></a>auth2.0规范详解</h5><ol>
+<li><p>主要逻辑如下，用户访问我网user/profile; user/profile监测用户并没有session或者cookie, 返回重定向到微信登录，用户在微信登录界面扫码或者授权，提交到微信服务器，微信服务器向浏览器返回重定向到我网callback , 我网callback获取了向微信服务器查询用户信息的必要参数，并利用此必要参数查询微信信息，然后设定，并重定向用户到/user/profile界面</p>
+</li>
+<li><p>在微信服务号后台接口权限中，在网页授权获取用户基本信息中修改为自己想要的域名<br><em>注意</em>:域名可以为本地域名，那个监测成为开发者的url是用来监测服务器有效性，以及接收微信服务器信息的唯一url。因为回调域名只是并不需要接收微信服务器的信息，所以并不用讲它设定为可外网访问域名</p>
+</li>
+<li><p>但是js jdk接口就不行了，必须是通过备案的域名</p>
+</li>
+</ol>
+<h5 id="curl-用法"><a href="#curl-用法" class="headerlink" title="curl 用法"></a>curl 用法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/** </div><div class="line"> * curl POST </div><div class="line"> * </div><div class="line"> * @param   string  url </div><div class="line"> * @param   array   数据 </div><div class="line"> * @param   int     请求超时时间 </div><div class="line"> * @param   bool    HTTPS时是否进行严格认证 </div><div class="line"> * @return  string </div><div class="line"> */  </div><div class="line">function curlPost($url, $data = array(), $timeout = 30, $CA = true)&#123;    </div><div class="line"></div><div class="line">    $cacert = getcwd() . &apos;/cacert.pem&apos;; //CA根证书  </div><div class="line">    $SSL = substr($url, 0, 8) == &quot;https://&quot; ? true : false;  </div><div class="line"></div><div class="line">    $ch = curl_init();  </div><div class="line">    curl_setopt($ch, CURLOPT_URL, $url);  </div><div class="line">    curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);  </div><div class="line">    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout-2);  </div><div class="line">    if ($SSL &amp;&amp; $CA) &#123;  </div><div class="line">        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);   // 只信任CA颁布的证书  </div><div class="line">        curl_setopt($ch, CURLOPT_CAINFO, $cacert); // CA根证书（用来验证的网站证书是否是CA颁布）  </div><div class="line">        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2); // 检查证书中是否设置域名，并且是否与提供的主机名匹配  </div><div class="line">    &#125; else if ($SSL &amp;&amp; !$CA) &#123;  </div><div class="line">        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 信任任何证书  </div><div class="line">        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 1); // 检查证书中是否设置域名  </div><div class="line">    &#125;  </div><div class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  </div><div class="line">    curl_setopt($ch, CURLOPT_HTTPHEADER, array(&apos;Expect:&apos;)); //避免data数据过长问题  </div><div class="line">    curl_setopt($ch, CURLOPT_POST, true);  </div><div class="line">    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);  </div><div class="line">    //curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data)); //data with URLEncode  </div><div class="line"></div><div class="line">    $ret = curl_exec($ch);  </div><div class="line">    //var_dump(curl_error($ch));  //查看报错信息  </div><div class="line"></div><div class="line">    curl_close($ch);  </div><div class="line">    return $ret;    </div><div class="line">&#125;    </div><div class="line"></div><div class="line"></div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 信任任何证书 </div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 1); // 检查证书中是否设置域名（为0也可以，就是连域名存在与否都不验证了）</div></pre></td></tr></table></figure>
+<h5 id="判断是否为微信浏览器"><a href="#判断是否为微信浏览器" class="headerlink" title="判断是否为微信浏览器"></a>判断是否为微信浏览器</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//js</div><div class="line">function is_weixin()&#123;</div><div class="line">	var ua = navigator.userAgent.toLowerCase();</div><div class="line">	if(ua.match(/MicroMessenger/i)==&quot;micromessenger&quot;) &#123;</div><div class="line">		return true;</div><div class="line"> 	&#125; else &#123;</div><div class="line">		return false;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// php</div><div class="line">function is_weixin()&#123; </div><div class="line">	if ( strpos($_SERVER[&apos;HTTP_USER_AGENT&apos;], &apos;MicroMessenger&apos;) !== false ) &#123;</div><div class="line">			return true;</div><div class="line">	&#125;	</div><div class="line">	return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/weixin/" data-id="ciztqppdz0004koddr2dwxzjl" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/webpack/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/vpn/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title:deamon与服务每个系统服务对应一个deamon,deamon分为两种，一种是stand_alone,另一种是super_deamon,stand-alone,是启动后一直在内存中，而后者是一个系统超级deamon，它常存与内存，负责等待客户端请求来临，并根据来临的请求启动相应的软件程序服务和进程，打开一个新的deamon1，在完成工作后将deamon1删除。
+super_daemo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/deamonAndPOrotol/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title:deamon与服务每个系统服务对应一个deamon,deamon分为两种，一种是stand_alone,另一种是super_deamon,stand-alone,是启动后一直在内存中，而后者是一个系统超级deamon，它常存与内存，负责等待客户端请求来临，并根据来临的请求启动相应的软件程序服务和进程，打开一个新的deamon1，在完成工作后将deamon1删除。
+super_daemo">
+<meta property="og:image" content="http://vbird.dic.ksu.edu.tw/linux_basic/0560daemons_files/super_daemon.gif">
+<meta property="og:updated_time" content="2015-11-16T07:24:41.136Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title:deamon与服务每个系统服务对应一个deamon,deamon分为两种，一种是stand_alone,另一种是super_deamon,stand-alone,是启动后一直在内存中，而后者是一个系统超级deamon，它常存与内存，负责等待客户端请求来临，并根据来临的请求启动相应的软件程序服务和进程，打开一个新的deamon1，在完成工作后将deamon1删除。
+super_daemo">
+<meta name="twitter:image" content="http://vbird.dic.ksu.edu.tw/linux_basic/0560daemons_files/super_daemon.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-deamonAndPOrotol" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/deamonAndPOrotol/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.272Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="title-deamon与服务"><a href="#title-deamon与服务" class="headerlink" title="title:deamon与服务"></a>title:deamon与服务</h2><h3 id="每个系统服务对应一个deamon-deamon分为两种，一种是stand-alone-另一种是super-deamon-stand-alone-是启动后一直在内存中，而后者是一个系统超级deamon，它常存与内存，负责等待客户端请求来临，并根据来临的请求启动相应的软件程序服务和进程，打开一个新的deamon1，在完成工作后将deamon1删除。"><a href="#每个系统服务对应一个deamon-deamon分为两种，一种是stand-alone-另一种是super-deamon-stand-alone-是启动后一直在内存中，而后者是一个系统超级deamon，它常存与内存，负责等待客户端请求来临，并根据来临的请求启动相应的软件程序服务和进程，打开一个新的deamon1，在完成工作后将deamon1删除。" class="headerlink" title="每个系统服务对应一个deamon,deamon分为两种，一种是stand_alone,另一种是super_deamon,stand-alone,是启动后一直在内存中，而后者是一个系统超级deamon，它常存与内存，负责等待客户端请求来临，并根据来临的请求启动相应的软件程序服务和进程，打开一个新的deamon1，在完成工作后将deamon1删除。"></a><strong>每个系统服务对应一个deamon</strong>,deamon分为两种，一种是stand_alone,另一种是super_deamon,stand-alone,是启动后一直在内存中，而后者是一个系统超级deamon，它常存与内存，负责等待客户端请求来临，并根据来临的请求启动相应的软件程序服务和进程，打开一个新的deamon1，在完成工作后将deamon1删除。</h3><p><img src="http://vbird.dic.ksu.edu.tw/linux_basic/0560daemons_files/super_daemon.gif"></p>
+<h3 id="super-daemon处理事情有两种方式"><a href="#super-daemon处理事情有两种方式" class="headerlink" title="super_daemon处理事情有两种方式"></a>super_daemon处理事情有两种方式</h3><ol>
+<li>单线程single thread,仅仅开启一个deamon</li>
+<li>multi thread ,开多个deamon,</li>
+</ol>
+<h3 id="服务service对应一个端口，"><a href="#服务service对应一个端口，" class="headerlink" title="服务service对应一个端口，"></a>服务service对应一个端口，</h3><hr>
+<ol>
+<li>出现端口的原因是因为，ip决定了客户端访问的地址，但是主机提供多种服务（deamon），通过port就可以把它导向指定的deamo</li>
+<li>查看系统服务信息</li>
+</ol>
+<hr>
+<h3 id="一个大程序可以开多个进程，一个进程对应有一个唯一的进程号PID，一个进程会有一个唯一端口号用来对外界服务，（但一个进程可以对应多个端口"><a href="#一个大程序可以开多个进程，一个进程对应有一个唯一的进程号PID，一个进程会有一个唯一端口号用来对外界服务，（但一个进程可以对应多个端口" class="headerlink" title="一个大程序可以开多个进程，一个进程对应有一个唯一的进程号PID，一个进程会有一个唯一端口号用来对外界服务，（但一个进程可以对应多个端口)"></a>一个大程序可以开多个进程，一个进程对应有一个唯一的进程号PID，一个进程会有一个唯一端口号用来对外界服务，（但一个进程可以对应多个端口)</h3><ol>
+<li>进程实际上是一堆二进制文件，任何二进制文件的执行都会得到一个PID号，从登陆的 shell( 执行的是.bash二进制文件） ,开始，在它里面运行的都是子进程，<br>ps -l 可以查看父PPID子PID进程间的PID号关系，</li>
+</ol>
+<h3 id="通讯协议"><a href="#通讯协议" class="headerlink" title="通讯协议"></a>通讯协议</h3><ol>
+<li>ip协议 对应网络层， TCP ,对应传输层， Http ,是应用层 ，而socket,是利用ip/tcp对其的底层函数做一个api封装，因此它本身不是一种协议，而是一个接口，通过socket,便可以使用 ip/tcp,</li>
+<li>TCP和UDP使用IP协议从一个网络传送数据包到另一个网络。把IP想像成一种高速公路，它允许其它协议在上面行驶并找到到其它电脑的出口。TCP和UDP是高速公路上的“卡车”，它们携带的货物就是像HTTP，文件传输协议FTP这样的协议等。</li>
+<li>UDP 不保证连接的成功，只负责把数据发送出去，TCP需要三次握手，</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/services</div></pre></td></tr></table></figure>
+<p>### </p>
+<h3 id="deamon启动脚本，在-etc-init-d-下"><a href="#deamon启动脚本，在-etc-init-d-下" class="headerlink" title="deamon启动脚本，在/etc/init.d/下"></a>deamon启动脚本，在/etc/init.d/下</h3><h3 id="socket-io-学习"><a href="#socket-io-学习" class="headerlink" title="socket.io 学习"></a>socket.io 学习</h3><ol>
+<li>此类有很多知识都涉及到了</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/deamonAndPOrotol/" data-id="ciztqajig000c48ddexyi2o0z" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/edison/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          intel edison的使用以及入门
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/dataStructer/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title:  实现多说评论的方法
+
+利用现成的平台如，国内的多说，
+之前的解决方案总结。
+
+讲解多级评论系统的解决方案关键操作是：redis数据结构，然后是储存，接着是怎么取出且缓存成数组(这个数组结构是怎么样的)，然后是怎么历遍打出
+redis 键值结构
+123456789$ 表示变值items:$id key代表任意一篇文章的id, value 应该是该items的内容key: items:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/commentsSystem/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title:  实现多说评论的方法
+
+利用现成的平台如，国内的多说，
+之前的解决方案总结。
+
+讲解多级评论系统的解决方案关键操作是：redis数据结构，然后是储存，接着是怎么取出且缓存成数组(这个数组结构是怎么样的)，然后是怎么历遍打出
+redis 键值结构
+123456789$ 表示变值items:$id key代表任意一篇文章的id, value 应该是该items的内容key: items:">
+<meta property="og:updated_time" content="2016-03-13T13:55:46.135Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title:  实现多说评论的方法
+
+利用现成的平台如，国内的多说，
+之前的解决方案总结。
+
+讲解多级评论系统的解决方案关键操作是：redis数据结构，然后是储存，接着是怎么取出且缓存成数组(这个数组结构是怎么样的)，然后是怎么历遍打出
+redis 键值结构
+123456789$ 表示变值items:$id key代表任意一篇文章的id, value 应该是该items的内容key: items:">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-commentsSystem" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/commentsSystem/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.267Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title:  实现多说评论的方法</p>
+<ol>
+<li>利用现成的平台如，国内的多说，</li>
+<li>之前的解决方案总结。</li>
+</ol>
+<h5 id="讲解多级评论系统的解决方案"><a href="#讲解多级评论系统的解决方案" class="headerlink" title="讲解多级评论系统的解决方案"></a>讲解多级评论系统的解决方案</h5><p>关键操作是：redis数据结构，然后是储存，接着是怎么取出且缓存成数组(这个数组结构是怎么样的)，然后是怎么历遍打出</p>
+<p>redis 键值结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ 表示变值</div><div class="line">items:$id key代表任意一篇文章的id, value 应该是该items的内容</div><div class="line">key: items:$id:comments  value: 存着所有在该items下的直接子comment id,不包括多级</div><div class="line"></div><div class="line">key: thread:$parentId:comments value: 每个父评论都可以储存着它的所有的子评论,不包括多级</div><div class="line"></div><div class="line">key: commet:id  value: 关键value为它自己的评论内容，和父id，以及itemid</div><div class="line"></div><div class="line">key: parseComment value 储存着一个数组，该数组保存着一个已经取出的评论集，方便下次查的时候，不用重新解析。</div></pre></td></tr></table></figure>
+<p>这样下来，每个评论都可以看做是平级的，只是它储存着父评论id，知道评论id可以查找它的父评论，和所属文章；但是知道父评论怎么查找它的子评论呢，于是就用了thread来保存它的直系子评论，这样就可以通过级联（递归）实现互相查询了</p>
+<p>储存时候，的逻辑是，每次储存，根据给定的新增，知道新增评论的所属itemId和所属parent comment id ,然后开始插入。</p>
+<p>取出时，缓存的结构类似，目录树，只不过它是一个数组的形式<br>第一层 2层 3层</p>
+<p>第一层储存的内容是，parentId[0] xxx parentId因为在第一层，所以是itemId,然后0 - n分别是第一级评论的主体内容，然后其他元素是以当前commentId为key，值是连接下一级的所有内容,之后每一级都一样</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/commentsSystem/" data-id="ciztqaji4000648ddop1mxnki" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/commerce/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/classAndObject/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">深入理解，类，对象，实例</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

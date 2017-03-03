@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-openshift" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/openshift/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.295Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: openshift的一些用法</p>
+<p>openshift 中的应用创建后，第一件事就是要连接该应用。连接该应用的方法是使用crt远程连接。</p>
+<p>首先需要在setting中加入一个ssh公共密钥，可以在  .ssh中找.pub文件，然后复制所有内容，粘贴在setting中 ssh key中，之后就是设置ssh 的登录名。登录地址。一定要记住用户名就是user@address.com</p>
+<h5 id="修改代码"><a href="#修改代码" class="headerlink" title="修改代码"></a>修改代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 先从openshift中克隆下来</div><div class="line">git clone ssh://570f54fc2d5271e8cc000031@phpl5test-lumin.rhcloud.com/~/git/phpl5test.git/</div><div class="line"></div><div class="line">然后</div><div class="line">git add </div><div class="line">git commit -m &apos;my first commit&apos;</div><div class="line">git push</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/openshift/" data-id="ciztqajjo001348dda1ooo13e" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-o2o" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/o2o/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.295Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一些常见的互联网模式"><a href="#一些常见的互联网模式" class="headerlink" title="一些常见的互联网模式"></a>一些常见的互联网模式</h4><hr>
+<ol>
+<li>o2o : online to offline 线上交易，线下体验，涉及服务</li>
+<li>o2c : office to customer 企业对客户进行专人定制服务</li>
+<li>b2c : 网上商城，涉及物流</li>
+<li>o2o 生存条件;高频每个人的使用频率都很高、刚需，每个人都需要、规模，能够迅速复制扩大</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/o2o/" data-id="ciztqajjn001248dduhabrxpx" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-npm" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/npm/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.293Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="title-npm"><a href="#title-npm" class="headerlink" title="title:npm"></a>title:npm</h2><h3 id="npm-配置淘宝源三种方法"><a href="#npm-配置淘宝源三种方法" class="headerlink" title="npm 配置淘宝源三种方法"></a>npm 配置淘宝源三种方法</h3><ol>
+<li>通过config命令</li>
+</ol>
+<p>npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a><br>npm info underscore （如果上面配置正确这个命令会有字符串response）</p>
+<ol>
+<li>命令行指定</li>
+</ol>
+<p>npm –registry <a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a> info underscore</p>
+<ol>
+<li>编辑 ~/.npmrc 加入下面内容</li>
+</ol>
+<p>registry = <a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/npm/" data-id="ciztqajjm001148ddgkp6dyrl" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-note" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/note/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.292Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title:一些小记录 —</p>
+<ol>
+<li>cmd ,用法</li>
+<li>D: ; dir ; cd ;</li>
+<li>当按照教程出现问题时候，有以下原因，一，没有认真看完和按照所有步骤，二，代码写错，三，环境不一样，，这时候应该重新安装，四，细节处理，五，权限不足</li>
+<li><p>终端如何换行问题，k可以在编辑器上写好，复制进去即可</p>
+</li>
+<li><p>记忆单词时候，一定要扎实，不是以为记得就行了，一定要再三检查，该次记忆的东西全部记忆了，才能放手，也就是，本次记忆，假如是50个，那么一定要先知道全部的单词，才能离开,不然一切都是徒劳。</p>
+</li>
+<li><p>记单词可以与记录md的时候多任务进行，比如子啊打字的时候，可以回想某一个比较难的单词的意思</p>
+</li>
+<li>做任何事，包括记单词，都不能马虎而过，至少对于本次能完成的事，不能马虎，必须查清楚每一个单词的发音，意思，而对于一些比较长远的任务，可以先选择了解大概，但是一定要记住做标记，不能马虎了事，这样将一事无成。必须重视实践</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/note/" data-id="ciztqajjl001048dd0zqmfev4" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-node-thread" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/node-thread/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.290Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/node-thread/">nodejs 的有关thread和fiber的用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="解释线程和fibers"><a href="#解释线程和fibers" class="headerlink" title="解释线程和fibers."></a>解释线程和fibers.</h3><ol>
+<li>nodejs是单线程运行，也就是当一个代码在执行(如cpu密集型),其他代码是不会执行的，就算定时器时间到了，却也不会执行，非得等到当前代码执行完毕为止</li>
+<li>异步是指，node在执行io密集型代码时候(如fs),不进行阻塞，而是等到抛出io任务给其他人，自己主线程(唯一的线程)继续进行下去，等到空闲了，再检查事件队列，看是否io已经完毕，以便执行里面的回调！但这很容易写出&lt;型的代码.也就是会有一大丢回调</li>
+<li><p>fibers就是为了解决异步，但不进行回调的问题而产生的，fibers实际上任是异步，单线程，也就是同一时间只有一个fibers在执行，只有一段代码在执行，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var Fiber = require(&apos;fibers&apos;);</div><div class="line"> </div><div class="line">var inc = Fiber(function(start) &#123;</div><div class="line">    var total = start;</div><div class="line">    while (true) &#123;</div><div class="line">        total += Fiber.yield(total);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"> </div><div class="line">for (var ii = inc.run(1); ii &lt;= 10; ii = inc.run(1)) &#123;</div><div class="line">    console.log(ii);</div><div class="line">&#125;</div><div class="line">//从run开始执行，可以在run里面传递参数，执行到yield，开始停止执行yield后面的代码，也就是异步，等待异步事件完成后，回到yield(传递参数),并执行yield后面的代码，相当于回调，遇到yield的时候，开始异步，执行其他代码</div></pre></td></tr></table></figure>
+</li>
+<li><p>线程，真正的多线程，同一时间有多个线程存在，每个线程互不干扰，多线程可以使用多个cpu，而且使用cpu密集型<br><a href="https://cnodejs.org/topic/518b679763e9f8a5424406e9" target="_blank" rel="external">参考nodejs多线程</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/node-thread/" data-id="ciztqajjj000y48ddlgxhxof0" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-nodeStudy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/nodeStudy/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.289Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="title-nodejs的基础学习档"><a href="#title-nodejs的基础学习档" class="headerlink" title="title:nodejs的基础学习档"></a>title:nodejs的基础学习档</h2><h4 id="js中一切都是对象-对象可以直接拿来用了，至于利用函数，原型得到的类，可以视作特殊对象，需要实例化"><a href="#js中一切都是对象-对象可以直接拿来用了，至于利用函数，原型得到的类，可以视作特殊对象，需要实例化" class="headerlink" title="js中一切都是对象,对象可以直接拿来用了，至于利用函数，原型得到的类，可以视作特殊对象，需要实例化"></a>js中一切都是对象,对象可以直接拿来用了，至于利用函数，原型得到的类，可以视作特殊对象，需要实例化</h4><h4 id="require-传入一个模块名，然后互向node—modules各个文件夹搜索，返回一个导出的对象"><a href="#require-传入一个模块名，然后互向node—modules各个文件夹搜索，返回一个导出的对象" class="headerlink" title="require 传入一个模块名，然后互向node—modules各个文件夹搜索，返回一个导出的对象"></a>require 传入一个模块名，然后互向node—modules各个文件夹搜索，返回一个导出的对象</h4><p><em>*</em>krequire(‘./foo’);//相对路径，也可以./foo.js,或者绝对路径/home/foo;</p>
+<h4 id="exports-模块的导出对象，导出公有属性方法等，"><a href="#exports-模块的导出对象，导出公有属性方法等，" class="headerlink" title="exports,模块的导出对象，导出公有属性方法等，"></a>exports,模块的导出对象，导出公有属性方法等，</h4><p>exports 是运行环境的一个大对象的，如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">exports.hello = function () &#123;</div><div class="line">    console.log(&apos;Hello World!&apos;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>将代码中function函数给了exports对象，所以外部就可以通过require 得到它了</p>
+<h4 id="所有模块只执行一次，如果一个模块在一段代码中多次引用，只会require一次"><a href="#所有模块只执行一次，如果一个模块在一段代码中多次引用，只会require一次" class="headerlink" title="所有模块只执行一次，如果一个模块在一段代码中多次引用，只会require一次"></a>所有模块只执行一次，如果一个模块在一段代码中多次引用，只会require一次</h4><h4 id="设定环境变量："><a href="#设定环境变量：" class="headerlink" title="设定环境变量："></a>设定环境变量：</h4><p>NODE_PATH=/home/user/lib:/home/lib<br>则node require也会向这两个目录搜索模块</p>
+<h4 id="包，通过多个模块的组合，入口模块main-js供require使用，-而main-js负责调用包内的其他模块"><a href="#包，通过多个模块的组合，入口模块main-js供require使用，-而main-js负责调用包内的其他模块" class="headerlink" title="包，通过多个模块的组合，入口模块main.js供require使用， 而main.js负责调用包内的其他模块"></a>包，通过多个模块的组合，入口模块main.js供require使用， 而main.js负责调用包内的其他模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- /home/user/lib/</div><div class="line">    - cat/</div><div class="line">        head.js</div><div class="line">        body.js</div><div class="line">        main.js</div></pre></td></tr></table></figure>
+<p>当入口模块名为index.js时，只需要require(‘/home/user/lib/cat’<br> 但如果指定了package.json,如下</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> &#123;</div><div class="line">    &quot;name&quot;: &quot;cat&quot;,</div><div class="line">    &quot;main&quot;: &quot;./lib/main.js&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>则也可以了，因为利用’main’告诉了入口模块在哪</p>
+<h4 id="命令行的原理其实是一个脚本，头部告诉了该脚本用的语言，如-node-然后使它权限能执行，最后添加到环境变量搜寻的目录中"><a href="#命令行的原理其实是一个脚本，头部告诉了该脚本用的语言，如-node-然后使它权限能执行，最后添加到环境变量搜寻的目录中" class="headerlink" title="命令行的原理其实是一个脚本，头部告诉了该脚本用的语言，如!node,然后使它权限能执行，最后添加到环境变量搜寻的目录中"></a>命令行的原理其实是一个脚本，头部告诉了该脚本用的语言，如!node,然后使它权限能执行，最后添加到环境变量搜寻的目录中</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#! /usr/bin/env node</div><div class="line">chmod +x /home/user/bin/node-echo.js</div><div class="line">ln -s /home/user/bin/node-echo.js /usr/local/bin/node-echo</div></pre></td></tr></table></figure>
+<p> usr/local/bin目录下都是二进制文件，同时也是环境变量搜索的地方，</p>
+<h3 id="标准的包目录"><a href="#标准的包目录" class="headerlink" title="标准的包目录"></a>标准的包目录</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- /home/user/workspace/node-echo/   # 工程目录</div><div class="line">   - bin/                          # 存放命令行相关代码</div><div class="line">       node-echo</div><div class="line">   + doc/                          # 存放文档</div><div class="line">   - lib/                          # 存放API相关代码</div><div class="line">       echo.js</div><div class="line">   - node_modules/                 # 存放三方包</div><div class="line">       + argv/</div><div class="line">   + tests/                        # 存放测试用例</div><div class="line">   package.json                    # 元数据文件</div><div class="line">   README.md                       # 说明文件</div></pre></td></tr></table></figure>
+<h3 id="版本号，x-y-z-分别表示主版本，次版本，和补丁版本，若改变向下不兼容，x，改变新增了一些功能，但向下兼容，y，修复一些bug，z"><a href="#版本号，x-y-z-分别表示主版本，次版本，和补丁版本，若改变向下不兼容，x，改变新增了一些功能，但向下兼容，y，修复一些bug，z" class="headerlink" title="版本号，x.y.z ,分别表示主版本，次版本，和补丁版本，若改变向下不兼容，x，改变新增了一些功能，但向下兼容，y，修复一些bug，z"></a>版本号，x.y.z ,分别表示主版本，次版本，和补丁版本，若改变向下不兼容，x，改变新增了一些功能，但向下兼容，y，修复一些bug，z</h3><h3 id="nodejs-中模块化和类-对象-对象，函数深入理解"><a href="#nodejs-中模块化和类-对象-对象，函数深入理解" class="headerlink" title="nodejs 中模块化和类,对象,对象，函数深入理解"></a>nodejs 中模块化和类,对象,对象，函数深入理解</h3><ol>
+<li>模块的加载方法，’/a.js’绝对路径 , ‘./b.js’,相对当前路径 , ‘a.js’ ,核心模块或者处于node_modules中</li>
+<li>this,原型链用法</li>
+<li>module,export,require</li>
+</ol>
+<h3 id="处于不同文件中的用var声明的变量，只属于该文件，不能被外部文件访问"><a href="#处于不同文件中的用var声明的变量，只属于该文件，不能被外部文件访问" class="headerlink" title="处于不同文件中的用var声明的变量，只属于该文件，不能被外部文件访问"></a>处于不同文件中的用var声明的变量，只属于该文件，不能被外部文件访问</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// a.js /moudle a</div><div class="line"></div><div class="line">var name = &apos;lu&apos;;</div><div class="line">exports.getName = function() &#123;</div><div class="line">	return name;  // 通过exports 自由变量返回对象</div><div class="line">&#125;</div><div class="line"></div><div class="line">module 是一个全局变量，module下每一个模块都拥有一个 exports变量，并会在require时候传给要的对象</div><div class="line">exports默认为一个空对象</div><div class="line">可以通过</div><div class="line">module.exports = function() &#123;</div><div class="line">	//return obj;</div><div class="line">&#125;</div><div class="line">重新定义exports  为一个函数，并传值</div><div class="line">console.log(name);</div><div class="line">// exports 是每一个模块都有的，当b模块require a.js时候， require 传给b.js的就是a.js的exports 变量，每个模块的exports是属于模块内部的，每个都不一样，通过expors传值达到b中对a的引用</div><div class="line"></div><div class="line">//### 如果定义成</div><div class="line">module.exports = &#123;</div><div class="line">	name: vaule,</div><div class="line">    f:function() &#123;</div><div class="line"></div><div class="line">	  &#125;</div><div class="line">&#125;</div><div class="line">则传给require的值则是一个已经写好的对象</div><div class="line">// b.js /moudle </div><div class="line">var a = require(&apos;./a.js&apos;);  // require 后a.js中的代码会运行的，如console.log() 会运行</div><div class="line">var name = &apos;min&apos;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">var newModule = function(obj) &#123;</div><div class="line">	var name = &apos;lumin&apos;; // 这些变量使不被外界使用的</div><div class="line">	var som = obj.som;</div><div class="line">	var id = 1;</div><div class="line">	var that;</div><div class="line">	that = &#123; // 这个对象包含了该模块的所有方法，其实模块和类可以看做同一样东西 </div><div class="line">getName: funciton() &#123;</div><div class="line">			 //</div><div class="line">		 &#125;,</div><div class="line">setId: function() &#123;</div><div class="line">		   //</div><div class="line">	   &#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	retrun that; //通过返回that提供给传值使用</div><div class="line">&#125;</div><div class="line"></div><div class="line">module.exports = newModule;</div><div class="line"></div><div class="line"></div><div class="line">// b.js</div><div class="line"></div><div class="line">var a = require(&apos;./a.js&apos;); //得到的是一个函数，看上面的module.exports</div><div class="line">var tt = new a(&#123;//obj&#125;);</div><div class="line">//或者直接 vat tt = a(&#123;&#125;);</div></pre></td></tr></table></figure>
+<h3 id="js-原型链"><a href="#js-原型链" class="headerlink" title="js 原型链"></a>js 原型链</h3><p><a href="http://www.cnblogs.com/yjf512/archive/2011/06/03/2071914.html" target="_blank" rel="external">参考js原型链理解文章</a></p>
+<ol>
+<li>js中所有东西都是对象</li>
+<li>js中的function可以当做function,对象，和类</li>
+<li>js 中有三种方法，对象方法，类方法，原型方法(原型专门用来继承的),当然还有普通函数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var env = &apos;env value&apos;; </div><div class="line">function Peple() &#123;</div><div class="line">	this.name = &apos;obj method&apos;;</div><div class="line">	this.obj = &apos;obj only&apos;; </div><div class="line">	this.nam = &apos;for class &apos;</div><div class="line"></div><div class="line">	this.getName = function() &#123;   // 对象方法</div><div class="line">		console.log(&apos;your name is&apos;+ this.name);</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125; </div><div class="line"></div><div class="line">Peple.getName = function() &#123;</div><div class="line">	this.env= &apos;class value&apos;; </div><div class="line">	console.log(&apos;using chain in class method&apos;+this.env+this.name); //无法使用到主函数的name,因为类方法是区别开来的</div><div class="line">	console.log(this);</div><div class="line">	console.log(&apos;class method&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Peple.prototype.getName = function() &#123;</div><div class="line">	console.log(&apos;getName&apos;+this.name); //实例化后，当原函数没有这个方法时候，才会调用原型方法</div><div class="line">&#125;</div><div class="line"></div><div class="line">Peple.prototype.pro = function() &#123;</div><div class="line">	this.name = &apos;prototype name&apos;; </div><div class="line"></div><div class="line">	console.log(&apos;pro&apos;+this.name); //原型使用自身的对象属性</div><div class="line">	console.log(this.obj); // 原型可以调用主函数的对象属性			</div><div class="line">	console.log(env); //</div><div class="line">&#125;</div><div class="line"></div><div class="line">Peple.getName(); //调用class method</div><div class="line">var p1 = new Peple(); //把函数看做类，并实例化</div><div class="line">p1.getName(); //调用对象方法，如果没有就找原型方法，如下</div><div class="line">p1.pro();</div></pre></td></tr></table></figure>
+<h4 id="js-接口，"><a href="#js-接口，" class="headerlink" title="js 接口，"></a>js 接口，</h4><ol>
+<li>接口是用来声明一个类应该具有哪些方法和变量，为了使团队合作更加轻松，接口定义了一个严谨的结构，可以让许多类实现而具有不同的功能和统一的接口</li>
+<li>当需要调用时，只要指明相应的实现，然后就可以用共同的方法调用，十分方便</li>
+<li>当然实现每一个接口的类，工作量其实是蛮大的，js中，可以用注释方法，提醒这个类拥有哪些方法，函数名，等到定义类似的函数时，就可以参照这个注释来创建一个新类</li>
+<li>与真正的接口不一样的是，它没有错误检查，也就是当别人创建一个新类时，结构并没有真正的接口那么严谨，也就不能用相同的方法调用了</li>
+<li>接口更确切的说是一种标志，每一个类其实都是需要重新创建的</li>
+</ol>
+<h3 id="js-动态变量名，变量的名字保存在字符串或者数组中，而变量定义在当前"><a href="#js-动态变量名，变量的名字保存在字符串或者数组中，而变量定义在当前" class="headerlink" title="js 动态变量名，变量的名字保存在字符串或者数组中，而变量定义在当前"></a>js 动态变量名，变量的名字保存在字符串或者数组中，而变量定义在当前</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var sensor1 = &#123;&#125;;</div><div class="line">var num = 1;</div><div class="line">console.log(eval(&apos;sensor&apos;+num) ); // 输出&#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="js-动态创建变量，确切来说是动态创建全局变量"><a href="#js-动态创建变量，确切来说是动态创建全局变量" class="headerlink" title="js 动态创建变量，确切来说是动态创建全局变量"></a>js 动态创建变量，确切来说是动态创建全局变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = [3,4];</div><div class="line">this 代表当前的环境，即全局变量</div><div class="line">this[&apos;actuator&apos;+a[0]] = &#123;&#125;;</div><div class="line">console.log(actuator3) // &#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="js-n进制转m进制"><a href="#js-n进制转m进制" class="headerlink" title="js n进制转m进制"></a>js n进制转m进制</h3><p>var bit = parseInt(1111,2); // 声明为2进制<br>bit.toString(10); //转为10进制</p>
+<h3 id="nodejs-中的二进制流"><a href="#nodejs-中的二进制流" class="headerlink" title="nodejs 中的二进制流"></a>nodejs 中的二进制流</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var b = new Buffer(2); // 创建一个有两个十六进制数的buffer，里面的值未初始化，是随机的,且会储存在一块与当前其他变量不一样的位置，是个静态的</div><div class="line">conslole.log(b); // b是一个数组</div><div class="line">b[0] = 3;</div><div class="line">b[1] = 2; //十六进制格式</div><div class="line">b[0] | b[1] //按照十六进制化为二进制16位的或，</div><div class="line">b[0] &amp; b[1] //与</div><div class="line"></div><div class="line">b[0] &lt;&lt; 5 //左移5位，当大于 2的16次方时溢出 变为0,常规计算时当做整数来计算</div><div class="line">b[1] &gt;&gt; 5 // 右移5位</div></pre></td></tr></table></figure>
+<h3 id="js截取字符串"><a href="#js截取字符串" class="headerlink" title="js截取字符串"></a>js截取字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jo</div></pre></td></tr></table></figure>
+<p><a href="http://www.jb51.net/article/42482.htm" target="_blank" rel="external">参考文章</a></p>
+<h4 id="js中的与或，是进行二进制操作时候的运算符分别为-amp-下为一个温湿度传感器I2c例子"><a href="#js中的与或，是进行二进制操作时候的运算符分别为-amp-下为一个温湿度传感器I2c例子" class="headerlink" title="js中的与或，是进行二进制操作时候的运算符分别为   | &amp; , 下为一个温湿度传感器I2c例子;"></a>js中的与或，是进行二进制操作时候的运算符分别为   | &amp; , 下为一个温湿度传感器I2c例子;</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">var m = require(&apos;mraa&apos;);</div><div class="line"></div><div class="line">var ic = new m.I2c(0);</div><div class="line"></div><div class="line">var a = ic.address(64); //SHT20 7位地址是1000 000 ,我测试了地址0到125,返回0,但126到256返回5，所以只能用前七位</div><div class="line"></div><div class="line">console.log(a);  // a=0</div><div class="line"></div><div class="line">ic.writeByte(0xF3); //发送触发温度测量命令 ,返回0</div><div class="line"></div><div class="line">setTimeout(read, 90); //因为是no hold mode ,需要等待90ms</div><div class="line"></div><div class="line">function read() &#123;</div><div class="line">    var re = ic.read(2); //re 得到的是缓冲区,2个8位十六进制数 </div><div class="line"></div><div class="line">	re[1] = re[1]&amp;0xFC; //低8位后两位置0</div><div class="line"></div><div class="line">    var result = re[0]&lt;&lt;8+re[1]; //高8位左移8位，与低8位合并，得到一个常数</div><div class="line"></div><div class="line">    console.log(result);</div><div class="line"></div><div class="line">    var a = result/Math.pow(2,16);</div><div class="line"></div><div class="line">    var tm = -46.85 + 175.72*a;</div><div class="line"></div><div class="line">    console.log(tm); //所得值与环境温度不匹配</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="js-判读是否存在变量"><a href="#js-判读是否存在变量" class="headerlink" title="js 判读是否存在变量"></a>js 判读是否存在变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">//判断变量i是否存在</div><div class="line">typeof(i)==&quot;undefined&quot;: 未定义</div><div class="line">//是否存在指定函数 </div><div class="line">function isExitsFunction(funcName) &#123;</div><div class="line">    try &#123;</div><div class="line">        if (typeof(eval(funcName)) == &quot;function&quot;) &#123;</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">    &#125; catch(e) &#123;&#125;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line">//是否存在指定变量 </div><div class="line">function isExitsVariable(variableName) &#123;</div><div class="line">    try &#123;</div><div class="line">        if (typeof(variableName) == &quot;undefined&quot;) &#123;</div><div class="line">            //alert(&quot;value is undefined&quot;); </div><div class="line">            return false;</div><div class="line">        &#125; else &#123;</div><div class="line">            //alert(&quot;value is true&quot;); </div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">    &#125; catch(e) &#123;&#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/nodeStudy/" data-id="ciztqajjk000z48ddptqsqdsf" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-motox" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/motox/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.289Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="刷机的总工序"><a href="#刷机的总工序" class="headerlink" title="刷机的总工序"></a>刷机的总工序</h3><ol>
+<li>解锁bootloader / 刷入底包</li>
+<li>刷入recovery</li>
+<li>root</li>
+<li>破解电信3g</li>
+<li>刷入新rom</li>
+</ol>
+<h4 id="解锁"><a href="#解锁" class="headerlink" title="解锁"></a>解锁</h4><p>解锁一般用的方法是，一，普通解锁，直接破解，二，高级解锁，需要moto官方数据，注册解锁。</p>
+<h4 id="刷底包"><a href="#刷底包" class="headerlink" title="刷底包"></a>刷底包</h4><p>刷底包有两种方法，一个是RSDlite法，一个是adb fastboot法</p>
+<p>####刷底包流程<br>刷底包的流程是：</p>
+<ol>
+<li>寻找合适的底包，一般美版Us.celler可以通刷Us版的。</li>
+<li><p>修改flash.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//一般有以下刷写选项</div><div class="line">fsg,有时需要删除</div><div class="line">boot.img/system.img代表系统，需要flash</div><div class="line">recovery.img/logo.img按需刷写</div><div class="line">最后是删除一些用户数据</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以用rsdlite或者adb/adb tools 刷写底包，单刷logo，re等</p>
+<h4 id="破解3g"><a href="#破解3g" class="headerlink" title="破解3g"></a>破解3g</h4><p>需要注意的是要知道解锁密码，如518518，解锁密码不对，是读取、刷写不了的<br>安装驱动时要注意选择另外一个选项<br>root ,用re刷入supersu即可</p>
+<h4 id="刷入第三方rom"><a href="#刷入第三方rom" class="headerlink" title="刷入第三方rom"></a>刷入第三方rom</h4><p>第三方rom都是一些花招，结果还不如官方包好。还是少折腾<br>xposed installer装个重力工具箱即可</p>
+<h4 id="一些基本的adb命令"><a href="#一些基本的adb命令" class="headerlink" title="一些基本的adb命令"></a>一些基本的adb命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell 登录到开启USB调试的手机</div><div class="line">adb install 一般是install 本地apk文件</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/motox/" data-id="ciztqajjh000x48ddpx9x1d8e" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-monitor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/monitor/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.288Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/monitor/">设计一个微型框架，主要用来实现传感器，执行器之间的互动</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="传感器的类"><a href="#传感器的类" class="headerlink" title="传感器的类"></a>传感器的类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var sensor = &#123;</div><div class="line">	value: &apos;&apos;;</div><div class="line">	AToD: function() &#123;&#125;</div><div class="line">	;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/monitor/" data-id="ciztqajjg000w48dd7y5xw63y" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-lnmp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/lnmp/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.287Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: 配置lnmp环境</p>
+<p>#####lnmp.org官方一键安装包</p>
+<p>apt-get install screen<br>screen -S lnmp //开启一个screen对话</p>
+<p>这个工具可以确保远程命令安装过程中，突然掉线，可以重连后执行screen -S lnmp既可以恢复安装过程</p>
+<p>#####nignx添加伪静态：</p>
+<p>虚拟主机配置文件位置: /usr/local/nginx/conf/vhost/域名.conf<br>伪静态规则文件: /usr/local/nginx/conf/ 下</p>
+<p>/etc/nginx/nginx.conf</p>
+<p>类似apache的.vhost文件，它只是把虚拟主机配置分成一个个域名下的配置,然后融合起来，另外伪静态规则也是分离了，只需在虚拟主机配置下把对应的include进去即可</p>
+<p>nginx 配置把多个类型配置分为多块，其实就一个文件即可，但是这样便于管理</p>
+<p>配置分为配置nginx错误日志，访问日志。还有最常用的配置虚拟主机，每个虚拟主机可以指定端口和域名，如果端口一样，则通过域名来区别不同的网站 ,端口和域名唯一对应一个目录，就是网站的目录 </p>
+<h5 id="开启php错误提示"><a href="#开启php错误提示" class="headerlink" title="开启php错误提示"></a>开启php错误提示</h5><p>/usr/local/php/etc/php-fpm.conf加入</p>
+<p>php_admin_value[error_log] = /usr/local/php/var/log/php-error.log<br>php_admin_flag[log_errors] = on</p>
+<p>/etc/init.d/php-fpm restart</p>
+<p>/etc/local/php/etc/php.ini<br>加入<br>error_reporting = E_ERROR<br>display_errors = On </p>
+<p>apache 目录</p>
+<p>usr/local/apache/conf/vhost</p>
+<p>/etc/init.d/apache restart<br>/etc/init.d/nginx restart</p>
+<p>service nginx restart<br>service httpd restart 重启Apache服务</p>
+<p>/etc/hosts linux hosts文件</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/lnmp/" data-id="ciztqajkj001l48ddczmpzthz" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mongoDB" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/mongoDB/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.287Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/mongoDB/">mongoDB 的使用和学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
+<li>安装前应该修补win7bug，下载Windows 7/Windows Server2008 R2 SP1</li>
+<li><a href="http://www.myfiles.com.cn/soft/0/131.htm" target="_blank" rel="external">下载地址</a></li>
+<li><p>由于文件过大，算了，直接使用，如果需要，安装在linux即可</p>
+</li>
+<li><p>ubuntu 下二进制安装.<a href="https://docs.mongodb.org/getting-started/shell/installation/" target="_blank" rel="external">官网</a></p>
+</li>
+<li>curl -o /url/to/download </li>
+<li>tar zxvf 解已经存在压</li>
+<li>export PATH=<mongodb-install-directory>/bin:$PATH   //添加环境变量</mongodb-install-directory></li>
+<li>mkdit /data/db</li>
+<li>mongod –dbpath <path to="" data="" directory=""></path>  // 指定数据的保存路径启动mogondb/</li>
+</ol>
+<h3 id="引入文件到数据库中"><a href="#引入文件到数据库中" class="headerlink" title="引入文件到数据库中"></a>引入文件到数据库中</h3><h4 id="检索数据集-restaurants-data"><a href="#检索数据集-restaurants-data" class="headerlink" title="检索数据集 restaurants data"></a>检索数据集 restaurants data</h4><ol>
+<li>下载实例文件到本地 wget /http/.json<h4 id="引入本地文件到数据库"><a href="#引入本地文件到数据库" class="headerlink" title="引入本地文件到数据库"></a>引入本地文件到数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongoimport --db test --collection restaurants --drop --file primer-dataset.json</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>mongoimport 命令，还可以指定要连接md数据库的端口和地址，默认为本地和port</p>
+<ol>
+<li>primer-dataset.json,为本地文件路径</li>
+<li>test 为数据库名，</li>
+<li>restaurants 类似一个数据表 collection, 是一个类似数据表的结构</li>
+<li>–drop ,删除，也就是如果存在就不保存了</li>
+</ol>
+<h3 id="使用md的shell客户端"><a href="#使用md的shell客户端" class="headerlink" title="使用md的shell客户端"></a>使用md的shell客户端</h3><h4 id="mongo-是自带的js本地客户端，可以像shell和emacs一样使用tab补全，和查看历史"><a href="#mongo-是自带的js本地客户端，可以像shell和emacs一样使用tab补全，和查看历史" class="headerlink" title="mongo 是自带的js本地客户端，可以像shell和emacs一样使用tab补全，和查看历史"></a>mongo 是自带的js本地客户端，可以像shell和emacs一样使用tab补全，和查看历史</h4><h4 id="help-在mongo下type-help可以查看帮助"><a href="#help-在mongo下type-help可以查看帮助" class="headerlink" title="help ,在mongo下type help可以查看帮助"></a>help ,在mongo下type help可以查看帮助</h4><h3 id="collection-所有数据在md中都有一个scope-附在单一的collection上"><a href="#collection-所有数据在md中都有一个scope-附在单一的collection上" class="headerlink" title="collection ,所有数据在md中都有一个scope,附在单一的collection上"></a>collection ,所有数据在md中都有一个scope,附在单一的collection上</h3><h4 id="collecton-相当于一个文件名，文件名内保存着所有属于该文件的数据，想象md就是一个庞大的键值"><a href="#collecton-相当于一个文件名，文件名内保存着所有属于该文件的数据，想象md就是一个庞大的键值" class="headerlink" title="collecton ,相当于一个文件名，文件名内保存着所有属于该文件的数据，想象md就是一个庞大的键值"></a>collecton ,相当于一个文件名，文件名内保存着所有属于该文件的数据，想象md就是一个庞大的键值</h4><p>对应，每个数据库有多个collection，每个collection都是主scope，所有scope下的数据就是该colletion的</p>
+<h4 id="collection-集合，有点类似有序数组，但里面是json值"><a href="#collection-集合，有点类似有序数组，但里面是json值" class="headerlink" title="collection ,集合，有点类似有序数组，但里面是json值"></a>collection ,集合，有点类似有序数组，但里面是json值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">db.restaurants.find() //查询restaurants 这个collection下的所有数据</div><div class="line"></div><div class="line">### 索引的原理与应用</div><div class="line"></div><div class="line">1. 索引就像一本词典的形式，当我们拿到一个单词word，需要查找它在哪一页，这时，就需要查看目录，也就是根据单词的首字母来一个个逐一确定它在哪</div><div class="line">2. 在储存器中，所有数据都是用单元来表示的，在物理结构上，每一个单元都是独立，也就是同一份文件，在储存器中保存可以有很多个块组成，只是，每个快的尾都连着下一个块的首的地址，所以就能通过找到第一个快的地址来找出整个文件的内容</div><div class="line">3. 对于电脑来说，知道了地址就等于知道了一切，获取某一个地址的内容，只需要一步</div><div class="line">4. 在数据库中，每一个库都有一个统一的片单元，比如是1024字节，每一个表的每一行都有一个数据类型，每一个类型都有一个确定的大小，假如一行有5个字段，每一个字段平均是50字节，那么一行就需要250个字节，那么数据库的一个片就可以得到4到5行数据。如果有1000行数据，就需要200个块</div><div class="line">5. 也就是说，如果需要查找出现name = lumin 的这一行，需要查找200个数据块，如果是按顺序来找的话，就需要200次</div><div class="line">6. 建立索引，就是在name 一个字段上，建立一个到字段为排序后的name值和该name所在行地址的新的索引表，当要查询时候，因为已经排序了，(在电脑中，任何文字符号都是ASCI码),都可以进行排序，就可以用二分法查询，即从中间开始，比较要查的在哪一边，然后继续向下查找，也就是2叉树，一共要查log2 200,次，等于8次不到，当数据量很大时候，这个就更明显了</div><div class="line">7. 建立索引的关键是排序与唯一，但是每次有新的插入，索引就会发生变化，有时候变化很大，这个需要时间的，但好处是，查询性能高</div><div class="line">8. These indexes allow applications to store a view of a portion of the collection in an efficient data structure.</div><div class="line"></div><div class="line"></div><div class="line">### mongoDB的优点	 </div><div class="line">1. 键值架构，相当于json的扩展，值可以是数组，甚至是嵌入的文档，</div><div class="line">2. 强大的可伸缩性，数据很容易部署在主从，副本服务器上，还有读写分离等</div><div class="line"></div><div class="line">### 两大要素</div><div class="line">1. 集合对应表</div><div class="line">2. 文档(document)对应行</div><div class="line"></div><div class="line">### 读操作</div><div class="line">1. md读取检索数据从一个单一的colletion</div><div class="line">2. 一个查询就相当于一个映射projection，映射对应要查文档中的指定域fields,这个映射决定了从collection中取出哪几个字段fields</div><div class="line">3. 查询情况条件，就是criteria</div><div class="line">4. 通过设定criteria 和projection 两个限定，就可以得到想要的数据</div><div class="line">5. 查询后返回一个cursor，可以通过cursor设定limit，也就是限定多少条拿出来，这种操作称为modify,</div><div class="line"></div><div class="line">#### db.collection.find( &#123; age: &#123; $gt: 18 &#125; &#125;, &#123; name: 1, address: 1 &#125; ).limit(5)  </div><div class="line">1. find() 有两个参数，一个是criteria ,一个是projection, 最后返回cursor给limit，skips,sort orders 使用</div><div class="line">2. &#123; name:1 ,address:1 &#125; ,表示拿出这两个fields，若_id:0 ,则不取出id</div><div class="line"></div><div class="line">#### de.collection.update(&#123;&apos;name&apos;:&apos;value&apos;&#125; , &#123;&apos;update document associate to name:value&apos;&#125;);</div><div class="line">1. 整体更新，var model= db.collection.findOne(&#123;&apos;criteria&apos;&#125;); model.name=&apos;value&apos;; --.update(&#123;&apos;criteria&apos;&#125;,model);  //这种更新不仅可以更新原有 fields，还可以加入新的fields</div><div class="line">2. 局部更新 ,db.col.update(&#123;&apos;criteria&apos;&#125; , &#123;$inc:&#123;age:10&#125;&#125;) 可以原子操作;</div><div class="line">	2.1 $set 局部修改, db.col.update(&#123;&apos;criteria&apos;&#125; , &#123;$set:&#123;&apos;newfield&apos;:&apos;value&apos;&#125;&#125;);</div><div class="line"></div><div class="line">3.upseted ,当没有满足update的查询情况的时候，就新增, 改第三个参数为 true</div><div class="line">	db.user.update(&#123;&apos;name&apos;:&apos;waite&apos;&#125;,&#123;$set:&#123;&apos;age&apos;:3443&#125;&#125;,true)</div><div class="line">4. </div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">#### db.collection.insert(&#123;&apos;name&apos;:&apos;new document associate to this collection&apos;&#125;);</div><div class="line"></div><div class="line">#### 索引</div></pre></td></tr></table></figure>
+<p>function go() {<br>    for(var i=0;i<1000;i++) {="" db.person.insert({'name':'lumin'+i="" ,="" 'age'="" :="" i});="" }="" <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">1. 上面的记录很多十万条，连插入的时候，在服务器上测试了很久，还是没插入成</div><div class="line">2. 为一个fields 为name 建立索引，db.col.ensureIndex(&#123;&apos;name&apos;:1&#125;);</div><div class="line">3. 建立唯一索引，唯一索引要求该fields中的值不能重复</div><div class="line">	db.person.ensureIndex(&#123;&quot;name&quot;:1&#125;,&#123;&quot;unique&quot;:true&#125;)</div><div class="line">4. 建立组合索引，对于多条件查询，比如查询90年 出生的name同学，可以在年龄和name两个field间建立组合索引</div><div class="line">	db.person.ensureIndex(&#123;&apos;name&apos;:1,&apos;birthday&apos;:1&#125;)</div><div class="line">	db.person.ensureIndex(&#123;&apos;birthday&apos;:1, &apos;name&apos;:1&#125;)</div><div class="line">	这里会产生两个索引，因为两个字段的排序，</div><div class="line">5. 删除索引 </div><div class="line">#### [索引参考,博客](http://www.cnblogs.com/huangxincheng/archive/2012/02/29/2372699.html)</div><div class="line"></div><div class="line"></div><div class="line">### source 安装，需要scons</div><div class="line">1. scons是一个现代化的有依赖管理能力的替代make的一个编译工作，用python编写，需要python2.7</div><div class="line">2. scons 安装及下载[官网](http://sourceforge.net/projects/scons/files/scons/2.4.1/)</div><div class="line">3. scons all //安装全部组件，包括mongo mongos mongod</div><div class="line">4. scons</div></pre></td></tr></table></1000;i++)></p>
+<p>use test<br>// 查找所有<br>db.restaurants.find()<br>// 查找拥有指定域和指定值<br>db.restaurants.find( { “borough”: “Manhattan” } )<br>// 多级查找<br>db.restaurants.find( { “address.zipcode”: “10075” } )<br>// 类似</p>
+<p>{<br>“grades” : [</p>
+<pre><code>   {
+      &quot;date&quot; : ISODate(&quot;2014-10-01T00:00:00Z&quot;),
+      &quot;grade&quot; : &quot;A&quot;,
+      &quot;score&quot; : 11
+   },
+   {
+      &quot;date&quot; : ISODate(&quot;2014-01-16T00:00:00Z&quot;),
+      &quot;grade&quot; : &quot;B&quot;,
+      &quot;score&quot; : 17
+   }
+]
+</code></pre><p>}<br>//即有内嵌数组，数组里面任然是文档,直接如下，得到拥有b的所有级别（只要有数组的内嵌文档有一行拥有即可）</p>
+<p>db.restaurants.find( { “grades.grade”: “B” } )</p>
+<p>// 指定查询运算条件<br>{ <field1>: { <operator1>: <value1> } }<br>// 查找拥有大于30的内嵌文档<br>db.restaurants.find( { “grades.score”: { $gt: 30 } } )<br>db.restaurants.find( { “grades.score”: { $lt: 10 } } )</value1></operator1></field1></p>
+<p>// 多条件查询，与<br>db.restaurants.find( { “cuisine”: “Italian”, “address.zipcode”: “10075” } )</p>
+<p>db.restaurants.find(<br>   { $or: [ { “cuisine”: “Italian” }, { “address.zipcode”: “10075” } ] }<br>)</p>
+<p>// 排序<br>db.restaurants.find().sort( { “borough”: 1, “address.zipcode”: 1 } )</p>
+<p>// 更新，默认只更新一条，可以加入参数更新多条符合条件的文档<br>db.restaurants.update(<br>    { “name” : “Juni” },<br>    {<br>      $set: { “cuisine”: “American (New)” },<br>      $currentDate: { “lastModified”: true }<br>    }<br>)</p>
+<p>db.restaurants.update(<br>  { “restaurant_id” : “41156888” },<br>  { $set: { “address.street”: “East 31st Street” } }<br>)</p>
+<p>db.restaurants.update(<br>  { “address.zipcode”: “10016”, cuisine: “Other” },<br>  {<br>    $set: { cuisine: “Category To Be Determined” },<br>    $currentDate: { “lastModified”: true }<br>  },<br>  { multi: true}<br>)</p>
+<p>// 每个集合内的每行文档相互独立，没有严格的key value格式限定，但是每一行文档的id是不变得<br>// 更新整个行，这里整个行的文档的格式会变成以下<br>db.restaurants.update(<br>   { “restaurant_id” : “41704620” },<br>   {<br>     “name” : “Vella 2”,<br>     “address” : {<br>              “coord” : [ -73.9557413, 40.7720266 ],<br>              “building” : “1480”,<br>              “street” : “2 Avenue”,<br>              “zipcode” : “10075”<br>     }<br>   },<br>//   { upsert: true } ,指定为true后，如果能找到匹配的就完全更新，否则插入新的一行文档<br>)</p>
+<p>// 删除所有符合条件<br>db.restaurants.remove( { “borough”: “Manhattan” } )<br>//只删除一行符合条件<br>db.restaurants.remove( { “borough”: “Queens” }, { justOne: true } )<br>//操作成功后返回如下对象<br>WriteResult({ “nRemoved” : 1 })</p>
+<p>//删除整个集合 的所有文档,但仍有剩余<br>db.restaurants.remove( { } )<br>The collection itself, as well as any indexes for the collection, remain.</p>
+<p>// 彻底删除<br>db.restaurants.drop() 返回true</p>
+<p>In MongoDB, write operations are atomic on the level of a single document. If a single remove operation removes multiple documents from a collection, the operation can interleave with other write operations on that collection. In the MongoDB Manual, see Atomicity.</p>
+<p>// 聚合，聚合是指分组，类似管道的操作</p>
+<p>// 每个stage相当于一个管道，前面的管道执行结果作为后一个管道的输入<br>db.collection.aggregate( [ <stage1>, <stage2>, … ] )</stage2></stage1></p>
+<p>// 将集合的文档行按照borough字段的值分组，并排序,输出会得到_id和count(count字段不一定要在文档行中，应该是统计后的输出字段)字段<br>db.restaurants.aggregate(<br>   [<br>     { $group: { “_id”: “$borough”, “count”: { $sum: 1 } } }<br>   ]<br>);</p>
+<p>// 先限定查询条件，再聚合处理（分组、统计）<br>db.restaurants.aggregate(<br>   [<br>     { $match: { “borough”: “Queens”, “cuisine”: “Brazilian” } },<br>     { $group: { “_id”: “$address.zipcode” , “count”: { $sum: 1 } } }<br>   ]<br>);</p>
+<p>// 索引,每个集合自动有_id字段，而且拥有递增索引</p>
+<p>// 为集合某一个字段新增一个索引<br>db.restaurants.createIndex( { “cuisine”: 1 } )</p>
+<p>// 结果为<br>{<br>  “createdCollectionAutomatically” : false,<br>  “numIndexesBefore” : 1,<br>  “numIndexesAfter” : 2, //说明新增后集合中有两个索引<br>  “ok” : 1<br>}</p>
+<p>// 增加复合索引<br>// 为一个字段增加递增，另一个增加递减的复合索引<br>db.restaurants.createIndex( { “cuisine”: 1, “address.zipcode”: -1 } )<br>```</p>
+<h4 id="mongo的clients-负责连接到单一个的mongoDB实例，或者副本实例，或者分片集群中"><a href="#mongo的clients-负责连接到单一个的mongoDB实例，或者副本实例，或者分片集群中" class="headerlink" title="mongo的clients, 负责连接到单一个的mongoDB实例，或者副本实例，或者分片集群中"></a>mongo的clients, 负责连接到单一个的mongoDB实例，或者副本实例，或者分片集群中</h4><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>原子操作类似事务，有利于保证数据的插入和完整性</p>
+<ol>
+<li>创建数据库 use my_db,如果没有，则新建,</li>
+<li>db 查看当前数据库</li>
+<li>show dbs 查看所有数据库,如果一个新建数据库是空的，则不显示</li>
+<li>db.dropDatabase() 删除当前数据库,删除后，仍然处于当前数据库，只是数据为空，所以不显示</li>
+<li>插入mongodb的原始数据是 json，但是实际储存是BSON, 它是一种类json的二进制形式</li>
+<li>更新，db.col.update( { “count” : { $gt : 1 } } , { $set : { “test2” : “OK”} } ) , $set为原子操作符，如果原集合中存在该文档对应的key “test2”则更新,如果没有该字段，不做任何</li>
+<li>更新中如果用 db.col.update( { “count” : { $gt : 5 } } , { $set : { “test5” : “OK”} },true,true ); ,后面两ture指的是 upsert  <boolean> , multi: <boolean>,,upsert为真如果匹配不成功，则新增一行文档，multi为真则是可以同时修改多行匹配条件的</boolean></boolean></li>
+<li>db.col.save({‘name’: ‘value’}) 新增一行文档</li>
+<li>db.col.save({‘_id’: objectId(‘fkdsjf’)}, ‘something’: ‘new’) 如果save方法指定了_id则会在该行文档修改<br>db.col.update({‘name’: ‘v’} , {‘some’: ‘new’}) 这里会直接替换掉匹配的行，因为没有了$set的原子操作，所以会更新</li>
+<li>db.col.update( { “count” : { $gt : 10 } } , { $inc : { “count” : 1} },false,false ); $inc为数字类型数据的原子操作</li>
+<li>db.col.find().pretty() 以漂亮的格式显示查询结果 </li>
+<li>and or的联合使用db.col.find({“somekey”: {$gt:50}, $or: [{“by”: “菜鸟教程”},{“title”: “MongoDB 教程”}]}).pretty()</li>
+<li>db.col.find({likes : {$lt :200, $gt : 100}}) ,查找大于100小于200</li>
+<li>$type操作符，丰富了查询的限定条件，$type的值代表着某个字段的值得数据类型，如$type: 1代表着Double类型db.col.find({“title” : {$type : 2}}), string类型</li>
+<li>db.col.find({},{“title”:1,_id:0}).limit(2)  限定只得到两条河条件的数据</li>
+<li>db.col.find({},{“title”:1,_id:0}).limit(1).skip(1)  跳过符合条件的第一条数据，这里将获得第二条 （应该是按照插入顺序，即_id排序)</li>
+<li>db.col.find({},{“title”:1,_id:0}).sort({“likes”:-1}) , 查询结果只显示title字段， _id如果不手动设定为0都会附带的, sort方法这里按照 likes (-1降序排序</li>
+<li><p>db.values.ensureIndex({open: 1, close: 1}, {background: true}) . 创建复合索引，并加参数在后台运行（不阻塞进程)</p>
+</li>
+<li><p>db.posts.find({post_text:{$regex:”w3cschool.cc”,$options:”$i”}}) 正则表达式的查找，设定$i为忽略大小写</p>
+</li>
+<li>db.posts.find({tags:{$regex:”tutorial”}}) ,tags字段的内容为数组，可以查找拥有tutorial的标签的数据</li>
+<li>title:eval(“/“+title+”/i”)    // 等同于 title:{$regex:title,$Option:”$i”} 类似模糊查询</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/mongoDB/" data-id="ciztqajjc000u48ddc3nk7cy9" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

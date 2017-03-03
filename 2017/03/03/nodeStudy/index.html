@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title:nodejs的基础学习档js中一切都是对象,对象可以直接拿来用了，至于利用函数，原型得到的类，可以视作特殊对象，需要实例化require 传入一个模块名，然后互向node—modules各个文件夹搜索，返回一个导出的对象*krequire(‘./foo’);//相对路径，也可以./foo.js,或者绝对路径/home/foo;
+exports,模块的导出对象，导出公有属性方法等，exp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/nodeStudy/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title:nodejs的基础学习档js中一切都是对象,对象可以直接拿来用了，至于利用函数，原型得到的类，可以视作特殊对象，需要实例化require 传入一个模块名，然后互向node—modules各个文件夹搜索，返回一个导出的对象*krequire(‘./foo’);//相对路径，也可以./foo.js,或者绝对路径/home/foo;
+exports,模块的导出对象，导出公有属性方法等，exp">
+<meta property="og:updated_time" content="2016-03-12T00:44:01.506Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title:nodejs的基础学习档js中一切都是对象,对象可以直接拿来用了，至于利用函数，原型得到的类，可以视作特殊对象，需要实例化require 传入一个模块名，然后互向node—modules各个文件夹搜索，返回一个导出的对象*krequire(‘./foo’);//相对路径，也可以./foo.js,或者绝对路径/home/foo;
+exports,模块的导出对象，导出公有属性方法等，exp">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-nodeStudy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/nodeStudy/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.289Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="title-nodejs的基础学习档"><a href="#title-nodejs的基础学习档" class="headerlink" title="title:nodejs的基础学习档"></a>title:nodejs的基础学习档</h2><h4 id="js中一切都是对象-对象可以直接拿来用了，至于利用函数，原型得到的类，可以视作特殊对象，需要实例化"><a href="#js中一切都是对象-对象可以直接拿来用了，至于利用函数，原型得到的类，可以视作特殊对象，需要实例化" class="headerlink" title="js中一切都是对象,对象可以直接拿来用了，至于利用函数，原型得到的类，可以视作特殊对象，需要实例化"></a>js中一切都是对象,对象可以直接拿来用了，至于利用函数，原型得到的类，可以视作特殊对象，需要实例化</h4><h4 id="require-传入一个模块名，然后互向node—modules各个文件夹搜索，返回一个导出的对象"><a href="#require-传入一个模块名，然后互向node—modules各个文件夹搜索，返回一个导出的对象" class="headerlink" title="require 传入一个模块名，然后互向node—modules各个文件夹搜索，返回一个导出的对象"></a>require 传入一个模块名，然后互向node—modules各个文件夹搜索，返回一个导出的对象</h4><p><em>*</em>krequire(‘./foo’);//相对路径，也可以./foo.js,或者绝对路径/home/foo;</p>
+<h4 id="exports-模块的导出对象，导出公有属性方法等，"><a href="#exports-模块的导出对象，导出公有属性方法等，" class="headerlink" title="exports,模块的导出对象，导出公有属性方法等，"></a>exports,模块的导出对象，导出公有属性方法等，</h4><p>exports 是运行环境的一个大对象的，如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">exports.hello = function () &#123;</div><div class="line">    console.log(&apos;Hello World!&apos;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>将代码中function函数给了exports对象，所以外部就可以通过require 得到它了</p>
+<h4 id="所有模块只执行一次，如果一个模块在一段代码中多次引用，只会require一次"><a href="#所有模块只执行一次，如果一个模块在一段代码中多次引用，只会require一次" class="headerlink" title="所有模块只执行一次，如果一个模块在一段代码中多次引用，只会require一次"></a>所有模块只执行一次，如果一个模块在一段代码中多次引用，只会require一次</h4><h4 id="设定环境变量："><a href="#设定环境变量：" class="headerlink" title="设定环境变量："></a>设定环境变量：</h4><p>NODE_PATH=/home/user/lib:/home/lib<br>则node require也会向这两个目录搜索模块</p>
+<h4 id="包，通过多个模块的组合，入口模块main-js供require使用，-而main-js负责调用包内的其他模块"><a href="#包，通过多个模块的组合，入口模块main-js供require使用，-而main-js负责调用包内的其他模块" class="headerlink" title="包，通过多个模块的组合，入口模块main.js供require使用， 而main.js负责调用包内的其他模块"></a>包，通过多个模块的组合，入口模块main.js供require使用， 而main.js负责调用包内的其他模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- /home/user/lib/</div><div class="line">    - cat/</div><div class="line">        head.js</div><div class="line">        body.js</div><div class="line">        main.js</div></pre></td></tr></table></figure>
+<p>当入口模块名为index.js时，只需要require(‘/home/user/lib/cat’<br> 但如果指定了package.json,如下</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> &#123;</div><div class="line">    &quot;name&quot;: &quot;cat&quot;,</div><div class="line">    &quot;main&quot;: &quot;./lib/main.js&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>则也可以了，因为利用’main’告诉了入口模块在哪</p>
+<h4 id="命令行的原理其实是一个脚本，头部告诉了该脚本用的语言，如-node-然后使它权限能执行，最后添加到环境变量搜寻的目录中"><a href="#命令行的原理其实是一个脚本，头部告诉了该脚本用的语言，如-node-然后使它权限能执行，最后添加到环境变量搜寻的目录中" class="headerlink" title="命令行的原理其实是一个脚本，头部告诉了该脚本用的语言，如!node,然后使它权限能执行，最后添加到环境变量搜寻的目录中"></a>命令行的原理其实是一个脚本，头部告诉了该脚本用的语言，如!node,然后使它权限能执行，最后添加到环境变量搜寻的目录中</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#! /usr/bin/env node</div><div class="line">chmod +x /home/user/bin/node-echo.js</div><div class="line">ln -s /home/user/bin/node-echo.js /usr/local/bin/node-echo</div></pre></td></tr></table></figure>
+<p> usr/local/bin目录下都是二进制文件，同时也是环境变量搜索的地方，</p>
+<h3 id="标准的包目录"><a href="#标准的包目录" class="headerlink" title="标准的包目录"></a>标准的包目录</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- /home/user/workspace/node-echo/   # 工程目录</div><div class="line">   - bin/                          # 存放命令行相关代码</div><div class="line">       node-echo</div><div class="line">   + doc/                          # 存放文档</div><div class="line">   - lib/                          # 存放API相关代码</div><div class="line">       echo.js</div><div class="line">   - node_modules/                 # 存放三方包</div><div class="line">       + argv/</div><div class="line">   + tests/                        # 存放测试用例</div><div class="line">   package.json                    # 元数据文件</div><div class="line">   README.md                       # 说明文件</div></pre></td></tr></table></figure>
+<h3 id="版本号，x-y-z-分别表示主版本，次版本，和补丁版本，若改变向下不兼容，x，改变新增了一些功能，但向下兼容，y，修复一些bug，z"><a href="#版本号，x-y-z-分别表示主版本，次版本，和补丁版本，若改变向下不兼容，x，改变新增了一些功能，但向下兼容，y，修复一些bug，z" class="headerlink" title="版本号，x.y.z ,分别表示主版本，次版本，和补丁版本，若改变向下不兼容，x，改变新增了一些功能，但向下兼容，y，修复一些bug，z"></a>版本号，x.y.z ,分别表示主版本，次版本，和补丁版本，若改变向下不兼容，x，改变新增了一些功能，但向下兼容，y，修复一些bug，z</h3><h3 id="nodejs-中模块化和类-对象-对象，函数深入理解"><a href="#nodejs-中模块化和类-对象-对象，函数深入理解" class="headerlink" title="nodejs 中模块化和类,对象,对象，函数深入理解"></a>nodejs 中模块化和类,对象,对象，函数深入理解</h3><ol>
+<li>模块的加载方法，’/a.js’绝对路径 , ‘./b.js’,相对当前路径 , ‘a.js’ ,核心模块或者处于node_modules中</li>
+<li>this,原型链用法</li>
+<li>module,export,require</li>
+</ol>
+<h3 id="处于不同文件中的用var声明的变量，只属于该文件，不能被外部文件访问"><a href="#处于不同文件中的用var声明的变量，只属于该文件，不能被外部文件访问" class="headerlink" title="处于不同文件中的用var声明的变量，只属于该文件，不能被外部文件访问"></a>处于不同文件中的用var声明的变量，只属于该文件，不能被外部文件访问</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// a.js /moudle a</div><div class="line"></div><div class="line">var name = &apos;lu&apos;;</div><div class="line">exports.getName = function() &#123;</div><div class="line">	return name;  // 通过exports 自由变量返回对象</div><div class="line">&#125;</div><div class="line"></div><div class="line">module 是一个全局变量，module下每一个模块都拥有一个 exports变量，并会在require时候传给要的对象</div><div class="line">exports默认为一个空对象</div><div class="line">可以通过</div><div class="line">module.exports = function() &#123;</div><div class="line">	//return obj;</div><div class="line">&#125;</div><div class="line">重新定义exports  为一个函数，并传值</div><div class="line">console.log(name);</div><div class="line">// exports 是每一个模块都有的，当b模块require a.js时候， require 传给b.js的就是a.js的exports 变量，每个模块的exports是属于模块内部的，每个都不一样，通过expors传值达到b中对a的引用</div><div class="line"></div><div class="line">//### 如果定义成</div><div class="line">module.exports = &#123;</div><div class="line">	name: vaule,</div><div class="line">    f:function() &#123;</div><div class="line"></div><div class="line">	  &#125;</div><div class="line">&#125;</div><div class="line">则传给require的值则是一个已经写好的对象</div><div class="line">// b.js /moudle </div><div class="line">var a = require(&apos;./a.js&apos;);  // require 后a.js中的代码会运行的，如console.log() 会运行</div><div class="line">var name = &apos;min&apos;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">var newModule = function(obj) &#123;</div><div class="line">	var name = &apos;lumin&apos;; // 这些变量使不被外界使用的</div><div class="line">	var som = obj.som;</div><div class="line">	var id = 1;</div><div class="line">	var that;</div><div class="line">	that = &#123; // 这个对象包含了该模块的所有方法，其实模块和类可以看做同一样东西 </div><div class="line">getName: funciton() &#123;</div><div class="line">			 //</div><div class="line">		 &#125;,</div><div class="line">setId: function() &#123;</div><div class="line">		   //</div><div class="line">	   &#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	retrun that; //通过返回that提供给传值使用</div><div class="line">&#125;</div><div class="line"></div><div class="line">module.exports = newModule;</div><div class="line"></div><div class="line"></div><div class="line">// b.js</div><div class="line"></div><div class="line">var a = require(&apos;./a.js&apos;); //得到的是一个函数，看上面的module.exports</div><div class="line">var tt = new a(&#123;//obj&#125;);</div><div class="line">//或者直接 vat tt = a(&#123;&#125;);</div></pre></td></tr></table></figure>
+<h3 id="js-原型链"><a href="#js-原型链" class="headerlink" title="js 原型链"></a>js 原型链</h3><p><a href="http://www.cnblogs.com/yjf512/archive/2011/06/03/2071914.html" target="_blank" rel="external">参考js原型链理解文章</a></p>
+<ol>
+<li>js中所有东西都是对象</li>
+<li>js中的function可以当做function,对象，和类</li>
+<li>js 中有三种方法，对象方法，类方法，原型方法(原型专门用来继承的),当然还有普通函数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var env = &apos;env value&apos;; </div><div class="line">function Peple() &#123;</div><div class="line">	this.name = &apos;obj method&apos;;</div><div class="line">	this.obj = &apos;obj only&apos;; </div><div class="line">	this.nam = &apos;for class &apos;</div><div class="line"></div><div class="line">	this.getName = function() &#123;   // 对象方法</div><div class="line">		console.log(&apos;your name is&apos;+ this.name);</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125; </div><div class="line"></div><div class="line">Peple.getName = function() &#123;</div><div class="line">	this.env= &apos;class value&apos;; </div><div class="line">	console.log(&apos;using chain in class method&apos;+this.env+this.name); //无法使用到主函数的name,因为类方法是区别开来的</div><div class="line">	console.log(this);</div><div class="line">	console.log(&apos;class method&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Peple.prototype.getName = function() &#123;</div><div class="line">	console.log(&apos;getName&apos;+this.name); //实例化后，当原函数没有这个方法时候，才会调用原型方法</div><div class="line">&#125;</div><div class="line"></div><div class="line">Peple.prototype.pro = function() &#123;</div><div class="line">	this.name = &apos;prototype name&apos;; </div><div class="line"></div><div class="line">	console.log(&apos;pro&apos;+this.name); //原型使用自身的对象属性</div><div class="line">	console.log(this.obj); // 原型可以调用主函数的对象属性			</div><div class="line">	console.log(env); //</div><div class="line">&#125;</div><div class="line"></div><div class="line">Peple.getName(); //调用class method</div><div class="line">var p1 = new Peple(); //把函数看做类，并实例化</div><div class="line">p1.getName(); //调用对象方法，如果没有就找原型方法，如下</div><div class="line">p1.pro();</div></pre></td></tr></table></figure>
+<h4 id="js-接口，"><a href="#js-接口，" class="headerlink" title="js 接口，"></a>js 接口，</h4><ol>
+<li>接口是用来声明一个类应该具有哪些方法和变量，为了使团队合作更加轻松，接口定义了一个严谨的结构，可以让许多类实现而具有不同的功能和统一的接口</li>
+<li>当需要调用时，只要指明相应的实现，然后就可以用共同的方法调用，十分方便</li>
+<li>当然实现每一个接口的类，工作量其实是蛮大的，js中，可以用注释方法，提醒这个类拥有哪些方法，函数名，等到定义类似的函数时，就可以参照这个注释来创建一个新类</li>
+<li>与真正的接口不一样的是，它没有错误检查，也就是当别人创建一个新类时，结构并没有真正的接口那么严谨，也就不能用相同的方法调用了</li>
+<li>接口更确切的说是一种标志，每一个类其实都是需要重新创建的</li>
+</ol>
+<h3 id="js-动态变量名，变量的名字保存在字符串或者数组中，而变量定义在当前"><a href="#js-动态变量名，变量的名字保存在字符串或者数组中，而变量定义在当前" class="headerlink" title="js 动态变量名，变量的名字保存在字符串或者数组中，而变量定义在当前"></a>js 动态变量名，变量的名字保存在字符串或者数组中，而变量定义在当前</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var sensor1 = &#123;&#125;;</div><div class="line">var num = 1;</div><div class="line">console.log(eval(&apos;sensor&apos;+num) ); // 输出&#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="js-动态创建变量，确切来说是动态创建全局变量"><a href="#js-动态创建变量，确切来说是动态创建全局变量" class="headerlink" title="js 动态创建变量，确切来说是动态创建全局变量"></a>js 动态创建变量，确切来说是动态创建全局变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = [3,4];</div><div class="line">this 代表当前的环境，即全局变量</div><div class="line">this[&apos;actuator&apos;+a[0]] = &#123;&#125;;</div><div class="line">console.log(actuator3) // &#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="js-n进制转m进制"><a href="#js-n进制转m进制" class="headerlink" title="js n进制转m进制"></a>js n进制转m进制</h3><p>var bit = parseInt(1111,2); // 声明为2进制<br>bit.toString(10); //转为10进制</p>
+<h3 id="nodejs-中的二进制流"><a href="#nodejs-中的二进制流" class="headerlink" title="nodejs 中的二进制流"></a>nodejs 中的二进制流</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var b = new Buffer(2); // 创建一个有两个十六进制数的buffer，里面的值未初始化，是随机的,且会储存在一块与当前其他变量不一样的位置，是个静态的</div><div class="line">conslole.log(b); // b是一个数组</div><div class="line">b[0] = 3;</div><div class="line">b[1] = 2; //十六进制格式</div><div class="line">b[0] | b[1] //按照十六进制化为二进制16位的或，</div><div class="line">b[0] &amp; b[1] //与</div><div class="line"></div><div class="line">b[0] &lt;&lt; 5 //左移5位，当大于 2的16次方时溢出 变为0,常规计算时当做整数来计算</div><div class="line">b[1] &gt;&gt; 5 // 右移5位</div></pre></td></tr></table></figure>
+<h3 id="js截取字符串"><a href="#js截取字符串" class="headerlink" title="js截取字符串"></a>js截取字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jo</div></pre></td></tr></table></figure>
+<p><a href="http://www.jb51.net/article/42482.htm" target="_blank" rel="external">参考文章</a></p>
+<h4 id="js中的与或，是进行二进制操作时候的运算符分别为-amp-下为一个温湿度传感器I2c例子"><a href="#js中的与或，是进行二进制操作时候的运算符分别为-amp-下为一个温湿度传感器I2c例子" class="headerlink" title="js中的与或，是进行二进制操作时候的运算符分别为   | &amp; , 下为一个温湿度传感器I2c例子;"></a>js中的与或，是进行二进制操作时候的运算符分别为   | &amp; , 下为一个温湿度传感器I2c例子;</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">var m = require(&apos;mraa&apos;);</div><div class="line"></div><div class="line">var ic = new m.I2c(0);</div><div class="line"></div><div class="line">var a = ic.address(64); //SHT20 7位地址是1000 000 ,我测试了地址0到125,返回0,但126到256返回5，所以只能用前七位</div><div class="line"></div><div class="line">console.log(a);  // a=0</div><div class="line"></div><div class="line">ic.writeByte(0xF3); //发送触发温度测量命令 ,返回0</div><div class="line"></div><div class="line">setTimeout(read, 90); //因为是no hold mode ,需要等待90ms</div><div class="line"></div><div class="line">function read() &#123;</div><div class="line">    var re = ic.read(2); //re 得到的是缓冲区,2个8位十六进制数 </div><div class="line"></div><div class="line">	re[1] = re[1]&amp;0xFC; //低8位后两位置0</div><div class="line"></div><div class="line">    var result = re[0]&lt;&lt;8+re[1]; //高8位左移8位，与低8位合并，得到一个常数</div><div class="line"></div><div class="line">    console.log(result);</div><div class="line"></div><div class="line">    var a = result/Math.pow(2,16);</div><div class="line"></div><div class="line">    var tm = -46.85 + 175.72*a;</div><div class="line"></div><div class="line">    console.log(tm); //所得值与环境温度不匹配</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="js-判读是否存在变量"><a href="#js-判读是否存在变量" class="headerlink" title="js 判读是否存在变量"></a>js 判读是否存在变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">//判断变量i是否存在</div><div class="line">typeof(i)==&quot;undefined&quot;: 未定义</div><div class="line">//是否存在指定函数 </div><div class="line">function isExitsFunction(funcName) &#123;</div><div class="line">    try &#123;</div><div class="line">        if (typeof(eval(funcName)) == &quot;function&quot;) &#123;</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">    &#125; catch(e) &#123;&#125;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line">//是否存在指定变量 </div><div class="line">function isExitsVariable(variableName) &#123;</div><div class="line">    try &#123;</div><div class="line">        if (typeof(variableName) == &quot;undefined&quot;) &#123;</div><div class="line">            //alert(&quot;value is undefined&quot;); </div><div class="line">            return false;</div><div class="line">        &#125; else &#123;</div><div class="line">            //alert(&quot;value is true&quot;); </div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">    &#125; catch(e) &#123;&#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/nodeStudy/" data-id="ciztqajjk000z48ddptqsqdsf" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/node-thread/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          nodejs 的有关thread和fiber的用法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/motox/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

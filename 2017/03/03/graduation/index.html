@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="毕业设计初稿，总结，大致主内容
+主要用到了以下技术，从Edison到nodejs sokect.io 再到 mysql设计，最后是后台页面 + laravel
+总体架构 : 图文,通信等
+edison : 选型准则，和同类拥有啥优缺点，配置、介绍等基本信息,
+
+从硬件开始说起 edison vs 单片机; 本地设计语言c vs nodejs , 传感器选择 sensors vs i2c(套装vs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/graduation/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="毕业设计初稿，总结，大致主内容
+主要用到了以下技术，从Edison到nodejs sokect.io 再到 mysql设计，最后是后台页面 + laravel
+总体架构 : 图文,通信等
+edison : 选型准则，和同类拥有啥优缺点，配置、介绍等基本信息,
+
+从硬件开始说起 edison vs 单片机; 本地设计语言c vs nodejs , 传感器选择 sensors vs i2c(套装vs">
+<meta property="og:updated_time" content="2016-03-16T14:13:33.994Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="毕业设计初稿，总结，大致主内容
+主要用到了以下技术，从Edison到nodejs sokect.io 再到 mysql设计，最后是后台页面 + laravel
+总体架构 : 图文,通信等
+edison : 选型准则，和同类拥有啥优缺点，配置、介绍等基本信息,
+
+从硬件开始说起 edison vs 单片机; 本地设计语言c vs nodejs , 传感器选择 sensors vs i2c(套装vs">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-graduation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/graduation/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.280Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="毕业设计初稿，总结，大致主内容"><a href="#毕业设计初稿，总结，大致主内容" class="headerlink" title="毕业设计初稿，总结，大致主内容"></a>毕业设计初稿，总结，大致主内容</h4><hr>
+<h5 id="主要用到了以下技术，从Edison到nodejs-sokect-io-再到-mysql设计，最后是后台页面-laravel"><a href="#主要用到了以下技术，从Edison到nodejs-sokect-io-再到-mysql设计，最后是后台页面-laravel" class="headerlink" title="主要用到了以下技术，从Edison到nodejs sokect.io 再到 mysql设计，最后是后台页面 + laravel"></a>主要用到了以下技术，从Edison到nodejs sokect.io 再到 mysql设计，最后是后台页面 + laravel</h5><ul>
+<li>总体架构 : 图文,通信等</li>
+<li><p>edison : 选型准则，和同类拥有啥优缺点，配置、介绍等基本信息,</p>
+<ul>
+<li>从硬件开始说起 edison vs 单片机; 本地设计语言c vs nodejs , 传感器选择 sensors vs i2c(套装vs 其他散买)执行器; 软件,编程语言，数据结构(json vs xml)，数据库(mysql vs moongodb)， 网络服务方案(双服务器), 数据通信接口方案(soap vs restful)，数据可视化图库,(ecahrts vs hinghtchart)</li>
+</ul>
+</li>
+<li><p>开发语言 : nodejs 选型准则，支持异步，可以同时实现多个传感器信息并发采集，不用利用多线程。</p>
+</li>
+<li><p>安装edison,    </p>
+</li>
+<li>要收集的信息有 : co2, NH3, temp, humidity, voice, light; 主要收集逻辑: 每个传感器就是一个独立的个体类， 它的行为是: 采集 =&gt; 转化 =&gt; 判断是否处于某个值(低中高) =&gt; 设定当前环境状态 =&gt; 自我循环</li>
+<li>需要控制的动作有 : 电机，电灯，加热棒，步进电机: 每个制动器都是独立的个体，依赖的是传感器采集状态来实现自我调整工作状态：查询传感器状态 =&gt; 逻辑确定自身运行状态 =&gt; 设定当前运行状态值 =&gt; 自我循环</li>
+<li><em>如果更高明的，应该是触发循环，即只有一个或者少量触发信号使其循环，不过这样会使代码难以实现，而且可以思考一下，在c中怎么实现不同传感器和执行器之间的独立却又协同工作</em></li>
+<li>传感器驱动制作 : i2c的时序问题，以及Edison的外围接口控制实现简介</li>
+<li>实现本地数据保存 : 使用python 编程，为什么使用Python，以及代码逻辑 : 判断是否今天的工作簿子存在，如果存在就放置1，如果不存在就0，(还是得每次判断，不然机器不知道今天是否为明天，，，), =&gt; 创建excel =&gt; 写入excel; nodejs如果通过exec () 开子进程调用py代码</li>
+<li>实现数据上传到ubidots,简介ubidots , 以及如何做它的数据接口客户端，以及界面截图，数据结构分析，怎样利用它的数据结构来实现自己的结构</li>
+</ul>
+<h5 id="以上是在本地系统的主要内容，下面是网络实时接口和服务器的搭建。"><a href="#以上是在本地系统的主要内容，下面是网络实时接口和服务器的搭建。" class="headerlink" title="以上是在本地系统的主要内容，下面是网络实时接口和服务器的搭建。"></a>以上是在本地系统的主要内容，下面是网络实时接口和服务器的搭建。</h5><ul>
+<li>先讲解整体架构：要用到的内容进行简介，然后讲实现逻辑图,nodejs sokect.io  以及数据库设计，再讲解edsion和网页端如何通信 路由: 实时路由，以及多个图表路由，echarts解释</li>
+<li>最后是laravel 逻辑和响应式网页的设计 : 查询历史， 添加传感器，系统管理</li>
+</ul>
+<h5 id="撰写规范"><a href="#撰写规范" class="headerlink" title="撰写规范"></a>撰写规范</h5><h5 id="摘要-文前内容"><a href="#摘要-文前内容" class="headerlink" title="摘要,文前内容"></a>摘要,文前内容</h5><p>简述物联网、农业、趋势、健康（系统设置的意义是为了提高产量和解决某种存在的问题，或者提高某种功能），然后说主要研究内容，如从选型到硬件到软件</p>
+<h5 id="第一章，绪论-包括1-1前言，1-2现状，1-3-研究意义，1-4主要内容和设计目标"><a href="#第一章，绪论-包括1-1前言，1-2现状，1-3-研究意义，1-4主要内容和设计目标" class="headerlink" title="第一章，绪论,包括1.1前言，1.2现状，1.3 研究意义，1.4主要内容和设计目标"></a>第一章，绪论,包括1.1前言，1.2现状，1.3 研究意义，1.4主要内容和设计目标</h5><ol>
+<li>前言是历史背景。</li>
+<li>现状是国内外研究现状</li>
+<li>因为存在影响和问题，所以要研究，如温湿度对生长环境有影响</li>
+<li>主要研究内容，技术路线等。</li>
+</ol>
+<h5 id="第二章，-整个系统的总体设计"><a href="#第二章，-整个系统的总体设计" class="headerlink" title="第二章， 整个系统的总体设计"></a>第二章， 整个系统的总体设计</h5><ol>
+<li>先说明整体架构</li>
+<li>然后是总体选型,并不需要对每个东西进行比较。但要有图，以及参数图</li>
+</ol>
+<h5 id="第n章"><a href="#第n章" class="headerlink" title="第n章"></a>第n章</h5><ol>
+<li>每一章都介绍一大块内容,标题是某某某设计,更多是讲解实现逻辑，以及贴少量代码，和要有程序框图.,最后是小结</li>
+</ol>
+<h5 id="结论与展望"><a href="#结论与展望" class="headerlink" title="结论与展望"></a>结论与展望</h5><h5 id="文献"><a href="#文献" class="headerlink" title="文献"></a>文献</h5>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/graduation/" data-id="ciztqajj1000l48ddnsam9l7l" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/gulp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/goGramer/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">go lang 的学习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

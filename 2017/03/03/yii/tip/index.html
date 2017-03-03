@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>some tips for yii learn | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="架构方法主要架构方法是利用一个数组配置一个类，一个配置文件中返回一个多维数组，数组的key是配置的项目区分，下一级key是一个要配置、要使用的类，与平级的相当于传入的init初始化值
+migration特殊方法migration中有一些创建数据库表字段的方便方法，这都是定义在QueryBuilder class 的$typeMap中
+行为behaviors绑定行为到一个组件、类中，那么这个行为的所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="some tips for yii learn">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/yii/tip/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="架构方法主要架构方法是利用一个数组配置一个类，一个配置文件中返回一个多维数组，数组的key是配置的项目区分，下一级key是一个要配置、要使用的类，与平级的相当于传入的init初始化值
+migration特殊方法migration中有一些创建数据库表字段的方便方法，这都是定义在QueryBuilder class 的$typeMap中
+行为behaviors绑定行为到一个组件、类中，那么这个行为的所">
+<meta property="og:updated_time" content="2016-09-15T02:39:36.923Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="some tips for yii learn">
+<meta name="twitter:description" content="架构方法主要架构方法是利用一个数组配置一个类，一个配置文件中返回一个多维数组，数组的key是配置的项目区分，下一级key是一个要配置、要使用的类，与平级的相当于传入的init初始化值
+migration特殊方法migration中有一些创建数据库表字段的方便方法，这都是定义在QueryBuilder class 的$typeMap中
+行为behaviors绑定行为到一个组件、类中，那么这个行为的所">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-yii/tip" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/yii/tip/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.261Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      some tips for yii learn
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="架构方法"><a href="#架构方法" class="headerlink" title="架构方法"></a>架构方法</h4><p>主要架构方法是利用一个数组配置一个类，一个配置文件中返回一个多维数组，数组的key是配置的项目区分，下一级key是一个要配置、要使用的类，与平级的相当于传入的init初始化值</p>
+<h4 id="migration特殊方法"><a href="#migration特殊方法" class="headerlink" title="migration特殊方法"></a>migration特殊方法</h4><p>migration中有一些创建数据库表字段的方便方法，这都是定义在QueryBuilder class 的$typeMap中</p>
+<h4 id="行为behaviors"><a href="#行为behaviors" class="headerlink" title="行为behaviors"></a>行为behaviors</h4><p>绑定行为到一个组件、类中，那么这个行为的所有属性和方法就相当于在该类本身中一样，是trait用法的一个扩展。但是它可以响应附着类的事件。</p>
+<p>有些行为里面的方法会在绑定到类后自动运行，因为它实现了类中的某个事件。行为也是一个类的对象。</p>
+<p>上述思维真正的姿势是，behavior类里面有个events方法，这里定义了该behavior中的那些方法会在它附着的类中的某个事件时自动触发。</p>
+<h5 id="controller中filter是behavior"><a href="#controller中filter是behavior" class="headerlink" title="controller中filter是behavior"></a>controller中filter是behavior</h5><p>filter 实际上也是一组behaviors,filter中规定了在controller,等类中什么时候使用该filter,filter默认在controller中对每个action执行,因为它有before action after action方法。</p>
+<p>filter类似中间件，有before after方法,filter可以配置only, eccept属性，可以确定应用在哪个action，在moudle中使用filter时，对应routes属性，可以配置只在哪个路由中应用。</p>
+<p>filter用在user验证中，会从上到下一一匹配应用规则。</p>
+<h4 id="一些包的用法"><a href="#一些包的用法" class="headerlink" title="一些包的用法"></a>一些包的用法</h4><p>yii 中自带了captcha组件，该组件的用法是，获取路由是在控制器中的actions 定义，然后就是视图中调用一个助手组件获取，认证是在表单对应模型的rules中</p>
+<h4 id="model中有两个model-一个是无数据库相关，即form-一个是active-record-这个是与数据库相关，一般是表单如果能直接关联数据库，那么简单的逻辑的会直接用ar-但是如果是比较复杂的会先表单关联form-model-然后form-model间接调用与数据库相关的逻辑，"><a href="#model中有两个model-一个是无数据库相关，即form-一个是active-record-这个是与数据库相关，一般是表单如果能直接关联数据库，那么简单的逻辑的会直接用ar-但是如果是比较复杂的会先表单关联form-model-然后form-model间接调用与数据库相关的逻辑，" class="headerlink" title="model中有两个model,一个是无数据库相关，即form, 一个是active record,这个是与数据库相关，一般是表单如果能直接关联数据库，那么简单的逻辑的会直接用ar,但是如果是比较复杂的会先表单关联form model,然后form model间接调用与数据库相关的逻辑，"></a>model中有两个model,一个是无数据库相关，即form, 一个是active record,这个是与数据库相关，一般是表单如果能直接关联数据库，那么简单的逻辑的会直接用ar,但是如果是比较复杂的会先表单关联form model,然后form model间接调用与数据库相关的逻辑，</h4><h5 id="ar-相关用法剪辑"><a href="#ar-相关用法剪辑" class="headerlink" title="ar 相关用法剪辑"></a>ar 相关用法剪辑</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// static 是因为为静态方法,这里直接把实例存入model中</div><div class="line">return static::findOne($id);</div><div class="line">//return static::findOne([&apos;access_token&apos; =&gt; $token]); //另外用法</div><div class="line">return static::findOne([&apos;access_token&apos; =&gt; $token]);</div></pre></td></tr></table></figure>
+<h5 id="如果一个模型被多个场景利用，如User-model可以登录，注册，而且登录注册的明显区别是，-label会不一样，相关性是都是需要对User表操作，那么更好的方法是定义两个中间model-这样会比使用场景好多了。"><a href="#如果一个模型被多个场景利用，如User-model可以登录，注册，而且登录注册的明显区别是，-label会不一样，相关性是都是需要对User表操作，那么更好的方法是定义两个中间model-这样会比使用场景好多了。" class="headerlink" title="如果一个模型被多个场景利用，如User model可以登录，注册，而且登录注册的明显区别是， label会不一样，相关性是都是需要对User表操作，那么更好的方法是定义两个中间model,这样会比使用场景好多了。"></a>如果一个模型被多个场景利用，如User model可以登录，注册，而且登录注册的明显区别是， label会不一样，相关性是都是需要对User表操作，那么更好的方法是定义两个中间model,这样会比使用场景好多了。</h5><p>注意：model的属性因为并没有和数据表相关，所以要自己定义，但是如user ar model所有属性会和数据表相关，因此不用显式定义数据表里面的属性</p>
+<p><strong><em>  上面提到的，反而理解错误了，ar内不能重新定义与数据表字段一样的属性！ ，否则报错 </em></strong></p>
+<h5 id="对于不知名，无显示文档的用法，需要在yii页面查找一下类的帮助文档，并且结合已有模仿使用。"><a href="#对于不知名，无显示文档的用法，需要在yii页面查找一下类的帮助文档，并且结合已有模仿使用。" class="headerlink" title="对于不知名，无显示文档的用法，需要在yii页面查找一下类的帮助文档，并且结合已有模仿使用。"></a>对于不知名，无显示文档的用法，需要在yii页面查找一下类的帮助文档，并且结合已有模仿使用。</h5><h5 id="try-catch-防止异常"><a href="#try-catch-防止异常" class="headerlink" title="try catch 防止异常"></a>try catch 防止异常</h5><h5 id="yii-获取状态标识"><a href="#yii-获取状态标识" class="headerlink" title="yii 获取状态标识"></a>yii 获取状态标识</h5><ol>
+<li>获取controller id<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// 获取controller name</div><div class="line">$this-&gt;getId() // controller中运行得到当前controller id</div><div class="line">$name = Yii::app()-&gt;controller-&gt;id // 在视图中</div><div class="line"></div><div class="line">// 获取action name</div><div class="line">// 应该在beforeAction() 中运行</div><div class="line">$name = $action-&gt;id;</div><div class="line"></div><div class="line">$this-&gt;getAction-&gt;getId;</div><div class="line"></div><div class="line">视图中获取当前模块id</div><div class="line">$this-&gt;module-&gt;id;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="filters-中间件，所有请求必然是先过application-module-controller-，filter是运行在controller中，当在application-module中定义了filter时，该filter将会在其所属的action-下全部使用"><a href="#filters-中间件，所有请求必然是先过application-module-controller-，filter是运行在controller中，当在application-module中定义了filter时，该filter将会在其所属的action-下全部使用" class="headerlink" title="filters 中间件，所有请求必然是先过application , module , controller ，filter是运行在controller中，当在application, module中定义了filter时，该filter将会在其所属的action 下全部使用"></a>filters 中间件，所有请求必然是先过application , module , controller ，filter是运行在controller中，当在application, module中定义了filter时，该filter将会在其所属的action 下全部使用</h5><h5 id="http-状态码"><a href="#http-状态码" class="headerlink" title="http 状态码"></a>http 状态码</h5><p>403 不准访问<br>401 未授权o</p>
+<h5 id="redirect-后面的url需要用助手生成"><a href="#redirect-后面的url需要用助手生成" class="headerlink" title="redirect ,后面的url需要用助手生成"></a>redirect ,后面的url需要用助手生成</h5><h5 id="filters-使用"><a href="#filters-使用" class="headerlink" title="filters 使用"></a>filters 使用</h5><p>filters应该写在behaviors 方法里面，一定要参考原始出现的方法,并且不能在一个controller内置空behaviors</p>
+<h5 id="php-list方法"><a href="#php-list方法" class="headerlink" title="php list方法"></a>php list方法</h5><p>list ($id, $authKey, $duration) = $data;</p>
+<h5 id="model-gt-load-方法可以多赋值。"><a href="#model-gt-load-方法可以多赋值。" class="headerlink" title="$model-&gt;load()方法可以多赋值。"></a>$model-&gt;load()方法可以多赋值。</h5><p>但是如果生明了一个属性为unsafe时，该属性就不会被load()方法赋值，如果需要对该属性赋值，需要调用$model-&gt; 方法显性赋值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">可以在model中使用rules对某个属性设定为非安全的，另外，非安全属性也可以将其设定为private;</div></pre></td></tr></table></figure></p>
+<h5 id="model-必须自带rules方法，不然无法通过load方法多赋值"><a href="#model-必须自带rules方法，不然无法通过load方法多赋值" class="headerlink" title="model 必须自带rules方法，不然无法通过load方法多赋值"></a>model 必须自带rules方法，不然无法通过load方法多赋值</h5><p>连续创建多个数据行时，要注意需要重新实例化多个实例</p>
+<h5 id="php-循环方法-数组判断是否存在"><a href="#php-循环方法-数组判断是否存在" class="headerlink" title="php 循环方法,数组判断是否存在"></a>php 循环方法,数组判断是否存在</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// for 循环, foreach( $array as $key =&gt; $val )</div><div class="line"></div><div class="line">或者 if( in_array( &apos;string&apos;, array ) ) //  判断数组中是否存在 这个string</div></pre></td></tr></table></figure>
+<h5 id="haitou-等advanced的安装"><a href="#haitou-等advanced的安装" class="headerlink" title="haitou,等advanced的安装"></a>haitou,等advanced的安装</h5><p>advance  中将各个应用独立起来，各个应用有个公用的模块，以及写公用的脚本，composer.json等，还有一个vendor目录</p>
+<p>每个应用对应不同的域名，通过在vhosts总配置不同的域名可以抵达该应用的web，index.php文件，该文件里面配置了所有的启动逻辑</p>
+<ol>
+<li>首先需要调用vendor下 的auto-load文件，其中vendor目录是可以随意放置的，因为只要命名空间可以抵达到即可。</li>
+<li>然后应用内部会调用enviroment 目录下的配置文件，该目录也是可以自由放置的 ，只要找到就行。</li>
+<li>然后就进入本地的配置，即config/main.php,接着就是进行一些跟basic同样的事情了。</li>
+</ol>
+<p>advance 启动介绍</p>
+<p> advance 启动，域名定位到app  的web/index.php下：</p>
+<ol>
+<li>index.php 定义当前运行环境，dev,pro ; </li>
+<li>加载autoload Yii.php</li>
+<li>加载common/config/bootstrap文件，该文件主要是配一些数据库相关的配置</li>
+<li>加载/common/config/bootstrap 主要是定义一些独立app的目录别名</li>
+<li>加载/config/bootstrap 因为该目录是独立应用下的目录，主要加载自己定义的启动配置，可为空。</li>
+<li>加载common目录和app目录下的main main-local配置文件，这两主要是分公共使用及非公共使用，主要定义一些组件，类的使用的路径、配置信息等. app/config/main文件还可以自己引入一些param, param-local配置参数文件。配置参数文件, 还要配置当前app使用的控制器命名空间等独立应用信息。 </li>
+<li>引入配置文件，common/config/main </li>
+</ol>
+<p>enviroment 文件夹里面存着所有app的文件，作用是保存着所有app的配置文件， 当开始使用php init时，就是yii中的一个初始化，即把enviroment文件下的内容复制到相应的app的config目录下。</p>
+<p>compenent 一般在启动时会开启一些组件类，如db, url, mail等类，主要用来全局使用，另外还可以配置多个类似的db类，在ar中重写getDb() 方法来使用。</p>
+<h5 id="类的使用，其实在所有代码中，都是一种对类的使用。"><a href="#类的使用，其实在所有代码中，都是一种对类的使用。" class="headerlink" title="类的使用，其实在所有代码中，都是一种对类的使用。"></a>类的使用，其实在所有代码中，都是一种对类的使用。</h5><p>类的配置可以在compenent 中，写在compenent的config中时，是和__contruct函数写是一个道理，当然所有配置都可以在拿到该类的实例后重新配置。</p>
+<h5 id="component"><a href="#component" class="headerlink" title="component"></a>component</h5><p>yii 中自带了一个yii\base\Object, 提供了一个适用于yii的最基本的类（php中类就当对象来用吧）中类就当对象来用吧。</p>
+<p>还有一个组件原始类，yii\base\component ,从base 类中继承而来的。</p>
+<p>这些类内置了很多方便的有用的内容，如event,behavior;yii有个创建类的实例的方法，也就是类似laravel中的容器，yii::createObj([class, params]);</p>
+<p>yii中实现了setter , getter方法，方便监听在取值，赋值时的行为，是php内置来实现的。类似魔法方法之类。</p>
+<p>yii scenarios 场景，最初作用是，可以定义场景，当选择某一个场景时，只选择有限个可用的property, 以及这些property可以直接同时多个赋值。</p>
+<p>yii 中用behaviors作为扩展类的一个类似trait的东西， filters是传统的过滤器。</p>
+<h5 id="区别rules和behaviors"><a href="#区别rules和behaviors" class="headerlink" title="区别rules和behaviors"></a>区别rules和behaviors</h5><p>rules 是一组中间件，每次经过继承了base/model基类的类中时，都会自动调用rules内定义的验证规则（这些规则是由相应的验证类的方法实现的）。通过调用validate方法使用里面的验证方法，验证是否通过决定了能否进一步进入更深的逻辑。</p>
+<p>validate 方法调用时的执行流程：按数组最外边的key决定是哪个属性，然后对该属性应用相应的验证器，是否成功，如果成功继续下一步。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// rules 的内容是一个多级数组，决定了model内每个属性的验证规则，以及可以决定在某个场景下的属性的验证规则。</div><div class="line"></div><div class="line">public function rules()</div><div class="line">&#123;</div><div class="line">    return [</div><div class="line">        // username, email and password are all required in &quot;register&quot; scenario</div><div class="line">        [[&apos;username&apos;, &apos;email&apos;, &apos;password&apos;], &apos;required&apos;, &apos;on&apos; =&gt; self::SCENARIO_REGISTER],</div><div class="line"></div><div class="line">        // username and password are required in &quot;login&quot; scenario</div><div class="line">        [[&apos;username&apos;, &apos;password&apos;], &apos;required&apos;, &apos;on&apos; =&gt; self::SCENARIO_LOGIN], //self::SCENARIO_LOGIN 是本身的静态属性。</div><div class="line">    ];</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 在rules中定义验证规则的格式如下</div><div class="line">[ [&apos;attribute1&apos;, attribute2], &apos;validator&apos;(是一个内置验证器别名，或者一个类名), &apos;on&apos; =&gt; [&apos;scenario1&apos;, scenario2](场景名), &apos;property1&apos; =&gt; &apos;value1&apos;, (定制对眼实例化的验证类的属性值) ];</div><div class="line"></div><div class="line">每个属性的rule不仅仅是验证功能，还可以对表单值预处理.</div></pre></td></tr></table></figure>
+<p>做自己的验证器,继承验证基类，并重写对应的方法。</p>
+<h5 id="使用gii生成代码"><a href="#使用gii生成代码" class="headerlink" title="使用gii生成代码"></a>使用gii生成代码</h5><p>gii是yii下的一个模块，配置引用在$config变量下的modules属性中</p>
+<p>gii可以针对每一个表来生成crud代码，自带分页、查询，非常方便强大</p>
+<p>注意在advance中，命名空间是以app名起头，如frontend</p>
+<p>php url： urlencode, urldecode</p>
+<h5 id="多表单，批量赋值"><a href="#多表单，批量赋值" class="headerlink" title="多表单，批量赋值"></a>多表单，批量赋值</h5><p>批量赋值指：同时像同一张表中插入多条数据，每条数据对应一个model，还有每个model都可以动态添加，验证，save等. </p>
+<p>还有一种多表单，就是一个页面有多个表单，每个表单对应不同的model,这不同的model来自不同的表.视图方面，考虑一个表单，多个表单域。然后可以通过$app-&gt;request-&gt;post(‘fieldName’, []); 或者直接$app-&gt;request-&gt;load()就可以自动把特定的域装进特定的模型中了。</p>
+<h5 id="数据库数据获取到展示过程"><a href="#数据库数据获取到展示过程" class="headerlink" title="数据库数据获取到展示过程"></a>数据库数据获取到展示过程</h5><ol>
+<li>由请求参数决定后续操作</li>
+<li>利用$query封装查询语句</li>
+<li>把query装载入dataprovider,dataprovider其实就是进一步构建查询语句</li>
+<li>接下来就是排序，sort对象用来对上面的结果来排序. dataprovider的sort属性封装了该对象</li>
+<li>最后装入datawiget</li>
+</ol>
+<h5 id="yii中的interface-trait-class"><a href="#yii中的interface-trait-class" class="headerlink" title="yii中的interface, trait, class"></a>yii中的interface, trait, class</h5><p>interface是接口，定义了一些主要的公共方法，接口就会有多个类实现它，类实现接口是包容关系，即实现它的类可以有比接口声明更多的方法，因此，php中可以用基类来实现一部分公共的方法，然后用继承来继承它，从而拥有更多的功能，但是php中有个trait，trait可以更容易的共享代码，省去了继承的麻烦。</p>
+<h5 id="yii统一命名规则"><a href="#yii统一命名规则" class="headerlink" title="yii统一命名规则"></a>yii统一命名规则</h5><p>数据库：骆驼峰<br>表：<em>下划线<br>表的字段：</em><br>中间表：tbl_user_market market_id, user_id<br>控制器、model：首字母大写骆驼峰<br>视图：首字母小写骆驼峰<br>controller, model, view 的id，用-联结</p>
+<h5 id="yii-一对一，多对对，一对多关系声明"><a href="#yii-一对一，多对对，一对多关系声明" class="headerlink" title="yii,一对一，多对对，一对多关系声明"></a>yii,一对一，多对对，一对多关系声明</h5><p>必须首先理解查询的本质<br>一对一: user: id name ; profile id content userId<br>那么查询的时候，在user中查profile, 需要select profile * where userId = id<br>yii中User model声明: getProfile() hasOne(Profile, [‘userId’ =&gt; ‘id’]);</p>
+<p>需要在profile中找user， select user * where id = userId<br>yii中getUser() hasOne( User, [ ‘id’ =&gt; ‘userId’ ] );</p>
+<p>一对多：user: id name ; posts: id content userId<br>user中查询多个文章: select posts <em> where userId = id<br>yii中 User model hasMany( Post, [ ‘userId’ =&gt; id ] );<br>逆向， select user </em> where id = userId<br>yii中getUser() hasOne( User, [ ‘id’ =&gt; ‘userId’ ] );</p>
+<p>多对多</p>
+<p>user: id name ; market : id name ; tbl_user_market : id userId marketId</p>
+<p>user中查询多个market:<br>select tabel tbl_user_market market_id where user_id = id<br>select tabel market where id = market_id</p>
+<p>yii的User model : hasMany( Market, [ ‘id’ =&gt; ‘market_id’ ] )-viaTable(‘tbl_user_market’, [‘user_id’ =&gt; ‘id’]);</p>
+<p>实际上就是构造了两条查询语句，简化操作而已。。。</p>
+<p>插入跟新时，先在user表插入，再在market表插入，然后再在tbl_user_market中插入user_id , market_id; yii中也提供了简洁方法，即$user-save(), $market-&gt;save() ,<br>$user-&gt;link(‘markets’, $market) ;自动对junction表进行更新<br>即取出两个关联的模型，(可以用find方法取出，不管有没有运行save);</p>
+<p><strong>本质</strong>就是根据表的结构构建一个查询语句而已, 如<br>一对多: user: id name postId ; post: id content</p>
+<p>仍然是一对多，但是表的结构变化了，user中查post: select post * where id = postId; 因此yii中的hasMany(‘Post’, [ ‘id’ =&gt; ‘postId’ ]);</p>
+<p>反过来， select user * where postId = id , yii中hasOne也同样构造</p>
+<p>hasMany 方法就是当前记录集中findOne(1) 中的数据是多个，然后需要在另一表中对着多个都进行查询</p>
+<h5 id="routes-路由"><a href="#routes-路由" class="headerlink" title="routes 路由"></a>routes 路由</h5><p>yii 中路由非常方便，因为有了默认的路由组件来管理，默认的路由组件负责把url解析，并按照默认的规则寻找controller和view，同时可以自己指定自己的url解析规则，来覆盖掉默认的解析规则。</p>
+<p>路由配置方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// 同时配置多个路由，特定路由有特定的规则</div><div class="line">[</div><div class="line">    // &lt;name: RegExp&gt; 架构,如果不指定正则，如&lt;name&gt; 就是指url?name=&apos;string&apos;,只要是没有下划线的都可以,(这里其实不完全是/ 规则，在没有/规则时，用?开始实现参数)</div><div class="line">    &apos;posts/&lt;year:\d&#123;4&#125;&gt;/&lt;category&gt;&apos; =&gt; &apos;post/index&apos;,</div><div class="line">    &apos;posts&apos; =&gt; &apos;post/index&apos;,</div><div class="line">    &apos;post/&lt;id:\d+&gt;&apos; =&gt; &apos;post/view&apos;,</div><div class="line">    // 或者</div><div class="line">    [</div><div class="line">    &apos;pattern&apos; =&gt; &apos;posts/&lt;page:\d+&gt;/&lt;tag&gt;&apos;,</div><div class="line">    &apos;route&apos; =&gt; &apos;post/index&apos;,</div><div class="line">    &apos;defaults&apos; =&gt; [&apos;page&apos; =&gt; 1, &apos;tag&apos; =&gt; &apos;&apos;],</div><div class="line">],</div><div class="line">]</div><div class="line"></div><div class="line">当然，还可以集成controller, view 参数在里面，更方便</div></pre></td></tr></table></figure></p>
+<p>// 集成<br>[<br>    ‘<controller:(post|comment)>/<id:\d+>/<action:(create|update|delete)>‘ =&gt; ‘<controller>/<action>‘,<br>    ‘<controller:(post|comment)>/<id:\d+>‘ =&gt; ‘<controller>/view’,<br>    ‘<controller:(post|comment)>s’ =&gt; ‘<controller>/index’,<br>]</controller></controller:(post|comment)></controller></id:\d+></controller:(post|comment)></action></controller></action:(create|update|delete)></id:\d+></controller:(post|comment)></p>
+<p>// 还有更高端的，链接前缀匹配</p>
+<p>[<br>// 该路由前缀直接匹配到后面的实际位置<br>    ‘<a href="http://admin.example.com/login" target="_blank" rel="external">http://admin.example.com/login</a>‘ =&gt; ‘admin/user/login’,<br>    ‘<a href="http://www.example.com/login" target="_blank" rel="external">http://www.example.com/login</a>‘ =&gt; ‘site/login’,<br>]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">每个路由都是一个UrlRoute类的实例，该类用来解析路由，而UrlManager是用来管理路由类的。UrlRoute中有个重要的属性$host ;用来配置虚拟主机，也就是如果项目部署在/wwwroot/app/web 下，又不想改虚拟主机配置，就可以修改路由配置，配置每个路由的虚拟主机为www.com/app/web ，这样就可以啦！</div><div class="line"></div><div class="line"></div><div class="line">Yii中通用配置，数组，第一个参数是类名，后面的参数是配置，如果第一个参数不是类名，就是默认的类</div><div class="line"></div><div class="line"></div><div class="line">##### Yii中重要的东西:components object </div><div class="line"></div><div class="line">object是yii扩展普通类的的东西，有_get,_set等方法，而components是更高级的类，有事件event 和 behavior ,事件可以用来在类的使用时自动化某个方法的调用，而behavior就像是对类的扩展一样，使该类就像拥有该behavior里面的属性和方法一样</div><div class="line"></div><div class="line">object基类有属性特点，属性特点就是说，比如getLabel这些方法，会在取值时自动运行，达到更好的自定义取值</div><div class="line"></div><div class="line"></div><div class="line">##### php 接口</div><div class="line">接口和其他的一样，只有方法，但是可有静态常量，实现接口的类必须实现接口的所有方法，实现接口的类的属性可以各不相同，如果类并没有实现接口的全部方法，必须将此类定义为抽象类。</div><div class="line"></div><div class="line">一个类可以实现多个接口</div><div class="line"></div><div class="line">js中，接口就看做是一个类型约定。</div><div class="line"></div><div class="line">*抽象类*</div></pre></td></tr></table></figure></p>
+<p>abstract class AbstractClass<br>{<br>    // 我们的抽象方法仅需要定义需要的参数<br>    abstract protected function prefixName($name);</p>
+<p>}</p>
+<p>class ConcreteClass extends AbstractClass<br>{</p>
+<pre><code>// 我们的子类可以定义父类签名中不存在的可选参数
+public function prefixName($name, $separator = &quot;.&quot;) {
+    if ($name == &quot;Pacman&quot;) {
+        $prefix = &quot;Mr&quot;;
+    } elseif ($name == &quot;Pacwoman&quot;) {
+        $prefix = &quot;Mrs&quot;;
+    } else {
+        $prefix = &quot;&quot;;
+    }
+    return &quot;{$prefix}{$separator} {$name}&quot;;
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">抽象类和接口一样，实际上都只是优化代码作用，接口和抽象类都是无法实例化的，抽象类是被子类extend的，抽象类里面声明的protectd 方法是必须被子类实现的，并且子类实现 abstract protected方法时，可以增加一些可选参数; public方法可以随意</div><div class="line"></div><div class="line">##### yii依赖注入机制 </div><div class="line"></div><div class="line">ioc容器：用来装所有的实例的东西，可以在该容器里面注册类A，该类如果依赖其他类B，就在该类构造器中用类型声明，然后就可以从ioc 中直接取出A,并且这个A是拿到了B的实例了。这个ioc容器就是一个yii\di\container实例</div><div class="line"></div><div class="line">Yii的全局配置，如配置各种组件，参数，其实就是往全局Yii(ioc容器实例)里面注册类，和该类的别名，然后使用Yii:$app方法就可以取出，所有这些注册了的类都是单一的,因为yii这个全局的ioc容器，有点特殊，它是yii\di\Servilocator的实例,不知道有没有依赖注入功能？</div><div class="line"></div><div class="line">Yii中的全局组件的配置，可以在代码运行后重新配置，如在modlue中的init方法，一般需要巧妙设置， 配置越前越早越好</div><div class="line"></div><div class="line">可以自定义全局组件，但是要注意的是事件处理器应该提前注册,注册方法是自定义的使用直接$ob-&gt;on来注册(如果是行为),如果是组件绑定行为可能可以用on enventName 来注册，注意直接返回了一个实例,因此没有</div></pre></td></tr></table></figure></p>
+<p>//如在程序某个地方</p>
+<p>\Yii::$container-&gt;set(‘yii\widgets\LinkPager’, [‘maxButtonCount’ =&gt; 5]);<br>可以对全局类进行重新配置<br>```</p>
+<p>注册ioc时，并不需要同时声明该类的实例化方法，因为有默认的实例化方法，至于特殊的实例化方法是需要声明的。应该是在?</p>
+<h5 id="yii-中的user组件"><a href="#yii-中的user组件" class="headerlink" title="yii 中的user组件"></a>yii 中的user组件</h5><p>user组件是利用依赖注入来实现类的实例化的</p>
+<p>使用user组件可以实现登录，验证, 一个user, 只需要配置好验证逻辑，给定一个要登录的用户实例就可以验证了,其他的事，如验证cookie，设定cookie等都有yii自动执行</p>
+<p>密码验证层在自己上，其他cookie、后续权限控制层是在yii手上</p>
+<p>一般流程如下</p>
+<ol>
+<li><p>用户登录页面，传递账号密码，我方代码认证成功，yii根据配置配好session、cookie等，用户2次登录，可以先判断是否存在登录用户，即isGuest;</p>
+</li>
+<li><p>查找登录用户是否存在，在认证后，往往需要知道登录用户信息，所以需要实现findIntendify逻辑，用来找到并session全局存一个用户身份，如果是手机需要实现手机的</p>
+</li>
+</ol>
+<p>3.如果是手机验证，使用base auth用户身份不会存在session中，而是每次都会findIndentityByAsseToeken</p>
+<ol>
+<li>在需要用到验证的地方，加入behaviors即类似中间件。即可控制</li>
+</ol>
+<h5 id="yii中各种函数、各种类的用法"><a href="#yii中各种函数、各种类的用法" class="headerlink" title="yii中各种函数、各种类的用法"></a>yii中各种函数、各种类的用法</h5><p>一个基类会被很多高级类继承，基类中的方法常常被重写，但是实现的功能是一样的，即输入和输出是大同小异的。看底层代码时，应追求快的节奏，即知道怎么用，是用来干嘛的。至于深层的实现则不需要深究。因为同一个函数常常有太多实现了</p>
+<h5 id="yii-中的user模块，仅在session中缓存必要的数据，并不对整个对象就像缓存，还是从数据库里面读的"><a href="#yii-中的user模块，仅在session中缓存必要的数据，并不对整个对象就像缓存，还是从数据库里面读的" class="headerlink" title="yii 中的user模块，仅在session中缓存必要的数据，并不对整个对象就像缓存，还是从数据库里面读的"></a>yii 中的user模块，仅在session中缓存必要的数据，并不对整个对象就像缓存，还是从数据库里面读的</h5><p>只有绝对不变的少量值才在session中做缓存</p>
+<h5 id="foxmail"><a href="#foxmail" class="headerlink" title="foxmail"></a>foxmail</h5><p>pass cushlogphcobxvlm</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/yii/tip/" data-id="ciztqajmw002u48dd5i0roxfs" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/yii/yii/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          讲述yii的架构和一些有用用法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/yii/wiget/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

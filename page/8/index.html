@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-jiagou/basic" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/jiagou/basic/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.254Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="php应付高并发"><a href="#php应付高并发" class="headerlink" title="php应付高并发"></a>php应付高并发</h6><ol>
+<li>采用redis，或其他东西做一个队列层，并采用一个循环不断从队列中取出数据。<br><a href="http://blog.csdn.net/lz0426001/article/details/51441771" target="_blank" rel="external">参考</a></li>
+<li>php + redis 队列 + crontab<br><a href="http://blog.csdn.net/leafgw/article/details/50800153" target="_blank" rel="external">crontab使用</a>。分 时 天 月 星期 脚本</li>
+<li>mysql 高并发时，应列入队列，批量插入。同时用事务会比一条条插入要快。</li>
+<li>redis 主要有字符串(计数器、key-value存储)、哈希表（字典、json）、列表（队列）、集合（唯一性，交集）、可排序集合（分数、权重、排行榜）。</li>
+<li>灵活使用redis的数据结构设计key-value</li>
+<li>静态资源的部署，Md5取摘要，开启浏览器缓存，先部署静态资源到cdn，再部署页面。(注意部署间隔时期旧用户有浏览器缓存的和新用户没有浏览器缓存的看到的结果不一样)，于是采用非覆盖式部署方法，即对文件的命名使用摘要值，这样每发布一个文件就是新的文件，不会覆盖原来的文件。先全量部署资源，再部署页面即可</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/jiagou/basic/" data-id="ciztqajmj002j48ddb5nuq3j1" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ionic/tips" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/ionic/tips/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.253Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h5><ol>
+<li>跨域问题是因为浏览器的限制，区别不同域名不允许访问</li>
+<li>解决跨域方法jsonp，cros，一般现代浏览器已经允许cros，只需要后端配合，对于复杂的cros，浏览器先询问cors.domain看是否允许跨域，如果允许则返回相应的文件头，再进行真正的http请求。当然这里有个注意的是跨域cookie没有带去，所以需要一定的技术在请求头强制加入cookie，yii可能已经允许了</li>
+<li>设置代理，即将this.com/api通过代理转发到other.com/api上</li>
+<li><p>ionic中配置代理服务,ionic.config.json中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;proxies&quot;: [&#123;</div><div class="line">  &quot;path&quot;: &quot;/api&quot;,</div><div class="line">  &quot;proxyUrl&quot;: &quot;http://www.local.jiliha.com&quot;</div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+</li>
+<li><p>ionic运行在设备上，因为是直接通过//file:访问页面的，所以不存在跨域问题</p>
+</li>
+<li>ionic 的页面跳转可能会不允许非本站跳转，可以尝试whiteList插件</li>
+<li><p>参考<a href="http://www.cnblogs.com/aweifly/p/5647819.html" target="_blank" rel="external">cros跨域</a><br><a href="https://my.oschina.net/blogshi/blog/303758" target="_blank" rel="external">ng cros跨域</a><br><a href="http://ionichina.com/topic/54f051698cbbaa7a56a49f98" target="_blank" rel="external">代理跨域</a></p>
+</li>
+<li><p>用vscode编写ts，安装vim，js-css-format扩展<br> <em>format 使用方法，a+s+f 或者F1输入 Formatter得到配置文件
+ </em>C+p 可以输入一切想要的</p>
+</li>
+<li><p>常用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ionic serve </div><div class="line">ionic build minify</div></pre></td></tr></table></figure>
+</li>
+<li><p>必备插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">cordova-plugin-compat 1.1.0 &quot;Compat&quot;</div><div class="line">cordova-plugin-console 1.0.5 &quot;Console&quot;</div><div class="line">cordova-plugin-contacts 2.2.1 &quot;Contacts&quot;</div><div class="line">cordova-plugin-crosswalk-webview 2.2.0 &quot;Crosswalk WebView Engine&quot;</div><div class="line">cordova-plugin-device 1.1.4 &quot;Device&quot;</div><div class="line">cordova-plugin-splashscreen 4.0.1 &quot;Splashscreen&quot;</div><div class="line">cordova-plugin-statusbar 2.2.1 &quot;StatusBar&quot;</div><div class="line">cordova-plugin-whitelist 1.3.1 &quot;Whitelist&quot;</div><div class="line">ionic-plugin-keyboard 2.2.1 &quot;Keyboard&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改ionic cofing.xml文件，使Splashscreen 不自动隐藏</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/ionic/tips/" data-id="ciztqajmn002m48ddyf235s4u" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ionic/error" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/ionic/error/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.252Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>Cannot find control with unspecified name attribute，类中没有name这个属性，因为在构建form验证时，必须严格component(group)+template中的各个属性，名字对应</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/ionic/error/" data-id="ciztqajml002l48ddbu4945re" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ionic/basic" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/ionic/basic/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.252Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="基本环境的设定和配置"><a href="#基本环境的设定和配置" class="headerlink" title="基本环境的设定和配置"></a>基本环境的设定和配置</h5><ol>
+<li>nodejs 安装好</li>
+<li>安装阿里的源</li>
+<li>cnpm install -g ionic cordova</li>
+<li>ionic start –v2 projectName tabs</li>
+<li>如果4 遇到问题，切断后，cnpm install</li>
+<li>ionic serve试试问题</li>
+<li><p>安装java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Java_Home  D:\Java\jdk1.8.0_111</div><div class="line">CLASSPATH .;%Java_Home%\bin;%Java_Home%\lib\dt.jar;%Java_Home%\lib\tools.jar</div><div class="line">Path ;%Java_Home%\bin;%Java_Home%\jre\bin;</div><div class="line">Path C:\Users\Administrator\AppData\Local\Android\Sdk\tools;C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools</div><div class="line">ANDROID_HOME C:\Users\Administrator\AppData\Local\Android\Sdk</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装andoid studio ，安装后会自动整合Java_Home，选择common，安装好各种需要的东西</p>
+</li>
+<li>打开android studio，可以点击类似下载的箭头图标来安装相关android sdk包，skd里面有很多包，都是要安装的</li>
+<li><p>关键点，应付墙等<br><em>下载grandle-all.zip包，把该包放到upload下，并修改F:\mye\platforms\android\cordova\lib\builders\GradleBuilder.js的 var distributionUrl = process.env[‘CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL’] || ‘<a href="http://upload.local.jiliha.com/gradle-2.14.1-all.zip" target="_blank" rel="external">http://upload.local.jiliha.com/gradle-2.14.1-all.zip</a>‘;
+</em>修改F:\mye\platforms\android\CordovaLib\build.gradle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">repositories &#123;</div><div class="line">  jcenter &#123;url &quot;http://jcenter.bintray.com/&quot;&#125;</div><div class="line">  //  mavenCentral()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>*修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">repositories &#123;</div><div class="line">  jcenter &#123;url &quot;http://jcenter.bintray.com/&quot;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    classpath &apos;com.android.tools.build:gradle:2.2.0&apos;</div><div class="line">&#125;</div><div class="line"></div><div class="line">repositories &#123;</div><div class="line">  jcenter &#123;url &quot;http://jcenter.bintray.com/&quot;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>模拟器使用<br>；</p>
+</li>
+<li><p>添加crosswalk 支持</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cordova plugin add cordova-plugin-crosswalk-webview</div><div class="line">cordova build android</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装的插件有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whiteList 用于访问http，如果没有这个插件将无法访问http的</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/ionic/basic/" data-id="ciztqajmk002k48dd5luqulna" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-haitou/summary" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/haitou/summary/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.250Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="代码总结"><a href="#代码总结" class="headerlink" title="代码总结"></a>代码总结</h4><h5 id="jl模块"><a href="#jl模块" class="headerlink" title="jl模块"></a>jl模块</h5><p>将原来一个用户一份简历改为对多份</p>
+<ol>
+<li>利用hasMany() 对应多个，在resume model 的fields中加入关联hasMany(getSomeField)field，$models = findAll后，当调用yii的Json::encode($models)时会自动调用toArray方法，从而自动得到了和它关联的多个item，查询后findAll()取出</li>
+<li>对某个item编辑时，只需要传递id，简历id，根据action参数来觉得是修改还是删除，如果是新增，那就还需要在插入时加入简历id</li>
+<li>注意的在每次进行item编辑时，都要检查权限，如是否是用户本人操作<h5 id="wxx"><a href="#wxx" class="headerlink" title="wxx"></a>wxx</h5>加入了hr审核和修改官方公司模块</li>
+<li>利用gii生成最原始的model，searchForm，controller</li>
+<li>对1中的进行修改，dataProvider和gridView的使用</li>
+<li>注意在yii中的model，定义好scenario，以及rules，才能利用load方法向model中导入get，post数据，如果发现某个数据导入失败，应检查这两者，严格定义好合适的规则</li>
+<li>yii save失败原因是validat没有通过<h5 id="company"><a href="#company" class="headerlink" title="company"></a>company</h5>用户的注册登录、发布简章、简历模块、群管理模块</li>
+<li>企业注册登陆逻辑的调整，逻辑关键地方可以看代码注释</li>
+<li>发布简章、刷新简章逻辑的调整</li>
+<li>简历搜索加入了对userinfo的搜索，当搜索条件小于等于2时，用resume表搜索，否则用userinfo搜索，主要是Query中，alias,like,joinWith,(alias.collum)的使用</li>
+<li>简历导出加入了导出pdf，获取前台的搜索条件，得到resume ids后，利用yii render取得html，并用\mPDF转为pdf，php \zipArchive的使用，以及异步执行exec，用户无需等待即可返回，等完成后，系统发送通知</li>
+<li>群管理模块主要是gii+gridView，其中导入excel邀请用户注册，是对\phpExcel使用，首先获取用户信息数组，随后进行一系列逻辑判断知道发送email、短信邀请用户注册<h5 id="图片处理类"><a href="#图片处理类" class="headerlink" title="图片处理类"></a>图片处理类</h5></li>
+<li>imagine类，利用php imagine图片处理类库，从上往下扫描，以5px为步长根据设定容差判断图片像素是否是白点，遇到第一个不是白点后坐标缩小一个步长，步长变为1，继续寻找第一个不是白点，这个坐标即上边界</li>
+<li>以此类推，将图片顺时针旋转90，180,270度后，得到右，下，左边界坐标</li>
+<li>图片放入椭圆中，利用图片原来宽高比和焦半径公式算出缩放后的宽高</li>
+<li>paste, resize, getColorAt等方法使用<h5 id="几个简单的helper类"><a href="#几个简单的helper类" class="headerlink" title="几个简单的helper类"></a>几个简单的helper类</h5></li>
+<li>Emailhelper 用于发送邮件，注册邮件发送、注册码验证</li>
+<li>MessageHelper 用于发送消息，拉人入群等</li>
+<li>FileUploadHelper 文件上传放入以年月日为级别的目录下，并返回下载链接</li>
+<li>可以看下代码注释<h5 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h5></li>
+<li>批量拉人入群，批量制作群图标，发送公告等console操作。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/haitou/summary/" data-id="ciztqajmh002h48ddgqoewxgn" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-haitou/thingsDo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/haitou/thingsDo/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.250Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="在海投就职做的事"><a href="#在海投就职做的事" class="headerlink" title="在海投就职做的事"></a>在海投就职做的事</h5><ol>
+<li></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/haitou/thingsDo/" data-id="ciztqajmi002i48dd4mjl9eo4" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-haitou/sql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/haitou/sql/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.249Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SELECT <em>,count(</em>) FROM <code>xz_resume_submit</code> group by status having status in (3,4) ORDER BY <code>status</code> ASC</p>
+<p>select *,sum(p) from (SELECT status, count(status) as p FROM <code>xz_resume_invite</code> group by status) as a group by status</p>
+<p>SELECT *,DATE_FORMAT(time,  “%Y-%m-%d %H”) FROM <code>company_service</code> GROUP by DATE_FORMAT(time,  “%Y-%m-%d %H”)</p>
+<p>SELECT *,DATE_FORMAT(time,  “%u”) as week FROM <code>company_service</code> WHERE date_format(time, ‘%Y’)=2016 GROUP by DATE_FORMAT(time,  ‘%u’)  ORDER by DATE_FORMAT(time,  ‘%u’) DESC</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/haitou/sql/" data-id="ciztqajmb002f48ddq93gwmfg" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-haitou/database" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/haitou/database/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.248Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/haitou/database/">海投数据库结构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="haitou7数据表"><a href="#haitou7数据表" class="headerlink" title="haitou7数据表"></a>haitou7数据表</h5><p>common_user_info 记录普通用户(学生)的信息<br>common_user_login 学生注册好的登陆信息<br>common_email_validation 注册和密码找回的邮箱验证<br>common_phone_validation 注册和密码找回的电话验证<br>common_user_point 里面有个resume_post_quota 简历投递配额，记录着学生投递简历剩余次数</p>
+<p>common_company_tag 企业类型的一级分类<br>common_company_tag_sub_type 企业类型二级分类</p>
+<p>company_ad 企业广告的图片、位置、展示情况、订单时间等, 与企业id : company_id 关联</p>
+<p>company_ad_click 某个用户对某个企业广告id的点击数, ip 等</p>
+<p>company_bill 企业id的订单信息，下单时间、金额、是否已经支付成功、是否已经支付成功等</p>
+<p>company_company_user 企业注册时的账户信息，账号密码、等，与company_id关联</p>
+<p><em>gs_company_info</em> 企业的详细信息，公司名字、企业营业执照等，<em>company_id</em>都是关联这个id</p>
+<p>gs_company_info_duplicate 对外开放接口的企业信息<br>gs_album 公司相册<br>company_invoice  企业开发票的信息、也是与company_id关联</p>
+<p>company_posted 简历投递记录，哪个学生用户user_id 投到哪个企业id(position_id)<br>xz_resume_submit 新的简历投递</p>
+<p>company_resume_submit 也是简历投递记录，投递的企业位置(id)、被查看时间、简历的状态(是否已经被录取，发送面试通知)等, 废弃</p>
+<p>company_service 为企业提供一些服务类型、和招聘简章发表、下订单等挂钩<br>company_service_use 各个企业对服务使用/购买情况</p>
+<p>company_venue_college<br>company_venue_venue 宣讲会场馆场地信息，大学名字、位置<br>company_venue_view 某个企业对这些场地的查看情况</p>
+<p>xjh_info 记录着某个企业发布自己要在哪举办宣讲会的信息</p>
+<p>####### xz 校园招聘</p>
+<p>company_posted 公司简历邀请，记录了邀请user_id , position_id time等信息<br>xz_resume_submit 简历投递动作时，此表记录了简历的投递信息、投递职位、投递状态、是否录用, 每次投递简历用它检查是否已经投递等, 供学生用户界面查询<br>company_reusme_sumit 与上表差不多，多了被企业查看的时间( 被废弃 )</p>
+<p><em>zw 职位信息</em></p>
+<p>zw_position 记录了一个职位发布的信息，与company_id 挂钩 (company_info.id)<br>common_work_category 工作类型表</p>
+<p>三表联合<br>SELECT * FROM <code>company_xz</code> as a left join gs_company_info as b on a.company_id = b.id right join xz_company as c on c.id = a.xz_id</p>
+<p>company_xz 是xz_company 与 gs_company_info 的中间表，但是这两个表并不是一一对应关系</p>
+<p>####### zph 招聘会信息 </p>
+<p>校园招聘xz 主要记录了所有爬虫和企业后台发布了的职位信息</p>
+<h6 id="zw-position-各个职位相关表"><a href="#zw-position-各个职位相关表" class="headerlink" title="zw_position  各个职位相关表"></a>zw_position  各个职位相关表</h6><p>zw_position 所有职位<br>zw_position_from 职位来源，有position_id<br>zw_info_processed 应该是由运营处理的职位相关信息<br>zw_info_position_link<br>zw_info_eamil_blacklist </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/haitou/database/" data-id="ciztqajmg002g48dddrpger39" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/yii_source_code_change_note" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/yii_source_code_change_note/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.247Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="对yii源码更改的note"><a href="#对yii源码更改的note" class="headerlink" title="对yii源码更改的note"></a>对yii源码更改的note</h5><ol>
+<li>源码更改只用在方便自己本地开发使用</li>
+<li>源码更改千万别提交到git上去，不然后面部署服务器会遇到麻烦</li>
+<li>yii的部署应该遵循yii的官方原则，即vendor不入版本库<br>yii2-gii/generators/crud/default/views/create<br>yii2-gii/generators/crud/default/views/index</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/yii_source_code_change_note/" data-id="ciztqajm9002e48ddkjdbn8us" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/ubuntuUse" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/ubuntuUse/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.246Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="title-use-ubuntu"><a href="#title-use-ubuntu" class="headerlink" title="title:use ubuntu"></a>title:use ubuntu</h2><h2 id="查看系统版本和cpu"><a href="#查看系统版本和cpu" class="headerlink" title="查看系统版本和cpu"></a>查看系统版本和cpu</h2><h3 id="查看cpu"><a href="#查看cpu" class="headerlink" title="查看cpu"></a>查看cpu</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">more /proc/cpuinfo</div></pre></td></tr></table></figure>
+<h4 id="其中clflush-size-显示了系统是多少位"><a href="#其中clflush-size-显示了系统是多少位" class="headerlink" title="其中clflush size 显示了系统是多少位"></a>其中clflush size 显示了系统是多少位</h4><h3 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/issue</div></pre></td></tr></table></figure>
+<h3 id="yum使用"><a href="#yum使用" class="headerlink" title="yum使用"></a>yum使用</h3><ol>
+<li>配置仓库，修改默认仓库vi /etc/yum.repos.d/CentOS-Base.repo</li>
+<li>可以配置多个仓库，yum repolist all</li>
+<li>新增的话可以在/etc/yum.reops.d/目录下新建.reop文件</li>
+<li>yum [list|info|search|provides|whatprovides] xxxx</li>
+<li>yum [install|update] xxxx</li>
+<li>yum remove xxx</li>
+</ol>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><ol>
+<li>环境变量分为系统(/etc/profile)，用户(~/.bash_profile)，临时(export定义)三种</li>
+<li>set ,重置本地已有变量， unset xx清除变量，如set TEST = Test, unset $TEST;</li>
+<li>export 新增变量</li>
+<li>设置永久变量需要改配置文件，/etc/profile,~/.bashrc,~/.bash_profile,等,修改用法</li>
+<li>export NEW=something</li>
+<li>修改后马上生效，运行，source /etc/profile.</li>
+</ol>
+<h3 id="配置路径环境变量，使命令能在所有目录使用"><a href="#配置路径环境变量，使命令能在所有目录使用" class="headerlink" title="配置路径环境变量，使命令能在所有目录使用"></a>配置路径环境变量，使命令能在所有目录使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">1. export PATH=$PATH:/usr/locar/new/bin</div><div class="line">export PATH=$PATH:/usr/locar/new/bin</div><div class="line">这条命令的意思为: 使PATH自增:/usr/locar/new/bin,</div><div class="line">既PATH=PATH+&quot;:/usr/locar/new/bin&quot;;</div><div class="line"></div><div class="line">2.</div><div class="line">``` </div><div class="line">vi /etc/profile ,在适当位置添加，</div><div class="line">PATH=$PATH:/etc/apache/bin </div><div class="line">$source profile(source /etc/profile) </div><div class="line">或者</div><div class="line">./profile</div></pre></td></tr></table></figure>
+<h3 id="永久配置alias"><a href="#永久配置alias" class="headerlink" title="永久配置alias"></a>永久配置alias</h3><ol>
+<li>alias显示当前所有别名设置,</li>
+<li>使用alias l=’ls -al’;生成的是临时的</li>
+<li>.bash_profile 或.bashrc(依据不同ditribute)，</li>
+<li>或者自己新建.bash_alias文件，里面可以定义了</li>
+<li>**也可以用ln -s source dist配置当前可执行文件到/bin路径中<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">一些有用的 alias,</div><div class="line">1,模拟dos风格</div><div class="line">alias clr=clear</div><div class="line">alias cls=clear</div><div class="line">alias copy=&apos;cp -i&apos;</div><div class="line">alias del=&apos;rm -i&apos;</div><div class="line">alias delete=&apos;rm -i&apos;</div><div class="line">alias dir=&apos;ls -alg&apos;</div><div class="line">alias home=&apos;cd ~&apos;</div><div class="line">alias ls=&apos;ls -F&apos;</div><div class="line">alias md=mkdir</div><div class="line">alias move=&apos;mv -i&apos;</div><div class="line">alias type=more</div><div class="line"></div><div class="line">alias cd..=&apos;cd ..&apos;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="pptpd-vpn"><a href="#pptpd-vpn" class="headerlink" title="pptpd vpn ,"></a>pptpd vpn ,</h3><ol>
+<li>新增用户，vi etc/ppp/chap-secrets</li>
+<li>重启服务， /etc/init.d/pptpd restart</li>
+<li>若是可执行文件，可以直接复制到/usr/local/bin/jjjj下即可，</li>
+<li>查看所有端口信息：</li>
+</ol>
+<h5 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h5><ol>
+<li>chmod -R 777 dir 递归改读写权限</li>
+<li>chown -R own:own dir 递归赋予用户own 目录dir的权限</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/ubuntuUse/" data-id="ciztqajm8002d48dddmjnguct" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/7/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="tiltle:linux  下的gcc编译用gcc编译的原理是：1.先写好程序源码（源码中包含了各种内部库和外部库的引用2.gcc编译源码(对各个源码文件进行编译)3.gcc进行主副外，程序调用的结合(对编译到的各个源码文件jj.o,进行链接，指定引用外部库的路径)4.生产了相应的最终binary file,并将配置等安装在主机上
+make编译源码原理：~make的原理其实是gcc的简化，它省去了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/centos/linuxCompile/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="tiltle:linux  下的gcc编译用gcc编译的原理是：1.先写好程序源码（源码中包含了各种内部库和外部库的引用2.gcc编译源码(对各个源码文件进行编译)3.gcc进行主副外，程序调用的结合(对编译到的各个源码文件jj.o,进行链接，指定引用外部库的路径)4.生产了相应的最终binary file,并将配置等安装在主机上
+make编译源码原理：~make的原理其实是gcc的简化，它省去了">
+<meta property="og:image" content="http://vbird.dic.ksu.edu.tw/linux_basic/0520source_code_and_tarball_files/make_configure.gif">
+<meta property="og:updated_time" content="2016-12-05T14:00:38.918Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="tiltle:linux  下的gcc编译用gcc编译的原理是：1.先写好程序源码（源码中包含了各种内部库和外部库的引用2.gcc编译源码(对各个源码文件进行编译)3.gcc进行主副外，程序调用的结合(对编译到的各个源码文件jj.o,进行链接，指定引用外部库的路径)4.生产了相应的最终binary file,并将配置等安装在主机上
+make编译源码原理：~make的原理其实是gcc的简化，它省去了">
+<meta name="twitter:image" content="http://vbird.dic.ksu.edu.tw/linux_basic/0520source_code_and_tarball_files/make_configure.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-centos/linuxCompile" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/linuxCompile/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.243Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="tiltle-linux-下的gcc编译"><a href="#tiltle-linux-下的gcc编译" class="headerlink" title="tiltle:linux  下的gcc编译"></a>tiltle:linux  下的gcc编译</h2><h3 id="用gcc编译的原理是："><a href="#用gcc编译的原理是：" class="headerlink" title="用gcc编译的原理是："></a>用gcc编译的原理是：</h3><p>1.先写好程序源码（源码中包含了各种内部库和外部库的引用<br>2.gcc编译源码(对各个源码文件进行编译)<br>3.gcc进行主副外，程序调用的结合(对编译到的各个源码文件jj.o,进行链接，指定引用外部库的路径)<br>4.生产了相应的最终binary file,并将配置等安装在主机上</p>
+<h3 id="make编译源码原理："><a href="#make编译源码原理：" class="headerlink" title="make编译源码原理："></a>make编译源码原理：</h3><p>~make的原理其实是gcc的简化，它省去了gcc编译链接外部内部库调用的一个个写代码的麻烦，也就是集成到了configure中，再运行configure<strong>产生makefile文件</strong>，最后运行makefile文件编译完成.<br>如下图<br><img src="http://vbird.dic.ksu.edu.tw/linux_basic/0520source_code_and_tarball_files/make_configure.gif"></p>
+<p>参考:<a href="http://vbird.dic.ksu.edu.tw/linux_basic/0520source_code_and_tarball_2.php" target="_blank" rel="external">鸟哥私房菜</a></p>
+<h3 id="tarball软件源码编译安装（源码tar-gz-tar打包，zig压缩的结合包-安装"><a href="#tarball软件源码编译安装（源码tar-gz-tar打包，zig压缩的结合包-安装" class="headerlink" title="tarball软件源码编译安装（源码tar.gz:tar打包，zig压缩的结合包)安装"></a>tarball软件源码编译安装（源码tar.gz:tar打包，zig压缩的结合包)安装</h3><ol>
+<li>参考README等文件</li>
+<li>运行./configure,创建makefile文件</li>
+<li>optional:  make clean读取makefile中关于安装前得清除工作，清除系统中多余的冲突东西，旧版本等</li>
+<li>执行make，在当前目录下得到编译后的各种文件</li>
+<li>make install ，将编译后的文件安装到指定的（预先设定好的）地方。</li>
+<li>别忘了解包的方法tar zxvf XXX</li>
+</ol>
+<h3 id="软件安装的主要地方"><a href="#软件安装的主要地方" class="headerlink" title="软件安装的主要地方"></a>软件安装的主要地方</h3><ol>
+<li>/usr/local/software/etc/  ,配置文件</li>
+<li>/usr/local/software/lib/ 函数库</li>
+<li>/usr/loacl/software/bin/ 可执行文件</li>
+<li>/usr/local/software/man/ 软件的使用指南</li>
+<li>同时在编译php等需要指定某个依赖的dir时，其实有两种方法，如果是应用prefix 安装的依赖那么直接告诉它该路径即可，如果是利用yum安装的，先whereis一下，找出他的目录分配，而这个目录分配其实是有规律的，如，分配在/usr/下的各个子目录 bin man lib lib64 include下，编译是会自动往下面的目录找东西，其实跟安装在prefix的效果是一样的</li>
+</ol>
+<h2 id="其中-usr-local-等目录可选，依据软件的类型而定，如自带，yum，apt，源码安装等，重要的是后面的-etc-等"><a href="#其中-usr-local-等目录可选，依据软件的类型而定，如自带，yum，apt，源码安装等，重要的是后面的-etc-等" class="headerlink" title="其中/usr,/local,等目录可选，依据软件的类型而定，如自带，yum，apt，源码安装等，重要的是后面的/etc/等"></a>其中/usr,/local,等目录可选，依据软件的类型而定，如自带，yum，apt，源码安装等，重要的是后面的/etc/等</h2><h2 id="源码安装时候，最好先将tarball源码解压到-usr-local-src-目录下，"><a href="#源码安装时候，最好先将tarball源码解压到-usr-local-src-目录下，" class="headerlink" title="源码安装时候，最好先将tarball源码解压到/usr/local/src/目录下，"></a>源码安装时候，最好先将tarball源码解压到/usr/local/src/目录下，</h2><p>###源码安装经验谈，</p>
+<ol>
+<li>将源码复制到本地后，执行，./configure, make (some parameter) ,make install, 会在当前该包的目录下生成了/bin,/etc/ ,/lib/ , (/include) ,几大文件夹，在这里直接执行 /bin/中的二进制文件，即可运行该软件， 然而在编译安装的同时，它还将这几大文件夹复制到了对应的， /usr/bin ,/usr/etc/(或者系统的etc)  ,/usr/lib ,/usr/include / ，下，以供全局使用，所以此时直接在当前目录删除该解压后的安装包即可，但这有个缺点就是无法实现要卸载该软件的时候，不知道在系统哪里将软件全部清除掉，所以这时如果还保留了最初的那个解压安装包，就可以执行 ，make uninstall ,达到目的， （但有时候无法卸载，因为软件没有提供该方法);</li>
+</ol>
+<p>//我一般都./configure –prefix定制安装目录，到时直接删文件夹。</p>
+<ol>
+<li>所以如果没有特别需要，只需要下载二进制码版本，然后放到usr/local/soft  中，再做一个bin到/usr/local/bin   的软连接即可达到程序的全局运行，卸载时候只需要删除该下载包和软连接,     记住软连接一定要写绝对路径</li>
+<li>最方便的方法就是用yum之类的东西了，无需考虑安装后的卸载问题。 </li>
+</ol>
+<h3 id="软件管理（自动安装）两大体系"><a href="#软件管理（自动安装）两大体系" class="headerlink" title="软件管理（自动安装）两大体系"></a>软件管理（自动安装）两大体系</h3><ol>
+<li>dpkg管理机制,由debian  linux开发的，ubuntu在用</li>
+<li>rpm管理机制,由Red Hat,有centos,fedora</li>
+</ol>
+<h3 id="利用软件管理员安装有多个功能，一种是下载编译好的二进制安装如centos下的xxx-rpm（需要有同样的环境，不能解决依赖关系），一种是xxx-src-rpm-源码安装，还有就是yum，rpm的升级版，可以解决依赖"><a href="#利用软件管理员安装有多个功能，一种是下载编译好的二进制安装如centos下的xxx-rpm（需要有同样的环境，不能解决依赖关系），一种是xxx-src-rpm-源码安装，还有就是yum，rpm的升级版，可以解决依赖" class="headerlink" title="利用软件管理员安装有多个功能，一种是下载编译好的二进制安装如centos下的xxx.rpm（需要有同样的环境，不能解决依赖关系），一种是xxx.src.rpm,源码安装，还有就是yum，rpm的升级版，可以解决依赖"></a>利用软件管理员安装有多个功能，一种是下载编译好的二进制安装如centos下的xxx.rpm（需要有同样的环境，不能解决依赖关系），一种是xxx.src.rpm,源码安装，还有就是yum，rpm的升级版，可以解决依赖</h3><p>rp-pppoe -        3.1    -     5        .i386        .rpm<br>软件名称   软件的版本资讯 释出的次数 适合的硬件平台 扩展名</p>
+<p>###rpm 还是tar.gz？<br>rpm是centos下的软件安装机制，具有方便安装清除等优点，但tar.gz可以适应linux 的所有</p>
+<h3 id="rpm，deb，yum，apt等都会有默认的软件安装地方和操作"><a href="#rpm，deb，yum，apt等都会有默认的软件安装地方和操作" class="headerlink" title="rpm，deb，yum，apt等都会有默认的软件安装地方和操作"></a>rpm，deb，yum，apt等都会有默认的软件安装地方和操作</h3><h3 id="tar-gz-文件也有二进制编译好的-执行包-，直接解压即可使用，解压后有bin-include-等文件夹，其中bin中就有可执行文件-进入后用-xxx便可-删除时候直接删除，就相当于exe包-rpm与他的区别是，它提供了良好的管理，卸载和查找时候容易"><a href="#tar-gz-文件也有二进制编译好的-执行包-，直接解压即可使用，解压后有bin-include-等文件夹，其中bin中就有可执行文件-进入后用-xxx便可-删除时候直接删除，就相当于exe包-rpm与他的区别是，它提供了良好的管理，卸载和查找时候容易" class="headerlink" title="tar.gz 文件也有二进制编译好的(执行包)，直接解压即可使用，解压后有bin/,include,等文件夹，其中bin中就有可执行文件,进入后用./xxx便可.删除时候直接删除，就相当于exe包.rpm与他的区别是，它提供了良好的管理，卸载和查找时候容易"></a>tar.gz 文件也有二进制编译好的(执行包)，直接解压即可使用，解压后有bin/,include,等文件夹，其中bin中就有可执行文件,进入后用./xxx便可.删除时候直接删除，就相当于exe包.rpm与他的区别是，它提供了良好的管理，卸载和查找时候容易</h3><p>参考，<a href="http://forum.eepw.com.cn/thread/262947/1" target="_blank" rel="external">linux软件安装知识扫盲</a></p>
+<h3 id="只要是bin目录下的都是可执行文件，只要将bin目录添加到系统环境path就可以直接运行该文件，脚本等"><a href="#只要是bin目录下的都是可执行文件，只要将bin目录添加到系统环境path就可以直接运行该文件，脚本等" class="headerlink" title="只要是bin目录下的都是可执行文件，只要将bin目录添加到系统环境path就可以直接运行该文件，脚本等"></a>只要是bin目录下的都是可执行文件，只要将bin目录添加到系统环境path就可以直接运行该文件，脚本等</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/linuxCompile/" data-id="ciztqajm5002a48dd1vz4lw33" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/centos/mysql/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/centos/linux_dir/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

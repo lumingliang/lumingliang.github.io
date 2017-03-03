@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title:linux 下的目录结构Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。目录结构，由 / 下分主要分为以下几大目录
+/bin ,bin是二进制文件，这里一般有系统的命令，如ps ,ls,等,bin下的文件就等于命令
+/boot ,  启动重要脚本
+/sbin,用户的二进制文件，如reboot，ifcon">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/centos/linux_dir/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title:linux 下的目录结构Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。目录结构，由 / 下分主要分为以下几大目录
+/bin ,bin是二进制文件，这里一般有系统的命令，如ps ,ls,等,bin下的文件就等于命令
+/boot ,  启动重要脚本
+/sbin,用户的二进制文件，如reboot，ifcon">
+<meta property="og:updated_time" content="2016-12-03T02:58:44.841Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title:linux 下的目录结构Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。目录结构，由 / 下分主要分为以下几大目录
+/bin ,bin是二进制文件，这里一般有系统的命令，如ps ,ls,等,bin下的文件就等于命令
+/boot ,  启动重要脚本
+/sbin,用户的二进制文件，如reboot，ifcon">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-centos/linux_dir" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/linux_dir/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.243Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="title-linux-下的目录结构"><a href="#title-linux-下的目录结构" class="headerlink" title="title:linux 下的目录结构"></a>title:linux 下的目录结构</h2><h3 id="Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。"><a href="#Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。" class="headerlink" title="Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。"></a>Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。</h3><h3 id="目录结构，由-下分主要分为以下几大目录"><a href="#目录结构，由-下分主要分为以下几大目录" class="headerlink" title="目录结构，由 / 下分主要分为以下几大目录"></a>目录结构，由 / 下分主要分为以下几大目录</h3><ol>
+<li>/bin ,bin是二进制文件，这里一般有系统的命令，如ps ,ls,等,bin下的文件就等于命令</li>
+<li>/boot ,  启动重要脚本</li>
+<li>/sbin,用户的二进制文件，如reboot，ifconfig</li>
+<li>/etc,所有程序的配置文件，一般是/etc/software/xxx_config</li>
+<li>/dev,设备文件，如usb连接的任何设备</li>
+<li>/proc,进程信息，是个虚拟文件系统，保存着目前正在运行的多种信息</li>
+<li>/var,变量文件，如系统日志/var/log,网上下载的一些包和库，/var/lib,邮件,/var/mail,多次重启需要的临时文件,/var/tmp,</li>
+<li>/tmp,临时文件，每次重启都要删除</li>
+<li>/usr,用户程序目录，包含了/usr/bin,二进制执行入口（类似exe）/usr/sbin,与usr/bin类似；它和系统更相关点，（二进制文件都在xx/bin中），/usr/lib,软件依赖库，提供给xx/[s]bin用的，/usr/loacl或者/usr/include,包含了程序安装后的内容，</li>
+<li>/home,家目录，包含了每个用户的档案入口点，如/home/user </li>
+<li>/lib,系统库，给/bin,/sbin提供支持，还有/lib64</li>
+<li>/mnt,挂载点</li>
+<li>/opt,额外可选插件，附加程序等，类似和系统相关较强的附加程序</li>
+<li>/media,娱乐文件</li>
+<li>/usr/share/doc/ 下有许多man文件</li>
+</ol>
+<p>以上目录，对应的每个软件都有的bin lib var man</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/linux_dir/" data-id="ciztqajm0002748ddv8uivtq9" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/centos/linuxCompile/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/centos/linuxCammand/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

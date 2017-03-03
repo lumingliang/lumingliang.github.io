@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>a good discription  of utisnips use | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="UtisnipsEdit ,进入当前后缀文件的snipets编辑
+$1 或者 ${1:some} 一个步，或者使它带有缺省值
+12345678910111213$&amp;#123;1:div&amp;#125;Hello World$&amp;#123;1/\w+\/hello/g&amp;#125; 当两处或者多处有$1时，要用变换（正则使他们的值不太一样）其中1是跳转步， /\w+\/是正则， hello是要取代的sni">
+<meta property="og:type" content="article">
+<meta property="og:title" content="a good discription  of utisnips use">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/ultisnips/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="UtisnipsEdit ,进入当前后缀文件的snipets编辑
+$1 或者 ${1:some} 一个步，或者使它带有缺省值
+12345678910111213$&amp;#123;1:div&amp;#125;Hello World$&amp;#123;1/\w+\/hello/g&amp;#125; 当两处或者多处有$1时，要用变换（正则使他们的值不太一样）其中1是跳转步， /\w+\/是正则， hello是要取代的sni">
+<meta property="og:updated_time" content="2016-01-08T10:07:14.501Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="a good discription  of utisnips use">
+<meta name="twitter:description" content="UtisnipsEdit ,进入当前后缀文件的snipets编辑
+$1 或者 ${1:some} 一个步，或者使它带有缺省值
+12345678910111213$&amp;#123;1:div&amp;#125;Hello World$&amp;#123;1/\w+\/hello/g&amp;#125; 当两处或者多处有$1时，要用变换（正则使他们的值不太一样）其中1是跳转步， /\w+\/是正则， hello是要取代的sni">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ultisnips" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/ultisnips/" class="article-date">
+  <time datetime="2017-03-03T11:31:53.774Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      a good discription  of utisnips use
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>UtisnipsEdit ,进入当前后缀文件的snipets编辑</li>
+<li><p>$1 或者 ${1:some} 一个步，或者使它带有缺省值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$&#123;1:div&#125;</div><div class="line">Hello World</div><div class="line">$&#123;1/\w+\/hello/g&#125; 当两处或者多处有$1时，要用变换（正则使他们的值不太一样）</div><div class="line">其中1是跳转步， /\w+\/是正则， hello是要取代的</div><div class="line"></div><div class="line">snippet  r</div><div class="line">$&#123;1:div&#125;</div><div class="line">Hello World</div><div class="line">$&#123;1/(\w+).*/$1/g&#125;</div><div class="line"></div><div class="line">$&#123;1:div&#125;</div><div class="line">Hello World</div><div class="line">$1</div></pre></td></tr></table></figure>
+</li>
+<li><p>交互</p>
+<ol>
+<li>和shell ,<code>echo hi</code></li>
+<li>和vimL , <code>!v &quot;1+2&quot; = string(1+2)</code></li>
+<li>和python , <code>!p snip.rv = &quot;hello&quot;</code></li>
+</ol>
+</li>
+<li><p>跳转，C+j, C+k</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/ultisnips/" data-id="ciztqphkt0000kodd0glgeuuv" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/vimMore/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/ts/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">typescript的学习和应用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

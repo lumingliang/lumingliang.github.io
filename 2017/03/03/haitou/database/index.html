@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>海投数据库结构 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="haitou7数据表common_user_info 记录普通用户(学生)的信息common_user_login 学生注册好的登陆信息common_email_validation 注册和密码找回的邮箱验证common_phone_validation 注册和密码找回的电话验证common_user_point 里面有个resume_post_quota 简历投递配额，记录着学生投递简历剩余次数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="海投数据库结构">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/haitou/database/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="haitou7数据表common_user_info 记录普通用户(学生)的信息common_user_login 学生注册好的登陆信息common_email_validation 注册和密码找回的邮箱验证common_phone_validation 注册和密码找回的电话验证common_user_point 里面有个resume_post_quota 简历投递配额，记录着学生投递简历剩余次数">
+<meta property="og:updated_time" content="2016-07-11T09:12:49.246Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="海投数据库结构">
+<meta name="twitter:description" content="haitou7数据表common_user_info 记录普通用户(学生)的信息common_user_login 学生注册好的登陆信息common_email_validation 注册和密码找回的邮箱验证common_phone_validation 注册和密码找回的电话验证common_user_point 里面有个resume_post_quota 简历投递配额，记录着学生投递简历剩余次数">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-haitou/database" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/haitou/database/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.248Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      海投数据库结构
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="haitou7数据表"><a href="#haitou7数据表" class="headerlink" title="haitou7数据表"></a>haitou7数据表</h5><p>common_user_info 记录普通用户(学生)的信息<br>common_user_login 学生注册好的登陆信息<br>common_email_validation 注册和密码找回的邮箱验证<br>common_phone_validation 注册和密码找回的电话验证<br>common_user_point 里面有个resume_post_quota 简历投递配额，记录着学生投递简历剩余次数</p>
+<p>common_company_tag 企业类型的一级分类<br>common_company_tag_sub_type 企业类型二级分类</p>
+<p>company_ad 企业广告的图片、位置、展示情况、订单时间等, 与企业id : company_id 关联</p>
+<p>company_ad_click 某个用户对某个企业广告id的点击数, ip 等</p>
+<p>company_bill 企业id的订单信息，下单时间、金额、是否已经支付成功、是否已经支付成功等</p>
+<p>company_company_user 企业注册时的账户信息，账号密码、等，与company_id关联</p>
+<p><em>gs_company_info</em> 企业的详细信息，公司名字、企业营业执照等，<em>company_id</em>都是关联这个id</p>
+<p>gs_company_info_duplicate 对外开放接口的企业信息<br>gs_album 公司相册<br>company_invoice  企业开发票的信息、也是与company_id关联</p>
+<p>company_posted 简历投递记录，哪个学生用户user_id 投到哪个企业id(position_id)<br>xz_resume_submit 新的简历投递</p>
+<p>company_resume_submit 也是简历投递记录，投递的企业位置(id)、被查看时间、简历的状态(是否已经被录取，发送面试通知)等, 废弃</p>
+<p>company_service 为企业提供一些服务类型、和招聘简章发表、下订单等挂钩<br>company_service_use 各个企业对服务使用/购买情况</p>
+<p>company_venue_college<br>company_venue_venue 宣讲会场馆场地信息，大学名字、位置<br>company_venue_view 某个企业对这些场地的查看情况</p>
+<p>xjh_info 记录着某个企业发布自己要在哪举办宣讲会的信息</p>
+<p>####### xz 校园招聘</p>
+<p>company_posted 公司简历邀请，记录了邀请user_id , position_id time等信息<br>xz_resume_submit 简历投递动作时，此表记录了简历的投递信息、投递职位、投递状态、是否录用, 每次投递简历用它检查是否已经投递等, 供学生用户界面查询<br>company_reusme_sumit 与上表差不多，多了被企业查看的时间( 被废弃 )</p>
+<p><em>zw 职位信息</em></p>
+<p>zw_position 记录了一个职位发布的信息，与company_id 挂钩 (company_info.id)<br>common_work_category 工作类型表</p>
+<p>三表联合<br>SELECT * FROM <code>company_xz</code> as a left join gs_company_info as b on a.company_id = b.id right join xz_company as c on c.id = a.xz_id</p>
+<p>company_xz 是xz_company 与 gs_company_info 的中间表，但是这两个表并不是一一对应关系</p>
+<p>####### zph 招聘会信息 </p>
+<p>校园招聘xz 主要记录了所有爬虫和企业后台发布了的职位信息</p>
+<h6 id="zw-position-各个职位相关表"><a href="#zw-position-各个职位相关表" class="headerlink" title="zw_position  各个职位相关表"></a>zw_position  各个职位相关表</h6><p>zw_position 所有职位<br>zw_position_from 职位来源，有position_id<br>zw_info_processed 应该是由运营处理的职位相关信息<br>zw_info_position_link<br>zw_info_eamil_blacklist </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/haitou/database/" data-id="ciztqajmg002g48dddrpger39" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/haitou/sql/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/centos/yii_source_code_change_note/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>正则表达式的用法 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="###正则表达式只是一种按照人的思维的一种匹配，从那儿开始，然后拥有什么样的规则，最后又从哪里结束。一个个位置匹配下去的
+核心基础，元字符 参考30 分钟学会正则 123456789101112131415. 任何单一的字符，除了\n$ 行的结束位置^ 行的开始位置* 量化元，前面字符(或者元)的0个或者多个+ 量化元，1个或者多个? 0或者1个\ 反斜线，转义[] 匹配中括号中任何一个字符，**">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式的用法">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/regular/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="###正则表达式只是一种按照人的思维的一种匹配，从那儿开始，然后拥有什么样的规则，最后又从哪里结束。一个个位置匹配下去的
+核心基础，元字符 参考30 分钟学会正则 123456789101112131415. 任何单一的字符，除了\n$ 行的结束位置^ 行的开始位置* 量化元，前面字符(或者元)的0个或者多个+ 量化元，1个或者多个? 0或者1个\ 反斜线，转义[] 匹配中括号中任何一个字符，**">
+<meta property="og:updated_time" content="2016-06-02T07:36:18.398Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式的用法">
+<meta name="twitter:description" content="###正则表达式只是一种按照人的思维的一种匹配，从那儿开始，然后拥有什么样的规则，最后又从哪里结束。一个个位置匹配下去的
+核心基础，元字符 参考30 分钟学会正则 123456789101112131415. 任何单一的字符，除了\n$ 行的结束位置^ 行的开始位置* 量化元，前面字符(或者元)的0个或者多个+ 量化元，1个或者多个? 0或者1个\ 反斜线，转义[] 匹配中括号中任何一个字符，**">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-regular" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/regular/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.300Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      正则表达式的用法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###正则表达式只是一种按照人的思维的一种匹配，从那儿开始，然后拥有什么样的规则，最后又从哪里结束。一个个位置匹配下去的<br><!-- 想象着整个表达式就像一个过滤器一样，对文本文件进行一个个字符的过滤，最后达到结果，既然是过滤匹配的结果也是可以多个的，有时候会将句子单词拆分开了，有时候又会得到整个句子或者词的一部分 --></p>
+<h3 id="核心基础，元字符"><a href="#核心基础，元字符" class="headerlink" title="核心基础，元字符"></a>核心基础，元字符</h3><p><a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external"> 参考30 分钟学会正则 </a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">. 任何单一的字符，除了\n</div><div class="line">$ 行的结束位置</div><div class="line">^ 行的开始位置</div><div class="line">* 量化元，前面字符(或者元)的0个或者多个</div><div class="line">+ 量化元，1个或者多个</div><div class="line">? 0或者1个</div><div class="line">\ 反斜线，转义</div><div class="line">[] 匹配中括号中任何一个字符，**只是一个**，[1234],匹配1或者2,或者... </div><div class="line">&#123;&#125; 9&#123;7-8&#125; 匹配9 7到8次</div><div class="line">^ 若不是单一出现，如[^gfgf] 就表示反义（反级)</div><div class="line">-----  \&lt;  \&gt; 匹配**词**的开始于结束</div><div class="line">| 两个表达式进行或运算</div><div class="line">[.?!] 匹配标点符号</div><div class="line">() 用来分组，() 内的作为一个整体匹配</div><div class="line">### 常用词</div></pre></td></tr></table></figure></p>
+<p>\s 任何空白字符，包括TAB,<br>等<br>\b 单词首尾<br>\w 字母或数字或下划线或汉字<br>\d 数字<br>\W 不是\w 的<br>\S \D \B 都是反义<br>\n 换行符<br>[\s\S] 匹配任何字符, . 的升级版，因为. 不匹配\n</p>
+<h3 id="内的奥秘"><a href="#内的奥秘" class="headerlink" title="() 内的奥秘"></a>() 内的奥秘</h3><ol>
+<li><p>(exp)  , 匹配exp ,并将本次匹配的内容保存到自动命名组里面，方便后面通过\1,来调用<br>如  (fir\w+)\s\1 匹配fir3 fir3 之类，</p>
+</li>
+<li><p>(?<name>exp) 或者(?’name’exp)   ,与前者一样，只是手动命名，通过\k<name> 调用</name></name></p>
+</li>
+<li><p>(?:exp)  , 仅匹配exp  的位置，不捕获也不分组号, 实践效果与1一样，只是没有分配组号</p>
+</li>
+<li><p>(?=exp)  零宽断言，匹配exp 前面的位置。 一般卸载整个表达式的后面</p>
+</li>
+<li><p>(?&lt;=exp) ;, exp 后面的位置，一般写在前面</p>
+</li>
+</ol>
+<h3 id="贪婪与懒惰"><a href="#贪婪与懒惰" class="headerlink" title="贪婪与懒惰"></a>贪婪与懒惰</h3><ol>
+<li>因为匹配总是从文件（字符串）头部开始一直过滤到尾部，匹配总是尽可能多的，这是贪婪的做法</li>
+<li>如用(.<em>?)  先是</em>匹配0次或者多次. ,后面加了个? ,表明是懒惰做法，即每个匹配的结果尽可能短，<br>如， a.*?b 匹配字符串afbdfajjb ,得到， afb ajjb,</li>
+</ol>
+<p><a href="https://github.com/alsotang/node-lessons/tree/master/lesson9" target="_blank" rel="external">js中 regex教程</a><br><a href="http://fxck.it/post/50558232873" target="_blank" rel="external">零宽断言</a></p>
+<ol>
+<li>/ /g 全局搜索，而不是只搜索一个就完了</li>
+<li>/ /i 不分大小写</li>
+<li>/ /m 使用^$ 有效</li>
+<li>加上g 变量后，正则表达可以作为变量使用如var regex = /h(.<em>?)\b/g;re.exec(‘hello hell’);<br>5,有三种写法,/h(.</em>?)\b/g.exec(‘hello hell’),/a/.test(‘A’) // =&gt; false,’aaa\nbbb\nccc’.match(/^[\s\S]*?$/g) </li>
+</ol>
+<h5 id="vim-中的正则表达式"><a href="#vim-中的正则表达式" class="headerlink" title="vim 中的正则表达式"></a>vim 中的正则表达式</h5><p>在vim中正则极为强大，常用:/s  ‘:g/  /d’ (可匹配后删除) :%s/ / /g 来查找替换，其中 :s/ / / 为严格替换。 </p>
+<p>vim中有个magic，可以设定匹配时是否开启加反斜杠，如 /\m 开头的正则表示除了 $ . * ^ 外都要加反斜杠，/\v  任何元字符都不用加入反斜杠。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/regular/" data-id="ciztqajjx001948ddhkmygr86" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/wps/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/repository/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

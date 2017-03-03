@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="###有关sphinx的一些技术强大的全文搜索引擎
+安装下载后，解压，细看里面的文件，会发现有很多必要的东西，根据需求修改一下sphinx.conf.in文件12345671. 配置bin目录到path，查看是否win下安装了vc20082. // 安装服务，注意这里如果不慎会出现1067程序无法启动错误D:\sphinx-2.2.11\share\doc\api&amp;gt;searchd --ins">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/sphinx/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="###有关sphinx的一些技术强大的全文搜索引擎
+安装下载后，解压，细看里面的文件，会发现有很多必要的东西，根据需求修改一下sphinx.conf.in文件12345671. 配置bin目录到path，查看是否win下安装了vc20082. // 安装服务，注意这里如果不慎会出现1067程序无法启动错误D:\sphinx-2.2.11\share\doc\api&amp;gt;searchd --ins">
+<meta property="og:updated_time" content="2016-11-29T03:30:57.293Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="###有关sphinx的一些技术强大的全文搜索引擎
+安装下载后，解压，细看里面的文件，会发现有很多必要的东西，根据需求修改一下sphinx.conf.in文件12345671. 配置bin目录到path，查看是否win下安装了vc20082. // 安装服务，注意这里如果不慎会出现1067程序无法启动错误D:\sphinx-2.2.11\share\doc\api&amp;gt;searchd --ins">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-sphinx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/sphinx/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.223Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="有关sphinx的一些技术"><a href="#有关sphinx的一些技术" class="headerlink" title="###有关sphinx的一些技术"></a>###有关sphinx的一些技术</h2><p>强大的全文搜索引擎</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>下载后，解压，细看里面的文件，会发现有很多必要的东西，根据需求修改一下sphinx.conf.in文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1. 配置bin目录到path，查看是否win下安装了vc2008</div><div class="line">2. // 安装服务，注意这里如果不慎会出现1067程序无法启动错误</div><div class="line">D:\sphinx-2.2.11\share\doc\api&gt;searchd --install --config ../sphinx.conf --servicename SphinxSearch</div><div class="line">// 建立索引，注意指定配置文件路径，绝对路径或当前路径</div><div class="line">D:\sphinx-2.2.11\share\doc\api&gt;indexer -c ../sphinx.conf --all</div><div class="line">// windows 服务</div><div class="line">sc 命令</div></pre></td></tr></table></figure></p>
+<p>要配置sphinx.conf文件，把SQL语句放到那里面，生成相应的索引，在PHP代码里面传值到里面就会出来查询出来的结果！</p>
+<h5 id="先mysql配置熟悉"><a href="#先mysql配置熟悉" class="headerlink" title="先mysql配置熟悉"></a>先mysql配置熟悉</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql -D test &lt; D:\32\coreseek-4.1-win32\var\test\documents.sql</div><div class="line"></div><div class="line">使用coreseek search 测试</div><div class="line">echo 了 | iconv -f gbk -t utf-8 | D:\32\coreseek-4.1-win32\bin\search -c ../etc/mysql.conf --stdin | iconv -f utf-8 -t gbk</div></pre></td></tr></table></figure>
+<h5 id="coreseek已经不再更新，现在用sphinx-for-chinese"><a href="#coreseek已经不再更新，现在用sphinx-for-chinese" class="headerlink" title="coreseek已经不再更新，现在用sphinx-for-chinese"></a>coreseek已经不再更新，现在用sphinx-for-chinese</h5><ol>
+<li>还是常规一样做好安装，配置全局bin，修改配置文件，安装词典，安装searchd服务，php端按照官方配置好即可使用</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/sphinx/" data-id="ciztqajk7001e48ddxhqla5uw" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/sublime/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/seo/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">seo  的相关技术</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

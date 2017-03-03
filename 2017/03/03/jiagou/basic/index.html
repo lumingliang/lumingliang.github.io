@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="php应付高并发
+采用redis，或其他东西做一个队列层，并采用一个循环不断从队列中取出数据。参考
+php + redis 队列 + crontabcrontab使用。分 时 天 月 星期 脚本
+mysql 高并发时，应列入队列，批量插入。同时用事务会比一条条插入要快。
+redis 主要有字符串(计数器、key-value存储)、哈希表（字典、json）、列表（队列）、集合（唯一性，交集）、可排序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/jiagou/basic/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="php应付高并发
+采用redis，或其他东西做一个队列层，并采用一个循环不断从队列中取出数据。参考
+php + redis 队列 + crontabcrontab使用。分 时 天 月 星期 脚本
+mysql 高并发时，应列入队列，批量插入。同时用事务会比一条条插入要快。
+redis 主要有字符串(计数器、key-value存储)、哈希表（字典、json）、列表（队列）、集合（唯一性，交集）、可排序">
+<meta property="og:updated_time" content="2017-02-26T02:54:18.535Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="php应付高并发
+采用redis，或其他东西做一个队列层，并采用一个循环不断从队列中取出数据。参考
+php + redis 队列 + crontabcrontab使用。分 时 天 月 星期 脚本
+mysql 高并发时，应列入队列，批量插入。同时用事务会比一条条插入要快。
+redis 主要有字符串(计数器、key-value存储)、哈希表（字典、json）、列表（队列）、集合（唯一性，交集）、可排序">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-jiagou/basic" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/jiagou/basic/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.254Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="php应付高并发"><a href="#php应付高并发" class="headerlink" title="php应付高并发"></a>php应付高并发</h6><ol>
+<li>采用redis，或其他东西做一个队列层，并采用一个循环不断从队列中取出数据。<br><a href="http://blog.csdn.net/lz0426001/article/details/51441771" target="_blank" rel="external">参考</a></li>
+<li>php + redis 队列 + crontab<br><a href="http://blog.csdn.net/leafgw/article/details/50800153" target="_blank" rel="external">crontab使用</a>。分 时 天 月 星期 脚本</li>
+<li>mysql 高并发时，应列入队列，批量插入。同时用事务会比一条条插入要快。</li>
+<li>redis 主要有字符串(计数器、key-value存储)、哈希表（字典、json）、列表（队列）、集合（唯一性，交集）、可排序集合（分数、权重、排行榜）。</li>
+<li>灵活使用redis的数据结构设计key-value</li>
+<li>静态资源的部署，Md5取摘要，开启浏览器缓存，先部署静态资源到cdn，再部署页面。(注意部署间隔时期旧用户有浏览器缓存的和新用户没有浏览器缓存的看到的结果不一样)，于是采用非覆盖式部署方法，即对文件的命名使用摘要值，这样每发布一个文件就是新的文件，不会覆盖原来的文件。先全量部署资源，再部署页面即可</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/jiagou/basic/" data-id="ciztqajmj002j48ddb5nuq3j1" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/js/decimalConversion/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          js的进制转换
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/ionic/tips/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

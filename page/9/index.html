@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/9/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-centos/sh" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/sh/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.245Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="bash脚本的语法"><a href="#bash脚本的语法" class="headerlink" title="bash脚本的语法"></a>bash脚本的语法</h6><ol>
+<li>头部#!/bin/bash 指明执行程序是/bin/bash</li>
+<li>定义变量直接定义，=前后无空格，使用变量用$() 或直接，使用终端命令结果作为输入时，一般用$().</li>
+<li>简写流程控制用 [  ];包括</li>
+<li><p>读取用户输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">while :; do echo</div><div class="line">    read -p &quot;Please input username: &quot; VPN_USER </div><div class="line">    [ -n &quot;$VPN_USER&quot; ] &amp;&amp; break</div><div class="line">done</div></pre></td></tr></table></figure>
+</li>
+<li><p>shell 运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">a=&quot;abc&quot;</div><div class="line">b=&quot;efg&quot;</div><div class="line"></div><div class="line">if [ $a = $b ]</div><div class="line">then</div><div class="line">   echo &quot;$a = $b : a 等于 b&quot;</div><div class="line">else</div><div class="line">   echo &quot;$a = $b: a 不等于 b&quot;</div><div class="line">fi</div><div class="line">if [ $a != $b ]</div><div class="line">then</div><div class="line">   echo &quot;$a != $b : a 不等于 b&quot;</div><div class="line">else</div><div class="line">   echo &quot;$a != $b: a 等于 b&quot;</div><div class="line">fi</div><div class="line">if [ -z $a ]</div><div class="line">then</div><div class="line">   echo &quot;-z $a : 字符串长度为 0&quot;</div><div class="line">else</div><div class="line">   echo &quot;-z $a : 字符串长度不为 0&quot;</div><div class="line">fi</div><div class="line">if [ -n $a ]</div><div class="line">then</div><div class="line">   echo &quot;-n $a : 字符串长度不为 0&quot;</div><div class="line">else</div><div class="line">   echo &quot;-n $a : 字符串长度为 0&quot;</div><div class="line">fi</div><div class="line">if [ $a ]</div><div class="line">then</div><div class="line">   echo &quot;$a : 字符串不为空&quot;</div><div class="line">else</div><div class="line">   echo &quot;$a : 字符串为空&quot;</div><div class="line">fi</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">-eq	检测两个数是否相等，相等返回 true。	[ $a -eq $b ] 返回 false。</div><div class="line">-ne	检测两个数是否相等，不相等返回 true。	[ $a -ne $b ] 返回 true。</div><div class="line">-gt	检测左边的数是否大于右边的，如果是，则返回 true。	[ $a -gt $b ] 返回 false。</div><div class="line">-lt	检测左边的数是否小于右边的，如果是，则返回 true。	[ $a -lt $b ] 返回 true。</div><div class="line">-ge	检测左边的数是否大于等于右边的，如果是，则返回 true。	[ $a -ge $b ] 返回 false。</div><div class="line">-le	检测左边的数是否小于等于右边的，如果是，则返回 true。	[ $a -le $b ] 返回 true。</div><div class="line"></div><div class="line">!	非运算，表达式为 true 则返回 false，否则返回 true。	[ ! false ] 返回 true。</div><div class="line">-o	或运算，有一个表达式为 true 则返回 true。	[ $a -lt 20 -o $b -gt 100 ] 返回 true。</div><div class="line">-a	与运算，两个表达式都为 true 才返回 true。	[ $a -lt 20 -a $b -gt 100 ] 返回 false。</div><div class="line"></div><div class="line">&amp;&amp;	逻辑的 AND	[[ $a -lt 100 &amp;&amp; $b -gt 100 ]] 返回 false</div><div class="line">||	逻辑的 OR	[[ $a -lt 100 || $b -gt 100 ]] 返回 true</div><div class="line"></div><div class="line">=	检测两个字符串是否相等，相等返回 true。	[ $a = $b ] 返回 false。</div><div class="line">!=	检测两个字符串是否相等，不相等返回 true。	[ $a != $b ] 返回 true。</div><div class="line">-z	检测字符串长度是否为0，为0返回 true。	[ -z $a ] 返回 false。</div><div class="line">-n	检测字符串长度是否为0，不为0返回 true。	[ -n $a ] 返回 true。</div><div class="line">str	检测字符串是否为空，不为空返回 true。	[ $a ] 返回 true。</div><div class="line"></div><div class="line">-b file	检测文件是否是块设备文件，如果是，则返回 true。	[ -b $file ] 返回 false。</div><div class="line">-c file	检测文件是否是字符设备文件，如果是，则返回 true。	[ -c $file ] 返回 false。</div><div class="line">-d file	检测文件是否是目录，如果是，则返回 true。	[ -d $file ] 返回 false。</div><div class="line">-f file	检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。	[ -f $file ] 返回 true。</div><div class="line">-g file	检测文件是否设置了 SGID 位，如果是，则返回 true。	[ -g $file ] 返回 false。</div><div class="line">-k file	检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。	[ -k $file ] 返回 false。</div><div class="line">-p file	检测文件是否是有名管道，如果是，则返回 true。	[ -p $file ] 返回 false。</div><div class="line">-u file	检测文件是否设置了 SUID 位，如果是，则返回 true。	[ -u $file ] 返回 false。</div><div class="line">-r file	检测文件是否可读，如果是，则返回 true。	[ -r $file ] 返回 true。</div><div class="line">-w file	检测文件是否可写，如果是，则返回 true。	[ -w $file ] 返回 true。</div><div class="line">-x file	检测文件是否可执行，如果是，则返回 true。	[ -x $file ] 返回 true。</div><div class="line">-s file	检测文件是否为空（文件大小是否大于0），不为空返回 true。	[ -s $file ] 返回 true。</div><div class="line">-e file	检测文件（包括目录）是否存在，如果是，则返回 true。	[ -e $file ] 返回 true。</div></pre></td></tr></table></figure>
+<ol>
+<li><p>表达式常用``括住</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"># author:菜鸟教程</div><div class="line"># url:www.runoob.com</div><div class="line"></div><div class="line">a=10</div><div class="line">b=20</div><div class="line"></div><div class="line">val=`expr $a + $b`</div><div class="line">echo &quot;a + b : $val&quot;</div><div class="line"></div><div class="line">val=`expr $a - $b`</div><div class="line">echo &quot;a - b : $val&quot;</div><div class="line"></div><div class="line">val=`expr $a \* $b`</div><div class="line">echo &quot;a * b : $val&quot;</div><div class="line"></div><div class="line">val=`expr $b / $a`</div><div class="line">echo &quot;b / a : $val&quot;</div><div class="line"></div><div class="line">val=`expr $b % $a`</div><div class="line">echo &quot;b % a : $val&quot;</div><div class="line"></div><div class="line">if [ $a == $b ]</div><div class="line">then</div><div class="line">   echo &quot;a 等于 b&quot;</div><div class="line">fi</div><div class="line">if [ $a != $b ]</div><div class="line">then</div><div class="line">   echo &quot;a 不等于 b&quot;</div><div class="line">fi</div></pre></td></tr></table></figure>
+</li>
+<li><p>输入输出流的重定向，1为输出，2为错误，0输入（键盘）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">command &gt;file： 标准输出重定向到一个文件,错误仍然输出屏幕 </div><div class="line">command &gt;&gt;file： 标准输出重定向到一个文件(追加) </div><div class="line">command 1&gt;file1： 标准输出重定向到一个文件 </div><div class="line">command 2&gt;&gt;file2：标准错误重定向到一个文件(追加) </div><div class="line">command 1&gt;file 2&gt;&amp;1：标准输出和标准错误一起重定向到一个文件 </div><div class="line">command&gt;&gt;file 2&gt;&amp;1: 标准输出和标准错误一起重定向到一个文件(追加) </div><div class="line">command &lt; file1 &gt;file2：以file1做为标准输入，file2做为标准输出 </div><div class="line">command &lt;file： 以file做为文件标准输入 </div><div class="line">注：上面的command&gt;file 2&gt;&amp;1可以修改为command&gt;file 2&gt;&gt;file</div></pre></td></tr></table></figure>
+</li>
+<li><p>crontab -e 编辑当前用户的cron文件，在/var/spool/cron/下，名为username，加*/1表示每分钟，不然表示在1分的时候</p>
+</li>
+<li>定义php执行脚本的话，用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env php</div><div class="line">&lt;?php</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/sh/" data-id="ciztqajm7002c48ddnyqc22jq" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/lnpp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/lnpp/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.244Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="服务器配置相关"><a href="#服务器配置相关" class="headerlink" title="服务器配置相关"></a>服务器配置相关</h6><p>####### lnpp linux6.8+ nginx1.1 postgresql9.6 php7 sphinx2.2</p>
+<ol>
+<li><p>注意nginx在windwos下的配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">root /cygdrive/f/lumin/yii/frontend/web/; // 使用cygdrive形式定义好web目录</div><div class="line">// 使用windows小写路径形式传递index文件位置</div><div class="line">fastcgi_param  SCRIPT_FILENAME  f:/lumin/yii/frontend/web/$fastcgi_script_name;</div><div class="line">// 使用cygdrive形式定义access_log</div><div class="line">access_log  /cygdrive/c/nginx/logs/b.dev.access.log;</div></pre></td></tr></table></figure>
+</li>
+<li><p>两者必须同时严格定义</p>
+<h6 id="centos-6-下"><a href="#centos-6-下" class="headerlink" title="centos 6 下"></a>centos 6 下</h6></li>
+</ol>
+<p><strong>在编译php等需要指定某个依赖的dir时，其实有两种方法，如果是应用prefix 安装的依赖那么直接告诉它该路径即可，如果是利用yum安装的，先whereis一下，找出他的目录分配，而这个目录分配其实是有规律的，如，分配在/usr/下的各个子目录 bin man lib lib64 include下，编译是会自动往下面的目录找东西，其实跟安装在prefix的效果是一样的</strong></p>
+<ol>
+<li>wget <a href="http://au2.php.net/distributions/php-7.0.13.tar.bz2" target="_blank" rel="external">http://au2.php.net/distributions/php-7.0.13.tar.bz2</a></li>
+<li>tar    -jxvf  php-7.0.13.tar.bz2</li>
+</ol>
+<p>安装postgresql</p>
+<ol>
+<li>获取源码解压</li>
+<li>./configure –help</li>
+<li>./configure –prefix=/usr/loca/pgsql</li>
+<li>发现有依赖没装，查看安装文档，或看提示，并npm -qa | grep 一下看看是否已安装， yum search 看看该依赖的所有相关包</li>
+<li>make , make install</li>
+<li>安装文档和其他小工具 make install-word等</li>
+<li>安装后的环境变量配置，修改/ect/profile 加入 PATH=$PATH:/usr/local/soft等<br>(8. export LIBRARY_PATH=LIBDIR1:LIBDIR2:$LIBRARY_PATH 设定编译时的动态库位置) // 可不设这里</li>
+<li>export LD_LIBRARY_PATH=LIBDIR1:LIBDIR2:$LD_LIBRARY_PATH // 设定编译后的动态库位置，以便能让别的程序找到<br>** 对于LD_LIBRARY_PATH 等这些前面未设置的变量，需要/etc/profile中用export LD_LIBRARY_PATH=/usr/local/pgsql/lib 来定义才能被使用</li>
+<li>共享库一般在<br>ln -s /usr/pgsql-9.4/lib/libpq.so.5 /usr/lib64/libpq.so.5 // 64 位两个都要<br>ln -s /usr/pgsql-9.4/lib/libpq.so.5 /usr/lib/libpq.so.5<br>vi /etc/ld.so.conf</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">adduser postgres // postgres 不能用root启动</div><div class="line">mkdir /usr/local/pgsql/data</div><div class="line">chown postgres /usr/local/pgsql/data</div><div class="line">su - postgres</div><div class="line">/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data</div><div class="line"></div><div class="line">修改版 </div><div class="line">    initdb -E UTF-8 -D /usr/local/pgsql/data --locale=zh_CN.UTF-8</div><div class="line">(initdb -E EUC_CN -D data7 --locale=zh_CN)</div><div class="line">locale 决定在哪个国家，-E 是字符集 charater type 或 encoding 或charater encoding </div><div class="line">collate 排序 排序参数还有cytpe 排序一般是和charater encoding 绑定的</div><div class="line">psql -l 查看所有数据库情况</div><div class="line">创建一个role</div><div class="line">create role lumin  CREATEDB login password &apos;123456&apos;;</div><div class="line">createdb -U lumin test</div><div class="line"></div><div class="line">/usr/local/pgsql/bin/postgres -D /usr/local/pgsql/data &gt;logfile 2&gt;&amp;1 &amp;</div><div class="line">/usr/local/pgsql/bin/createdb test</div><div class="line">/usr/local/pgsql/bin/psql test</div><div class="line"> pg_ctl reload  -D /usr/local/pgsql/data &gt;logfile 2&gt;&amp;1 &amp;</div><div class="line"></div><div class="line">/sbin/iptables -I INPUT -p tcp --dport 5432 -j ACCEPT</div><div class="line">/etc/rc.d/init.d/iptables save 保存修改</div><div class="line">/etc/init.d/iptables status 查看状态</div><div class="line">/etc/init.d/iptables restart 重启防火墙</div><div class="line"></div><div class="line"> 导入数据</div><div class="line"> dropdb test</div><div class="line">createdb -U lumin test</div><div class="line">psql test</div><div class="line">\i /usr/local/pgsql/1.sql</div></pre></td></tr></table></figure>
+<h5 id="php-7"><a href="#php-7" class="headerlink" title="php-7"></a>php-7</h5><p>phpize 是用来编译pecl extension的，当一个source不是pecl extension则不能用它<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ cd extname</div><div class="line">$ phpize</div><div class="line">$ ./configure</div><div class="line">$ make</div><div class="line">make install</div><div class="line">这种安装往往会得到一个ext.so文件，自动放在php.ini中的ext配置目录下，可能不需要继续在php.ini中指定即可</div></pre></td></tr></table></figure></p>
+<p>pecl 安装一些外部的库的扩展，extension，如gd，往往都需要依赖源库的安装<br>pear 也可以安装php库，目前两者区别在于pear对php7的库支持更多<br>php 安装后，可以用pecl安装额外的库支持，如gd等，比较方便<br>依赖的扩展zlib 压缩，openssl 作加密，datetime php core自带，fileinfo , gd 相关的png, jpg各种surport, pcre perl 一样的兼容正则表达式<br>intl 国际化，同时也是icu的一个包装，即依赖ICU库ICU只是一个库<br>iconv 字符集转化，内建<br>exif 读取图片meta，内建<br>hash 提取内容的唯一摘要，内建<br>zlib 压缩，需要在编译时–with-zlib<br>openssl 生成密码等，需要编译时 –with-openssl ，另有mcypt加密，这个已经不维护，可以不用它，系统/usr下自带yum安装了openssl，但是在编译时with-openssl=/usr 反而不工作，最后去除了这个使用它自动查找就可以了<br>ctype 验证字符集是否正确，内建，其实这是一个c函数库–enable-ctype内建，并default<br>zip 可用pecl安装/usr/local/php/lib/php/extensions/no-debug-non-zts-20151012/zip.so<br>json 也是内建的<br>libxml 编译时，自动带–with 需要依赖libxml2安装<br>curl 内建，必须加，注意编译往往需要用到的是依赖的源码，如include，lib下的文件<br>cenlader 日历，需要编译加入–enable-calendar<br>xdebug pecl安装后 zend_extension=/usr/local/php/lib/php/extensions/no-debug-non-zts-20151012/xdebug.so<br>在php源码包中找pdo_mysql，手动进入目录编译，得到  /usr/local/php/lib/php/extensions/no-debug-non-zts-20151012/<br>mb_string 多类型字符转化，即一个带有多个字符集编码的字符串操作，编译时–enable-mbstring<br>sapi server api 与服务器cli交互的api<br> ./configure –prefix=/usr/local/php –with-pdo-mysql –with-pgsql –enable-fpm –with-pdo-pgsql<br> ./configure –prefix=/usr/local/php –with-pdo-mysql –with-pgsql –enable-fpm –with-pdo-pgsql with-pdo-mysql with-<br> ./configure –prefix=/usr/local/php7 –with-pdo-mysql=/usr –with-pgsql –enable-fpm –with-pdo-pgsql –with-zlib=/usr –with-openssl=/usr –with-curl=/usr –without-pdo-sqlite –enable-zip<br> // 初步使用<br>‘./configure’ ‘–prefix=/usr/local/php7’ ‘–with-pdo-mysql’ ‘–with-pgsql’ ‘–enable-fpm’ ‘–with-pdo-pgsql’ ‘–with-zlib’ ‘–with-openssl’ ‘–with-curl’ ‘–without-pdo-sqlite’ ‘–enable-zip<br>./configure –prefix=/usr/local/php –enable-mbstring –with-pdo-mysql –with-pgsql –enable-fpm –with-pdo-pgsql –with-zlib –with-openssl –with-curl –without-pdo-sqlite –disable-sqlite3 –enable-zip<br> 编译时内存不足用<a href="https://www.centos.org/docs/5/html/5.2/Deployment_Guide/s2-swap-creating-file.html" target="_blank" rel="external">参考</a></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">**若 php 安装在特殊目录 $php_prefix, 则请在 configure 后加上 --with-php-config=$php_prefix/bin/php-config**说明了如果安装在其他目录，可能还需要分别指定各个所需的目录，如include等</div><div class="line"></div><div class="line"> dd if=/dev/zero of=/swapfile bs=1024 count=1024000 // 添加1000M 的swapfile</div><div class="line">mkswap /swapfile</div><div class="line">swapon /swapfile // 让swapfile立即生效</div><div class="line">To enable it at boot time, edit /etc/fstab to include the following entry</div><div class="line">/swapfile swap swap defaults 0 0</div><div class="line"> cat /proc/swaps or free // 查看是否已经生效</div><div class="line"></div><div class="line"> **php extension dir :$  php -i | grep extension_dir即可查看，一般不用主动修改</div><div class="line">./php -i|grep include_path</div></pre></td></tr></table></figure>
+<h5 id="安装imageimagick"><a href="#安装imageimagick" class="headerlink" title="安装imageimagick"></a>安装imageimagick</h5><p>有些安装./configure –help并没有说明–with-png 等所需要的依赖，此时查看官方文档也没有说明该依赖，这时需要google查一下，到底需要什么依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yum install tcl-devel libpng-devel libjpeg-devel ghostscript-devel bzip2-devel freetype-devel libtiff-devel</div><div class="line">yum install ImageMagick-devel // 有了上面那个即可，这个并未使用</div><div class="line">http://www.imagemagick.org/download/delegates/</div></pre></td></tr></table></figure></p>
+<h5 id="安装nginx的编译包"><a href="#安装nginx的编译包" class="headerlink" title="安装nginx的编译包"></a>安装nginx的编译包</h5> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">vi /etc/yum.repos.d/nginx.repo</div><div class="line">[nginx]</div><div class="line">name=nginx repo</div><div class="line">baseurl=http://nginx.org/packages/OS/OSRELEASE/$basearch/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div><div class="line">yum install nginx</div></pre></td></tr></table></figure>
+<p> nginx 配置中，user nginx www 代表了用户和组</p>
+<h5 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h5><p>由于在centos默认仓库上的git版本落后，所以用源码安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> wget https://github.com/git/git/archive/v2.9.3.tar.gz</div><div class="line">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel</div><div class="line">yum install gcc perl-ExtUtils-MakeMaker</div><div class="line">cd git-2.8.1</div><div class="line">make prefix=/usr/local/git all</div><div class="line">make prefix=/usr/local/git install</div></pre></td></tr></table></figure></p>
+<h5 id="部署yii"><a href="#部署yii" class="headerlink" title="部署yii"></a>部署yii</h5><ol>
+<li>注意git .gitignore的每层都要配置好，对于vendor目录，本地.gitignore一定要与服务器的同步一致</li>
+</ol>
+<h5 id="部署yii-1"><a href="#部署yii-1" class="headerlink" title="部署yii"></a>部署yii</h5><ol>
+<li>注意git .gitignore一定要与服务器的同步一致</li>
+</ol>
+<h5 id="php-异步编程"><a href="#php-异步编程" class="headerlink" title="php 异步编程"></a>php 异步编程</h5><ol>
+<li>php 的扩展大多依赖某个c库，其实就是c的源码，因为都是利用源码编译的。</li>
+<li>php 是建立在c语言之上的，有很多类、extension都是直接对c函数库的封装</li>
+<li>libevent 是一个c库，用来异步编程</li>
+<li>swoole是国人写的一个c库，绑定了php，区别于普通的php extension，很强大</li>
+</ol>
+<h5 id="安装sphinx"><a href="#安装sphinx" class="headerlink" title="安装sphinx"></a>安装sphinx</h5><p>安装官网<a href="http://sphinxsearchcn.github.io/" target="_blank" rel="external">http://sphinxsearchcn.github.io/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/lnpp/" data-id="ciztqajm2002848ddo3d6ana9" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/nat" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/nat/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.244Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="本文将详细描述网络、互联基本知识的理解"><a href="#本文将详细描述网络、互联基本知识的理解" class="headerlink" title="本文将详细描述网络、互联基本知识的理解"></a>本文将详细描述网络、互联基本知识的理解</h4><h5 id="关键词-ip-NAT-port-iptables-route-gateway-eth0"><a href="#关键词-ip-NAT-port-iptables-route-gateway-eth0" class="headerlink" title="关键词 ip NAT port iptables route gateway eth0"></a>关键词 ip NAT port iptables route gateway eth0</h5><ol>
+<li>正常的ip都是唯一的，ipv4 = 8bit.8bit.8bit.8bit 加上掩码可以得到网络号，利用掩码不仅可以得到网络号，还可以得到ip网段范围，简写方法是8bit.0.0.0/8 说明前面8位是有效，后面的是匹配范围</li>
+<li>应用程序间的通信即两个进程间的通信，即ip+port = sorcket，对于一个进程不同窗口情况，是有一个区别于port的source port 在单个程序进程内分流</li>
+<li>ip之间之所以能相互通信，是因为地址唯一，（公网地址），路由就是实现让不同ip间通信的东西，他通过判断路由表中的匹配，决定该封包要发往哪里，在linux中，也有一个自己的route 表，保存了默认网关等，决定了数据封包如何在路由间一跳传到下一跳。直到找到目标地址为止</li>
+<li>ipv4的地址不够用危机，于是出现了NAT，该技术使处于局域网中的电脑可以上网，nat原理是在封包到达处于公网的nat服务后，将局域网中的ip(等重新封装一层?)替换成这个公网的ip，于是可以上网，当数据发送回来时，再替换成源ip，于是可以了</li>
+<li>iptables是linux防火墙的过滤规则，决定了封包的input forward output的命运，packer filter机制通过判断封包的各种属性来应用到定义的iptables 中，决定是否accpet 或 reject 封包，属性可以是source ip destination ip interface (interface 是一种代表物理硬件的约定，如lo 代表localhost ppp+ 代表ppptd 拨号，eth0 代表网卡)，<a href="http://www.netfilter.org/documentation/HOWTO/cn/packet-filtering-HOWTO-6.html" target="_blank" rel="external">iptables官网</a></li>
+<li>gateway 是一种处理下一跳设备的简称，如，在路由器中的主机，该路由器就是这些主机的网关，因为它帮助把封包传下去，（因为路由器路由规则决定好了）</li>
+<li>GRE 路由协议封装，实现两个不同局域网间的主机通信，<a href="http://h2ofly.blog.51cto.com/6834926/1544860" target="_blank" rel="external">参考</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/nat/" data-id="ciztqajm6002b48dd765amyoh" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/mysql/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.244Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="mysql-的较深入研究"><a href="#mysql-的较深入研究" class="headerlink" title="mysql 的较深入研究"></a>mysql 的较深入研究</h6><ol>
+<li>索引类型，有btree、哈希索引、全文索引。索引是帮助mysql高校获取数据的数据结构</li>
+<li>mysql中没有用二叉树实现而是用了b+tree来实现索引是因为效率更高。还有btree也非常高效。</li>
+</ol>
+<p><a href="http://blog.jobbole.com/24006/" target="_blank" rel="external">mysql索引详解</a></p>
+<ol>
+<li>mysql里面的锁<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">页级:引擎 BDB。</div><div class="line">表级:引擎 MyISAM ， 理解为锁住整个表，可以同时读，写不行</div><div class="line">行级:引擎 INNODB ， 单独的一行记录加锁</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/mysql/" data-id="ciztqajm3002948dd9phabhrz" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/linuxCompile" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/linuxCompile/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.243Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="tiltle-linux-下的gcc编译"><a href="#tiltle-linux-下的gcc编译" class="headerlink" title="tiltle:linux  下的gcc编译"></a>tiltle:linux  下的gcc编译</h2><h3 id="用gcc编译的原理是："><a href="#用gcc编译的原理是：" class="headerlink" title="用gcc编译的原理是："></a>用gcc编译的原理是：</h3><p>1.先写好程序源码（源码中包含了各种内部库和外部库的引用<br>2.gcc编译源码(对各个源码文件进行编译)<br>3.gcc进行主副外，程序调用的结合(对编译到的各个源码文件jj.o,进行链接，指定引用外部库的路径)<br>4.生产了相应的最终binary file,并将配置等安装在主机上</p>
+<h3 id="make编译源码原理："><a href="#make编译源码原理：" class="headerlink" title="make编译源码原理："></a>make编译源码原理：</h3><p>~make的原理其实是gcc的简化，它省去了gcc编译链接外部内部库调用的一个个写代码的麻烦，也就是集成到了configure中，再运行configure<strong>产生makefile文件</strong>，最后运行makefile文件编译完成.<br>如下图<br><img src="http://vbird.dic.ksu.edu.tw/linux_basic/0520source_code_and_tarball_files/make_configure.gif"></p>
+<p>参考:<a href="http://vbird.dic.ksu.edu.tw/linux_basic/0520source_code_and_tarball_2.php" target="_blank" rel="external">鸟哥私房菜</a></p>
+<h3 id="tarball软件源码编译安装（源码tar-gz-tar打包，zig压缩的结合包-安装"><a href="#tarball软件源码编译安装（源码tar-gz-tar打包，zig压缩的结合包-安装" class="headerlink" title="tarball软件源码编译安装（源码tar.gz:tar打包，zig压缩的结合包)安装"></a>tarball软件源码编译安装（源码tar.gz:tar打包，zig压缩的结合包)安装</h3><ol>
+<li>参考README等文件</li>
+<li>运行./configure,创建makefile文件</li>
+<li>optional:  make clean读取makefile中关于安装前得清除工作，清除系统中多余的冲突东西，旧版本等</li>
+<li>执行make，在当前目录下得到编译后的各种文件</li>
+<li>make install ，将编译后的文件安装到指定的（预先设定好的）地方。</li>
+<li>别忘了解包的方法tar zxvf XXX</li>
+</ol>
+<h3 id="软件安装的主要地方"><a href="#软件安装的主要地方" class="headerlink" title="软件安装的主要地方"></a>软件安装的主要地方</h3><ol>
+<li>/usr/local/software/etc/  ,配置文件</li>
+<li>/usr/local/software/lib/ 函数库</li>
+<li>/usr/loacl/software/bin/ 可执行文件</li>
+<li>/usr/local/software/man/ 软件的使用指南</li>
+<li>同时在编译php等需要指定某个依赖的dir时，其实有两种方法，如果是应用prefix 安装的依赖那么直接告诉它该路径即可，如果是利用yum安装的，先whereis一下，找出他的目录分配，而这个目录分配其实是有规律的，如，分配在/usr/下的各个子目录 bin man lib lib64 include下，编译是会自动往下面的目录找东西，其实跟安装在prefix的效果是一样的</li>
+</ol>
+<h2 id="其中-usr-local-等目录可选，依据软件的类型而定，如自带，yum，apt，源码安装等，重要的是后面的-etc-等"><a href="#其中-usr-local-等目录可选，依据软件的类型而定，如自带，yum，apt，源码安装等，重要的是后面的-etc-等" class="headerlink" title="其中/usr,/local,等目录可选，依据软件的类型而定，如自带，yum，apt，源码安装等，重要的是后面的/etc/等"></a>其中/usr,/local,等目录可选，依据软件的类型而定，如自带，yum，apt，源码安装等，重要的是后面的/etc/等</h2><h2 id="源码安装时候，最好先将tarball源码解压到-usr-local-src-目录下，"><a href="#源码安装时候，最好先将tarball源码解压到-usr-local-src-目录下，" class="headerlink" title="源码安装时候，最好先将tarball源码解压到/usr/local/src/目录下，"></a>源码安装时候，最好先将tarball源码解压到/usr/local/src/目录下，</h2><p>###源码安装经验谈，</p>
+<ol>
+<li>将源码复制到本地后，执行，./configure, make (some parameter) ,make install, 会在当前该包的目录下生成了/bin,/etc/ ,/lib/ , (/include) ,几大文件夹，在这里直接执行 /bin/中的二进制文件，即可运行该软件， 然而在编译安装的同时，它还将这几大文件夹复制到了对应的， /usr/bin ,/usr/etc/(或者系统的etc)  ,/usr/lib ,/usr/include / ，下，以供全局使用，所以此时直接在当前目录删除该解压后的安装包即可，但这有个缺点就是无法实现要卸载该软件的时候，不知道在系统哪里将软件全部清除掉，所以这时如果还保留了最初的那个解压安装包，就可以执行 ，make uninstall ,达到目的， （但有时候无法卸载，因为软件没有提供该方法);</li>
+</ol>
+<p>//我一般都./configure –prefix定制安装目录，到时直接删文件夹。</p>
+<ol>
+<li>所以如果没有特别需要，只需要下载二进制码版本，然后放到usr/local/soft  中，再做一个bin到/usr/local/bin   的软连接即可达到程序的全局运行，卸载时候只需要删除该下载包和软连接,     记住软连接一定要写绝对路径</li>
+<li>最方便的方法就是用yum之类的东西了，无需考虑安装后的卸载问题。 </li>
+</ol>
+<h3 id="软件管理（自动安装）两大体系"><a href="#软件管理（自动安装）两大体系" class="headerlink" title="软件管理（自动安装）两大体系"></a>软件管理（自动安装）两大体系</h3><ol>
+<li>dpkg管理机制,由debian  linux开发的，ubuntu在用</li>
+<li>rpm管理机制,由Red Hat,有centos,fedora</li>
+</ol>
+<h3 id="利用软件管理员安装有多个功能，一种是下载编译好的二进制安装如centos下的xxx-rpm（需要有同样的环境，不能解决依赖关系），一种是xxx-src-rpm-源码安装，还有就是yum，rpm的升级版，可以解决依赖"><a href="#利用软件管理员安装有多个功能，一种是下载编译好的二进制安装如centos下的xxx-rpm（需要有同样的环境，不能解决依赖关系），一种是xxx-src-rpm-源码安装，还有就是yum，rpm的升级版，可以解决依赖" class="headerlink" title="利用软件管理员安装有多个功能，一种是下载编译好的二进制安装如centos下的xxx.rpm（需要有同样的环境，不能解决依赖关系），一种是xxx.src.rpm,源码安装，还有就是yum，rpm的升级版，可以解决依赖"></a>利用软件管理员安装有多个功能，一种是下载编译好的二进制安装如centos下的xxx.rpm（需要有同样的环境，不能解决依赖关系），一种是xxx.src.rpm,源码安装，还有就是yum，rpm的升级版，可以解决依赖</h3><p>rp-pppoe -        3.1    -     5        .i386        .rpm<br>软件名称   软件的版本资讯 释出的次数 适合的硬件平台 扩展名</p>
+<p>###rpm 还是tar.gz？<br>rpm是centos下的软件安装机制，具有方便安装清除等优点，但tar.gz可以适应linux 的所有</p>
+<h3 id="rpm，deb，yum，apt等都会有默认的软件安装地方和操作"><a href="#rpm，deb，yum，apt等都会有默认的软件安装地方和操作" class="headerlink" title="rpm，deb，yum，apt等都会有默认的软件安装地方和操作"></a>rpm，deb，yum，apt等都会有默认的软件安装地方和操作</h3><h3 id="tar-gz-文件也有二进制编译好的-执行包-，直接解压即可使用，解压后有bin-include-等文件夹，其中bin中就有可执行文件-进入后用-xxx便可-删除时候直接删除，就相当于exe包-rpm与他的区别是，它提供了良好的管理，卸载和查找时候容易"><a href="#tar-gz-文件也有二进制编译好的-执行包-，直接解压即可使用，解压后有bin-include-等文件夹，其中bin中就有可执行文件-进入后用-xxx便可-删除时候直接删除，就相当于exe包-rpm与他的区别是，它提供了良好的管理，卸载和查找时候容易" class="headerlink" title="tar.gz 文件也有二进制编译好的(执行包)，直接解压即可使用，解压后有bin/,include,等文件夹，其中bin中就有可执行文件,进入后用./xxx便可.删除时候直接删除，就相当于exe包.rpm与他的区别是，它提供了良好的管理，卸载和查找时候容易"></a>tar.gz 文件也有二进制编译好的(执行包)，直接解压即可使用，解压后有bin/,include,等文件夹，其中bin中就有可执行文件,进入后用./xxx便可.删除时候直接删除，就相当于exe包.rpm与他的区别是，它提供了良好的管理，卸载和查找时候容易</h3><p>参考，<a href="http://forum.eepw.com.cn/thread/262947/1" target="_blank" rel="external">linux软件安装知识扫盲</a></p>
+<h3 id="只要是bin目录下的都是可执行文件，只要将bin目录添加到系统环境path就可以直接运行该文件，脚本等"><a href="#只要是bin目录下的都是可执行文件，只要将bin目录添加到系统环境path就可以直接运行该文件，脚本等" class="headerlink" title="只要是bin目录下的都是可执行文件，只要将bin目录添加到系统环境path就可以直接运行该文件，脚本等"></a>只要是bin目录下的都是可执行文件，只要将bin目录添加到系统环境path就可以直接运行该文件，脚本等</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/linuxCompile/" data-id="ciztqajm5002a48dd1vz4lw33" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/linux_dir" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/linux_dir/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.243Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="title-linux-下的目录结构"><a href="#title-linux-下的目录结构" class="headerlink" title="title:linux 下的目录结构"></a>title:linux 下的目录结构</h2><h3 id="Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。"><a href="#Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。" class="headerlink" title="Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。"></a>Linux是一个目录结构非常合理科学的系统，有了它的完美目录结构规划，做任何事情，比如安装软件，查找资料等都显得极为方便和整整有条。</h3><h3 id="目录结构，由-下分主要分为以下几大目录"><a href="#目录结构，由-下分主要分为以下几大目录" class="headerlink" title="目录结构，由 / 下分主要分为以下几大目录"></a>目录结构，由 / 下分主要分为以下几大目录</h3><ol>
+<li>/bin ,bin是二进制文件，这里一般有系统的命令，如ps ,ls,等,bin下的文件就等于命令</li>
+<li>/boot ,  启动重要脚本</li>
+<li>/sbin,用户的二进制文件，如reboot，ifconfig</li>
+<li>/etc,所有程序的配置文件，一般是/etc/software/xxx_config</li>
+<li>/dev,设备文件，如usb连接的任何设备</li>
+<li>/proc,进程信息，是个虚拟文件系统，保存着目前正在运行的多种信息</li>
+<li>/var,变量文件，如系统日志/var/log,网上下载的一些包和库，/var/lib,邮件,/var/mail,多次重启需要的临时文件,/var/tmp,</li>
+<li>/tmp,临时文件，每次重启都要删除</li>
+<li>/usr,用户程序目录，包含了/usr/bin,二进制执行入口（类似exe）/usr/sbin,与usr/bin类似；它和系统更相关点，（二进制文件都在xx/bin中），/usr/lib,软件依赖库，提供给xx/[s]bin用的，/usr/loacl或者/usr/include,包含了程序安装后的内容，</li>
+<li>/home,家目录，包含了每个用户的档案入口点，如/home/user </li>
+<li>/lib,系统库，给/bin,/sbin提供支持，还有/lib64</li>
+<li>/mnt,挂载点</li>
+<li>/opt,额外可选插件，附加程序等，类似和系统相关较强的附加程序</li>
+<li>/media,娱乐文件</li>
+<li>/usr/share/doc/ 下有许多man文件</li>
+</ol>
+<p>以上目录，对应的每个软件都有的bin lib var man</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/linux_dir/" data-id="ciztqajm0002748ddv8uivtq9" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/linuxCammand" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/linuxCammand/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.242Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="title-linux命令聚集"><a href="#title-linux命令聚集" class="headerlink" title="title:linux命令聚集"></a>title:linux命令聚集</h2><h3 id="history"><a href="#history" class="headerlink" title="history"></a>history</h3><ol>
+<li>可以使用管道，如history | more ,history | tail </li>
+<li>C+R搜索历史命令，输入关键词即可</li>
+<li>!n,重复第n条命令</li>
+<li>！关键词，执行和关键词有关的所有历史命令</li>
+<li>控制历史命令总数vi ~/.bash_profile<br> HISTSIZE=450<br> HISTFILESIZE=450<br> HISTFILE=/root/.commandline_warrior //可以修改historyfile的路径</li>
+<li>删除历史命令中连续重复的重复条目，export HISTCONTROL=ignoredups</li>
+<li>export HISTCONTROL=erasedups ，删除历史命令中的重复条目</li>
+<li>vi !:$ ，后者将替换为上一个历史命令的参数</li>
+<li>history -c 清除所有<h3 id="file明令"><a href="#file明令" class="headerlink" title="file明令"></a>file明令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">file *</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>*查看文件的类型是什么文件，如可执行二进制和某种程序语言的源码（c++，nodejs，etc)，如果源码头没有标明#!/bin/bash等说明执行的程序类型，就是ASCII字符文件。</p>
+<h3 id="命令帮助"><a href="#命令帮助" class="headerlink" title="命令帮助"></a>命令帮助</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">man xxxcommand</div></pre></td></tr></table></figure>
+<h3 id="和用户相关"><a href="#和用户相关" class="headerlink" title="和用户相关"></a>和用户相关</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">finger username</div><div class="line">who </div><div class="line">who am i</div><div class="line">su 成为root用户</div><div class="line">sudo su //以root身份执行</div><div class="line">sudo command //root身份执行命令</div><div class="line">passwd 更改当前用户密码</div><div class="line">passwd user //改某一用户密码</div></pre></td></tr></table></figure>
+<h3 id="SHELL"><a href="#SHELL" class="headerlink" title="SHELL"></a>SHELL</h3><ol>
+<li>history,</li>
+<li>alias //显示别称表</li>
+<li>alias new_command=’command’ 设定新的别称</li>
+<li>env //显示环境变量</li>
+<li>export var = value ,设定新的环境变量var</li>
+<li>df -lh 显示所有硬盘使用情况</li>
+<li>mount 显示硬盘分区挂载</li>
+<li>mount partition path 挂载某分区到路径</li>
+<li>unmount partition 卸载分区挂载</li>
+<li>sudo fdisk -l 显示所有分区</li>
+<li>cat /proc/cpuinfo</li>
+<li><p>cat /proc/meninfo //内存信息</p>
+<h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h3></li>
+<li><p>ifconfig 查看/设置网络接口和ip</p>
+</li>
+<li>route 显示路由表</li>
+<li>netstat 显示当前网络连接状态</li>
+<li>ping ip</li>
+<li>host domain 寻找域名对应的ip</li>
+<li>host ip 反向DNS查询</li>
+<li>wget <h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3></li>
+<li>top 显示进程</li>
+<li>ps 显示shell下的进程</li>
+<li>ps -lu username 显示user用户的进程</li>
+<li>kill pid ，杀死pid的进程<br>5, 查看进程，及其对应的端口情况， netstat -tlnp //cmd版，netstat -abo<br>5, 查看某端口被哪个进程使用， netstat -tlnp|8000</li>
+</ol>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><ol>
+<li>rm ,file //描述文件，chown, chmod,cat ,cat file1 file2//连接显示,cat file1 &gt;&gt; file2 //连接1中内容到2中，head -n file 显示file的n行，对应tail,</li>
+<li>diff //对比</li>
+<li>sort //排序</li>
+<li>wc file 统计字符，词行数</li>
+<li>find /path [-name][-size] ‘reg’ | [dosomthing]<br> 5.1 $find /sbin /bin -name core -type f -print | xargs /bin/rm -f </li>
+<li><a href="http://www.cnblogs.com/wanqieddy/archive/2011/06/09/2076785.html" target="_blank" rel="external">参考find命令详解</a></li>
+<li>tar -xvf xx.gz.tar ,解压并查看解压过程</li>
+<li>tar -xf</li>
+<li>tar -cf new.tar dir ,打包 </li>
+</ol>
+<h3 id="利用正则批量处理文件"><a href="#利用正则批量处理文件" class="headerlink" title="利用正则批量处理文件"></a>利用正则批量处理文件</h3><ol>
+<li>删除文件<h1 id="shopt-s-extglob-（打开extglob模式）"><a href="#shopt-s-extglob-（打开extglob模式）" class="headerlink" title="shopt -s extglob      （打开extglob模式）"></a>shopt -s extglob      （打开extglob模式）</h1><h1 id="rm-fr-file1-删除除了file1-的文件"><a href="#rm-fr-file1-删除除了file1-的文件" class="headerlink" title="rm -fr !(file1) //删除除了file1 的文件"></a>rm -fr !(file1) //删除除了file1 的文件</h1></li>
+<li>mv !(dir) dir //移动除了dir外的所有到dir</li>
+<li>rm <code>ls | grep -v &quot;aa&quot;</code></li>
+</ol>
+<h3 id="命令组合"><a href="#命令组合" class="headerlink" title="命令组合"></a>命令组合</h3><p><a href="http://blog.csdn.net/taiyang1987912/article/details/41488395" target="_blank" rel="external">参考</a></p>
+<ol>
+<li>ls | grep -i aa 选择对于ls得到的 过滤，过滤后得到ls中含有aa的结果</li>
+<li>grep -i aa file 查找 file中含有aa的东西</li>
+</ol>
+<h3 id="多重shell操作"><a href="#多重shell操作" class="headerlink" title="多重shell操作"></a>多重shell操作</h3><p>进入目录后自动显示文件<br>cdl() {<br>        cd ${1};<br>        ls;<br>}<br>alias cd=cdl</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/linuxCammand/" data-id="ciztqajm0002648ddsx9bcwcr" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/linux.sofware.install" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/linux.sofware.install/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.242Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/centos/linux.sofware.install/">linux 下安装软件的几种方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="by-lumin-10-02-2016"><a href="#by-lumin-10-02-2016" class="headerlink" title="by lumin  10.02.2016"></a>by lumin  10.02.2016</h4><p>永远要记得查看这里日记</p>
+<hr>
+<h4 id="下载二进制安装包"><a href="#下载二进制安装包" class="headerlink" title="下载二进制安装包"></a>下载二进制安装包</h4><ol>
+<li>rpm 包是redhat系列的安装包，ubuntu要想使用需要使用alien工具转换为deb包</li>
+<li>deb包是ubuntu的专利，在图形界面点击就可以像win一样安装</li>
+<li>Linux Binaries (.tar.xz) 这种安装包是已经编译好的，解压既可以./运行, xz -d file.tar.z 解压，然后tar -xvf file.tar</li>
+</ol>
+<h4 id="使用包管理器"><a href="#使用包管理器" class="headerlink" title="使用包管理器"></a>使用包管理器</h4><ol>
+<li></li>
+</ol>
+<h4 id="使用源码"><a href="#使用源码" class="headerlink" title="使用源码"></a>使用源码</h4><p>tar.gz后缀一般是源码，需要make make install 等<br>一般步骤是：sudo ./configure、make、make install </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/linux.sofware.install/" data-id="ciztqajlz002548dd1ctiysys" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/command" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/command/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.241Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>重启网卡<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/network restart</div><div class="line">service network start  </div><div class="line">service network status</div></pre></td></tr></table></figure></p>
+<p>和网络配置有关的文件<br>配置网关、设定ip为静态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/etc/sysconfig/network-scripts/ifcfg-eth0</div><div class="line"></div><div class="line">DEVICE=&quot;eth0&quot;</div><div class="line">HWADDR=&quot;00:0C:29:FD:FF:2A&quot;</div><div class="line">NM_CONTROLLED=&quot;yes&quot;</div><div class="line">ONBOOT=&quot;yes&quot;</div><div class="line">IPADDR=192.168.1.31</div><div class="line">NETMASK=255.255.255.0</div><div class="line">GATEWAY=192.168.1.1</div><div class="line">BOOTPROTO=static</div></pre></td></tr></table></figure></p>
+<p>配置dns<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/etc/resolv.conf </div><div class="line">nameserver 202.96.134.133</div><div class="line">nameserver 8.8.8.8</div></pre></td></tr></table></figure></p>
+<p>临时配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ifconfig eth0 10.1.1.10 netmask 255.0.0.0</div></pre></td></tr></table></figure></p>
+<p>寻找程序所在地方<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">whereis (在环境变量中找)</div><div class="line">locale (利用每天更新的库)</div><div class="line">find (查找磁盘上的任何东西，可以用正则、简写、函数等)</div><div class="line">tar 打包</div><div class="line">gzip 对tar后压缩</div><div class="line">bzip2 对tar后压缩</div><div class="line">xz</div><div class="line">压　缩：tar -jcv -f filename.tar.bz2 file</div><div class="line">查　询：tar -jtv -f filename.tar.bz2</div><div class="line">解压缩：tar -jxv -f filename.tar.bz2 -C dir(欲解压缩的目录)</div><div class="line">查看文件大小 du -h max-lengh=1</div><div class="line">查看磁盘 df -h</div></pre></td></tr></table></figure></p>
+<p>源码安装: 配置得makefile 得了它后调用make(自动调用gcc)编译,make install 安装到指定位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure --help 查看配置</div></pre></td></tr></table></figure></p>
+<p>如果是默认安装，会分散安装到/usr/bin usr/lib usr/share/man /etc/ 目录下<br>因此为了方便管理，最好手动设定prefix，安装到/usr/local/software目录下，源码copy到usr/local/src/soft/下，然后在/etc/man_db.conf中加入一条，告诉它man目录和bin目录<br>.so 动态函数库<br>.a 静态函数库<br>在linux中有许多函数、函数库都是被各种程序共同使用的，于是把它放到一些目录中，以便给程序运行时调用。其中.so结尾的是动态函数库，在程序运行时载入，平时只记录它所在的位置<br>静态函数（库）会再编译时直接整合到了安装后的二进制文件中，优点是可以直接独立运行。不需要再次依赖。但不利于升级。<br>./configure 用到的–with-extension=dir 一般是用到一个包的源码库，所以一般把该路径指向该源码的lib中，当然也要看help例外<br>一般添加新的功能进去需要重新编译</p>
+<h5 id="linux-下的目录结构"><a href="#linux-下的目录结构" class="headerlink" title="linux 下的目录结构"></a>linux 下的目录结构</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/</div><div class="line">/sbin</div><div class="line">/home</div><div class="line">/opt 第三方软件目录，类似d盘(需要手动)</div><div class="line">/tmp</div><div class="line">/mnt</div><div class="line">/bin 系统程序ls rm 等</div><div class="line">/var 可变的，log等文件</div><div class="line">/etc 所有软件的默认配置都放在这个目录下 </div><div class="line">/usr 下有/bin /lib /local/bin 类似C盘prografiles，一般软件都会默认分散安装到这里</div></pre></td></tr></table></figure>
+<h5 id="常用命令备份"><a href="#常用命令备份" class="headerlink" title="常用命令备份"></a>常用命令备份</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">删除当前目录下所有 *.txt文件，除了test.txt</div><div class="line"></div><div class="line">rm `ls *.txt|egrep -v test.txt`</div><div class="line">#或者</div><div class="line">rm `ls *.txt|awk &apos;&#123;if($0 != &quot;test.txt&quot;) print $0&#125;&apos;`</div><div class="line">#排除多个文件</div><div class="line">rm `ls *.txt|egrep -v &apos;(test.txt|fff.txt|ppp.txt)&apos;`</div><div class="line">rm -f `ls *.log.1|egrep -v &apos;(access-2010-09-06.log|error-2010-09-06.log)&apos;`</div><div class="line">rm -f `ls *.log|egrep -v &apos;(access-2010-09-06.log|error-2010-09-06.log)&apos;`</div><div class="line">rm -f `ls *.log|egrep -v &apos;(20100906.log)&apos;`</div><div class="line">rm `find . -name *.txt | egrep -v ‘（test.txt|fff.txt|ppp.txt)&apos;`</div><div class="line">egrep 是grep 的扩展，还可以使用附加的正则表示式元字符</div><div class="line">rpm -qa | grep readline 查看是否安装有某个包</div><div class="line">yum search readline 当缺少某个包时，如果自己解决，那就搜索一下当前是否有该包，如果有，那么全网搜索一下该包的相关包，并看具体信息决定是否增加安装</div></pre></td></tr></table></figure>
+<h5 id="linux-生疏必要软件-命令"><a href="#linux-生疏必要软件-命令" class="headerlink" title="linux 生疏必要软件/命令"></a>linux 生疏必要软件/命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iconv 文件编码转码</div></pre></td></tr></table></figure>
+<p> nohup ../yii /temp/major-group &gt; major.out 2&gt;&amp;1 &amp;<br> ps -ef |grep yii</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/command/" data-id="ciztqajly002448dduo2u2ewn" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/bingfa" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/bingfa/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.240Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="php-redis-处理高并发"><a href="#php-redis-处理高并发" class="headerlink" title="php + redis 处理高并发"></a>php + redis 处理高并发</h6><hr>
+<p>利用队列处理高并发，就像排队一样，其实和锁是一样(?)，但是队列更容易理解，队列是原子操作</p>
+<ol>
+<li>将库存加入队列，每下一个单前pop一个值，能pop说明库存还有</li>
+<li>分三个队列，等待用户，已购买用户，库存，开一个进程不断从等待用户中取出并判断是否在已购买队列中，再决定是否下单，减少库存</li>
+<li>从库存队列中pop出后，实际上还需要在数据库中对库存减1，如果其中出错就需要对队列+1</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/bingfa/" data-id="ciztqajlx002348dd4zhgmrye" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/8/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

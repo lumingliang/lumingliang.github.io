@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>nodejs 的有关thread和fiber的用法 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="解释线程和fibers.
+nodejs是单线程运行，也就是当一个代码在执行(如cpu密集型),其他代码是不会执行的，就算定时器时间到了，却也不会执行，非得等到当前代码执行完毕为止
+异步是指，node在执行io密集型代码时候(如fs),不进行阻塞，而是等到抛出io任务给其他人，自己主线程(唯一的线程)继续进行下去，等到空闲了，再检查事件队列，看是否io已经完毕，以便执行里面的回调！但这很容易写出&amp;l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs 的有关thread和fiber的用法">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/node-thread/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="解释线程和fibers.
+nodejs是单线程运行，也就是当一个代码在执行(如cpu密集型),其他代码是不会执行的，就算定时器时间到了，却也不会执行，非得等到当前代码执行完毕为止
+异步是指，node在执行io密集型代码时候(如fs),不进行阻塞，而是等到抛出io任务给其他人，自己主线程(唯一的线程)继续进行下去，等到空闲了，再检查事件队列，看是否io已经完毕，以便执行里面的回调！但这很容易写出&amp;l">
+<meta property="og:updated_time" content="2015-11-27T08:03:19.673Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs 的有关thread和fiber的用法">
+<meta name="twitter:description" content="解释线程和fibers.
+nodejs是单线程运行，也就是当一个代码在执行(如cpu密集型),其他代码是不会执行的，就算定时器时间到了，却也不会执行，非得等到当前代码执行完毕为止
+异步是指，node在执行io密集型代码时候(如fs),不进行阻塞，而是等到抛出io任务给其他人，自己主线程(唯一的线程)继续进行下去，等到空闲了，再检查事件队列，看是否io已经完毕，以便执行里面的回调！但这很容易写出&amp;l">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-node-thread" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/node-thread/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.290Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nodejs 的有关thread和fiber的用法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="解释线程和fibers"><a href="#解释线程和fibers" class="headerlink" title="解释线程和fibers."></a>解释线程和fibers.</h3><ol>
+<li>nodejs是单线程运行，也就是当一个代码在执行(如cpu密集型),其他代码是不会执行的，就算定时器时间到了，却也不会执行，非得等到当前代码执行完毕为止</li>
+<li>异步是指，node在执行io密集型代码时候(如fs),不进行阻塞，而是等到抛出io任务给其他人，自己主线程(唯一的线程)继续进行下去，等到空闲了，再检查事件队列，看是否io已经完毕，以便执行里面的回调！但这很容易写出&lt;型的代码.也就是会有一大丢回调</li>
+<li><p>fibers就是为了解决异步，但不进行回调的问题而产生的，fibers实际上任是异步，单线程，也就是同一时间只有一个fibers在执行，只有一段代码在执行，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var Fiber = require(&apos;fibers&apos;);</div><div class="line"> </div><div class="line">var inc = Fiber(function(start) &#123;</div><div class="line">    var total = start;</div><div class="line">    while (true) &#123;</div><div class="line">        total += Fiber.yield(total);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"> </div><div class="line">for (var ii = inc.run(1); ii &lt;= 10; ii = inc.run(1)) &#123;</div><div class="line">    console.log(ii);</div><div class="line">&#125;</div><div class="line">//从run开始执行，可以在run里面传递参数，执行到yield，开始停止执行yield后面的代码，也就是异步，等待异步事件完成后，回到yield(传递参数),并执行yield后面的代码，相当于回调，遇到yield的时候，开始异步，执行其他代码</div></pre></td></tr></table></figure>
+</li>
+<li><p>线程，真正的多线程，同一时间有多个线程存在，每个线程互不干扰，多线程可以使用多个cpu，而且使用cpu密集型<br><a href="https://cnodejs.org/topic/518b679763e9f8a5424406e9" target="_blank" rel="external">参考nodejs多线程</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/node-thread/" data-id="ciztqajjj000y48ddlgxhxof0" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/note/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/nodeStudy/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

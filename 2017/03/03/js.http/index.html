@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>学习javascript的基本知识，以及面向对象，每学一个知识点，都要认真记录 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="js的起源js在1995年，由netscape公司的 Brendan Eich创建，因为Netscape与Sun合作，当时想借用Sun的java 之名，来推广js,故取名javascript;后来，微软为了进军浏览器，模仿js开发了JScript(因为不能重名),接着CEnvi 又推出了ScriptEase,这时，是三足鼎立的状态
+为了统一规格，出现了javaScript兼容于ECMA标准，ECM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习javascript的基本知识，以及面向对象，每学一个知识点，都要认真记录">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/js.http/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="js的起源js在1995年，由netscape公司的 Brendan Eich创建，因为Netscape与Sun合作，当时想借用Sun的java 之名，来推广js,故取名javascript;后来，微软为了进军浏览器，模仿js开发了JScript(因为不能重名),接着CEnvi 又推出了ScriptEase,这时，是三足鼎立的状态
+为了统一规格，出现了javaScript兼容于ECMA标准，ECM">
+<meta property="og:updated_time" content="2015-12-22T07:34:50.586Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习javascript的基本知识，以及面向对象，每学一个知识点，都要认真记录">
+<meta name="twitter:description" content="js的起源js在1995年，由netscape公司的 Brendan Eich创建，因为Netscape与Sun合作，当时想借用Sun的java 之名，来推广js,故取名javascript;后来，微软为了进军浏览器，模仿js开发了JScript(因为不能重名),接着CEnvi 又推出了ScriptEase,这时，是三足鼎立的状态
+为了统一规格，出现了javaScript兼容于ECMA标准，ECM">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js.http" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/js.http/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.285Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      学习javascript的基本知识，以及面向对象，每学一个知识点，都要认真记录
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="js的起源"><a href="#js的起源" class="headerlink" title="js的起源"></a>js的起源</h3><p>js在1995年，由netscape公司的 Brendan Eich创建，因为Netscape与Sun合作，当时想借用Sun的java 之名，来推广js,故取名javascript;后来，微软为了进军浏览器，模仿js开发了JScript(因为不能重名),接着CEnvi 又推出了ScriptEase,这时，是三足鼎立的状态</p>
+<p>为了统一规格，出现了javaScript兼容于ECMA标准，ECMA只负责定义标准，不负责具体实现，这时js又被称为ECMAScript,到现在ECMA6,是力推，ECMA7是未来,js正在逐渐成长为一门完善了全能型语言</p>
+<h3 id="js的组成部分"><a href="#js的组成部分" class="headerlink" title="js的组成部分"></a>js的组成部分</h3><ol>
+<li>ECMASctipt ,描述了该语言的语法和基本对象,类似其他语言，nodejs主要部分在这里</li>
+<li>文档对象类型DOM,用于描述网页语言的操纵方法和接口</li>
+<li>BOM ,浏览器对象模型，描述了用于和浏览器交互的方法和接口</li>
+</ol>
+<h3 id="js的一般用途"><a href="#js的一般用途" class="headerlink" title="js的一般用途"></a>js的一般用途</h3><ol>
+<li>嵌入动态html页面</li>
+<li>响应监听浏览器事件</li>
+<li>读写html元素</li>
+<li>验证表单数据</li>
+<li>控制cookie等</li>
+<li>nodejs端服务器开发</li>
+</ol>
+<h3 id="js的安全性较差，就是当一条语句执行不了，就会导致下面的语句都无法执行，因此可以用try-catch-捕捉异常，抛出异常，才能让下面的语句也可以执行，出错时不至于全部完结"><a href="#js的安全性较差，就是当一条语句执行不了，就会导致下面的语句都无法执行，因此可以用try-catch-捕捉异常，抛出异常，才能让下面的语句也可以执行，出错时不至于全部完结" class="headerlink" title="js的安全性较差，就是当一条语句执行不了，就会导致下面的语句都无法执行，因此可以用try catch, 捕捉异常，抛出异常，才能让下面的语句也可以执行，出错时不至于全部完结"></a>js的安全性较差，就是当一条语句执行不了，就会导致下面的语句都无法执行，因此可以用try catch, 捕捉异常，抛出异常，才能让下面的语句也可以执行，出错时不至于全部完结</h3><h3 id="js为直译语言，因为主流浏览器解释引擎都是每次运行时逐行加载代码并解释，V8是将代码解译后运行的"><a href="#js为直译语言，因为主流浏览器解释引擎都是每次运行时逐行加载代码并解释，V8是将代码解译后运行的" class="headerlink" title="js为直译语言，因为主流浏览器解释引擎都是每次运行时逐行加载代码并解释，V8是将代码解译后运行的;"></a>js为直译语言，因为主流浏览器解释引擎都是每次运行时逐行加载代码并解释，V8是将代码解译后运行的;</h3><h3 id="DHTML-动态html-是结合了html-css-js-技术，动态创建交互，和动态ajax更新浏览器内容技术，不需要重新加载页面"><a href="#DHTML-动态html-是结合了html-css-js-技术，动态创建交互，和动态ajax更新浏览器内容技术，不需要重新加载页面" class="headerlink" title="DHTML,动态html ,是结合了html ,css, js 技术，动态创建交互，和动态ajax更新浏览器内容技术，不需要重新加载页面"></a>DHTML,动态html ,是结合了html ,css, js 技术，动态创建交互，和动态ajax更新浏览器内容技术，不需要重新加载页面</h3><h3 id="补充，字符集，字符编码，以及html头的accept"><a href="#补充，字符集，字符编码，以及html头的accept" class="headerlink" title="补充，字符集，字符编码，以及html头的accept"></a>补充，字符集，字符编码，以及html头的accept</h3><ol>
+<li>字符集，各国语言，字符的集合，比如所有的ASCII,Unicode,都是字符集，是人类可以识别的字符集合</li>
+<li>字符编码，将字符集转换为计算机可以识别的的字节的规则， 如UTF-8 将前8位用在ASCII,后面的扩展到2到四个字节，可以分别一一对应Unicode的所有字符</li>
+<li>客户端与服务端交换信息，首先需要request告诉服务器它接受的编码，和它请求传送数据的编码，然后服务器利用相应的编码规则解码请求信息，然后按照自己的默认规则运行程序，最后根据客户端可以接受的编码类型来返回数据，这时客户端根据返回的数据编码类型，解码即可</li>
+<li>当两个不同软件，当客户端与服务端交换信息，时，必须每次信息流都要告诉对方我用的是什么字符集，（或者说用的是什么编码，用的是json还是 HTML等），并且告诉对方我希望接受的编码和字符集是什么，当然这可以智能识别，但动态识别其实还是告诉了对方这些信息，只是较为底层</li>
+</ol>
+<h3 id="理解http协议为无状态"><a href="#理解http协议为无状态" class="headerlink" title="理解http协议为无状态"></a>理解http协议为无状态</h3><ol>
+<li>http为无状态是指，服务端对于客户端的事务处理不具备记忆功能，也就是服务器并不知道是否是同一个浏览器客户端发出的请求</li>
+<li>人为什么能记住对方，为什么能记住知识，是因为记忆，同样，在计算机世界，记忆靠内存来实现，靠总线来连接到cpu，cpu只负责计算，内存则通过保留记忆而模仿了人类的记忆</li>
+<li>cookie, 保存在浏览器端的信息，流程是，客户端填了表单（或者通过浏览器自带的保存数据表单），传到服务器认证后，服务器返回cookie, 浏览器端负责保存，二次请求时，客户端附带cookie,服务器检查，如果有cookie,则不继续执行数据库操作。这里需要真正验证cookie内容，预防客户端改了</li>
+<li>sesion., 保存在服务器内存的认证信息，当首次认证成功后，服务器设定sesion并返回session给客户端，二次请求时，客户端需要附带该session,当服务端检查该session为正确时，可以识别用户信息，了。</li>
+<li>不管是何种交换信息，何种认证都是建立在内存和储存（数据库—）之上的。</li>
+<li>其实网络的事务，或者说软件的事务，与人的思维是统一的，不然怎么叫人开发软件呢，计算机，即使内存，算法，计算的艺术。</li>
+</ol>
+<h3 id="多并发，或者说请求的生命周期，任何连接，都是通过识别是否认证，识别哪个用户，然后识别请求URL（请求内容），执行事务，（如果是耗时事务则，抛出事务，）继续处理后续请求。"><a href="#多并发，或者说请求的生命周期，任何连接，都是通过识别是否认证，识别哪个用户，然后识别请求URL（请求内容），执行事务，（如果是耗时事务则，抛出事务，）继续处理后续请求。" class="headerlink" title="多并发，或者说请求的生命周期，任何连接，都是通过识别是否认证，识别哪个用户，然后识别请求URL（请求内容），执行事务，（如果是耗时事务则，抛出事务，）继续处理后续请求。"></a>多并发，或者说请求的生命周期，任何连接，都是通过识别是否认证，识别哪个用户，然后识别请求URL（请求内容），执行事务，（如果是耗时事务则，抛出事务，）继续处理后续请求。</h3><p>最后返回。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/js.http/" data-id="ciztqajja000s48ddiwt7156z" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/learnAndsearch/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/laravel/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

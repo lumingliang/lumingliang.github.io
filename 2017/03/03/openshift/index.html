@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: openshift的一些用法
+openshift 中的应用创建后，第一件事就是要连接该应用。连接该应用的方法是使用crt远程连接。
+首先需要在setting中加入一个ssh公共密钥，可以在  .ssh中找.pub文件，然后复制所有内容，粘贴在setting中 ssh key中，之后就是设置ssh 的登录名。登录地址。一定要记住用户名就是user@address.com
+修改代码123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/openshift/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title: openshift的一些用法
+openshift 中的应用创建后，第一件事就是要连接该应用。连接该应用的方法是使用crt远程连接。
+首先需要在setting中加入一个ssh公共密钥，可以在  .ssh中找.pub文件，然后复制所有内容，粘贴在setting中 ssh key中，之后就是设置ssh 的登录名。登录地址。一定要记住用户名就是user@address.com
+修改代码123">
+<meta property="og:updated_time" content="2016-04-14T08:40:52.151Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title: openshift的一些用法
+openshift 中的应用创建后，第一件事就是要连接该应用。连接该应用的方法是使用crt远程连接。
+首先需要在setting中加入一个ssh公共密钥，可以在  .ssh中找.pub文件，然后复制所有内容，粘贴在setting中 ssh key中，之后就是设置ssh 的登录名。登录地址。一定要记住用户名就是user@address.com
+修改代码123">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-openshift" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/openshift/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.295Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: openshift的一些用法</p>
+<p>openshift 中的应用创建后，第一件事就是要连接该应用。连接该应用的方法是使用crt远程连接。</p>
+<p>首先需要在setting中加入一个ssh公共密钥，可以在  .ssh中找.pub文件，然后复制所有内容，粘贴在setting中 ssh key中，之后就是设置ssh 的登录名。登录地址。一定要记住用户名就是user@address.com</p>
+<h5 id="修改代码"><a href="#修改代码" class="headerlink" title="修改代码"></a>修改代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 先从openshift中克隆下来</div><div class="line">git clone ssh://570f54fc2d5271e8cc000031@phpl5test-lumin.rhcloud.com/~/git/phpl5test.git/</div><div class="line"></div><div class="line">然后</div><div class="line">git add </div><div class="line">git commit -m &apos;my first commit&apos;</div><div class="line">git push</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/openshift/" data-id="ciztqajjo001348dda1ooo13e" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/php/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          介绍php的有关学习，包括语法，配置，以及扩展等
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/o2o/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

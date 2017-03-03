@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文将详细描述网络、互联基本知识的理解关键词 ip NAT port iptables route gateway eth0
+正常的ip都是唯一的，ipv4 = 8bit.8bit.8bit.8bit 加上掩码可以得到网络号，利用掩码不仅可以得到网络号，还可以得到ip网段范围，简写方法是8bit.0.0.0/8 说明前面8位是有效，后面的是匹配范围
+应用程序间的通信即两个进程间的通信，即ip+po">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/centos/nat/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本文将详细描述网络、互联基本知识的理解关键词 ip NAT port iptables route gateway eth0
+正常的ip都是唯一的，ipv4 = 8bit.8bit.8bit.8bit 加上掩码可以得到网络号，利用掩码不仅可以得到网络号，还可以得到ip网段范围，简写方法是8bit.0.0.0/8 说明前面8位是有效，后面的是匹配范围
+应用程序间的通信即两个进程间的通信，即ip+po">
+<meta property="og:updated_time" content="2016-12-04T09:32:39.047Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="本文将详细描述网络、互联基本知识的理解关键词 ip NAT port iptables route gateway eth0
+正常的ip都是唯一的，ipv4 = 8bit.8bit.8bit.8bit 加上掩码可以得到网络号，利用掩码不仅可以得到网络号，还可以得到ip网段范围，简写方法是8bit.0.0.0/8 说明前面8位是有效，后面的是匹配范围
+应用程序间的通信即两个进程间的通信，即ip+po">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-centos/nat" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/nat/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.244Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="本文将详细描述网络、互联基本知识的理解"><a href="#本文将详细描述网络、互联基本知识的理解" class="headerlink" title="本文将详细描述网络、互联基本知识的理解"></a>本文将详细描述网络、互联基本知识的理解</h4><h5 id="关键词-ip-NAT-port-iptables-route-gateway-eth0"><a href="#关键词-ip-NAT-port-iptables-route-gateway-eth0" class="headerlink" title="关键词 ip NAT port iptables route gateway eth0"></a>关键词 ip NAT port iptables route gateway eth0</h5><ol>
+<li>正常的ip都是唯一的，ipv4 = 8bit.8bit.8bit.8bit 加上掩码可以得到网络号，利用掩码不仅可以得到网络号，还可以得到ip网段范围，简写方法是8bit.0.0.0/8 说明前面8位是有效，后面的是匹配范围</li>
+<li>应用程序间的通信即两个进程间的通信，即ip+port = sorcket，对于一个进程不同窗口情况，是有一个区别于port的source port 在单个程序进程内分流</li>
+<li>ip之间之所以能相互通信，是因为地址唯一，（公网地址），路由就是实现让不同ip间通信的东西，他通过判断路由表中的匹配，决定该封包要发往哪里，在linux中，也有一个自己的route 表，保存了默认网关等，决定了数据封包如何在路由间一跳传到下一跳。直到找到目标地址为止</li>
+<li>ipv4的地址不够用危机，于是出现了NAT，该技术使处于局域网中的电脑可以上网，nat原理是在封包到达处于公网的nat服务后，将局域网中的ip(等重新封装一层?)替换成这个公网的ip，于是可以上网，当数据发送回来时，再替换成源ip，于是可以了</li>
+<li>iptables是linux防火墙的过滤规则，决定了封包的input forward output的命运，packer filter机制通过判断封包的各种属性来应用到定义的iptables 中，决定是否accpet 或 reject 封包，属性可以是source ip destination ip interface (interface 是一种代表物理硬件的约定，如lo 代表localhost ppp+ 代表ppptd 拨号，eth0 代表网卡)，<a href="http://www.netfilter.org/documentation/HOWTO/cn/packet-filtering-HOWTO-6.html" target="_blank" rel="external">iptables官网</a></li>
+<li>gateway 是一种处理下一跳设备的简称，如，在路由器中的主机，该路由器就是这些主机的网关，因为它帮助把封包传下去，（因为路由器路由规则决定好了）</li>
+<li>GRE 路由协议封装，实现两个不同局域网间的主机通信，<a href="http://h2ofly.blog.51cto.com/6834926/1544860" target="_blank" rel="external">参考</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/nat/" data-id="ciztqajm6002b48dd765amyoh" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/centos/lnpp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/centos/mysql/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

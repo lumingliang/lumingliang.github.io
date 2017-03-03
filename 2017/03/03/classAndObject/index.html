@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>深入理解，类，对象，实例 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="确切的说，其实实例和对象是同一个东西
+在宏观上，类是抽象的，比如人类，就是一个大的抽象，而实例化，就是把类实例化，变成一个真正的实例，也就是对象，如，我，黎明，这两个人，都说得上是实例或者对象
+在计算机中，一切都只是文件或者说是内存块的一些0,1码，那么类代表一个内存块，而通过new 来得到类的实例，(后面都说是对象), 这里得到的，实际上就是对类这个内存块的引用
+1234567class MyC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解，类，对象，实例">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/classAndObject/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="确切的说，其实实例和对象是同一个东西
+在宏观上，类是抽象的，比如人类，就是一个大的抽象，而实例化，就是把类实例化，变成一个真正的实例，也就是对象，如，我，黎明，这两个人，都说得上是实例或者对象
+在计算机中，一切都只是文件或者说是内存块的一些0,1码，那么类代表一个内存块，而通过new 来得到类的实例，(后面都说是对象), 这里得到的，实际上就是对类这个内存块的引用
+1234567class MyC">
+<meta property="og:updated_time" content="2015-11-27T02:02:51.425Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解，类，对象，实例">
+<meta name="twitter:description" content="确切的说，其实实例和对象是同一个东西
+在宏观上，类是抽象的，比如人类，就是一个大的抽象，而实例化，就是把类实例化，变成一个真正的实例，也就是对象，如，我，黎明，这两个人，都说得上是实例或者对象
+在计算机中，一切都只是文件或者说是内存块的一些0,1码，那么类代表一个内存块，而通过new 来得到类的实例，(后面都说是对象), 这里得到的，实际上就是对类这个内存块的引用
+1234567class MyC">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-classAndObject" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/classAndObject/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.266Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      深入理解，类，对象，实例
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="确切的说，其实实例和对象是同一个东西"><a href="#确切的说，其实实例和对象是同一个东西" class="headerlink" title="确切的说，其实实例和对象是同一个东西"></a>确切的说，其实实例和对象是同一个东西</h3><ol>
+<li>在宏观上，类是抽象的，比如人类，就是一个大的抽象，而实例化，就是把类实例化，变成一个真正的实例，也就是对象，如，我，黎明，这两个人，都说得上是实例或者对象</li>
+<li><p>在计算机中，一切都只是文件或者说是内存块的一些0,1码，那么类代表一个内存块，而通过new 来得到类的实例，(后面都说是对象), 这里得到的，实际上就是对类这个内存块的引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class MyClass &#123;</div><div class="line">	//</div><div class="line">&#125;</div><div class="line"></div><div class="line">c++写法</div><div class="line">MyClass obj ; // 用类声明一个对象，只是声明obj属于这个类的类型</div><div class="line">obj = new MyClass(); // new 使obj得以对MyClass类引用，可以用它里面的变量和方法，也就得到了一个真正的对象</div></pre></td></tr></table></figure>
+</li>
+<li><p>对象通过对类的实例化而来，对象有变量和方法，当然，也可以只有变量或者方法</p>
+</li>
+<li>任何变量，类型都可以看做是对象，比如int类型的是整数这个类的对象，只是在c++和js里面，它没有实现int这个类的方法</li>
+<li>在ruby,python中，所以的东西都是对象，都是类的实例，都拥有方法，任何一个数据类型如，list,string,hash都有方法，任何一个类内的变量，也都有方法</li>
+<li>其实类和对象也可以作为一样的东西，看它能不能被用而已，如，js中的对象，就是直接创建，然后直接使用它里面的方法，而且这个对象也可以被复制，然后得到一些新的值，有时候不必把类和对象分的那么清</li>
+</ol>
+<h3 id="js中的类和对象"><a href="#js中的类和对象" class="headerlink" title="js中的类和对象"></a>js中的类和对象</h3><ol>
+<li>js中的类和对象就没有这种说法，但可以通过函数来模拟，因为js中的一切都可以看做是对象，如函数，它拥有属性和内部函数(方法)</li>
+<li>js中重要的东西有原型链，和闭包，其实都是内存的一种关系，能否被用而已</li>
+<li>js中模拟出来的类和对象(new),其实都是内存，某一个内存块(类，对象),能否被另一块用而已</li>
+<li>只要是电脑里面的东西，不管是进程，线程，还是队列，都是内存块</li>
+</ol>
+<h3 id="下面是别人的说法"><a href="#下面是别人的说法" class="headerlink" title="下面是别人的说法"></a>下面是别人的说法</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">Box mybox;   //声明mybox，把它作为对于Box类型的对象引用，执行后mybox的值为null，表示没有引用对象</div><div class="line">mybox=new Box();    //创建了一个实际的对象，并把它的引用赋给mybox，可以将mybox作为Box的对象来使用。实际上mybox仅仅保存实际的Box对象的内存地址</div><div class="line">new运算符</div><div class="line">new运算符动态的为一个对象分配地址。格式如下：class-var=new classname();</div><div class="line">其中class-var是所创建类类型的变量 classname是被实例化的类的名字 后面的括号指定了类的构造函数，定义当创建一个类的对象时将发生什么</div><div class="line">构造函数是所有类的重要组成部分，大多数类在他们自己的内部显式地定义构造函数。如果一个列没有显式的定义它的构造函数，那么java将自动提供一个默认的构造函数</div><div class="line">类和对象的区别</div><div class="line">1、类是对某一类事物的描述，是抽象的；</div><div class="line">   而对象是一个实实在在的个体，是类的一个实例。比如：“人”是一个类，而“教师”则是“人”的一个实例。比如：“老师”是类。“你的老师”就是对象。</div><div class="line">2、对象是函数、变量的集合体；</div><div class="line">   而类是一组函数和变量的集合体，</div><div class="line">   即类是一组具有相同属性的对象集合体。</div><div class="line">3、类的数据值是共享的，一个实例能访问它所属类的类数据值；</div><div class="line">   而实例数据属于单个对象，除共享了所在类中的数据外，</div><div class="line">   不同对象还会有不同的数据值。</div><div class="line">4、先有类，才有类的实例——对象。</div><div class="line">   应用在：当你在创建某个类的实例（对象）之前，这个类必须被定义。</div><div class="line">5、实例方法和类方法的区别在于：</div><div class="line">   实例方法属于单个对象，类方法属于类。</div><div class="line">类创建一种新的数据类型，该类型被用来创建对象。也就是，类创建了一个逻辑的框架，该框架定义了它的成员之间的关系。当你声明类的对象时，你正在创造类的实例。因此，类是一个逻辑构造，对象有物理的真实性(也就是对象占用内存空间)</div><div class="line">方法、函数、消息、变量、属性之间的关系。</div><div class="line">1、方法就是对象的行为，即函数；</div><div class="line">2、消息也是调用某个对象的函数，即方法。</div><div class="line">3、变量就是对象的状态，即属性。</div><div class="line">    被继承的类叫超类（superclass ），继承超类的类叫子类（subclass ）。</div><div class="line">    子类是超类的一个专门用途的版本，它继承了超类定义的所有实例变量和方法，并且为它自己增添了独特的元素。</div><div class="line">    在继承关系当中，一个子类能够从它的超类当中继承所有的东西，子类能够吸收现有类的数据和方法。</div><div class="line">    通过继承，子类不仅仅展示了其超类的行为和特征，而且还展示了特定于自身的行为和特征。</div></pre></td></tr></table></figure>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/classAndObject/" data-id="ciztqaji2000548dd90y5jufn" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/commentsSystem/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/aws/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

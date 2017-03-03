@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="常用命令1234567891011composer self-update // 自我更新composer config -g repo.packgist composer https://packgist.org //配置全局的源，一般create新文件用的是官方源，更新用的是 composer config -g repo.packagist composer https://packagis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/composer/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="常用命令1234567891011composer self-update // 自我更新composer config -g repo.packgist composer https://packgist.org //配置全局的源，一般create新文件用的是官方源，更新用的是 composer config -g repo.packagist composer https://packagis">
+<meta property="og:updated_time" content="2016-05-04T09:49:18.908Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="常用命令1234567891011composer self-update // 自我更新composer config -g repo.packgist composer https://packgist.org //配置全局的源，一般create新文件用的是官方源，更新用的是 composer config -g repo.packagist composer https://packagis">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-composer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/composer/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.269Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">composer self-update // 自我更新</div><div class="line">composer config -g repo.packgist composer https://packgist.org //配置全局的源，一般create新文件用的是官方源，更新用的是 </div><div class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</div><div class="line">composer config repo.packagist composer https://packagist.phpcomposer.com //非全局，会在composer.json 中生成</div><div class="line"></div><div class="line">&quot;repositories&quot;: &#123;</div><div class="line">    &quot;packagist&quot;: &#123;</div><div class="line">        &quot;type&quot;: &quot;composer&quot;,</div><div class="line">        &quot;url&quot;: &quot;https://packagist.phpcomposer.com&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>// composer 用于调用github api 的token，可以通过<a href="https://github.com/settings/tokens/new?scopes=repo" target="_blank" rel="external">https://github.com/settings/tokens/new?scopes=repo</a> 获取<br>composer config –global github-oauth.github.com [token]</p>
+<h4 id="php-命名空间，即相对路径，在yii中-app-代表着根目录，然后在vendor中，每个文件夹的包都有一个自己的路径别名，一般在composer-json中指定，autoload属性，其中别名代表当前composer-json所在的位置"><a href="#php-命名空间，即相对路径，在yii中-app-代表着根目录，然后在vendor中，每个文件夹的包都有一个自己的路径别名，一般在composer-json中指定，autoload属性，其中别名代表当前composer-json所在的位置" class="headerlink" title="php 命名空间，即相对路径，在yii中@app 代表着根目录，然后在vendor中，每个文件夹的包都有一个自己的路径别名，一般在composer.json中指定，autoload属性，其中别名代表当前composer.json所在的位置"></a>php 命名空间，即相对路径，在yii中@app 代表着根目录，然后在vendor中，每个文件夹的包都有一个自己的路径别名，一般在composer.json中指定，autoload属性，其中别名代表当前composer.json所在的位置</h4><p>一般由composer根据安装包的composer.json中自动创建，不能随意更改里面的代码</p>
+<p>yii中自带可以用别名设定相对目录，然后剩下的就直接根据别名定义前缀即可</p>
+<h5 id="yii-assets"><a href="#yii-assets" class="headerlink" title="yii assets"></a>yii assets</h5><p>yii 中从整个页面到页面中的某一个插件，都有一个资源管理类继承于Assets</p>
+<p>该类中标明了该页面，以及该页面某个插件用到的资源的基本情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">有以下重要属性</div><div class="line">$bashPath = &apos;该资源所在的web目录&apos;</div><div class="line">$baseUrl = &apos;url引用该资源的基本前缀&apos;</div><div class="line">$css =[] &apos;css文件所在位置，会根据$basePath自动调整,里面包含了所有该资源下的css文件位置&apos;</div><div class="line">$js = []&apos;js所在目录,同上 &apos;</div><div class="line">$depends = [  ] &apos;依赖的其他资源，只需要声明依赖的其他资源类即可&apos;</div><div class="line"></div><div class="line">$sourcePah = &apos; &apos; 如果资源不再web访问目录，则声明此属性，但是如果同时声明了$basePath,yii会自动把它复制到可访问目录, 而且$baseUrl会自动重写指向到真正的目录</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/composer/" data-id="ciztqaji7000848ddz5sjx8lu" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/cygwin/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/cross domian/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

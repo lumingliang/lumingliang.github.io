@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: 配置lnmp环境
+#####lnmp.org官方一键安装包
+apt-get install screenscreen -S lnmp //开启一个screen对话
+这个工具可以确保远程命令安装过程中，突然掉线，可以重连后执行screen -S lnmp既可以恢复安装过程
+#####nignx添加伪静态：
+虚拟主机配置文件位置: /usr/local/nginx/conf/vhost/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/lnmp/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title: 配置lnmp环境
+#####lnmp.org官方一键安装包
+apt-get install screenscreen -S lnmp //开启一个screen对话
+这个工具可以确保远程命令安装过程中，突然掉线，可以重连后执行screen -S lnmp既可以恢复安装过程
+#####nignx添加伪静态：
+虚拟主机配置文件位置: /usr/local/nginx/conf/vhost/">
+<meta property="og:updated_time" content="2016-07-01T11:50:13.964Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title: 配置lnmp环境
+#####lnmp.org官方一键安装包
+apt-get install screenscreen -S lnmp //开启一个screen对话
+这个工具可以确保远程命令安装过程中，突然掉线，可以重连后执行screen -S lnmp既可以恢复安装过程
+#####nignx添加伪静态：
+虚拟主机配置文件位置: /usr/local/nginx/conf/vhost/">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-lnmp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/lnmp/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.287Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: 配置lnmp环境</p>
+<p>#####lnmp.org官方一键安装包</p>
+<p>apt-get install screen<br>screen -S lnmp //开启一个screen对话</p>
+<p>这个工具可以确保远程命令安装过程中，突然掉线，可以重连后执行screen -S lnmp既可以恢复安装过程</p>
+<p>#####nignx添加伪静态：</p>
+<p>虚拟主机配置文件位置: /usr/local/nginx/conf/vhost/域名.conf<br>伪静态规则文件: /usr/local/nginx/conf/ 下</p>
+<p>/etc/nginx/nginx.conf</p>
+<p>类似apache的.vhost文件，它只是把虚拟主机配置分成一个个域名下的配置,然后融合起来，另外伪静态规则也是分离了，只需在虚拟主机配置下把对应的include进去即可</p>
+<p>nginx 配置把多个类型配置分为多块，其实就一个文件即可，但是这样便于管理</p>
+<p>配置分为配置nginx错误日志，访问日志。还有最常用的配置虚拟主机，每个虚拟主机可以指定端口和域名，如果端口一样，则通过域名来区别不同的网站 ,端口和域名唯一对应一个目录，就是网站的目录 </p>
+<h5 id="开启php错误提示"><a href="#开启php错误提示" class="headerlink" title="开启php错误提示"></a>开启php错误提示</h5><p>/usr/local/php/etc/php-fpm.conf加入</p>
+<p>php_admin_value[error_log] = /usr/local/php/var/log/php-error.log<br>php_admin_flag[log_errors] = on</p>
+<p>/etc/init.d/php-fpm restart</p>
+<p>/etc/local/php/etc/php.ini<br>加入<br>error_reporting = E_ERROR<br>display_errors = On </p>
+<p>apache 目录</p>
+<p>usr/local/apache/conf/vhost</p>
+<p>/etc/init.d/apache restart<br>/etc/init.d/nginx restart</p>
+<p>service nginx restart<br>service httpd restart 重启Apache服务</p>
+<p>/etc/hosts linux hosts文件</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/lnmp/" data-id="ciztqajkj001l48ddczmpzthz" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/monitor/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          设计一个微型框架，主要用来实现传感器，执行器之间的互动
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/mongoDB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">mongoDB 的使用和学习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

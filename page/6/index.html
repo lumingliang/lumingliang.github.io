@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-dataStructer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/dataStructer/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.271Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="有限级别树形结构"><a href="#有限级别树形结构" class="headerlink" title="有限级别树形结构"></a>有限级别树形结构</h5><p>数据库形式</p>
+<p>table parent<br>id value</p>
+<p>table child<br>id value parentId</p>
+<p>table child1<br>id value child1Id</p>
+<p>每次可以根据parent id 取出它子级的所有元素，至少需要返回id value</p>
+<p>数组形式<br>[<br>    ‘idP1’ =&gt; [<br>        ‘id’ =&gt; 1, // 可省略<br>        ‘value’ =&gt; ‘val’,<br>        ‘child’ =&gt; [<br>            ‘childId1’ =&gt; [<br>                ‘id’ =&gt; 1,<br>                ‘value’ =&gt; ‘val’,<br>            ],<br>            ‘childId2’ =&gt; [<br>                ‘id’ =&gt; 2,<br>                ‘value’ =&gt; ‘val’,<br>                ‘child’ =&gt; …<br>            ],<br>        ],<br>    ],<br>    ‘idP2’ =&gt; [<br>        ‘id’ =&gt; 2,<br>        ‘value’ =&gt; ‘val’,<br>    ]<br>]</p>
+<p>**如果没有id对应，那么value可以直接充当id<br>取出用 [‘id’][‘child’][‘id’][‘child’]</p>
+<p>{<br>    “name”: “1级菜单1”,<br>    “link”: “###”,<br>    “isleaf”: false,<br>    “level”: 0,<br>    “children”: [<br>        {<br>            “name”: “2级菜单1”,<br>            “link”: “###”,<br>            “isleaf”: false,<br>            “level”: 1,<br>            “children”: [<br>                {<br>                    “name”: “3级菜单1”,<br>                    “link”: “###”,<br>                    “isleaf”: true,<br>                    “level”: 2,<br>                    “children”: null<br>                },<br>                {<br>                    “name”: “3级菜单2”,<br>                    “link”: “###”,<br>                    “isleaf”: true,<br>                    “level”: 2,<br>                    “children”: null<br>                }<br>            ]<br>        },<br>        {<br>            “name”: “2级菜单2”,<br>            “link”: “###”,<br>            “isleaf”: false,<br>            “level”: 1,<br>            “children”: [<br>                {<br>                    “name”: “3级菜单3”,<br>                    “link”: “###”,<br>                    “isleaf”: true,<br>                    “level”: 2,<br>                    “children”: null<br>                }<br>            ]<br>        }<br>    ]<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/dataStructer/" data-id="ciztqajic000b48ddjqmrtyer" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cSample" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/cSample/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.270Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>for(a=1;a&lt;4;a++) {<br>    //定义a的初始值为1,a&lt;4 当a&lt;4的时候，执行{} 里面的语句，a++每执行一次a的值就+1;<br>    比如这里a原来是1，a&lt;1,执行一次，a+1后，变成2，2&lt;4,继续执行，a再加1变为3，3&lt;4,继续，a+1=4,4=4,停止执行<br>}</p>
+<p>while(k&lt;0) {<br>    //当k&lt;0时，执行{} 里面的语句，一直到k不小于0才停止<br>}<br>switch(k) {<br>    case 1 : // 如果k=1,执行case 1后面的内容<br>    case 2 : // 如果k=2, 执行case后面的内容<br>    default : //如果k不等于1和2，就执行dafault后面的内容，如default : break ,表示退出switch<br>}</p>
+<p>if(a&gt;b) {<br>    //如果a&gt;b ，就执行{} 里面的内容<br>}</p>
+<p>void main() {  //程序入口，开始的意思</p>
+<pre><code>int k = 5,n = 0; //定义k的初始值是5，n是0
+while(k&gt;0) {  //当k大于0的时候，开始不断执行while{}里面的语句，直到k&lt;=0为止
+
+    switch(k) {  // switch里面的语句，只有一句是能执行的
+        case 1: n+=k; //如果k的值是1，n=n+k,
+        case 2:  //空表示任何事情不做，并退出switch内的语句
+        case 3: n+=k; //如果k的值是3，n=n+k;
+        default: break; //如果k的值不等于1,2,3，就执行
+    }
+    k--; // k的值减一
+}
+
+printf(n..) ; //打印显示n的值
+</code></pre><p>}</p>
+<ol>
+<li>k=5,n=0</li>
+<li>while(k&gt;0)  k=5 &gt; 0成立，开始第一次执行while内的语句<br> 2.1 switch(k) ,k的值是5，不满足case 1,2,3, 执行default 里面的语句:break    //break指退出switch<br> 2.2 退出switch 后到k– 了，k的值减一，现在变为5-1=4,即k=4<br> 2.3 //此时又回到while</li>
+<li>while(k&gt;0) k=4&gt;0 成立，开始第二次执行while里面语句<br> 3.1 switch(k) ,k的值是4，不满足case 1,2,3, 执行default 里面的语句:break    //break指退出switch<br> 3.2 退出switch 后到k– 了，k的值减一，现在变为4-1=3,即k=3<br> 3.3 //此时又回到while</li>
+<li>while(k&gt;0) k=3&gt;0 成立，开始第三次执行while里面语句<br>4.1 switch(k) ,k的值是3， 满足case 3,开始执行case 3里面的n=n+k; 即n=0+3=3 //n的初始值是0,注意此时<pre><code>// case 2,1,default 不执行，因为已经满足case 3 了
+</code></pre>4.2 退出switch, 到k– , 即k的值减一，变为 2<br>4.3 继续回到while</li>
+<li>while(k&gt;0) k=2&gt;0 成立，开始第四次执行while内语句<br> 5.1 switch(k) ,k=2, 满足case 2, 开始执行case 2里面的语句，因为没有，所有啥也没做<pre><code>//case 1,3,default 不会执行，因为已经满足case 2
+</code></pre> 5.2 退出switch ,到k– , k的值变为1<br> 5.3  回到while </li>
+<li>while (k&gt;0) k=1&gt;0成立，开始第五次执行while内的语句<br> 6.1 switch(k) , k= 1, 满足case 1 ,开始执行case 1 里的语句， n+=k ,即n = n+k; 得到n = 3+1=4; //n的值由于上面的计算已经变为3<pre><code>// case 2,3,default 不执行
+</code></pre> 6.2 退出switch，到k– ,即k减一后变为了0<br> 6.3 回到while</li>
+<li>while (k&gt;0) 此时k的值为0，k&gt;0不成立，不执行while里面的语句</li>
+<li>退出了while到pritf() ,打印出n 的值，n=4  ,//printf()是打印n的值，具体表现是什么得看c中的说明</li>
+</ol>
+<p>int x=1,y=1; //定义x=1,y=1;<br>while(x&lt;3) {<br>    y+=x++; //这里隐藏了两句话,如下<br>    // y= y+x;<br>    // x=x+1;</p>
+<pre><code>//如果是y+=++x //就是
+// x=x+1;
+//y = y+x;
+</code></pre><p>}</p>
+<ol>
+<li>x=1&lt;3,进入while ,<br> 1.1  y= y+x;即y = 1+1=2;<br> 1.2  x=x+1; 即x = 1+1=2;<br> 1.3 继续回到while</li>
+<li>x=2&lt;2 ,二次进入while ,<br> 2.1 y = y+x; 即 y = 2+ 2=4;<br> 2.2 x =x+1 ;即 x=2+1 =3;<br> 2.3 继续回到while</li>
+<li>x=3 不小于3, 不执行while, </li>
+<li>最终值 x=3, y =4</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/cSample/" data-id="ciztqaji1000448ddtkgvgvfh" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cygwin" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/cygwin/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.270Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="tiltle-主要是一些小知识"><a href="#tiltle-主要是一些小知识" class="headerlink" title="tiltle:主要是一些小知识"></a>tiltle:主要是一些小知识</h2><ol>
+<li>apt-cg install package</li>
+<li><p>apt-cyg的安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget http://apt-cyg.googlecode.com/svn/trunk/apt-cyg</div><div class="line">chmod +x apt-cyg</div><div class="line">mv apt-cyg /usr/local/bin/</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">apt-cyg install bc</div><div class="line">apt-cyg find php //查找</div><div class="line"></div><div class="line">apt-cyg -c /cygdrive/d/downloads/cygwin -m http://mirrors.163.com/cygwin/ find php //指定源查找,c ,设定缓存目录</div><div class="line"></div><div class="line">apt-cyg -m ftp://ftp.cygwinports.org/pub/cygwinports find php</div><div class="line"></div><div class="line">apt-cyg update --mirror http://mirrors.163.com/cygwin/  //更新源</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>###注意，因为nodejs官方不支持新版本的cygwin nodejs，所以也没必要安装了！，最好是利用在win7下的nodejs和npm，可以在cyg界面执行编译等命令！！</p>
+<h4 id="cygwin-下安装nodejs"><a href="#cygwin-下安装nodejs" class="headerlink" title="cygwin 下安装nodejs ,"></a>cygwin 下安装nodejs ,</h4><ol>
+<li><a href="http://cygwin.com/setup.exe" target="_blank" rel="external">官网下载</a></li>
+<li>安装cygwin几个要点</li>
+</ol>
+<p>（1）Install from Internet,安装程序在后面步骤会下载大量文件。<br>（2）Root Directory，是Cygwin的安装目录。<br>（3）Local Package Directory，是存放所有下载文件的目录，子目录名即下载镜像网址，子目录下的release</p>
+<p><strong>注意安装后创建的快捷方式不准确，需要加上exe</strong></p>
+<ol>
+<li>镜像<br><a href="http://mirrors.163.com/cygwin" target="_blank" rel="external">http://mirrors.163.com/cygwin</a><br><a href="http://mirrors.sohu.com/cygwin/" target="_blank" rel="external">http://mirrors.sohu.com/cygwin/</a></li>
+<li><p>安装g++,make,git,vim,curl,wget,python(全部安装)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">gcc-g++: C++ compiler</div><div class="line">gcc-mingw-g++: Mingw32 support headers and libraries for GCC C++</div><div class="line">gcc4-g++: G++ subpackage</div><div class="line">git: Fast Version Control System – core files（它可以从 github 下载软件最新版源码)</div><div class="line">make: The GNU version of the ‘make’ utility</div><div class="line">openssl-devel: The OpenSSL development environment,</div><div class="line">pkg-config: A utility used to retrieve information about installed libraries</div><div class="line">zlib-devel: The zlib compression/decompression library (development)</div></pre></td></tr></table></figure>
+</li>
+<li><p>要正常编译nodejs，必须先在Cywgin的ASH模式下执行rebaseall。步骤如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">（1）cmd命令行</div><div class="line">（2）进入cygwin安装目录下的bin子目录</div><div class="line">（3）运行ash进入shell模式</div><div class="line">（4）./rebaseall -v</div><div class="line">（5）没有错误，完成，exit退出ash，关闭命令行窗口</div></pre></td></tr></table></figure>
+</li>
+<li><p>编译安装nodejs,这里是最后支持的版本了，新版本无法编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wget http://nodejs.org/dist/node-v0.4.12.tar.gz</div><div class="line">tar xvfz node-v0.4.12.tar.gz</div><div class="line">cd node-v0.4.12/</div><div class="line">./configure  //会提示openssl 未找到;;;</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置DNS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cygwin内部是使用windows的DNS查询，而nodejs另外使用的是c-ares库来解析DNS，这个库会读取/etc/resolv.conf里的nameserver配置，而默认是没有这个文件的，需要自己建立并配置好DNS服务器的IP地址，这里使用Google Public DNS服务器的IP地址：8.8.8.8和8.8.4.4。</div><div class="line"></div><div class="line">$ vi /ect/resolv.conf</div><div class="line"></div><div class="line">nameserver 8.8.8.8</div><div class="line">nameserver 8.8.4.4</div></pre></td></tr></table></figure>
+</li>
+<li><p>$node -v 查看版本</p>
+</li>
+<li><p>安装npm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">npm下载、安装、使用</div><div class="line"></div><div class="line">npm是nodejs的软件包管理器，可以用它安装所需软件包并发布自己为nodejs写的软件包，它还管理软件包的依赖关系并做了其它一些很酷的事情。</div><div class="line">（1）一行命令下载并安装npm</div><div class="line"></div><div class="line">$ curl http://npmjs.org/install.sh | sh</div><div class="line"></div><div class="line">（2）npm安装node扩展包，同样是一行命令下载并安装好软件包</div><div class="line"></div><div class="line">$ npm install &lt;包名&gt;</div><div class="line"></div><div class="line">例如安装mysql：npm install mysql</div></pre></td></tr></table></figure>
+</li>
+<li><p>cygwin配置</p>
+<h4 id="配置硬盘挂载-ln-s-cygdrive-d-d"><a href="#配置硬盘挂载-ln-s-cygdrive-d-d" class="headerlink" title="配置硬盘挂载 ln -s /cygdrive/d /d"></a>配置硬盘挂载 ln -s /cygdrive/d /d</h4><p>参考<a href="http://www.cnblogs.com/astwish/articles/3700459.html" target="_blank" rel="external">cygwin配置</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/cygwin/" data-id="ciztqajib000a48dd57s4pdwy" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-composer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/composer/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.269Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">composer self-update // 自我更新</div><div class="line">composer config -g repo.packgist composer https://packgist.org //配置全局的源，一般create新文件用的是官方源，更新用的是 </div><div class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</div><div class="line">composer config repo.packagist composer https://packagist.phpcomposer.com //非全局，会在composer.json 中生成</div><div class="line"></div><div class="line">&quot;repositories&quot;: &#123;</div><div class="line">    &quot;packagist&quot;: &#123;</div><div class="line">        &quot;type&quot;: &quot;composer&quot;,</div><div class="line">        &quot;url&quot;: &quot;https://packagist.phpcomposer.com&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>// composer 用于调用github api 的token，可以通过<a href="https://github.com/settings/tokens/new?scopes=repo" target="_blank" rel="external">https://github.com/settings/tokens/new?scopes=repo</a> 获取<br>composer config –global github-oauth.github.com [token]</p>
+<h4 id="php-命名空间，即相对路径，在yii中-app-代表着根目录，然后在vendor中，每个文件夹的包都有一个自己的路径别名，一般在composer-json中指定，autoload属性，其中别名代表当前composer-json所在的位置"><a href="#php-命名空间，即相对路径，在yii中-app-代表着根目录，然后在vendor中，每个文件夹的包都有一个自己的路径别名，一般在composer-json中指定，autoload属性，其中别名代表当前composer-json所在的位置" class="headerlink" title="php 命名空间，即相对路径，在yii中@app 代表着根目录，然后在vendor中，每个文件夹的包都有一个自己的路径别名，一般在composer.json中指定，autoload属性，其中别名代表当前composer.json所在的位置"></a>php 命名空间，即相对路径，在yii中@app 代表着根目录，然后在vendor中，每个文件夹的包都有一个自己的路径别名，一般在composer.json中指定，autoload属性，其中别名代表当前composer.json所在的位置</h4><p>一般由composer根据安装包的composer.json中自动创建，不能随意更改里面的代码</p>
+<p>yii中自带可以用别名设定相对目录，然后剩下的就直接根据别名定义前缀即可</p>
+<h5 id="yii-assets"><a href="#yii-assets" class="headerlink" title="yii assets"></a>yii assets</h5><p>yii 中从整个页面到页面中的某一个插件，都有一个资源管理类继承于Assets</p>
+<p>该类中标明了该页面，以及该页面某个插件用到的资源的基本情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">有以下重要属性</div><div class="line">$bashPath = &apos;该资源所在的web目录&apos;</div><div class="line">$baseUrl = &apos;url引用该资源的基本前缀&apos;</div><div class="line">$css =[] &apos;css文件所在位置，会根据$basePath自动调整,里面包含了所有该资源下的css文件位置&apos;</div><div class="line">$js = []&apos;js所在目录,同上 &apos;</div><div class="line">$depends = [  ] &apos;依赖的其他资源，只需要声明依赖的其他资源类即可&apos;</div><div class="line"></div><div class="line">$sourcePah = &apos; &apos; 如果资源不再web访问目录，则声明此属性，但是如果同时声明了$basePath,yii会自动把它复制到可访问目录, 而且$baseUrl会自动重写指向到真正的目录</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/composer/" data-id="ciztqaji7000848ddz5sjx8lu" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cross domian" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/cross domian/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.269Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: js跨域</p>
+<ol>
+<li>只要域名，端口，协议，有任何之一不同，都是跨域，或者通过js 获取不同框架中的数据，也算跨域，<br>跨域实现的方法有下，</li>
+<li>jsonp , 2, iframe, docoment.domain , 3, iframe , window,name ,4 iframe,h5的window.postmassege,<br><a href="http://www.cnblogs.com/2050/p/3191744.html" target="_blank" rel="external">参考</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/cross domian/" data-id="ciztqajkk001m48ddt1iw1by6" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-commerce" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/commerce/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.268Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="记录商业的相关东西、灵感等"><a href="#记录商业的相关东西、灵感等" class="headerlink" title="记录商业的相关东西、灵感等"></a>记录商业的相关东西、灵感等</h5><hr>
+<ol>
+<li>1+1 &gt; 2</li>
+<li>普通人每遇到一个问题就自己独立解决，但是商业头脑的人，每遇到一个问题，就会想到其他人也会遇到，会创造一套解决方案，让其他人也用。</li>
+<li>有抱怨的地方就有商机，有不妥的地方就有商机</li>
+<li>时刻推测别人对自己的看法，时刻推测别人在这个时候对自己的感受</li>
+<li>求新</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/commerce/" data-id="ciztqaji5000748ddwimodnah" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-commentsSystem" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/commentsSystem/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.267Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title:  实现多说评论的方法</p>
+<ol>
+<li>利用现成的平台如，国内的多说，</li>
+<li>之前的解决方案总结。</li>
+</ol>
+<h5 id="讲解多级评论系统的解决方案"><a href="#讲解多级评论系统的解决方案" class="headerlink" title="讲解多级评论系统的解决方案"></a>讲解多级评论系统的解决方案</h5><p>关键操作是：redis数据结构，然后是储存，接着是怎么取出且缓存成数组(这个数组结构是怎么样的)，然后是怎么历遍打出</p>
+<p>redis 键值结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ 表示变值</div><div class="line">items:$id key代表任意一篇文章的id, value 应该是该items的内容</div><div class="line">key: items:$id:comments  value: 存着所有在该items下的直接子comment id,不包括多级</div><div class="line"></div><div class="line">key: thread:$parentId:comments value: 每个父评论都可以储存着它的所有的子评论,不包括多级</div><div class="line"></div><div class="line">key: commet:id  value: 关键value为它自己的评论内容，和父id，以及itemid</div><div class="line"></div><div class="line">key: parseComment value 储存着一个数组，该数组保存着一个已经取出的评论集，方便下次查的时候，不用重新解析。</div></pre></td></tr></table></figure>
+<p>这样下来，每个评论都可以看做是平级的，只是它储存着父评论id，知道评论id可以查找它的父评论，和所属文章；但是知道父评论怎么查找它的子评论呢，于是就用了thread来保存它的直系子评论，这样就可以通过级联（递归）实现互相查询了</p>
+<p>储存时候，的逻辑是，每次储存，根据给定的新增，知道新增评论的所属itemId和所属parent comment id ,然后开始插入。</p>
+<p>取出时，缓存的结构类似，目录树，只不过它是一个数组的形式<br>第一层 2层 3层</p>
+<p>第一层储存的内容是，parentId[0] xxx parentId因为在第一层，所以是itemId,然后0 - n分别是第一级评论的主体内容，然后其他元素是以当前commentId为key，值是连接下一级的所有内容,之后每一级都一样</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/commentsSystem/" data-id="ciztqaji4000648ddop1mxnki" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-classAndObject" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/classAndObject/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.266Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/classAndObject/">深入理解，类，对象，实例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="确切的说，其实实例和对象是同一个东西"><a href="#确切的说，其实实例和对象是同一个东西" class="headerlink" title="确切的说，其实实例和对象是同一个东西"></a>确切的说，其实实例和对象是同一个东西</h3><ol>
+<li>在宏观上，类是抽象的，比如人类，就是一个大的抽象，而实例化，就是把类实例化，变成一个真正的实例，也就是对象，如，我，黎明，这两个人，都说得上是实例或者对象</li>
+<li><p>在计算机中，一切都只是文件或者说是内存块的一些0,1码，那么类代表一个内存块，而通过new 来得到类的实例，(后面都说是对象), 这里得到的，实际上就是对类这个内存块的引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class MyClass &#123;</div><div class="line">	//</div><div class="line">&#125;</div><div class="line"></div><div class="line">c++写法</div><div class="line">MyClass obj ; // 用类声明一个对象，只是声明obj属于这个类的类型</div><div class="line">obj = new MyClass(); // new 使obj得以对MyClass类引用，可以用它里面的变量和方法，也就得到了一个真正的对象</div></pre></td></tr></table></figure>
+</li>
+<li><p>对象通过对类的实例化而来，对象有变量和方法，当然，也可以只有变量或者方法</p>
+</li>
+<li>任何变量，类型都可以看做是对象，比如int类型的是整数这个类的对象，只是在c++和js里面，它没有实现int这个类的方法</li>
+<li>在ruby,python中，所以的东西都是对象，都是类的实例，都拥有方法，任何一个数据类型如，list,string,hash都有方法，任何一个类内的变量，也都有方法</li>
+<li>其实类和对象也可以作为一样的东西，看它能不能被用而已，如，js中的对象，就是直接创建，然后直接使用它里面的方法，而且这个对象也可以被复制，然后得到一些新的值，有时候不必把类和对象分的那么清</li>
+</ol>
+<h3 id="js中的类和对象"><a href="#js中的类和对象" class="headerlink" title="js中的类和对象"></a>js中的类和对象</h3><ol>
+<li>js中的类和对象就没有这种说法，但可以通过函数来模拟，因为js中的一切都可以看做是对象，如函数，它拥有属性和内部函数(方法)</li>
+<li>js中重要的东西有原型链，和闭包，其实都是内存的一种关系，能否被用而已</li>
+<li>js中模拟出来的类和对象(new),其实都是内存，某一个内存块(类，对象),能否被另一块用而已</li>
+<li>只要是电脑里面的东西，不管是进程，线程，还是队列，都是内存块</li>
+</ol>
+<h3 id="下面是别人的说法"><a href="#下面是别人的说法" class="headerlink" title="下面是别人的说法"></a>下面是别人的说法</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">Box mybox;   //声明mybox，把它作为对于Box类型的对象引用，执行后mybox的值为null，表示没有引用对象</div><div class="line">mybox=new Box();    //创建了一个实际的对象，并把它的引用赋给mybox，可以将mybox作为Box的对象来使用。实际上mybox仅仅保存实际的Box对象的内存地址</div><div class="line">new运算符</div><div class="line">new运算符动态的为一个对象分配地址。格式如下：class-var=new classname();</div><div class="line">其中class-var是所创建类类型的变量 classname是被实例化的类的名字 后面的括号指定了类的构造函数，定义当创建一个类的对象时将发生什么</div><div class="line">构造函数是所有类的重要组成部分，大多数类在他们自己的内部显式地定义构造函数。如果一个列没有显式的定义它的构造函数，那么java将自动提供一个默认的构造函数</div><div class="line">类和对象的区别</div><div class="line">1、类是对某一类事物的描述，是抽象的；</div><div class="line">   而对象是一个实实在在的个体，是类的一个实例。比如：“人”是一个类，而“教师”则是“人”的一个实例。比如：“老师”是类。“你的老师”就是对象。</div><div class="line">2、对象是函数、变量的集合体；</div><div class="line">   而类是一组函数和变量的集合体，</div><div class="line">   即类是一组具有相同属性的对象集合体。</div><div class="line">3、类的数据值是共享的，一个实例能访问它所属类的类数据值；</div><div class="line">   而实例数据属于单个对象，除共享了所在类中的数据外，</div><div class="line">   不同对象还会有不同的数据值。</div><div class="line">4、先有类，才有类的实例——对象。</div><div class="line">   应用在：当你在创建某个类的实例（对象）之前，这个类必须被定义。</div><div class="line">5、实例方法和类方法的区别在于：</div><div class="line">   实例方法属于单个对象，类方法属于类。</div><div class="line">类创建一种新的数据类型，该类型被用来创建对象。也就是，类创建了一个逻辑的框架，该框架定义了它的成员之间的关系。当你声明类的对象时，你正在创造类的实例。因此，类是一个逻辑构造，对象有物理的真实性(也就是对象占用内存空间)</div><div class="line">方法、函数、消息、变量、属性之间的关系。</div><div class="line">1、方法就是对象的行为，即函数；</div><div class="line">2、消息也是调用某个对象的函数，即方法。</div><div class="line">3、变量就是对象的状态，即属性。</div><div class="line">    被继承的类叫超类（superclass ），继承超类的类叫子类（subclass ）。</div><div class="line">    子类是超类的一个专门用途的版本，它继承了超类定义的所有实例变量和方法，并且为它自己增添了独特的元素。</div><div class="line">    在继承关系当中，一个子类能够从它的超类当中继承所有的东西，子类能够吸收现有类的数据和方法。</div><div class="line">    通过继承，子类不仅仅展示了其超类的行为和特征，而且还展示了特定于自身的行为和特征。</div></pre></td></tr></table></figure>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/classAndObject/" data-id="ciztqaji2000548dd90y5jufn" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-aws" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/aws/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.264Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="aws-的相关事宜"><a href="#aws-的相关事宜" class="headerlink" title="aws 的相关事宜"></a>aws 的相关事宜</h4><hr>
+<p>#####<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ip</div><div class="line">52.77.124.186</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/aws/" data-id="ciztqajhz000348dd3on1xaz0" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-BeAMan" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/BeAMan/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.264Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/BeAMan/">讲解做人做事的道理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="每得到一句话，最应该想的应是他为什么这样说，这样说对他有什么好处，再想自己为什么这样说"><a href="#每得到一句话，最应该想的应是他为什么这样说，这样说对他有什么好处，再想自己为什么这样说" class="headerlink" title="每得到一句话，最应该想的应是他为什么这样说，这样说对他有什么好处，再想自己为什么这样说"></a>每得到一句话，最应该想的应是他为什么这样说，这样说对他有什么好处，再想自己为什么这样说</h4><pre><code>1. 为什么有的人总是抱怨自己付出的多，而别人付出的少却得到跟自己相同的回报，因为这个世界是不公平的，正确的解释是同样的酬劳，其实是和方法、机遇、环境等因素密切相关的
+2. 在一件事发生不满意时，应先检讨自己的错误，因为一件事与自己相关的，肯定和自己多少有些关系，不要总是怪别人错了
+3. 或者说世界是公平的，因为只要拥有了一件事的充分条件，谁都可以成功。要想成功，就必须保证在自身情况下的充分条件
+4. 很多事情，看看成功的人、传统怎么做，是非常必要的
+</code></pre><h4 id="每做一件事，每遇到一件事，都要问自己，把可能发生的事情想到没有，是不是盲目行事"><a href="#每做一件事，每遇到一件事，都要问自己，把可能发生的事情想到没有，是不是盲目行事" class="headerlink" title="每做一件事，每遇到一件事，都要问自己，把可能发生的事情想到没有，是不是盲目行事"></a>每做一件事，每遇到一件事，都要问自己，把可能发生的事情想到没有，是不是盲目行事</h4><h3 id="人总是要先想到自己后想到别人的，当别人做事让我失望，或者不如我愿时候，应该先在别人的立场想原因，然后才发怒"><a href="#人总是要先想到自己后想到别人的，当别人做事让我失望，或者不如我愿时候，应该先在别人的立场想原因，然后才发怒" class="headerlink" title="人总是要先想到自己后想到别人的，当别人做事让我失望，或者不如我愿时候，应该先在别人的立场想原因，然后才发怒"></a>人总是要先想到自己后想到别人的，当别人做事让我失望，或者不如我愿时候，应该先在别人的立场想原因，然后才发怒</h3><h3 id="任何情况下，每个人都会按照自己的惯性方法，惯性思维做事，如果没有特殊情况，他总认为他的做法是对的，所以必须-禅魔他的真正想法，真正目的才能，知己知彼，百战百胜"><a href="#任何情况下，每个人都会按照自己的惯性方法，惯性思维做事，如果没有特殊情况，他总认为他的做法是对的，所以必须-禅魔他的真正想法，真正目的才能，知己知彼，百战百胜" class="headerlink" title="任何情况下，每个人都会按照自己的惯性方法，惯性思维做事，如果没有特殊情况，他总认为他的做法是对的，所以必须 禅魔他的真正想法，真正目的才能，知己知彼，百战百胜"></a>任何情况下，每个人都会按照自己的惯性方法，惯性思维做事，如果没有特殊情况，他总认为他的做法是对的，所以必须 禅魔他的真正想法，真正目的才能，知己知彼，百战百胜</h3><h3 id="以前在高中阶段是处于攻心自己的状态，其实最厉害的还要学会攻心他人"><a href="#以前在高中阶段是处于攻心自己的状态，其实最厉害的还要学会攻心他人" class="headerlink" title="以前在高中阶段是处于攻心自己的状态，其实最厉害的还要学会攻心他人"></a>以前在高中阶段是处于攻心自己的状态，其实最厉害的还要学会攻心他人</h3><h3 id="每当自己模糊化的时候，或者大概预览的时候，就要知道，这是极其危险的，因为这个时候我不能学到任何东西，反而会丧失自己的时间，看每一篇文章，做任何一件事，都不能马虎，不能大概行事"><a href="#每当自己模糊化的时候，或者大概预览的时候，就要知道，这是极其危险的，因为这个时候我不能学到任何东西，反而会丧失自己的时间，看每一篇文章，做任何一件事，都不能马虎，不能大概行事" class="headerlink" title="每当自己模糊化的时候，或者大概预览的时候，就要知道，这是极其危险的，因为这个时候我不能学到任何东西，反而会丧失自己的时间，看每一篇文章，做任何一件事，都不能马虎，不能大概行事"></a>每当自己模糊化的时候，或者大概预览的时候，就要知道，这是极其危险的，因为这个时候我不能学到任何东西，反而会丧失自己的时间，看每一篇文章，做任何一件事，都不能马虎，不能大概行事</h3><h3 id="分析事情的时候不能直觉，不能只靠直觉！要两面分析，以及依赖自己的各种思维分析"><a href="#分析事情的时候不能直觉，不能只靠直觉！要两面分析，以及依赖自己的各种思维分析" class="headerlink" title="分析事情的时候不能直觉，不能只靠直觉！要两面分析，以及依赖自己的各种思维分析"></a>分析事情的时候不能直觉，不能只靠直觉！要两面分析，以及依赖自己的各种思维分析</h3><h3 id="英语的学习不能采用模糊政策，这样是完全被动的方法，每次看到词语都是似曾相识，然而这时没有用的，我需要的是加强，复习和不断记忆，主动记忆，反复记忆，不能大概先生化。"><a href="#英语的学习不能采用模糊政策，这样是完全被动的方法，每次看到词语都是似曾相识，然而这时没有用的，我需要的是加强，复习和不断记忆，主动记忆，反复记忆，不能大概先生化。" class="headerlink" title="英语的学习不能采用模糊政策，这样是完全被动的方法，每次看到词语都是似曾相识，然而这时没有用的，我需要的是加强，复习和不断记忆，主动记忆，反复记忆，不能大概先生化。"></a>英语的学习不能采用模糊政策，这样是完全被动的方法，每次看到词语都是似曾相识，然而这时没有用的，我需要的是加强，复习和不断记忆，<strong>主动记忆，反复记忆，不能大概先生化。</strong></h3><h3 id="阅读技术文档一定不能大概，一定不能，千万不能，而且要有一定的实际练习，不然一切都是空的，没有任何实际价值"><a href="#阅读技术文档一定不能大概，一定不能，千万不能，而且要有一定的实际练习，不然一切都是空的，没有任何实际价值" class="headerlink" title="阅读技术文档一定不能大概，一定不能，千万不能，而且要有一定的实际练习，不然一切都是空的，没有任何实际价值"></a>阅读技术文档一定不能大概，一定不能，千万不能，而且要有一定的实际练习，不然一切都是空的，没有任何实际价值</h3><h3 id="在计算机语言中，类是抽象化，接口更是高层的抽象化，而架构师就更抽象了，所以语言的最高水平是抽象，而不是实现，就像马云一样，他不需要懂技术，但是他懂抽象，他的抽象是一个非常大的抽象，因此学会抽象化才是让人觉得唾手可得，才让人充满信心，就像传销的说客一样，不断给人以抽象思维，最后让人深陷其中，给人一种只要少量付出，就能满足欲望、获得成功"><a href="#在计算机语言中，类是抽象化，接口更是高层的抽象化，而架构师就更抽象了，所以语言的最高水平是抽象，而不是实现，就像马云一样，他不需要懂技术，但是他懂抽象，他的抽象是一个非常大的抽象，因此学会抽象化才是让人觉得唾手可得，才让人充满信心，就像传销的说客一样，不断给人以抽象思维，最后让人深陷其中，给人一种只要少量付出，就能满足欲望、获得成功" class="headerlink" title="在计算机语言中，类是抽象化，接口更是高层的抽象化，而架构师就更抽象了，所以语言的最高水平是抽象，而不是实现，就像马云一样，他不需要懂技术，但是他懂抽象，他的抽象是一个非常大的抽象，因此学会抽象化才是让人觉得唾手可得，才让人充满信心，就像传销的说客一样，不断给人以抽象思维，最后让人深陷其中，给人一种只要少量付出，就能满足欲望、获得成功"></a>在计算机语言中，类是抽象化，接口更是高层的抽象化，而架构师就更抽象了，所以语言的最高水平是抽象，而不是实现，就像马云一样，他不需要懂技术，但是他懂抽象，他的抽象是一个非常大的抽象，因此学会抽象化才是让人觉得唾手可得，才让人充满信心，就像传销的说客一样，不断给人以抽象思维，最后让人深陷其中，给人一种只要少量付出，就能满足欲望、获得成功</h3><h5 id="非常重要"><a href="#非常重要" class="headerlink" title="非常重要"></a>非常重要</h5><p>要成大事，必须不拘小节，所谓小节是指对当前计划起不到任何作用的甚至会带来时间浪费的，比如抱怨别人<br>心里模仿抱怨他人是非常不明智的做法 ，浪费时间<br>注重细节是指对当前计划有益的细节<br>如果一件事对自己当前或者以后没有任何作用，那么就尽量少做</p>
+<h5 id="江湖秘诀"><a href="#江湖秘诀" class="headerlink" title="江湖秘诀"></a>江湖秘诀</h5><ol>
+<li>任何时候都不要被欲望（感性）控制，必须想好前因后果</li>
+<li>任何看似能对欲望触手可及的行动、场景都有着巨大的伤害，用功能理论，要得到多少的感性体验，就必须牺牲多少的感性体验，而其中就是用理性控制的</li>
+<li>在这二十天，必须培养、回归自己的理性控制。达到最强</li>
+<li>色、权、钱、名都是人的欲望，七情六欲，利用它们能控制一个人的思维、甚至控制整个人。</li>
+<li>利用自己的理性和别人的感性才能立于不败之地</li>
+<li>必做之事绝不拖拉</li>
+<li>事情分为必做，急做，常做，急做居1，必做居2，常坐居3.</li>
+<li>记住不要认为在这里复习思维控制是浪费时间，其实是我成长必须的</li>
+</ol>
+<h5 id="做事不妥反省"><a href="#做事不妥反省" class="headerlink" title="做事不妥反省"></a>做事不妥反省</h5><ol>
+<li>在遇到突发事件，特别是跟异性在一起时，由于过于想表现自己，常常犯下许多低级错误</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/BeAMan/" data-id="ciztqaji9000948ddw5jzqn4f" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

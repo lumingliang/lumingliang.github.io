@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="用户与用户组
+语言本地化//export LANG=zh_CN.gbkexport LANG=zh_CNLC_CTYPE=”zh_CN.gbk”
+
+/etc/passwd保存用户id   /etc/group 保存用户组id等; /etc/passwd 保存用户id对应的基本信息，里面对应好了user 和 group id，以及保存了该用户的一些基本信息，密码分开在/etc/shadow中登陆流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/centos/basic/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="用户与用户组
+语言本地化//export LANG=zh_CN.gbkexport LANG=zh_CNLC_CTYPE=”zh_CN.gbk”
+
+/etc/passwd保存用户id   /etc/group 保存用户组id等; /etc/passwd 保存用户id对应的基本信息，里面对应好了user 和 group id，以及保存了该用户的一些基本信息，密码分开在/etc/shadow中登陆流程">
+<meta property="og:updated_time" content="2016-12-11T01:30:49.128Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="用户与用户组
+语言本地化//export LANG=zh_CN.gbkexport LANG=zh_CNLC_CTYPE=”zh_CN.gbk”
+
+/etc/passwd保存用户id   /etc/group 保存用户组id等; /etc/passwd 保存用户id对应的基本信息，里面对应好了user 和 group id，以及保存了该用户的一些基本信息，密码分开在/etc/shadow中登陆流程">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-centos/basic" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/basic/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.240Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="用户与用户组"><a href="#用户与用户组" class="headerlink" title="用户与用户组"></a>用户与用户组</h5><ol>
+<li>语言本地化<br>//export LANG=zh_CN.gbk<br>export LANG=zh_CN<br>LC_CTYPE=”zh_CN.gbk”</li>
+</ol>
+<p>/etc/passwd保存用户id   /etc/group 保存用户组id等; /etc/passwd 保存用户id对应的基本信息，里面对应好了user 和 group id，以及保存了该用户的一些基本信息，密码分开在/etc/shadow中<br><em>登陆流程</em></p>
+<ol>
+<li><p>先找寻 /etc/passwd 里面是否有你输入的账号？如果没有则跳出，如果有的话则将该账号对应的 UID 与 GID (在 /etc/group 中) 读出来，另外，该账号的家目录与 shell 配置也一并读出；</p>
+</li>
+<li><p>再来则是核对口令表啦！这时 Linux 会进入 /etc/shadow 里面找出对应的账号与 UID，然后核对一下你刚刚输入的口令与里头的口令是否相符？</p>
+</li>
+<li><p>如果一切都 OK 的话，就进入 Shell 控管的阶段啰！</p>
+</li>
+</ol>
+<p>useradd -u 指定小于500 即系统账号 ，useradd时可能会发生Creating mailbox file:因为默认会在邮箱内做一些事情<br>userdel -r 删除某个账号<br>passwd 改变当前账户密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1. 假设有个组是g1，你想创建一个用户zs，创建之后这个用户zs就属于g1，可以使用以下命令：</div><div class="line">useradd -G g1 zs 或者</div><div class="line">useradd -g g1 zs</div><div class="line">没错，一个是大写G，一个是小写g，不同的是，使用大写，那么意思是新建的用户zs同时属于自己的zs组，也属于g1组，而小写g的意思就是zs只属于g1组。</div><div class="line">2. 假设有个组是g1，现在已经有一个用户zs，现在想更改zs的组，可以使用:</div><div class="line">usermod -g g1 zs 或者</div><div class="line">usermod -G g1 zs</div><div class="line">大小写的意思同上。</div></pre></td></tr></table></figure></p>
+<p>也可以直接加group名到/etc/group中指定的地方<br>/etc/ssh/sshd_config PasswordAuthentication no禁止密码登陆<br>service sshd restart</p>
+<ol>
+<li><p>每一个进程程序启动后，都会自己进入一个系统账号在后台运行，如php-fpm 以www运行，这样就可以自动操作具有该权限的目录</p>
+</li>
+<li><p>ps -ef  查看所有进程的具体信息</p>
+</li>
+<li><p>kill pid  kill -INT pid 杀死所有pid进程，并且所有该pid的子进程</p>
+</li>
+<li><p>两次tab键，查看可用命令</p>
+</li>
+<li>防火墙/etc/init.d/iptables status查看防火墙状态</li>
+<li><p>iptables -L -V 查看防火墙规则和状态<a href="http://blog.csdn.net/zhangzhizhen1988/article/details/8105386" target="_blank" rel="external">参考</a>设置防火墙规则<br>netstat -an | grep 23 (查看是否打开23端口)</p>
+</li>
+<li><p>netstat -lnp查看进程和端口关联状态</p>
+</li>
+<li>sockect = ip:port<br><strong>ip</strong>详解</li>
+<li>ip = 网络号+主机号，ip + 掩码与运算即可获取网络号，ip+掩码的精简形式是: ip/32 表示多少个8如4个8表示255.255.255.255，用精简形式还可以做ip规则匹配，另外网关是一个重要的东西</li>
+<li>ipv6用128位表示，每处分16位:分隔<br><a href="http://blog.csdn.net/yxwmzouzou/article/details/46643609" target="_blank" rel="external">http://blog.csdn.net/yxwmzouzou/article/details/46643609</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"># uname -a # 查看内核/操作系统/CPU信息 </div><div class="line"># head -n 1 /etc/issue # 查看操作系统版本 </div><div class="line"># cat /proc/cpuinfo # 查看CPU信息 </div><div class="line"># hostname # 查看计算机名 </div><div class="line"># lspci -tv # 列出所有PCI设备 </div><div class="line"># lsusb -tv # 列出所有USB设备 </div><div class="line"># lsmod # 列出加载的内核模块 </div><div class="line"># env # 查看环境变量资源 </div><div class="line"># free -m # 查看内存使用量和交换区使用量 </div><div class="line"># df -h # 查看各分区使用情况 </div><div class="line"># du -sh &lt;目录名&gt; # 查看指定目录的大小 </div><div class="line"># grep MemTotal /proc/meminfo # 查看内存总量 </div><div class="line"># grep MemFree /proc/meminfo # 查看空闲内存量 </div><div class="line"># uptime # 查看系统运行时间、用户数、负载 </div><div class="line"># cat /proc/loadavg # 查看系统负载磁盘和分区 </div><div class="line"># mount | column -t # 查看挂接的分区状态 </div><div class="line"># fdisk -l # 查看所有分区 </div><div class="line"># swapon -s # 查看所有交换分区 </div><div class="line"># hdparm -i /dev/hda # 查看磁盘参数(仅适用于IDE设备) </div><div class="line"># dmesg | grep IDE # 查看启动时IDE设备检测状况网络 </div><div class="line"># ifconfig # 查看所有网络接口的属性 </div><div class="line"># iptables -L # 查看防火墙设置 </div><div class="line"># route -n # 查看路由表 </div><div class="line"># netstat -lntp # 查看所有监听端口 </div><div class="line"># netstat -antp # 查看所有已经建立的连接 </div><div class="line"># netstat -s # 查看网络统计信息进程 </div><div class="line"># ps -ef # 查看所有进程 </div><div class="line"># top # 实时显示进程状态用户 </div><div class="line"># w # 查看活动用户 </div><div class="line"># id &lt;用户名&gt; # 查看指定用户信息 </div><div class="line"># last # 查看用户登录日志 </div><div class="line"># cut -d: -f1 /etc/passwd # 查看系统所有用户 </div><div class="line"># cut -d: -f1 /etc/group # 查看系统所有组 </div><div class="line"># crontab -l # 查看当前用户的计划任务服务 </div><div class="line"># chkconfig –list # 列出所有系统服务 </div><div class="line"># chkconfig –list | grep on # 列出所有启动的系统服务程序 </div><div class="line"># rpm -qa # 查看所有安装的软件包</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/basic/" data-id="ciztqajlw002248ddmxfnhlv6" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/centos/bingfa/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/c/basic/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/weixin/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
