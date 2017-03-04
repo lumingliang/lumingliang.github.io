@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="cookie跨域和共享sessions
+php用给浏览器设定一个独特的cookie来确定前方来的请求是属于哪个session的，即有个键值对
+cookie跨域：如果主域相同，可以设定domain为该主域，但是如果是a.com和b.com则要用其他方法。当a登陆成功时，向浏览器输出设定cookie动作，同时a页面中设定一个iframe，访问b中的同步登陆页面，并附带同一个cookie数据，b的这个同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/03/yii/session/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="cookie跨域和共享sessions
+php用给浏览器设定一个独特的cookie来确定前方来的请求是属于哪个session的，即有个键值对
+cookie跨域：如果主域相同，可以设定domain为该主域，但是如果是a.com和b.com则要用其他方法。当a登陆成功时，向浏览器输出设定cookie动作，同时a页面中设定一个iframe，访问b中的同步登陆页面，并附带同一个cookie数据，b的这个同">
+<meta property="og:updated_time" content="2017-03-03T12:48:23.442Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="cookie跨域和共享sessions
+php用给浏览器设定一个独特的cookie来确定前方来的请求是属于哪个session的，即有个键值对
+cookie跨域：如果主域相同，可以设定domain为该主域，但是如果是a.com和b.com则要用其他方法。当a登陆成功时，向浏览器输出设定cookie动作，同时a页面中设定一个iframe，访问b中的同步登陆页面，并附带同一个cookie数据，b的这个同">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-yii/session" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/yii/session/" class="article-date">
+  <time datetime="2017-03-03T12:35:41.471Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="cookie跨域和共享sessions"><a href="#cookie跨域和共享sessions" class="headerlink" title="cookie跨域和共享sessions"></a>cookie跨域和共享sessions</h5><ol>
+<li>php用给浏览器设定一个独特的cookie来确定前方来的请求是属于哪个session的，即有个键值对</li>
+<li>cookie跨域：如果主域相同，可以设定domain为该主域，但是如果是a.com和b.com则要用其他方法。<br>当a登陆成功时，向浏览器输出设定cookie动作，同时a页面中设定一个iframe，访问b中的同步登陆页面，并附带同一个cookie数据，b的这个同步登陆页面设定好cookie后，他也有一个iframe访问a的callback页面，该页面会将请求重定向到a的主页<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">假设a.com有页面：login.php和callback.php，b.com有页面synclogin.php</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="http://www.tuicool.com/articles/E3iUva" target="_blank" rel="external">参考</a></p>
+<ol>
+<li>session共享<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ini_set(&quot;session.save_handler&quot;, &quot;redis&quot;);</div><div class="line">ini_set(&quot;session.save_path&quot;, &quot;tcp://127.0.0.1:6379”);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>或利用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">session_set_save_handler ( string open, string close, string read, string write, string destroy, string gc ) 函数来对session函数进行重新定义</div></pre></td></tr></table></figure></p>
+<p><a href="http://blog.csdn.net/czloveyeer/article/details/6926430" target="_blank" rel="external">参考</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/yii/session/" data-id="cizut7q6h002nt4dd3qvoryl2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/03/hexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/03/yii/session/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/hexo/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/winTips/">一些小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/03/webpack/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

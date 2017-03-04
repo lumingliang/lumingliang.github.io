@@ -61,6 +61,44 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-rescue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/rescue/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.220Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/rescue/">研究递归算法的使用和原理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="递归算法是为了让程序更加易读，易于思维，而且能应付复杂的问题，递归算法的本质是在一个函数内间接或者直接调用函数自身，每一次调用都是一个级别，每一个级别共享主程序代码，但是每个级别都有一份属于自己的变量环境，可以把每个级别的调用，当做独立的函数体，递归先是必须达到最终的非递归条件，然后再逐级返回，最后退出"><a href="#递归算法是为了让程序更加易读，易于思维，而且能应付复杂的问题，递归算法的本质是在一个函数内间接或者直接调用函数自身，每一次调用都是一个级别，每一个级别共享主程序代码，但是每个级别都有一份属于自己的变量环境，可以把每个级别的调用，当做独立的函数体，递归先是必须达到最终的非递归条件，然后再逐级返回，最后退出" class="headerlink" title="递归算法是为了让程序更加易读，易于思维，而且能应付复杂的问题，递归算法的本质是在一个函数内间接或者直接调用函数自身，每一次调用都是一个级别，每一个级别共享主程序代码，但是每个级别都有一份属于自己的变量环境，可以把每个级别的调用，当做独立的函数体，递归先是必须达到最终的非递归条件，然后再逐级返回，最后退出"></a>递归算法是为了让程序更加易读，易于思维，而且能应付复杂的问题，递归算法的本质是在一个函数内间接或者直接调用函数自身，每一次调用都是一个级别，每一个级别共享主程序代码，但是每个级别都有一份属于自己的变量环境，可以把每个级别的调用，当做独立的函数体，递归先是必须达到最终的非递归条件，然后再逐级返回，最后退出</h3><h3 id="递归的本质还是函数的执行，但是由于每一层的递归都有自己的私有变量-当返回到该层时，后续语句执行仍然用的该层产生时的变量，每一个递归层之间是独立的-所以非常容易增加了内存消耗，另外由于每一个层次之间的切换，创建，都花了cpu时间，所以本质上以时间空间，换思维的便捷性，不过对于大多数场合来说，都是值得的。推荐使用递归"><a href="#递归的本质还是函数的执行，但是由于每一层的递归都有自己的私有变量-当返回到该层时，后续语句执行仍然用的该层产生时的变量，每一个递归层之间是独立的-所以非常容易增加了内存消耗，另外由于每一个层次之间的切换，创建，都花了cpu时间，所以本质上以时间空间，换思维的便捷性，不过对于大多数场合来说，都是值得的。推荐使用递归" class="headerlink" title="递归的本质还是函数的执行，但是由于每一层的递归都有自己的私有变量[当返回到该层时，后续语句执行仍然用的该层产生时的变量，每一个递归层之间是独立的],所以非常容易增加了内存消耗，另外由于每一个层次之间的切换，创建，都花了cpu时间，所以本质上以时间空间，换思维的便捷性，不过对于大多数场合来说，都是值得的。推荐使用递归"></a>递归的本质还是函数的执行，但是由于每一层的递归都有自己的私有变量[当返回到该层时，后续语句执行仍然用的该层产生时的变量，每一个递归层之间是独立的],所以非常容易增加了内存消耗，另外由于每一个层次之间的切换，创建，都花了cpu时间，所以本质上以时间空间，换思维的便捷性，不过对于大多数场合来说，都是值得的。推荐使用递归</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"> #include&lt;stdio.h&gt;</div><div class="line">  void up_and_down(int);</div><div class="line"> int main(void)</div><div class="line"> &#123;</div><div class="line">    up_and_down(1);</div><div class="line">    return 0;</div><div class="line"> &#125;</div><div class="line"> void up_and_down(int n)</div><div class="line"> &#123;</div><div class="line">     printf(&quot;Level %d:n location %p\n&quot;,n,&amp;n); /* 1 */</div><div class="line">     if(n&lt;4)</div><div class="line">       up_and_down(n+1);</div><div class="line">     printf(&quot;Level %d:n location %p\n&quot;,n,&amp;n); /* 2 */</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">输出结果</div><div class="line">Level 1:n location 0240FF48 //后面的是变量的地址，从变量地址可以看出，每一个层都有一个自己的独立变量集合,而且执行规则是先到达最后一层，然后倒数返回，每返回一层，就执行该层未完成的后面代码，（用的是该层的独立变量）</div><div class="line">Level 2:n location 0240FF28</div><div class="line">Level 3:n location 0240FF08</div><div class="line">Level 4:n location 0240FEE8</div><div class="line">Level 4:n location 0240FEE8</div><div class="line">Level 3:n location 0240FF08</div><div class="line">Level 2:n location 0240FF28</div><div class="line">Level 1:n location 0240FF48</div></pre></td></tr></table></figure>
+<h3 id="js中的递归不像常规一样，需要将一切的动作都放在回调函数中，然后利用回调函数传递回调函数，层层回调"><a href="#js中的递归不像常规一样，需要将一切的动作都放在回调函数中，然后利用回调函数传递回调函数，层层回调" class="headerlink" title="js中的递归不像常规一样，需要将一切的动作都放在回调函数中，然后利用回调函数传递回调函数，层层回调"></a>js中的递归不像常规一样，需要将一切的动作都放在回调函数中，然后利用回调函数传递回调函数，层层回调</h3><p>可参考以下递归创建目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function mkdirs(dirname, mode, callback)&#123;</div><div class="line">    fs.exists(dirname, function (exists)&#123;</div><div class="line">        if(exists)&#123;</div><div class="line">            callback();</div><div class="line">        &#125;else&#123;</div><div class="line">            console.log(&apos;path.dirname&apos;+path.dirname(dirname));</div><div class="line">			mkdirs(path.dirname(dirname), mode, function ()&#123;</div><div class="line">				console.log(&apos;dirname&apos;+dirname);</div><div class="line">				fs.mkdir(dirname, mode, callback);</div><div class="line">			&#125;); // 递归思维，人只需要考虑相邻两层的变化，如果不存在这个目录，那么就先创建这个目录的上层目录，再创建本目录</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="js中的promise是为了解决层层回调问题，对于解决递归要比较强的思维，所以，不推荐用promise来简化递归的创建，后续可以试着使用generate"><a href="#js中的promise是为了解决层层回调问题，对于解决递归要比较强的思维，所以，不推荐用promise来简化递归的创建，后续可以试着使用generate" class="headerlink" title="js中的promise是为了解决层层回调问题，对于解决递归要比较强的思维，所以，不推荐用promise来简化递归的创建，后续可以试着使用generate"></a>js中的promise是为了解决层层回调问题，对于解决递归要比较强的思维，所以，不推荐用promise来简化递归的创建，后续可以试着使用generate</h3><h3 id="深入理解promise-参考"><a href="#深入理解promise-参考" class="headerlink" title="深入理解promise 参考"></a>深入理解promise <a href="http://www.jb51.net/article/70101.htm" target="_blank" rel="external">参考</a></h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/rescue/" data-id="cizut7q48001dt4dde2z590uq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-check" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/03/check/" class="article-date">
@@ -97,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/check/" data-id="ciztrizxt0004b0ddpqcqw43y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/check/" data-id="cizut7q240002t4ddyu7rgq63" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/hello-world/" data-id="ciztrizyw000pb0ddk6e8kqfi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/hello-world/" data-id="cizut7q33000kt4ddjbf20fr8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,11 +224,11 @@
       <ul>
         
           <li>
-            <a href="/2017/03/03/hexo/">(no title)</a>
+            <a href="/2017/03/03/yii/session/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/win7Clean/">(no title)</a>
+            <a href="/2017/03/03/hexo/">(no title)</a>
           </li>
         
           <li>
@@ -198,11 +236,11 @@
           </li>
         
           <li>
-            <a href="/2017/03/03/webpack/">(no title)</a>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/weixin/">(no title)</a>
+            <a href="/2017/03/03/webpack/">(no title)</a>
           </li>
         
       </ul>

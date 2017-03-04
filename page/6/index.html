@@ -61,6 +61,125 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-edison" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/edison/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.272Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/edison/">intel edison的使用以及入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="关机"><a href="#关机" class="headerlink" title="关机"></a>关机</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">直接关电源 </div><div class="line">PWR 8s</div><div class="line">开机 sw1ui5 按</div><div class="line"></div><div class="line">2、init 0 </div><div class="line">3、telinit 0 </div><div class="line">4、shutdown -h now </div><div class="line">5、halt</div><div class="line">6、poweroff</div><div class="line">7. reboot</div></pre></td></tr></table></figure>
+<h3 id="设定开机自动重启-程序自动重启"><a href="#设定开机自动重启-程序自动重启" class="headerlink" title="设定开机自动重启,程序自动重启"></a>设定开机自动重启,程序自动重启</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#! /usr/bin/env node</div></pre></td></tr></table></figure>
+<p>新建  cat /lib/systemd/system/mystartupapp.service</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[Unit]</div><div class="line"> </div><div class="line">Description=My startup app</div><div class="line"> </div><div class="line">After=network.target</div><div class="line"> </div><div class="line">[Service]</div><div class="line"> </div><div class="line">#User=root</div><div class="line"></div><div class="line">ExecStart=/home/root/programs/myapp</div><div class="line"> </div><div class="line">Restart=always</div><div class="line"> </div><div class="line">RestartSec=10s</div><div class="line"> </div><div class="line">[Install]</div><div class="line"> </div><div class="line">WantedBy=multi-user.target</div></pre></td></tr></table></figure>
+<p>实际使用，复制一份xdk-deamon.service;<br>然后修改一下脚本名字即可</p>
+<p>systemctl status [.service] //查看某个或者所有进程状态</p>
+<p>systemctl daemon-reload<br>systemcrl start yourscript.service<br>systemctl enable mystartupapp</p>
+<p>reboot<br>即可</p>
+<h4 id="设定系统时间"><a href="#设定系统时间" class="headerlink" title="设定系统时间"></a>设定系统时间</h4><p>date -s “2016-3-4 12:22:33”<br>或者用py<br>import os<br>os.system( ‘date -s “2016-03-01 12:57:00”‘ )</p>
+<h4 id="连接WiFi"><a href="#连接WiFi" class="headerlink" title="连接WiFi"></a>连接WiFi</h4><p>configure_edison –wifi</p>
+<p>Math.pow(n,m) n的m次方</p>
+<p>var uu = ‘string’.toString(2); //转为2进制<br>parsedIn(uu,2); //2进制转为十进制</p>
+<p>parsedIn（num,n).toString(m) //n 进制转为m进制</p>
+<p>0x前缀表示十六进制</p>
+<h3 id="i2c协议的学习"><a href="#i2c协议的学习" class="headerlink" title="i2c协议的学习"></a>i2c协议的学习</h3><p><a href="http://www.robot-electronics.co.uk/i2c-tutorial" target="_blank" rel="external">参考文章</a><br><a href="http://tec.gekius.com/page/2" target="_blank" rel="external">gekius</a></p>
+<ol>
+<li>i2c 有数据线SDA,时钟线路SCL,GND,VCC</li>
+<li>时钟线发出信号，各个slavor随时响应，如果要求的是自己的物理地址，那么就响应并进行数据交换，其他的就忽略 </li>
+<li>任何时候只有一个slavor 跟master交换数据</li>
+<li>slavor的物理地址为8位，最低位决定对该slavor读取还是写，高7位决定它的物理地址，每个slavor的i2c地址是一定的，由厂商决定，当然也可以通过程序修改</li>
+<li>I2C中有两个特殊的信号，分别是开始和结束信号，开始时SDA和SCL都处于高电平，当SDA由高电平变为低电平时，    SCL仍然处于低电平，接着SCL马上变为低电平,代表了传输的开始，当SDA为低电平，同时SCL为高电平，接着SDA也变回低电平时，代表了本次传输的结束。 也就是为了防止混乱，当在数据传输时，SCL处于高电平中，SDA一定要稳定，不能变动。不然以为是结束信号。</li>
+</ol>
+<hr>
+<ol>
+<li>数据线同一时刻只能由master到slaver 或者slaver 到master,</li>
+<li>时钟和数据线共同决定开始和结束，每次传输以8个位，9个时钟高电平为单位,</li>
+<li>由 master 传输信号开始，先发送地址，再发送寄存器(或者指令),最后是slaver发送它的数据等，反正最后才是交互，m可以write,s也可以send</li>
+<li>i2c地址前4位是由公司决定，后三位，即A0到A3由用户自己定，也就是一条总线上的只能同时接同一厂商的8个芯片</li>
+</ol>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ol>
+<li>start bus</li>
+<li>send adress</li>
+<li>the slavor of this adress respond to the master</li>
+<li>send the regiser of this slavor maser want to operation(write or read)</li>
+<li>send more message</li>
+<li>end</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SHT20 传感器</div><div class="line">adress : 1000 000 </div><div class="line">readAdress : 1000 0001 // 129 0x81</div><div class="line">writeAdress : 1000 0000  // 128  0x80</div><div class="line">kdd</div></pre></td></tr></table></figure>
+<h3 id="各个协议的简介"><a href="#各个协议的简介" class="headerlink" title="各个协议的简介"></a>各个协议的简介</h3><ol>
+<li>spi ,全双工传输协议，一条输入，一条输出，一条片选，一条时钟</li>
+<li>pwm , 用数字信号模拟类似正余弦波;w</li>
+</ol>
+<h4 id="C语言中"><a href="#C语言中" class="headerlink" title="C语言中"></a>C语言中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">8bit = 00001;</div><div class="line">8bit &lt;&lt;     // 左移，一位， 第一位在CY</div><div class="line">即8bit = 00000 ; CY = 0;</div><div class="line">8bit &gt;&gt; // 右移一位， 最后位在CY ,即8bit = 00010 , CY = 1;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">#ifndef TRH_SENSOR_H_</div><div class="line">#define TRH_SENSOR_H_</div><div class="line"> </div><div class="line">#define TRH_SENSOR_I2C_ADDR 0x5c</div><div class="line"> </div><div class="line">// sensor function code</div><div class="line">#define TRH_SENSOR_FUN_CODE_READ_REG 0x03</div><div class="line">#define TRH_SENSOR_FUN_CODE_WRITE_REG 0x10</div><div class="line"> </div><div class="line">// sensor register address</div><div class="line">#define TRH_RH_REG_ADDR_H 0x00 // high byte of humidity register address</div><div class="line">#define TRH_RH_REG_ADDR_L 0x01 // low byte of humidity register address</div><div class="line">#define TRH_T_REG_ADDR_H 0x02 // high byte of temperature register address</div><div class="line">#define TRH_T_REG_ADDR_L 0x03 // low byte of temperature register address</div><div class="line">#define TRH_STATE_REG_ADDR 0x07 // status register address</div><div class="line"> </div><div class="line">/* skeleton class, ignor it now</div><div class="line">class TRHSensor &#123;</div><div class="line">public:</div><div class="line">TRHSensor();</div><div class="line">virtual ~TRHSensor();</div><div class="line">&#125;;</div><div class="line">*/</div><div class="line"> </div><div class="line">#endif /* TRH_SENSOR_H_ */</div></pre></td></tr></table></figure>
+<p>#include “TRH_sensor.h”</p>
+<p>#include “mraa.h”</p>
+<p>#include </p>
+<p>#include </p>
+<p>#include </p>
+<p>#define I2C_BUS 0x06</p>
+<p>/*</p>
+<ul>
+<li>The T/HR sensor will turn into sleeping mode automatically every time master finished</li>
+<li>fetching data from it.We must activate the sensor before beginning transfer data.<br>*</li>
+<li>@parameter: none</li>
+<li>@return: error state</li>
+<li><p>0 for successful<br>*/<br>int ActivateSensor( const mraa_i2c_context i2c_context )<br>{<br>if ( mraa_i2c_address( i2c_context, TRH_SENSOR_I2C_ADDR ) != MRAA_SUCCESS )<br>  printf(“can not find sensor!\n”);</p>
+<p>mraa_i2c_write_byte( i2c_context, 0 );<br>return 0;<br>}</p>
+</li>
+</ul>
+<p>int main()<br>{<br>  mraa_init();<br>  mraa_i2c_context i2c_context = mraa_i2c_init(I2C_BUS);<br>    printf( “i2c bus initialization finished\n”);<br>  uint8_t data_requirement_buffer[3];<br>  uint8_t sensor_data_buffer[9] = {0};<br>  int humitity_i = 0, temperature_i=0, guard;</p>
+<p>  for(;;)<br>  {<br>    // shake the sensor up every time you want to access its data<br>    ActivateSensor( i2c_context );</p>
+<pre><code>// require temperature and humidity data
+mraa_i2c_address( i2c_context, TRH_SENSOR_I2C_ADDR );
+data_requirement_buffer[0] = TRH_SENSOR_FUN_CODE_READ_REG;
+data_requirement_buffer[1] = TRH_RH_REG_ADDR_H;
+data_requirement_buffer[2] = 4;
+if ( mraa_i2c_write( i2c_context, data_requirement_buffer, 3 )==MRAA_SUCCESS)
+  printf(&quot;requirement has been send\n&quot;);
+
+// ready to go, here we are going to fetching temperature
+// and humidity data(4 bytes) at a time
+mraa_i2c_address( i2c_context, TRH_SENSOR_I2C_ADDR );// sensor address with read mark
+if (mraa_i2c_read( i2c_context, sensor_data_buffer, 8 )==MRAA_SUCCESS)
+  printf( &quot;Requirement has been sent!&quot;);
+
+guard = humitity_i;//guard command to prevent compiler common out unused variable
+humitity_i = (((int)sensor_data_buffer[2])&lt;&lt;8) + sensor_data_buffer[3];
+temperature_i = (((int)sensor_data_buffer[4])&lt;&lt;8) + sensor_data_buffer[5];
+  printf( &quot;humitiy: %.1fRH temperature: %.1fC\n&quot;, ((double)humitity_i)/10, ((double)temperature_i)/10 );
+sleep(60);//wait for another sampling available
+</code></pre><p>  }</p>
+<p>  mraa_i2c_stop( i2c_context );<br>  return 0;<br>}</p>
+<h3 id="三态门，除了有逻辑的0和1外，还有一个高阻，相当于悬空"><a href="#三态门，除了有逻辑的0和1外，还有一个高阻，相当于悬空" class="headerlink" title="三态门，除了有逻辑的0和1外，还有一个高阻，相当于悬空"></a>三态门，除了有逻辑的0和1外，还有一个高阻，相当于悬空</h3><h3 id="可编程增益，增益是指电压或者电流放大倍数，是通过电阻来控制，数字可编程增益是通过处理器输出数字的增益，然后选择哪路开关通段，达到控制接入多少电阻，从而实现控制增益"><a href="#可编程增益，增益是指电压或者电流放大倍数，是通过电阻来控制，数字可编程增益是通过处理器输出数字的增益，然后选择哪路开关通段，达到控制接入多少电阻，从而实现控制增益" class="headerlink" title="可编程增益，增益是指电压或者电流放大倍数，是通过电阻来控制，数字可编程增益是通过处理器输出数字的增益，然后选择哪路开关通段，达到控制接入多少电阻，从而实现控制增益"></a>可编程增益，增益是指电压或者电流放大倍数，是通过电阻来控制，数字可编程增益是通过处理器输出数字的增益，然后选择哪路开关通段，达到控制接入多少电阻，从而实现控制增益</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/edison/" data-id="cizut7q3f000tt4ddip7wge3w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-dataStructer" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/03/dataStructer/" class="article-date">
@@ -85,7 +204,72 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/dataStructer/" data-id="ciztrizy8000bb0ddvudgfrbl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/dataStructer/" data-id="cizut7q2i000bt4ddaw32724q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cygwin" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/cygwin/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.270Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="tiltle-主要是一些小知识"><a href="#tiltle-主要是一些小知识" class="headerlink" title="tiltle:主要是一些小知识"></a>tiltle:主要是一些小知识</h2><ol>
+<li>apt-cg install package</li>
+<li><p>apt-cyg的安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget http://apt-cyg.googlecode.com/svn/trunk/apt-cyg</div><div class="line">chmod +x apt-cyg</div><div class="line">mv apt-cyg /usr/local/bin/</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">apt-cyg install bc</div><div class="line">apt-cyg find php //查找</div><div class="line"></div><div class="line">apt-cyg -c /cygdrive/d/downloads/cygwin -m http://mirrors.163.com/cygwin/ find php //指定源查找,c ,设定缓存目录</div><div class="line"></div><div class="line">apt-cyg -m ftp://ftp.cygwinports.org/pub/cygwinports find php</div><div class="line"></div><div class="line">apt-cyg update --mirror http://mirrors.163.com/cygwin/  //更新源</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>###注意，因为nodejs官方不支持新版本的cygwin nodejs，所以也没必要安装了！，最好是利用在win7下的nodejs和npm，可以在cyg界面执行编译等命令！！</p>
+<h4 id="cygwin-下安装nodejs"><a href="#cygwin-下安装nodejs" class="headerlink" title="cygwin 下安装nodejs ,"></a>cygwin 下安装nodejs ,</h4><ol>
+<li><a href="http://cygwin.com/setup.exe" target="_blank" rel="external">官网下载</a></li>
+<li>安装cygwin几个要点</li>
+</ol>
+<p>（1）Install from Internet,安装程序在后面步骤会下载大量文件。<br>（2）Root Directory，是Cygwin的安装目录。<br>（3）Local Package Directory，是存放所有下载文件的目录，子目录名即下载镜像网址，子目录下的release</p>
+<p><strong>注意安装后创建的快捷方式不准确，需要加上exe</strong></p>
+<ol>
+<li>镜像<br><a href="http://mirrors.163.com/cygwin" target="_blank" rel="external">http://mirrors.163.com/cygwin</a><br><a href="http://mirrors.sohu.com/cygwin/" target="_blank" rel="external">http://mirrors.sohu.com/cygwin/</a></li>
+<li><p>安装g++,make,git,vim,curl,wget,python(全部安装)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">gcc-g++: C++ compiler</div><div class="line">gcc-mingw-g++: Mingw32 support headers and libraries for GCC C++</div><div class="line">gcc4-g++: G++ subpackage</div><div class="line">git: Fast Version Control System – core files（它可以从 github 下载软件最新版源码)</div><div class="line">make: The GNU version of the ‘make’ utility</div><div class="line">openssl-devel: The OpenSSL development environment,</div><div class="line">pkg-config: A utility used to retrieve information about installed libraries</div><div class="line">zlib-devel: The zlib compression/decompression library (development)</div></pre></td></tr></table></figure>
+</li>
+<li><p>要正常编译nodejs，必须先在Cywgin的ASH模式下执行rebaseall。步骤如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">（1）cmd命令行</div><div class="line">（2）进入cygwin安装目录下的bin子目录</div><div class="line">（3）运行ash进入shell模式</div><div class="line">（4）./rebaseall -v</div><div class="line">（5）没有错误，完成，exit退出ash，关闭命令行窗口</div></pre></td></tr></table></figure>
+</li>
+<li><p>编译安装nodejs,这里是最后支持的版本了，新版本无法编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wget http://nodejs.org/dist/node-v0.4.12.tar.gz</div><div class="line">tar xvfz node-v0.4.12.tar.gz</div><div class="line">cd node-v0.4.12/</div><div class="line">./configure  //会提示openssl 未找到;;;</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置DNS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cygwin内部是使用windows的DNS查询，而nodejs另外使用的是c-ares库来解析DNS，这个库会读取/etc/resolv.conf里的nameserver配置，而默认是没有这个文件的，需要自己建立并配置好DNS服务器的IP地址，这里使用Google Public DNS服务器的IP地址：8.8.8.8和8.8.4.4。</div><div class="line"></div><div class="line">$ vi /ect/resolv.conf</div><div class="line"></div><div class="line">nameserver 8.8.8.8</div><div class="line">nameserver 8.8.4.4</div></pre></td></tr></table></figure>
+</li>
+<li><p>$node -v 查看版本</p>
+</li>
+<li><p>安装npm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">npm下载、安装、使用</div><div class="line"></div><div class="line">npm是nodejs的软件包管理器，可以用它安装所需软件包并发布自己为nodejs写的软件包，它还管理软件包的依赖关系并做了其它一些很酷的事情。</div><div class="line">（1）一行命令下载并安装npm</div><div class="line"></div><div class="line">$ curl http://npmjs.org/install.sh | sh</div><div class="line"></div><div class="line">（2）npm安装node扩展包，同样是一行命令下载并安装好软件包</div><div class="line"></div><div class="line">$ npm install &lt;包名&gt;</div><div class="line"></div><div class="line">例如安装mysql：npm install mysql</div></pre></td></tr></table></figure>
+</li>
+<li><p>cygwin配置</p>
+<h4 id="配置硬盘挂载-ln-s-cygdrive-d-d"><a href="#配置硬盘挂载-ln-s-cygdrive-d-d" class="headerlink" title="配置硬盘挂载 ln -s /cygdrive/d /d"></a>配置硬盘挂载 ln -s /cygdrive/d /d</h4><p>参考<a href="http://www.cnblogs.com/astwish/articles/3700459.html" target="_blank" rel="external">cygwin配置</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/cygwin/" data-id="cizut7q2h000at4dd1zerha9w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,72 +337,7 @@ printf(n..) ; //打印显示n的值
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/cSample/" data-id="ciztrizxp0002b0ddlwsu3ppq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-cygwin" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/cygwin/" class="article-date">
-  <time datetime="2017-03-03T11:20:16.270Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="tiltle-主要是一些小知识"><a href="#tiltle-主要是一些小知识" class="headerlink" title="tiltle:主要是一些小知识"></a>tiltle:主要是一些小知识</h2><ol>
-<li>apt-cg install package</li>
-<li><p>apt-cyg的安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget http://apt-cyg.googlecode.com/svn/trunk/apt-cyg</div><div class="line">chmod +x apt-cyg</div><div class="line">mv apt-cyg /usr/local/bin/</div></pre></td></tr></table></figure>
-</li>
-<li><p>使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">apt-cyg install bc</div><div class="line">apt-cyg find php //查找</div><div class="line"></div><div class="line">apt-cyg -c /cygdrive/d/downloads/cygwin -m http://mirrors.163.com/cygwin/ find php //指定源查找,c ,设定缓存目录</div><div class="line"></div><div class="line">apt-cyg -m ftp://ftp.cygwinports.org/pub/cygwinports find php</div><div class="line"></div><div class="line">apt-cyg update --mirror http://mirrors.163.com/cygwin/  //更新源</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>###注意，因为nodejs官方不支持新版本的cygwin nodejs，所以也没必要安装了！，最好是利用在win7下的nodejs和npm，可以在cyg界面执行编译等命令！！</p>
-<h4 id="cygwin-下安装nodejs"><a href="#cygwin-下安装nodejs" class="headerlink" title="cygwin 下安装nodejs ,"></a>cygwin 下安装nodejs ,</h4><ol>
-<li><a href="http://cygwin.com/setup.exe" target="_blank" rel="external">官网下载</a></li>
-<li>安装cygwin几个要点</li>
-</ol>
-<p>（1）Install from Internet,安装程序在后面步骤会下载大量文件。<br>（2）Root Directory，是Cygwin的安装目录。<br>（3）Local Package Directory，是存放所有下载文件的目录，子目录名即下载镜像网址，子目录下的release</p>
-<p><strong>注意安装后创建的快捷方式不准确，需要加上exe</strong></p>
-<ol>
-<li>镜像<br><a href="http://mirrors.163.com/cygwin" target="_blank" rel="external">http://mirrors.163.com/cygwin</a><br><a href="http://mirrors.sohu.com/cygwin/" target="_blank" rel="external">http://mirrors.sohu.com/cygwin/</a></li>
-<li><p>安装g++,make,git,vim,curl,wget,python(全部安装)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">gcc-g++: C++ compiler</div><div class="line">gcc-mingw-g++: Mingw32 support headers and libraries for GCC C++</div><div class="line">gcc4-g++: G++ subpackage</div><div class="line">git: Fast Version Control System – core files（它可以从 github 下载软件最新版源码)</div><div class="line">make: The GNU version of the ‘make’ utility</div><div class="line">openssl-devel: The OpenSSL development environment,</div><div class="line">pkg-config: A utility used to retrieve information about installed libraries</div><div class="line">zlib-devel: The zlib compression/decompression library (development)</div></pre></td></tr></table></figure>
-</li>
-<li><p>要正常编译nodejs，必须先在Cywgin的ASH模式下执行rebaseall。步骤如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">（1）cmd命令行</div><div class="line">（2）进入cygwin安装目录下的bin子目录</div><div class="line">（3）运行ash进入shell模式</div><div class="line">（4）./rebaseall -v</div><div class="line">（5）没有错误，完成，exit退出ash，关闭命令行窗口</div></pre></td></tr></table></figure>
-</li>
-<li><p>编译安装nodejs,这里是最后支持的版本了，新版本无法编译</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wget http://nodejs.org/dist/node-v0.4.12.tar.gz</div><div class="line">tar xvfz node-v0.4.12.tar.gz</div><div class="line">cd node-v0.4.12/</div><div class="line">./configure  //会提示openssl 未找到;;;</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
-</li>
-<li><p>配置DNS</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cygwin内部是使用windows的DNS查询，而nodejs另外使用的是c-ares库来解析DNS，这个库会读取/etc/resolv.conf里的nameserver配置，而默认是没有这个文件的，需要自己建立并配置好DNS服务器的IP地址，这里使用Google Public DNS服务器的IP地址：8.8.8.8和8.8.4.4。</div><div class="line"></div><div class="line">$ vi /ect/resolv.conf</div><div class="line"></div><div class="line">nameserver 8.8.8.8</div><div class="line">nameserver 8.8.4.4</div></pre></td></tr></table></figure>
-</li>
-<li><p>$node -v 查看版本</p>
-</li>
-<li><p>安装npm</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">npm下载、安装、使用</div><div class="line"></div><div class="line">npm是nodejs的软件包管理器，可以用它安装所需软件包并发布自己为nodejs写的软件包，它还管理软件包的依赖关系并做了其它一些很酷的事情。</div><div class="line">（1）一行命令下载并安装npm</div><div class="line"></div><div class="line">$ curl http://npmjs.org/install.sh | sh</div><div class="line"></div><div class="line">（2）npm安装node扩展包，同样是一行命令下载并安装好软件包</div><div class="line"></div><div class="line">$ npm install &lt;包名&gt;</div><div class="line"></div><div class="line">例如安装mysql：npm install mysql</div></pre></td></tr></table></figure>
-</li>
-<li><p>cygwin配置</p>
-<h4 id="配置硬盘挂载-ln-s-cygdrive-d-d"><a href="#配置硬盘挂载-ln-s-cygdrive-d-d" class="headerlink" title="配置硬盘挂载 ln -s /cygdrive/d /d"></a>配置硬盘挂载 ln -s /cygdrive/d /d</h4><p>参考<a href="http://www.cnblogs.com/astwish/articles/3700459.html" target="_blank" rel="external">cygwin配置</a></p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/cygwin/" data-id="ciztrizy7000ab0ddat1d0ymg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/cSample/" data-id="cizut7q1p0000t4ddw2idizev" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +368,7 @@ printf(n..) ; //打印显示n的值
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/cross domian/" data-id="ciztrizy20008b0ddw7l9a4b9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/cross domian/" data-id="cizut7q2c0007t4dd9knu5v9l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -282,7 +401,7 @@ printf(n..) ; //打印显示n的值
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/composer/" data-id="ciztrizy50009b0ddrb6795eb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/composer/" data-id="cizut7q2e0008t4dd6hatpnos" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,7 +435,7 @@ printf(n..) ; //打印显示n的值
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/commerce/" data-id="ciztrizy10007b0dd1i6ofiim" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/commerce/" data-id="cizut7q2a0005t4ddre0cv7of" class="article-share-link">Share</a>
       
       
     </footer>
@@ -354,7 +473,7 @@ printf(n..) ; //打印显示n的值
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/commentsSystem/" data-id="ciztrizxz0005b0ddzxh6nxju" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/commentsSystem/" data-id="cizut7q2b0006t4ddkprq1306" class="article-share-link">Share</a>
       
       
     </footer>
@@ -408,61 +527,7 @@ printf(n..) ; //打印显示n的值
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/classAndObject/" data-id="ciztrizy00006b0dd2rbfi9uq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-BeAMan" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/BeAMan/" class="article-date">
-  <time datetime="2017-03-03T11:20:16.264Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/03/BeAMan/">讲解做人做事的道理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="每得到一句话，最应该想的应是他为什么这样说，这样说对他有什么好处，再想自己为什么这样说"><a href="#每得到一句话，最应该想的应是他为什么这样说，这样说对他有什么好处，再想自己为什么这样说" class="headerlink" title="每得到一句话，最应该想的应是他为什么这样说，这样说对他有什么好处，再想自己为什么这样说"></a>每得到一句话，最应该想的应是他为什么这样说，这样说对他有什么好处，再想自己为什么这样说</h4><pre><code>1. 为什么有的人总是抱怨自己付出的多，而别人付出的少却得到跟自己相同的回报，因为这个世界是不公平的，正确的解释是同样的酬劳，其实是和方法、机遇、环境等因素密切相关的
-2. 在一件事发生不满意时，应先检讨自己的错误，因为一件事与自己相关的，肯定和自己多少有些关系，不要总是怪别人错了
-3. 或者说世界是公平的，因为只要拥有了一件事的充分条件，谁都可以成功。要想成功，就必须保证在自身情况下的充分条件
-4. 很多事情，看看成功的人、传统怎么做，是非常必要的
-</code></pre><h4 id="每做一件事，每遇到一件事，都要问自己，把可能发生的事情想到没有，是不是盲目行事"><a href="#每做一件事，每遇到一件事，都要问自己，把可能发生的事情想到没有，是不是盲目行事" class="headerlink" title="每做一件事，每遇到一件事，都要问自己，把可能发生的事情想到没有，是不是盲目行事"></a>每做一件事，每遇到一件事，都要问自己，把可能发生的事情想到没有，是不是盲目行事</h4><h3 id="人总是要先想到自己后想到别人的，当别人做事让我失望，或者不如我愿时候，应该先在别人的立场想原因，然后才发怒"><a href="#人总是要先想到自己后想到别人的，当别人做事让我失望，或者不如我愿时候，应该先在别人的立场想原因，然后才发怒" class="headerlink" title="人总是要先想到自己后想到别人的，当别人做事让我失望，或者不如我愿时候，应该先在别人的立场想原因，然后才发怒"></a>人总是要先想到自己后想到别人的，当别人做事让我失望，或者不如我愿时候，应该先在别人的立场想原因，然后才发怒</h3><h3 id="任何情况下，每个人都会按照自己的惯性方法，惯性思维做事，如果没有特殊情况，他总认为他的做法是对的，所以必须-禅魔他的真正想法，真正目的才能，知己知彼，百战百胜"><a href="#任何情况下，每个人都会按照自己的惯性方法，惯性思维做事，如果没有特殊情况，他总认为他的做法是对的，所以必须-禅魔他的真正想法，真正目的才能，知己知彼，百战百胜" class="headerlink" title="任何情况下，每个人都会按照自己的惯性方法，惯性思维做事，如果没有特殊情况，他总认为他的做法是对的，所以必须 禅魔他的真正想法，真正目的才能，知己知彼，百战百胜"></a>任何情况下，每个人都会按照自己的惯性方法，惯性思维做事，如果没有特殊情况，他总认为他的做法是对的，所以必须 禅魔他的真正想法，真正目的才能，知己知彼，百战百胜</h3><h3 id="以前在高中阶段是处于攻心自己的状态，其实最厉害的还要学会攻心他人"><a href="#以前在高中阶段是处于攻心自己的状态，其实最厉害的还要学会攻心他人" class="headerlink" title="以前在高中阶段是处于攻心自己的状态，其实最厉害的还要学会攻心他人"></a>以前在高中阶段是处于攻心自己的状态，其实最厉害的还要学会攻心他人</h3><h3 id="每当自己模糊化的时候，或者大概预览的时候，就要知道，这是极其危险的，因为这个时候我不能学到任何东西，反而会丧失自己的时间，看每一篇文章，做任何一件事，都不能马虎，不能大概行事"><a href="#每当自己模糊化的时候，或者大概预览的时候，就要知道，这是极其危险的，因为这个时候我不能学到任何东西，反而会丧失自己的时间，看每一篇文章，做任何一件事，都不能马虎，不能大概行事" class="headerlink" title="每当自己模糊化的时候，或者大概预览的时候，就要知道，这是极其危险的，因为这个时候我不能学到任何东西，反而会丧失自己的时间，看每一篇文章，做任何一件事，都不能马虎，不能大概行事"></a>每当自己模糊化的时候，或者大概预览的时候，就要知道，这是极其危险的，因为这个时候我不能学到任何东西，反而会丧失自己的时间，看每一篇文章，做任何一件事，都不能马虎，不能大概行事</h3><h3 id="分析事情的时候不能直觉，不能只靠直觉！要两面分析，以及依赖自己的各种思维分析"><a href="#分析事情的时候不能直觉，不能只靠直觉！要两面分析，以及依赖自己的各种思维分析" class="headerlink" title="分析事情的时候不能直觉，不能只靠直觉！要两面分析，以及依赖自己的各种思维分析"></a>分析事情的时候不能直觉，不能只靠直觉！要两面分析，以及依赖自己的各种思维分析</h3><h3 id="英语的学习不能采用模糊政策，这样是完全被动的方法，每次看到词语都是似曾相识，然而这时没有用的，我需要的是加强，复习和不断记忆，主动记忆，反复记忆，不能大概先生化。"><a href="#英语的学习不能采用模糊政策，这样是完全被动的方法，每次看到词语都是似曾相识，然而这时没有用的，我需要的是加强，复习和不断记忆，主动记忆，反复记忆，不能大概先生化。" class="headerlink" title="英语的学习不能采用模糊政策，这样是完全被动的方法，每次看到词语都是似曾相识，然而这时没有用的，我需要的是加强，复习和不断记忆，主动记忆，反复记忆，不能大概先生化。"></a>英语的学习不能采用模糊政策，这样是完全被动的方法，每次看到词语都是似曾相识，然而这时没有用的，我需要的是加强，复习和不断记忆，<strong>主动记忆，反复记忆，不能大概先生化。</strong></h3><h3 id="阅读技术文档一定不能大概，一定不能，千万不能，而且要有一定的实际练习，不然一切都是空的，没有任何实际价值"><a href="#阅读技术文档一定不能大概，一定不能，千万不能，而且要有一定的实际练习，不然一切都是空的，没有任何实际价值" class="headerlink" title="阅读技术文档一定不能大概，一定不能，千万不能，而且要有一定的实际练习，不然一切都是空的，没有任何实际价值"></a>阅读技术文档一定不能大概，一定不能，千万不能，而且要有一定的实际练习，不然一切都是空的，没有任何实际价值</h3><h3 id="在计算机语言中，类是抽象化，接口更是高层的抽象化，而架构师就更抽象了，所以语言的最高水平是抽象，而不是实现，就像马云一样，他不需要懂技术，但是他懂抽象，他的抽象是一个非常大的抽象，因此学会抽象化才是让人觉得唾手可得，才让人充满信心，就像传销的说客一样，不断给人以抽象思维，最后让人深陷其中，给人一种只要少量付出，就能满足欲望、获得成功"><a href="#在计算机语言中，类是抽象化，接口更是高层的抽象化，而架构师就更抽象了，所以语言的最高水平是抽象，而不是实现，就像马云一样，他不需要懂技术，但是他懂抽象，他的抽象是一个非常大的抽象，因此学会抽象化才是让人觉得唾手可得，才让人充满信心，就像传销的说客一样，不断给人以抽象思维，最后让人深陷其中，给人一种只要少量付出，就能满足欲望、获得成功" class="headerlink" title="在计算机语言中，类是抽象化，接口更是高层的抽象化，而架构师就更抽象了，所以语言的最高水平是抽象，而不是实现，就像马云一样，他不需要懂技术，但是他懂抽象，他的抽象是一个非常大的抽象，因此学会抽象化才是让人觉得唾手可得，才让人充满信心，就像传销的说客一样，不断给人以抽象思维，最后让人深陷其中，给人一种只要少量付出，就能满足欲望、获得成功"></a>在计算机语言中，类是抽象化，接口更是高层的抽象化，而架构师就更抽象了，所以语言的最高水平是抽象，而不是实现，就像马云一样，他不需要懂技术，但是他懂抽象，他的抽象是一个非常大的抽象，因此学会抽象化才是让人觉得唾手可得，才让人充满信心，就像传销的说客一样，不断给人以抽象思维，最后让人深陷其中，给人一种只要少量付出，就能满足欲望、获得成功</h3><h5 id="非常重要"><a href="#非常重要" class="headerlink" title="非常重要"></a>非常重要</h5><p>要成大事，必须不拘小节，所谓小节是指对当前计划起不到任何作用的甚至会带来时间浪费的，比如抱怨别人<br>心里模仿抱怨他人是非常不明智的做法 ，浪费时间<br>注重细节是指对当前计划有益的细节<br>如果一件事对自己当前或者以后没有任何作用，那么就尽量少做</p>
-<h5 id="江湖秘诀"><a href="#江湖秘诀" class="headerlink" title="江湖秘诀"></a>江湖秘诀</h5><ol>
-<li>任何时候都不要被欲望（感性）控制，必须想好前因后果</li>
-<li>任何看似能对欲望触手可及的行动、场景都有着巨大的伤害，用功能理论，要得到多少的感性体验，就必须牺牲多少的感性体验，而其中就是用理性控制的</li>
-<li>在这二十天，必须培养、回归自己的理性控制。达到最强</li>
-<li>色、权、钱、名都是人的欲望，七情六欲，利用它们能控制一个人的思维、甚至控制整个人。</li>
-<li>利用自己的理性和别人的感性才能立于不败之地</li>
-<li>必做之事绝不拖拉</li>
-<li>事情分为必做，急做，常做，急做居1，必做居2，常坐居3.</li>
-<li>记住不要认为在这里复习思维控制是浪费时间，其实是我成长必须的</li>
-</ol>
-<h5 id="做事不妥反省"><a href="#做事不妥反省" class="headerlink" title="做事不妥反省"></a>做事不妥反省</h5><ol>
-<li>在遇到突发事件，特别是跟异性在一起时，由于过于想表现自己，常常犯下许多低级错误</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/BeAMan/" data-id="ciztrj00p001yb0ddzbt395gw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/classAndObject/" data-id="cizut7q260003t4ddz4gkbn8o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -490,7 +555,7 @@ printf(n..) ; //打印显示n的值
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/aws/" data-id="ciztrizxr0003b0dd9f6gfbn4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/aws/" data-id="cizut7q1w0001t4ddbdxr348o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -534,11 +599,11 @@ printf(n..) ; //打印显示n的值
       <ul>
         
           <li>
-            <a href="/2017/03/03/hexo/">(no title)</a>
+            <a href="/2017/03/03/yii/session/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/win7Clean/">(no title)</a>
+            <a href="/2017/03/03/hexo/">(no title)</a>
           </li>
         
           <li>
@@ -546,11 +611,11 @@ printf(n..) ; //打印显示n的值
           </li>
         
           <li>
-            <a href="/2017/03/03/webpack/">(no title)</a>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/weixin/">(no title)</a>
+            <a href="/2017/03/03/webpack/">(no title)</a>
           </li>
         
       </ul>

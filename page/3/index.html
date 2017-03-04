@@ -61,6 +61,93 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-php" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/php/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.296Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/php/">介绍php的有关学习，包括语法，配置，以及扩展等</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="php-命令"><a href="#php-命令" class="headerlink" title="php 命令"></a>php 命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">看是否是线程安全的</div><div class="line">php -i|find &quot;Thread&quot;</div><div class="line">一般情况下，作为apache模块的都是TS</div><div class="line">而使用php-fpm的是NTS</div></pre></td></tr></table></figure>
+<h4 id="php数组"><a href="#php数组" class="headerlink" title="php数组"></a>php数组</h4><ol>
+<li>索引数组</li>
+<li>关联数组</li>
+<li>sort($array) ,数组排序,对数组进行key的升序排列</li>
+<li>rsort() 逆向排序    </li>
+<li>ksort() ,asort() ,给关联数组排序</li>
+<li><p><a href="http://blog.163.com/inewzou@yeah/blog/static/131005870201111102947591/" target="_blank" rel="external">数组操作详解</a></p>
+</li>
+<li><p>private 声明的函数变量，不能被new得到的实例引用，只能被内部的public函数间接调用</p>
+</li>
+<li>往数组里面增加新元素，<a href="http://www.php230.com/1410670681.html" target="_blank" rel="external">参考</a></li>
+<li>在数组尾部加入新元素 []</li>
+<li>array_flip( array $trans )  将数组翻转，key , value 对换，重复的会除去</li>
+<li>strtr( string $str, string $from, string $to )<br>strtr( string $str, [] $replace_pairs )<br>将$str 从$from 替换为$to ,或根据$replace_pairs数组批量替换</li>
+<li>suffle 将数组顺序打乱</li>
+<li>extract() 将数组化为变量</li>
+<li>compact() 将变量化为数组键值对</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">$queue = array(&apos;a&apos;, &apos;B&apos;);</div><div class="line">$queue[&apos;front&apos;] = &apos;hello&apos;;</div><div class="line">/*</div><div class="line">输出</div><div class="line">Array</div><div class="line">(</div><div class="line">    [0] =&gt; a</div><div class="line">    [1] =&gt; b</div><div class="line">    [front] =&gt; hello  </div><div class="line">)</div><div class="line">*/</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>‘$array’ //里面的$没有转义，将被解析为变量</p>
+</li>
+<li><p>php对象用 -&gt; 获得，数组用 [‘key’] ; php数组转对象 (object)$arr // 是只能一级数组</p>
+</li>
+<li><p>implode(“\n”, $items) ;  将数组化为字符串, 注意$strings 在后</p>
+</li>
+<li><p>php 中的trow , try catch 其实就是一个中断，看到 trow 就执行trow语句然后直接跳到catch中，并往catch传入一个exception实例,执行catch代码段</p>
+</li>
+<li><p>php 命名空间，php的 require只是对代码简单的加载，思考每个php文件中有一个类，如果区别这每个类的不同呢，一个是利用路径不同作为标志，可是php中没有实现，而是用命名空间来实现了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">use \foo(); 调用全局函数foo();</div><div class="line">use foo(); 调用该命名空间下的foo();</div><div class="line"></div><div class="line">new \D(); 创建定义在全局空间中的类 D的对象，如果没有就尝试自动加载</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如上，namespace 其实是和类的路径是分离的，每次require后还需要从新使用use，composer所做的就是在一定规则的命名空间下实现类的自动require; 这样只需要use就不用require，因为它已经帮助完成了。它的逻辑就是通过一个composer.json里面的文件，定义一个命名空间头对应特定的全局路径,然后用到这个命名空间时就从这个对应中对应下来就好了。</p>
+<p><strong><em>自动加载</em></strong></p>
+<p>对于不能正常加载的类，php会去执行自动加载方法，该方法只要在开始地方实现就好，一般就是传入一个类的函数给它，到时候会自动调用这个函数的加载逻辑。</p>
+<h5 id="php-static"><a href="#php-static" class="headerlink" title="php static"></a>php static</h5><p>php 中的静态方法、静态变量用static关键字声明，静态方法或者变量在外部只能以::形似使用，在内部需要用self:: / parent:: ，静态方法与普通方法不能混用。</p>
+<p>静态方法不需要实例化即可使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">class Foo &#123;</div><div class="line">    public static function aStaticMethod() &#123;</div><div class="line">        // ...</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Foo::aStaticMethod();</div><div class="line">$classname = &apos;Foo&apos;;</div><div class="line">$classname::aStaticMethod(); // As of PHP 5.3.0</div></pre></td></tr></table></figure></p>
+<p>new static() 在代码里面新建一个高层类对象<br>new self() 新建一个当前类的对象</p>
+<p>php 中静态方法和非静态方法等都可以混调用，唯一需要注意的是使用self :: $ 等使用静态方法和属性和静态方法</p>
+<h6 id="php-const-常量-一旦定义值不可变"><a href="#php-const-常量-一旦定义值不可变" class="headerlink" title="php const 常量, 一旦定义值不可变"></a>php const 常量, 一旦定义值不可变</h6><p>内部使用self::var得到，外部实例用ClassName::var得到<br>区别于define 全局定义，(可以改变还是覆盖其值?)<br>public static $var 静态变量, 可以改值</p>
+<h6 id="php-中的private-变量在基类定义，子类如有重名并不冲突，因为private-只对该基类有效"><a href="#php-中的private-变量在基类定义，子类如有重名并不冲突，因为private-只对该基类有效" class="headerlink" title="php 中的private 变量在基类定义，子类如有重名并不冲突，因为private 只对该基类有效"></a>php 中的private 变量在基类定义，子类如有重名并不冲突，因为private 只对该基类有效</h6><h5 id="php-中一些助手函数"><a href="#php-中一些助手函数" class="headerlink" title="php 中一些助手函数"></a>php 中一些助手函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">get_class($instance) 获得这个实例的类名</div><div class="line">get_called_class() 一般镶嵌在静态方法中，可以获取调用这个静态方法的最高层类名,如A extend B , 则是得A</div><div class="line">call_user_func(&apos;func&apos;, &apos;param&apos;); //类似func(param);</div><div class="line"></div><div class="line">// 魔术方法</div><div class="line">__toString() 当直接echo 输出对象时会自动调用这个方法</div><div class="line"></div><div class="line">array_merge() 将多个素组合并为一个数组</div><div class="line"></div><div class="line">array array_keys ( array $array [, mixed $search_value [, bool $strict = false ]] ) 返回或者查询一个数组的key</div><div class="line"></div><div class="line">$pos = strops(&apos;strings&apos;, &apos;searchString&apos;) 查找第一次出现的位置</div><div class="line">substr(&apos;$string&apos;, 0, $pos + 1) 截取字符串</div></pre></td></tr></table></figure>
+<h5 id="php-内建类"><a href="#php-内建类" class="headerlink" title="php 内建类"></a>php 内建类</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">use ReflectionClass;</div><div class="line">new ReflectionClass($this or a class name);</div><div class="line">将一个类作为参数构造一个新的ReflectionClass实例，就可以通过这个实例来读取类的许多信息。</div><div class="line"></div><div class="line">ArrayAccess是一个接口，实现了这个接口的类的实例，就可以像操作数组一样操作他的元素</div><div class="line"></div><div class="line">php 内置了一些有用的接口、基类，借助这些可以方便的实现其他语言有的功能,如ArrayInterable类，实现数组迭代等。</div></pre></td></tr></table></figure>
+<h5 id="‘’-“”-的区别"><a href="#‘’-“”-的区别" class="headerlink" title="‘’ “” {} 的区别"></a>‘’ “” {} 的区别</h5><p>$test = “test”;<br>echo “$test”;//输出test<br>echo “$testwrong”;//不输出任何东西<br>echo “{$test}wrong”;//输出testwrong</p>
+<p>echo “{$a[‘a’]}”;//这里要{},不然会出错<br>echo “services[{$name}]”</p>
+<h5 id="php-中的ob函数"><a href="#php-中的ob函数" class="headerlink" title="php 中的ob函数"></a>php 中的ob函数</h5><p>该函数实现服务器输出缓冲功能。<br>ob_start 打开缓冲区，之后的飞header 信息都不会发送，ob_end_flush 和 flush可以输出缓冲区内容</p>
+<p><strong> php默认有缓冲区内容，当程序未执行完成时，输出不够256字节默认不输出浏览器的</strong></p>
+<p>flush 刷新缓冲区内容<br>ob_implict_flush(int flag) 打开或者关闭绝对刷新，打开绝对刷新后，不需要频繁调用flush()</p>
+<p>ob_get_contents 得到缓冲区内容<br>ob_get-length</p>
+<p>ob_flush();<br>flush();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ob_start();</div><div class="line">ob_implicit_flush(false);</div><div class="line">extract($_params_, EXTR_OVERWRITE); // 解出变量到当前环境使用</div><div class="line">require($_file_); // 直接require ，得到echo等语句</div><div class="line"></div><div class="line">return ob_get_clean(); // 清楚缓冲区，并得到输出string</div></pre></td></tr></table></figure></p>
+<h5 id="php-传值"><a href="#php-传值" class="headerlink" title="php 传值"></a>php 传值</h5><p>php中对象都是引用传值</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/php/" data-id="cizut7q3v0014t4dd68eqqpxg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-openshift" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/03/openshift/" class="article-date">
@@ -81,7 +168,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/openshift/" data-id="ciztrizzl0017b0dd9lxoyyd5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/openshift/" data-id="cizut7q400017t4dd715s9gpo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -114,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/o2o/" data-id="ciztrizzk0016b0ddoruk309t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/o2o/" data-id="cizut7q3w0015t4ddnb422eb8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -152,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/npm/" data-id="ciztrizzi0014b0ddgm5nvl3a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/npm/" data-id="cizut7q3r0010t4dd3n5mg1y8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -191,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/note/" data-id="ciztrizzj0015b0ddr6ateao1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/note/" data-id="cizut7q3y0016t4dd37qaslat" class="article-share-link">Share</a>
       
       
     </footer>
@@ -236,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/node-thread/" data-id="ciztrizzf0011b0dd0bvdjrb6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/node-thread/" data-id="cizut7q3t0013t4ddk1yqv0ig" class="article-share-link">Share</a>
       
       
     </footer>
@@ -302,7 +389,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/nodeStudy/" data-id="ciztrizzh0013b0ddba8xgcr1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/nodeStudy/" data-id="cizut7q4j001ft4ddlksxbiqb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -349,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/motox/" data-id="ciztrizzg0012b0ddhgt5o85u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/motox/" data-id="cizut7q3s0012t4dd9x5we7rm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -386,131 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/monitor/" data-id="ciztrizze0010b0ddsnf2krct" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-mongoDB" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/mongoDB/" class="article-date">
-  <time datetime="2017-03-03T11:20:16.287Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/03/mongoDB/">mongoDB 的使用和学习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
-<li>安装前应该修补win7bug，下载Windows 7/Windows Server2008 R2 SP1</li>
-<li><a href="http://www.myfiles.com.cn/soft/0/131.htm" target="_blank" rel="external">下载地址</a></li>
-<li><p>由于文件过大，算了，直接使用，如果需要，安装在linux即可</p>
-</li>
-<li><p>ubuntu 下二进制安装.<a href="https://docs.mongodb.org/getting-started/shell/installation/" target="_blank" rel="external">官网</a></p>
-</li>
-<li>curl -o /url/to/download </li>
-<li>tar zxvf 解已经存在压</li>
-<li>export PATH=<mongodb-install-directory>/bin:$PATH   //添加环境变量</mongodb-install-directory></li>
-<li>mkdit /data/db</li>
-<li>mongod –dbpath <path to="" data="" directory=""></path>  // 指定数据的保存路径启动mogondb/</li>
-</ol>
-<h3 id="引入文件到数据库中"><a href="#引入文件到数据库中" class="headerlink" title="引入文件到数据库中"></a>引入文件到数据库中</h3><h4 id="检索数据集-restaurants-data"><a href="#检索数据集-restaurants-data" class="headerlink" title="检索数据集 restaurants data"></a>检索数据集 restaurants data</h4><ol>
-<li>下载实例文件到本地 wget /http/.json<h4 id="引入本地文件到数据库"><a href="#引入本地文件到数据库" class="headerlink" title="引入本地文件到数据库"></a>引入本地文件到数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongoimport --db test --collection restaurants --drop --file primer-dataset.json</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>mongoimport 命令，还可以指定要连接md数据库的端口和地址，默认为本地和port</p>
-<ol>
-<li>primer-dataset.json,为本地文件路径</li>
-<li>test 为数据库名，</li>
-<li>restaurants 类似一个数据表 collection, 是一个类似数据表的结构</li>
-<li>–drop ,删除，也就是如果存在就不保存了</li>
-</ol>
-<h3 id="使用md的shell客户端"><a href="#使用md的shell客户端" class="headerlink" title="使用md的shell客户端"></a>使用md的shell客户端</h3><h4 id="mongo-是自带的js本地客户端，可以像shell和emacs一样使用tab补全，和查看历史"><a href="#mongo-是自带的js本地客户端，可以像shell和emacs一样使用tab补全，和查看历史" class="headerlink" title="mongo 是自带的js本地客户端，可以像shell和emacs一样使用tab补全，和查看历史"></a>mongo 是自带的js本地客户端，可以像shell和emacs一样使用tab补全，和查看历史</h4><h4 id="help-在mongo下type-help可以查看帮助"><a href="#help-在mongo下type-help可以查看帮助" class="headerlink" title="help ,在mongo下type help可以查看帮助"></a>help ,在mongo下type help可以查看帮助</h4><h3 id="collection-所有数据在md中都有一个scope-附在单一的collection上"><a href="#collection-所有数据在md中都有一个scope-附在单一的collection上" class="headerlink" title="collection ,所有数据在md中都有一个scope,附在单一的collection上"></a>collection ,所有数据在md中都有一个scope,附在单一的collection上</h3><h4 id="collecton-相当于一个文件名，文件名内保存着所有属于该文件的数据，想象md就是一个庞大的键值"><a href="#collecton-相当于一个文件名，文件名内保存着所有属于该文件的数据，想象md就是一个庞大的键值" class="headerlink" title="collecton ,相当于一个文件名，文件名内保存着所有属于该文件的数据，想象md就是一个庞大的键值"></a>collecton ,相当于一个文件名，文件名内保存着所有属于该文件的数据，想象md就是一个庞大的键值</h4><p>对应，每个数据库有多个collection，每个collection都是主scope，所有scope下的数据就是该colletion的</p>
-<h4 id="collection-集合，有点类似有序数组，但里面是json值"><a href="#collection-集合，有点类似有序数组，但里面是json值" class="headerlink" title="collection ,集合，有点类似有序数组，但里面是json值"></a>collection ,集合，有点类似有序数组，但里面是json值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">db.restaurants.find() //查询restaurants 这个collection下的所有数据</div><div class="line"></div><div class="line">### 索引的原理与应用</div><div class="line"></div><div class="line">1. 索引就像一本词典的形式，当我们拿到一个单词word，需要查找它在哪一页，这时，就需要查看目录，也就是根据单词的首字母来一个个逐一确定它在哪</div><div class="line">2. 在储存器中，所有数据都是用单元来表示的，在物理结构上，每一个单元都是独立，也就是同一份文件，在储存器中保存可以有很多个块组成，只是，每个快的尾都连着下一个块的首的地址，所以就能通过找到第一个快的地址来找出整个文件的内容</div><div class="line">3. 对于电脑来说，知道了地址就等于知道了一切，获取某一个地址的内容，只需要一步</div><div class="line">4. 在数据库中，每一个库都有一个统一的片单元，比如是1024字节，每一个表的每一行都有一个数据类型，每一个类型都有一个确定的大小，假如一行有5个字段，每一个字段平均是50字节，那么一行就需要250个字节，那么数据库的一个片就可以得到4到5行数据。如果有1000行数据，就需要200个块</div><div class="line">5. 也就是说，如果需要查找出现name = lumin 的这一行，需要查找200个数据块，如果是按顺序来找的话，就需要200次</div><div class="line">6. 建立索引，就是在name 一个字段上，建立一个到字段为排序后的name值和该name所在行地址的新的索引表，当要查询时候，因为已经排序了，(在电脑中，任何文字符号都是ASCI码),都可以进行排序，就可以用二分法查询，即从中间开始，比较要查的在哪一边，然后继续向下查找，也就是2叉树，一共要查log2 200,次，等于8次不到，当数据量很大时候，这个就更明显了</div><div class="line">7. 建立索引的关键是排序与唯一，但是每次有新的插入，索引就会发生变化，有时候变化很大，这个需要时间的，但好处是，查询性能高</div><div class="line">8. These indexes allow applications to store a view of a portion of the collection in an efficient data structure.</div><div class="line"></div><div class="line"></div><div class="line">### mongoDB的优点	 </div><div class="line">1. 键值架构，相当于json的扩展，值可以是数组，甚至是嵌入的文档，</div><div class="line">2. 强大的可伸缩性，数据很容易部署在主从，副本服务器上，还有读写分离等</div><div class="line"></div><div class="line">### 两大要素</div><div class="line">1. 集合对应表</div><div class="line">2. 文档(document)对应行</div><div class="line"></div><div class="line">### 读操作</div><div class="line">1. md读取检索数据从一个单一的colletion</div><div class="line">2. 一个查询就相当于一个映射projection，映射对应要查文档中的指定域fields,这个映射决定了从collection中取出哪几个字段fields</div><div class="line">3. 查询情况条件，就是criteria</div><div class="line">4. 通过设定criteria 和projection 两个限定，就可以得到想要的数据</div><div class="line">5. 查询后返回一个cursor，可以通过cursor设定limit，也就是限定多少条拿出来，这种操作称为modify,</div><div class="line"></div><div class="line">#### db.collection.find( &#123; age: &#123; $gt: 18 &#125; &#125;, &#123; name: 1, address: 1 &#125; ).limit(5)  </div><div class="line">1. find() 有两个参数，一个是criteria ,一个是projection, 最后返回cursor给limit，skips,sort orders 使用</div><div class="line">2. &#123; name:1 ,address:1 &#125; ,表示拿出这两个fields，若_id:0 ,则不取出id</div><div class="line"></div><div class="line">#### de.collection.update(&#123;&apos;name&apos;:&apos;value&apos;&#125; , &#123;&apos;update document associate to name:value&apos;&#125;);</div><div class="line">1. 整体更新，var model= db.collection.findOne(&#123;&apos;criteria&apos;&#125;); model.name=&apos;value&apos;; --.update(&#123;&apos;criteria&apos;&#125;,model);  //这种更新不仅可以更新原有 fields，还可以加入新的fields</div><div class="line">2. 局部更新 ,db.col.update(&#123;&apos;criteria&apos;&#125; , &#123;$inc:&#123;age:10&#125;&#125;) 可以原子操作;</div><div class="line">	2.1 $set 局部修改, db.col.update(&#123;&apos;criteria&apos;&#125; , &#123;$set:&#123;&apos;newfield&apos;:&apos;value&apos;&#125;&#125;);</div><div class="line"></div><div class="line">3.upseted ,当没有满足update的查询情况的时候，就新增, 改第三个参数为 true</div><div class="line">	db.user.update(&#123;&apos;name&apos;:&apos;waite&apos;&#125;,&#123;$set:&#123;&apos;age&apos;:3443&#125;&#125;,true)</div><div class="line">4. </div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">#### db.collection.insert(&#123;&apos;name&apos;:&apos;new document associate to this collection&apos;&#125;);</div><div class="line"></div><div class="line">#### 索引</div></pre></td></tr></table></figure>
-<p>function go() {<br>    for(var i=0;i<1000;i++) {="" db.person.insert({'name':'lumin'+i="" ,="" 'age'="" :="" i});="" }="" <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">1. 上面的记录很多十万条，连插入的时候，在服务器上测试了很久，还是没插入成</div><div class="line">2. 为一个fields 为name 建立索引，db.col.ensureIndex(&#123;&apos;name&apos;:1&#125;);</div><div class="line">3. 建立唯一索引，唯一索引要求该fields中的值不能重复</div><div class="line">	db.person.ensureIndex(&#123;&quot;name&quot;:1&#125;,&#123;&quot;unique&quot;:true&#125;)</div><div class="line">4. 建立组合索引，对于多条件查询，比如查询90年 出生的name同学，可以在年龄和name两个field间建立组合索引</div><div class="line">	db.person.ensureIndex(&#123;&apos;name&apos;:1,&apos;birthday&apos;:1&#125;)</div><div class="line">	db.person.ensureIndex(&#123;&apos;birthday&apos;:1, &apos;name&apos;:1&#125;)</div><div class="line">	这里会产生两个索引，因为两个字段的排序，</div><div class="line">5. 删除索引 </div><div class="line">#### [索引参考,博客](http://www.cnblogs.com/huangxincheng/archive/2012/02/29/2372699.html)</div><div class="line"></div><div class="line"></div><div class="line">### source 安装，需要scons</div><div class="line">1. scons是一个现代化的有依赖管理能力的替代make的一个编译工作，用python编写，需要python2.7</div><div class="line">2. scons 安装及下载[官网](http://sourceforge.net/projects/scons/files/scons/2.4.1/)</div><div class="line">3. scons all //安装全部组件，包括mongo mongos mongod</div><div class="line">4. scons</div></pre></td></tr></table></1000;i++)></p>
-<p>use test<br>// 查找所有<br>db.restaurants.find()<br>// 查找拥有指定域和指定值<br>db.restaurants.find( { “borough”: “Manhattan” } )<br>// 多级查找<br>db.restaurants.find( { “address.zipcode”: “10075” } )<br>// 类似</p>
-<p>{<br>“grades” : [</p>
-<pre><code>   {
-      &quot;date&quot; : ISODate(&quot;2014-10-01T00:00:00Z&quot;),
-      &quot;grade&quot; : &quot;A&quot;,
-      &quot;score&quot; : 11
-   },
-   {
-      &quot;date&quot; : ISODate(&quot;2014-01-16T00:00:00Z&quot;),
-      &quot;grade&quot; : &quot;B&quot;,
-      &quot;score&quot; : 17
-   }
-]
-</code></pre><p>}<br>//即有内嵌数组，数组里面任然是文档,直接如下，得到拥有b的所有级别（只要有数组的内嵌文档有一行拥有即可）</p>
-<p>db.restaurants.find( { “grades.grade”: “B” } )</p>
-<p>// 指定查询运算条件<br>{ <field1>: { <operator1>: <value1> } }<br>// 查找拥有大于30的内嵌文档<br>db.restaurants.find( { “grades.score”: { $gt: 30 } } )<br>db.restaurants.find( { “grades.score”: { $lt: 10 } } )</value1></operator1></field1></p>
-<p>// 多条件查询，与<br>db.restaurants.find( { “cuisine”: “Italian”, “address.zipcode”: “10075” } )</p>
-<p>db.restaurants.find(<br>   { $or: [ { “cuisine”: “Italian” }, { “address.zipcode”: “10075” } ] }<br>)</p>
-<p>// 排序<br>db.restaurants.find().sort( { “borough”: 1, “address.zipcode”: 1 } )</p>
-<p>// 更新，默认只更新一条，可以加入参数更新多条符合条件的文档<br>db.restaurants.update(<br>    { “name” : “Juni” },<br>    {<br>      $set: { “cuisine”: “American (New)” },<br>      $currentDate: { “lastModified”: true }<br>    }<br>)</p>
-<p>db.restaurants.update(<br>  { “restaurant_id” : “41156888” },<br>  { $set: { “address.street”: “East 31st Street” } }<br>)</p>
-<p>db.restaurants.update(<br>  { “address.zipcode”: “10016”, cuisine: “Other” },<br>  {<br>    $set: { cuisine: “Category To Be Determined” },<br>    $currentDate: { “lastModified”: true }<br>  },<br>  { multi: true}<br>)</p>
-<p>// 每个集合内的每行文档相互独立，没有严格的key value格式限定，但是每一行文档的id是不变得<br>// 更新整个行，这里整个行的文档的格式会变成以下<br>db.restaurants.update(<br>   { “restaurant_id” : “41704620” },<br>   {<br>     “name” : “Vella 2”,<br>     “address” : {<br>              “coord” : [ -73.9557413, 40.7720266 ],<br>              “building” : “1480”,<br>              “street” : “2 Avenue”,<br>              “zipcode” : “10075”<br>     }<br>   },<br>//   { upsert: true } ,指定为true后，如果能找到匹配的就完全更新，否则插入新的一行文档<br>)</p>
-<p>// 删除所有符合条件<br>db.restaurants.remove( { “borough”: “Manhattan” } )<br>//只删除一行符合条件<br>db.restaurants.remove( { “borough”: “Queens” }, { justOne: true } )<br>//操作成功后返回如下对象<br>WriteResult({ “nRemoved” : 1 })</p>
-<p>//删除整个集合 的所有文档,但仍有剩余<br>db.restaurants.remove( { } )<br>The collection itself, as well as any indexes for the collection, remain.</p>
-<p>// 彻底删除<br>db.restaurants.drop() 返回true</p>
-<p>In MongoDB, write operations are atomic on the level of a single document. If a single remove operation removes multiple documents from a collection, the operation can interleave with other write operations on that collection. In the MongoDB Manual, see Atomicity.</p>
-<p>// 聚合，聚合是指分组，类似管道的操作</p>
-<p>// 每个stage相当于一个管道，前面的管道执行结果作为后一个管道的输入<br>db.collection.aggregate( [ <stage1>, <stage2>, … ] )</stage2></stage1></p>
-<p>// 将集合的文档行按照borough字段的值分组，并排序,输出会得到_id和count(count字段不一定要在文档行中，应该是统计后的输出字段)字段<br>db.restaurants.aggregate(<br>   [<br>     { $group: { “_id”: “$borough”, “count”: { $sum: 1 } } }<br>   ]<br>);</p>
-<p>// 先限定查询条件，再聚合处理（分组、统计）<br>db.restaurants.aggregate(<br>   [<br>     { $match: { “borough”: “Queens”, “cuisine”: “Brazilian” } },<br>     { $group: { “_id”: “$address.zipcode” , “count”: { $sum: 1 } } }<br>   ]<br>);</p>
-<p>// 索引,每个集合自动有_id字段，而且拥有递增索引</p>
-<p>// 为集合某一个字段新增一个索引<br>db.restaurants.createIndex( { “cuisine”: 1 } )</p>
-<p>// 结果为<br>{<br>  “createdCollectionAutomatically” : false,<br>  “numIndexesBefore” : 1,<br>  “numIndexesAfter” : 2, //说明新增后集合中有两个索引<br>  “ok” : 1<br>}</p>
-<p>// 增加复合索引<br>// 为一个字段增加递增，另一个增加递减的复合索引<br>db.restaurants.createIndex( { “cuisine”: 1, “address.zipcode”: -1 } )<br>```</p>
-<h4 id="mongo的clients-负责连接到单一个的mongoDB实例，或者副本实例，或者分片集群中"><a href="#mongo的clients-负责连接到单一个的mongoDB实例，或者副本实例，或者分片集群中" class="headerlink" title="mongo的clients, 负责连接到单一个的mongoDB实例，或者副本实例，或者分片集群中"></a>mongo的clients, 负责连接到单一个的mongoDB实例，或者副本实例，或者分片集群中</h4><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>原子操作类似事务，有利于保证数据的插入和完整性</p>
-<ol>
-<li>创建数据库 use my_db,如果没有，则新建,</li>
-<li>db 查看当前数据库</li>
-<li>show dbs 查看所有数据库,如果一个新建数据库是空的，则不显示</li>
-<li>db.dropDatabase() 删除当前数据库,删除后，仍然处于当前数据库，只是数据为空，所以不显示</li>
-<li>插入mongodb的原始数据是 json，但是实际储存是BSON, 它是一种类json的二进制形式</li>
-<li>更新，db.col.update( { “count” : { $gt : 1 } } , { $set : { “test2” : “OK”} } ) , $set为原子操作符，如果原集合中存在该文档对应的key “test2”则更新,如果没有该字段，不做任何</li>
-<li>更新中如果用 db.col.update( { “count” : { $gt : 5 } } , { $set : { “test5” : “OK”} },true,true ); ,后面两ture指的是 upsert  <boolean> , multi: <boolean>,,upsert为真如果匹配不成功，则新增一行文档，multi为真则是可以同时修改多行匹配条件的</boolean></boolean></li>
-<li>db.col.save({‘name’: ‘value’}) 新增一行文档</li>
-<li>db.col.save({‘_id’: objectId(‘fkdsjf’)}, ‘something’: ‘new’) 如果save方法指定了_id则会在该行文档修改<br>db.col.update({‘name’: ‘v’} , {‘some’: ‘new’}) 这里会直接替换掉匹配的行，因为没有了$set的原子操作，所以会更新</li>
-<li>db.col.update( { “count” : { $gt : 10 } } , { $inc : { “count” : 1} },false,false ); $inc为数字类型数据的原子操作</li>
-<li>db.col.find().pretty() 以漂亮的格式显示查询结果 </li>
-<li>and or的联合使用db.col.find({“somekey”: {$gt:50}, $or: [{“by”: “菜鸟教程”},{“title”: “MongoDB 教程”}]}).pretty()</li>
-<li>db.col.find({likes : {$lt :200, $gt : 100}}) ,查找大于100小于200</li>
-<li>$type操作符，丰富了查询的限定条件，$type的值代表着某个字段的值得数据类型，如$type: 1代表着Double类型db.col.find({“title” : {$type : 2}}), string类型</li>
-<li>db.col.find({},{“title”:1,_id:0}).limit(2)  限定只得到两条河条件的数据</li>
-<li>db.col.find({},{“title”:1,_id:0}).limit(1).skip(1)  跳过符合条件的第一条数据，这里将获得第二条 （应该是按照插入顺序，即_id排序)</li>
-<li>db.col.find({},{“title”:1,_id:0}).sort({“likes”:-1}) , 查询结果只显示title字段， _id如果不手动设定为0都会附带的, sort方法这里按照 likes (-1降序排序</li>
-<li><p>db.values.ensureIndex({open: 1, close: 1}, {background: true}) . 创建复合索引，并加参数在后台运行（不阻塞进程)</p>
-</li>
-<li><p>db.posts.find({post_text:{$regex:”w3cschool.cc”,$options:”$i”}}) 正则表达式的查找，设定$i为忽略大小写</p>
-</li>
-<li>db.posts.find({tags:{$regex:”tutorial”}}) ,tags字段的内容为数组，可以查找拥有tutorial的标签的数据</li>
-<li>title:eval(“/“+title+”/i”)    // 等同于 title:{$regex:title,$Option:”$i”} 类似模糊查询</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/mongoDB/" data-id="ciztrizzd000zb0ddtzk2svw4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/monitor/" data-id="cizut7q3j000wt4ddz39bkitx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -555,7 +518,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/lnmp/" data-id="ciztrizzb000xb0ddrke12ifp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/lnmp/" data-id="cizut7q3s0011t4ddg9m3dqwu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -599,11 +562,11 @@
       <ul>
         
           <li>
-            <a href="/2017/03/03/hexo/">(no title)</a>
+            <a href="/2017/03/03/yii/session/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/win7Clean/">(no title)</a>
+            <a href="/2017/03/03/hexo/">(no title)</a>
           </li>
         
           <li>
@@ -611,11 +574,11 @@
           </li>
         
           <li>
-            <a href="/2017/03/03/webpack/">(no title)</a>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/weixin/">(no title)</a>
+            <a href="/2017/03/03/webpack/">(no title)</a>
           </li>
         
       </ul>

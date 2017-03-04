@@ -11,7 +11,8 @@ mysql中没有用二叉树实现而是用了b+tree来实现索引是因为效率
 
 mysql索引详解
 
-mysql里面的锁123页级:引擎 BDB。表级:引擎 MyISAM ， 理解为锁住整个表，可以同时读，写不行行级:引擎 INNODB ， 单独的一行记录加锁">
+mysql里面的锁
+123页级:引擎 BDB。表级:引擎 MyISAM ， 理解为锁住整个表，可以同时读，写不行行级:引擎 INNODB ， 单独的一行记录加锁">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://yoursite.com/2017/03/03/centos/mysql/index.html">
@@ -22,8 +23,9 @@ mysql中没有用二叉树实现而是用了b+tree来实现索引是因为效率
 
 mysql索引详解
 
-mysql里面的锁123页级:引擎 BDB。表级:引擎 MyISAM ， 理解为锁住整个表，可以同时读，写不行行级:引擎 INNODB ， 单独的一行记录加锁">
-<meta property="og:updated_time" content="2017-03-02T03:53:20.282Z">
+mysql里面的锁
+123页级:引擎 BDB。表级:引擎 MyISAM ， 理解为锁住整个表，可以同时读，写不行行级:引擎 INNODB ， 单独的一行记录加锁">
+<meta property="og:updated_time" content="2017-03-04T03:08:02.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
 <meta name="twitter:description" content="mysql 的较深入研究
@@ -32,7 +34,8 @@ mysql中没有用二叉树实现而是用了b+tree来实现索引是因为效率
 
 mysql索引详解
 
-mysql里面的锁123页级:引擎 BDB。表级:引擎 MyISAM ， 理解为锁住整个表，可以同时读，写不行行级:引擎 INNODB ， 单独的一行记录加锁">
+mysql里面的锁
+123页级:引擎 BDB。表级:引擎 MyISAM ， 理解为锁住整个表，可以同时读，写不行行级:引擎 INNODB ， 单独的一行记录加锁">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -99,14 +102,30 @@ mysql里面的锁123页级:引擎 BDB。表级:引擎 MyISAM ， 理解为锁住
 </ol>
 <p><a href="http://blog.jobbole.com/24006/" target="_blank" rel="external">mysql索引详解</a></p>
 <ol>
-<li>mysql里面的锁<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">页级:引擎 BDB。</div><div class="line">表级:引擎 MyISAM ， 理解为锁住整个表，可以同时读，写不行</div><div class="line">行级:引擎 INNODB ， 单独的一行记录加锁</div></pre></td></tr></table></figure>
+<li><p>mysql里面的锁</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">页级:引擎 BDB。</div><div class="line">表级:引擎 MyISAM ， 理解为锁住整个表，可以同时读，写不行</div><div class="line">行级:引擎 INNODB ， 单独的一行记录加锁</div></pre></td></tr></table></figure>
+</li>
+<li><p>尽量避免join，在join的过程中加入索引，尽量避免非顺序读取，如多个表关联的，可以分步骤、建立临时表，要先排序、或建立临时表再处理</p>
+<h5 id="建立索引的场景"><a href="#建立索引的场景" class="headerlink" title="建立索引的场景"></a>建立索引的场景</h5></li>
+<li>经常需要连接但没有指定外键的列上</li>
+<li>频繁排序或分组</li>
+<li>不同值较多的列上比较值时建立索引，但是如只有性别男、女少量值不需要建立</li>
+<li>如果排序列多个，可以建立复合索引</li>
+</ol>
+<p>使用系统工具观察优化<br>避免困难的正则表达式<br>使用临时表加速<br><a href="https://zm10.sm-tc.cn/?src=l4uLj8XQ0JLRnZOQmNGcjJuR0ZGai9CejYuWnJOa0Juai56Wk4zAlpvCyszHzsrKzM0%3D&amp;uid=facdd0a5edbb9690d198a0922a4ec7cb&amp;hid=9466756fa209444638af735ca3d682f1&amp;pos=3&amp;cid=9&amp;time=1488500412866&amp;from=click&amp;restype=1&amp;pagetype=0020004002000402&amp;bu=news_natural&amp;query=%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2&amp;mode=&amp;v=1&amp;uc_param_str=dnntnwvepffrgibijbprsvdsei" target="_blank" rel="external">海量数据优化查询</a></p>
+<h5 id="主从复制，用来备份，读写分离"><a href="#主从复制，用来备份，读写分离" class="headerlink" title="主从复制，用来备份，读写分离"></a>主从复制，用来备份，读写分离</h5><p>[参考]{<a href="http://www.cnblogs.com/alvin_xp/p/4162249.html}" target="_blank" rel="external">http://www.cnblogs.com/alvin_xp/p/4162249.html}</a></p>
+<h5 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h5><ol>
+<li>分片即是分布式部署，把数据水平分布到多个数据库多台服务器上，利用mysqlproxy代理来实现逻辑层透明化</li>
+<li><a href="http://blog.csdn.net/qq_36030412/article/category/6508370" target="_blank" rel="external">此人技术栈复合我的发展</a><h5 id="读写分离相关文章"><a href="#读写分离相关文章" class="headerlink" title="读写分离相关文章"></a>读写分离相关文章</h5><a href="http://blog.csdn.net/u013256816/article/details/48707505" target="_blank" rel="external">负载均衡、分布式集群</a><br><a href="http://www.cnblogs.com/alvin_xp/p/4162249.html" target="_blank" rel="external">主从复制配置</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">http://www.cnblogs.com/alvin_xp/p/4162249.html</div><div class="line">http://blog.sina.com.cn/s/blog_6e322ce70100zs9a.html</div><div class="line">http://www.jb51.net/article/29771.htm</div><div class="line">http://blog.sina.com.cn/s/blog_493a84550101eo7c.html</div></pre></td></tr></table></figure>
 </li>
 </ol>
+<h6 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h6><p>有普通索引、主键索引、全文索引、唯一索引、组合索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">alter table tname add unique indexName(column);</div><div class="line">alter table tname add primary key(column);</div><div class="line">alert table tname add index indexName(a, b, c);</div></pre></td></tr></table></figure></p>
+<h6 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">yum install mysql mysql-server mysql-devel -y</div><div class="line">开机启动 </div><div class="line">查看是否 chkconfig --list |grep mysql </div><div class="line">设定开机启动 chkconfig mysqld on </div><div class="line"># /etc/init.d/mysqld start     </div><div class="line"># service mysqld start </div><div class="line"> ps -ef |grep mysql|grep -v grep  可以查看到mysql的启动信息，如配置了哪些文件，错误日志在哪</div><div class="line"> datadir 数据存放目录 /var/lib/mysql</div><div class="line"> 查看用了哪个端口</div><div class="line">netstat -nutlp | grep mysql</div><div class="line">设置用户和密码权限，本地root登陆密码为空</div><div class="line">grant all on *.* to root@&apos;%&apos; identified by &apos;youpassword&apos;;</div><div class="line">刷新生效</div><div class="line">flush privileges;</div><div class="line">mysql --help | grep my.cnf 查看配置文件位置 /etc/my.cnf</div><div class="line"></div><div class="line">show databases;</div><div class="line">show tables;</div><div class="line">desc table;</div><div class="line">insert into tableName [(a,b)] values(a1,b1);</div><div class="line">update tableName set name=&apos;ff&apos; where id=1;</div><div class="line">explain sql;</div><div class="line"></div><div class="line">回话级profile</div><div class="line">set profiling=1;</div><div class="line">sql;</div><div class="line">sql;</div><div class="line">show profiles; #会把前面各个语句当做query 1 2来展示</div><div class="line">show profile for query 1;</div><div class="line">http://blog.itpub.net/29371470/viewspace-1355948/</div><div class="line"></div><div class="line"></div><div class="line">基本语法</div><div class="line">http://www.cnblogs.com/hateislove214/archive/2010/11/05/1869889.html</div><div class="line">http://www.cnblogs.com/zhangzhu/archive/2013/07/04/3172486.html</div><div class="line"></div><div class="line">expalin 用法</div><div class="line">http://blog.csdn.net/hjm4702192/article/details/21890157</div><div class="line">http://blog.csdn.net/lijingkuan/article/details/50432680</div><div class="line"></div><div class="line">面试题</div><div class="line">http://blog.csdn.net/lijingkuan/article/details/50741364</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/mysql/" data-id="ciztrj01k0028b0ddrszwazex" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/mysql/" data-id="cizut7q610025t4ddkom64zup" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,11 +183,11 @@ mysql里面的锁123页级:引擎 BDB。表级:引擎 MyISAM ， 理解为锁住
       <ul>
         
           <li>
-            <a href="/2017/03/03/hexo/">(no title)</a>
+            <a href="/2017/03/03/yii/session/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/win7Clean/">(no title)</a>
+            <a href="/2017/03/03/hexo/">(no title)</a>
           </li>
         
           <li>
@@ -176,11 +195,11 @@ mysql里面的锁123页级:引擎 BDB。表级:引擎 MyISAM ， 理解为锁住
           </li>
         
           <li>
-            <a href="/2017/03/03/webpack/">(no title)</a>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/weixin/">(no title)</a>
+            <a href="/2017/03/03/webpack/">(no title)</a>
           </li>
         
       </ul>

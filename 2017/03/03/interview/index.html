@@ -17,7 +17,7 @@ XMLHttpRequest中文可以解释为可扩展超文本传输请求。Xml可扩展
 
 web前端面试题
 XMLHttpRequest中文可以解释为可扩展超文本传输请求。Xml可扩展标记语言，Http超文本传输协议，Request请求。XMLHttpRequest对象可以在不向服务器提交整个页面的情况下，实现局部更新网页。当页面全部加载完毕后，客户端通过该对象向服务器请求数据，服务器端接受数据并处理后，向客户端反馈数据">
-<meta property="og:updated_time" content="2017-02-25T12:27:15.185Z">
+<meta property="og:updated_time" content="2017-03-04T01:27:46.785Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
 <meta name="twitter:description" content="by lumin  19.02.2016永远要记得查看这里日记
@@ -177,11 +177,34 @@ XMLHttpRequest中文可以解释为可扩展超文本传输请求。Xml可扩展
 </li>
 <li>数组查找为O(1)，利于查找不利于增删，链表不利于查找，利于增删，哈希表是数组和链表的结合，有两者的优点<a href="http://www.cnblogs.com/xingzc/p/5765572.html">参考哈希表实现</a></li>
 </ol>
+<h5 id="php-高级面试题"><a href="#php-高级面试题" class="headerlink" title="php 高级面试题"></a>php 高级面试题</h5><ol>
+<li>php多重继承，php不支持多重继承，一般不要去搞多重继承。多重继承是指一个类继承了多个父类，而php是可以一个类连续继承下去的即a extends b b extends c.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">interface a </div><div class="line">interface b</div><div class="line">class a1 implements a</div><div class="line">class a2 implements b</div><div class="line">class all extends a implements b 然后在all内继续定义一个实现b接口的方法，其实是简单在构造器内实例化a2，并调用它</div><div class="line"></div><div class="line">class GraduateStudent extends User implements TeacherInterface&#123;</div><div class="line">	private $teacher ;</div><div class="line">	public function __construct()&#123;</div><div class="line">		$this-&gt;teacher=new Teacher();</div><div class="line">	&#125;</div><div class="line">	public function getLengthOfService()&#123;</div><div class="line">		return $this-&gt;teacher-&gt;getLengthOfService();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>####### php抽象类和接口区别</p>
+<ol>
+<li>抽象类里面至少拥有一个抽象方法，抽象类必须被子类继承并实现了所以方法后才可以实例化 </li>
+<li>接口可以定义常量，但不建议这样</li>
+<li>接口内只能定义为public</li>
+<li>接口间可以相互继承，不能相互实现</li>
+<li>在既需要接口，又需要实例变量和统一缺省方法的，就用抽象类</li>
+</ol>
+<p><a href="http://www.cnblogs.com/bluespot/p/4223056.html">高级面试题集合</a></p>
+<ol>
+<li>防sql注入方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">mysql_escape_string(strip_tags($arr[&quot;$val&quot;]));</div><div class="line">或</div><div class="line">function post_check($post)&#123;</div><div class="line">if(!get_magic_quotes_gpc())&#123;// 判断magic_quotes_gpc是否为打开 </div><div class="line">$post = addslashes($post);// 进行magic_quotes_gpc没有打开的情况对提交数据的过滤 </div><div class="line">&#125;</div><div class="line">$post = str_replace(&quot;_&quot;,&quot;\_&quot;, $post);// 把 &apos;_&apos;过滤掉</div><div class="line">$post = str_replace(&quot;%&quot;,&quot;\%&quot;, $post);// 把 &apos;%&apos;过滤掉</div><div class="line">$post = nl2br($post);// 回车转换 </div><div class="line">$post = htmlspecialchars($post);// html标记转换 </div><div class="line"></div><div class="line">return $post;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h6 id="http-tcp"><a href="#http-tcp" class="headerlink" title="http/tcp"></a>http/tcp</h6><ol>
+<li>https http，前者是加密传输，后者不加密，防窃听、防伪装</li>
+<li>http协议请求分为 请求行（请求方法）、消息报头（各种accept）、请求正文；响应分为响应行（200等）、响应头（location）、响应正文</li>
+<li><a href="http://www.cnblogs.com/royi123/archive/2013/06/14/3136702.html">深入浅出http</a></li>
+</ol>
+<p>####### 数据结构算法学习博客<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http://blog.csdn.net/column/details/xiu-note.html</div><div class="line">http://blog.csdn.net/oMengLiShuiXiang1234/article/details/51867800</div><div class="line">http://blog.csdn.net/omenglishuixiang1234/article/details/51234070</div></pre></td></tr></table></figure></p>
 </script></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/interview/" data-id="ciztrizyz000sb0dd7qj0oqa4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/interview/" data-id="cizut7q39000ot4ddjn1ucy6f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,11 +213,11 @@ XMLHttpRequest中文可以解释为可扩展超文本传输请求。Xml可扩展
     
 <nav id="article-nav">
   
-    <a href="/2017/03/03/jd/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/03/javascript.grammer/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          (no title)
+          javascript 的语法
         
       </div>
     </a>
@@ -239,11 +262,11 @@ XMLHttpRequest中文可以解释为可扩展超文本传输请求。Xml可扩展
       <ul>
         
           <li>
-            <a href="/2017/03/03/hexo/">(no title)</a>
+            <a href="/2017/03/03/yii/session/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/win7Clean/">(no title)</a>
+            <a href="/2017/03/03/hexo/">(no title)</a>
           </li>
         
           <li>
@@ -251,11 +274,11 @@ XMLHttpRequest中文可以解释为可扩展超文本传输请求。Xml可扩展
           </li>
         
           <li>
-            <a href="/2017/03/03/webpack/">(no title)</a>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/weixin/">(no title)</a>
+            <a href="/2017/03/03/webpack/">(no title)</a>
           </li>
         
       </ul>

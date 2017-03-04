@@ -61,6 +61,44 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-yii/session" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/yii/session/" class="article-date">
+  <time datetime="2017-03-03T12:35:41.471Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="cookie跨域和共享sessions"><a href="#cookie跨域和共享sessions" class="headerlink" title="cookie跨域和共享sessions"></a>cookie跨域和共享sessions</h5><ol>
+<li>php用给浏览器设定一个独特的cookie来确定前方来的请求是属于哪个session的，即有个键值对</li>
+<li>cookie跨域：如果主域相同，可以设定domain为该主域，但是如果是a.com和b.com则要用其他方法。<br>当a登陆成功时，向浏览器输出设定cookie动作，同时a页面中设定一个iframe，访问b中的同步登陆页面，并附带同一个cookie数据，b的这个同步登陆页面设定好cookie后，他也有一个iframe访问a的callback页面，该页面会将请求重定向到a的主页<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">假设a.com有页面：login.php和callback.php，b.com有页面synclogin.php</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="http://www.tuicool.com/articles/E3iUva" target="_blank" rel="external">参考</a></p>
+<ol>
+<li>session共享<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ini_set(&quot;session.save_handler&quot;, &quot;redis&quot;);</div><div class="line">ini_set(&quot;session.save_path&quot;, &quot;tcp://127.0.0.1:6379”);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>或利用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">session_set_save_handler ( string open, string close, string read, string write, string destroy, string gc ) 函数来对session函数进行重新定义</div></pre></td></tr></table></figure></p>
+<p><a href="http://blog.csdn.net/czloveyeer/article/details/6926430" target="_blank" rel="external">参考</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/yii/session/" data-id="cizut7q6h002nt4dd3qvoryl2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/03/hexo/" class="article-date">
@@ -82,46 +120,17 @@
 </li>
 <li><p>确定对好本地的ssh和github上的对应</p>
 </li>
+<li><p>部署</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="http://www.cnblogs.com/imapla/p/5533000.html" target="_blank" rel="external">参考</a></p>
+</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/hexo/" data-id="ciztrizyu000ob0dd6lyugfxb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-win7Clean" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/win7Clean/" class="article-date">
-  <time datetime="2017-03-03T11:32:03.879Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>title: c 盘大清理</p>
-<h3 id="以下是清理c盘的具体步骤"><a href="#以下是清理c盘的具体步骤" class="headerlink" title="以下是清理c盘的具体步骤"></a>以下是清理c盘的具体步骤</h3><ol>
-<li>powercfg -h off ，删除休眠文件</li>
-<li>主要工作目录，User/Admin/  下的文件夹，仅留下AppData,Deskdop,和下载(download),</li>
-<li>AppData ,下有三个文件夹，看着文件夹名称删除不需要的，</li>
-<li>C/ProgramdataData,下的文件夹，，删除不需要的</li>
-<li>C/Programfiles,也是，</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/win7Clean/" data-id="ciztrj00o001wb0dd1tm799xj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/hexo/" data-id="cizut7q37000mt4ddwp456rif" class="article-share-link">Share</a>
       
       
     </footer>
@@ -157,7 +166,41 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/winTips/" data-id="ciztrj00m001vb0dd7vw5p25f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/winTips/" data-id="cizut7q4v001rt4dd2fl1y5gz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-win7Clean" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/win7Clean/" class="article-date">
+  <time datetime="2017-03-03T11:32:03.879Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: c 盘大清理</p>
+<h3 id="以下是清理c盘的具体步骤"><a href="#以下是清理c盘的具体步骤" class="headerlink" title="以下是清理c盘的具体步骤"></a>以下是清理c盘的具体步骤</h3><ol>
+<li>powercfg -h off ，删除休眠文件</li>
+<li>主要工作目录，User/Admin/  下的文件夹，仅留下AppData,Deskdop,和下载(download),</li>
+<li>AppData ,下有三个文件夹，看着文件夹名称删除不需要的，</li>
+<li>C/ProgramdataData,下的文件夹，，删除不需要的</li>
+<li>C/Programfiles,也是，</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/win7Clean/" data-id="cizut7q4t001qt4ddj3rvzc5a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -196,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/webpack/" data-id="ciztrj00i001tb0dd7un53qka" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/webpack/" data-id="cizut7q59001vt4ddwm43sr5e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -247,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/weixin/" data-id="ciztrj00k001ub0ddp5zmj9dl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/weixin/" data-id="cizut7q4q001nt4ddfqyooi5m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +333,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/vpn/" data-id="ciztrj00h001sb0ddox8x593e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/vpn/" data-id="cizut7q4r001ot4ddbijxgahd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -322,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/vintageous/" data-id="ciztrj00g001rb0dd6rd9vmie" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/vintageous/" data-id="cizut7q4p001mt4ddhldg4uv8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -358,7 +401,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/vimMore/" data-id="ciztrj00f001qb0ddxvw4emny" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/vimMore/" data-id="cizut7q5a001wt4dd16pqicke" class="article-share-link">Share</a>
       
       
     </footer>
@@ -409,44 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/ultisnips/" data-id="ciztrj00e001pb0dd7sfuhfeh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ts" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/ts/" class="article-date">
-  <time datetime="2017-03-03T11:30:10.568Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/03/ts/">typescript的学习和应用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="ts是一个js的超集，即js所有原生代码可以在ts中运行，（编译通过），ts代码需要利用ts编译器转化为js代码，再运行"><a href="#ts是一个js的超集，即js所有原生代码可以在ts中运行，（编译通过），ts代码需要利用ts编译器转化为js代码，再运行" class="headerlink" title="ts是一个js的超集，即js所有原生代码可以在ts中运行，（编译通过），ts代码需要利用ts编译器转化为js代码，再运行"></a>ts是一个js的超集，即js所有原生代码可以在ts中运行，（编译通过），ts代码需要利用ts编译器转化为js代码，再运行</h4><p>js中实际上就是多了一个标记，如c，c++，go的类型标志，每声明一个变量，就要标志一下这个变量的类型，好让别人也让自己知道，（因为会编译为js代码，所以实际上这些标志是为了更好的语义性，以便适合开发更大型的应用），还有类和接口都需要基于变量，类型的声明，每定一条函数，首先要知道函数的输入（参数）类型，以及返回值（输出）类型，这就是一种利于写代码和思考的标志形式。<br>//js是逐条逐句解析，并动态分配内存的，所以是动态语言，所以各种变量的类型可以随时改动，但是c,c++,go是编译后，第一次运行就分配好了所有的内存（每个变量的内存，所以是静态语言，动作也比js块）;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/ts/" data-id="ciztrj00b001nb0ddy93h6ext" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/ultisnips/" data-id="cizut7q4s001pt4ddk4nrfn05" class="article-share-link">Share</a>
       
       
     </footer>
@@ -490,11 +496,11 @@
       <ul>
         
           <li>
-            <a href="/2017/03/03/hexo/">(no title)</a>
+            <a href="/2017/03/03/yii/session/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/win7Clean/">(no title)</a>
+            <a href="/2017/03/03/hexo/">(no title)</a>
           </li>
         
           <li>
@@ -502,11 +508,11 @@
           </li>
         
           <li>
-            <a href="/2017/03/03/webpack/">(no title)</a>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/weixin/">(no title)</a>
+            <a href="/2017/03/03/webpack/">(no title)</a>
           </li>
         
       </ul>

@@ -61,6 +61,130 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mongoDB" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/mongoDB/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.287Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/mongoDB/">mongoDB 的使用和学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
+<li>安装前应该修补win7bug，下载Windows 7/Windows Server2008 R2 SP1</li>
+<li><a href="http://www.myfiles.com.cn/soft/0/131.htm" target="_blank" rel="external">下载地址</a></li>
+<li><p>由于文件过大，算了，直接使用，如果需要，安装在linux即可</p>
+</li>
+<li><p>ubuntu 下二进制安装.<a href="https://docs.mongodb.org/getting-started/shell/installation/" target="_blank" rel="external">官网</a></p>
+</li>
+<li>curl -o /url/to/download </li>
+<li>tar zxvf 解已经存在压</li>
+<li>export PATH=<mongodb-install-directory>/bin:$PATH   //添加环境变量</mongodb-install-directory></li>
+<li>mkdit /data/db</li>
+<li>mongod –dbpath <path to="" data="" directory=""></path>  // 指定数据的保存路径启动mogondb/</li>
+</ol>
+<h3 id="引入文件到数据库中"><a href="#引入文件到数据库中" class="headerlink" title="引入文件到数据库中"></a>引入文件到数据库中</h3><h4 id="检索数据集-restaurants-data"><a href="#检索数据集-restaurants-data" class="headerlink" title="检索数据集 restaurants data"></a>检索数据集 restaurants data</h4><ol>
+<li>下载实例文件到本地 wget /http/.json<h4 id="引入本地文件到数据库"><a href="#引入本地文件到数据库" class="headerlink" title="引入本地文件到数据库"></a>引入本地文件到数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongoimport --db test --collection restaurants --drop --file primer-dataset.json</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>mongoimport 命令，还可以指定要连接md数据库的端口和地址，默认为本地和port</p>
+<ol>
+<li>primer-dataset.json,为本地文件路径</li>
+<li>test 为数据库名，</li>
+<li>restaurants 类似一个数据表 collection, 是一个类似数据表的结构</li>
+<li>–drop ,删除，也就是如果存在就不保存了</li>
+</ol>
+<h3 id="使用md的shell客户端"><a href="#使用md的shell客户端" class="headerlink" title="使用md的shell客户端"></a>使用md的shell客户端</h3><h4 id="mongo-是自带的js本地客户端，可以像shell和emacs一样使用tab补全，和查看历史"><a href="#mongo-是自带的js本地客户端，可以像shell和emacs一样使用tab补全，和查看历史" class="headerlink" title="mongo 是自带的js本地客户端，可以像shell和emacs一样使用tab补全，和查看历史"></a>mongo 是自带的js本地客户端，可以像shell和emacs一样使用tab补全，和查看历史</h4><h4 id="help-在mongo下type-help可以查看帮助"><a href="#help-在mongo下type-help可以查看帮助" class="headerlink" title="help ,在mongo下type help可以查看帮助"></a>help ,在mongo下type help可以查看帮助</h4><h3 id="collection-所有数据在md中都有一个scope-附在单一的collection上"><a href="#collection-所有数据在md中都有一个scope-附在单一的collection上" class="headerlink" title="collection ,所有数据在md中都有一个scope,附在单一的collection上"></a>collection ,所有数据在md中都有一个scope,附在单一的collection上</h3><h4 id="collecton-相当于一个文件名，文件名内保存着所有属于该文件的数据，想象md就是一个庞大的键值"><a href="#collecton-相当于一个文件名，文件名内保存着所有属于该文件的数据，想象md就是一个庞大的键值" class="headerlink" title="collecton ,相当于一个文件名，文件名内保存着所有属于该文件的数据，想象md就是一个庞大的键值"></a>collecton ,相当于一个文件名，文件名内保存着所有属于该文件的数据，想象md就是一个庞大的键值</h4><p>对应，每个数据库有多个collection，每个collection都是主scope，所有scope下的数据就是该colletion的</p>
+<h4 id="collection-集合，有点类似有序数组，但里面是json值"><a href="#collection-集合，有点类似有序数组，但里面是json值" class="headerlink" title="collection ,集合，有点类似有序数组，但里面是json值"></a>collection ,集合，有点类似有序数组，但里面是json值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">db.restaurants.find() //查询restaurants 这个collection下的所有数据</div><div class="line"></div><div class="line">### 索引的原理与应用</div><div class="line"></div><div class="line">1. 索引就像一本词典的形式，当我们拿到一个单词word，需要查找它在哪一页，这时，就需要查看目录，也就是根据单词的首字母来一个个逐一确定它在哪</div><div class="line">2. 在储存器中，所有数据都是用单元来表示的，在物理结构上，每一个单元都是独立，也就是同一份文件，在储存器中保存可以有很多个块组成，只是，每个快的尾都连着下一个块的首的地址，所以就能通过找到第一个快的地址来找出整个文件的内容</div><div class="line">3. 对于电脑来说，知道了地址就等于知道了一切，获取某一个地址的内容，只需要一步</div><div class="line">4. 在数据库中，每一个库都有一个统一的片单元，比如是1024字节，每一个表的每一行都有一个数据类型，每一个类型都有一个确定的大小，假如一行有5个字段，每一个字段平均是50字节，那么一行就需要250个字节，那么数据库的一个片就可以得到4到5行数据。如果有1000行数据，就需要200个块</div><div class="line">5. 也就是说，如果需要查找出现name = lumin 的这一行，需要查找200个数据块，如果是按顺序来找的话，就需要200次</div><div class="line">6. 建立索引，就是在name 一个字段上，建立一个到字段为排序后的name值和该name所在行地址的新的索引表，当要查询时候，因为已经排序了，(在电脑中，任何文字符号都是ASCI码),都可以进行排序，就可以用二分法查询，即从中间开始，比较要查的在哪一边，然后继续向下查找，也就是2叉树，一共要查log2 200,次，等于8次不到，当数据量很大时候，这个就更明显了</div><div class="line">7. 建立索引的关键是排序与唯一，但是每次有新的插入，索引就会发生变化，有时候变化很大，这个需要时间的，但好处是，查询性能高</div><div class="line">8. These indexes allow applications to store a view of a portion of the collection in an efficient data structure.</div><div class="line"></div><div class="line"></div><div class="line">### mongoDB的优点	 </div><div class="line">1. 键值架构，相当于json的扩展，值可以是数组，甚至是嵌入的文档，</div><div class="line">2. 强大的可伸缩性，数据很容易部署在主从，副本服务器上，还有读写分离等</div><div class="line"></div><div class="line">### 两大要素</div><div class="line">1. 集合对应表</div><div class="line">2. 文档(document)对应行</div><div class="line"></div><div class="line">### 读操作</div><div class="line">1. md读取检索数据从一个单一的colletion</div><div class="line">2. 一个查询就相当于一个映射projection，映射对应要查文档中的指定域fields,这个映射决定了从collection中取出哪几个字段fields</div><div class="line">3. 查询情况条件，就是criteria</div><div class="line">4. 通过设定criteria 和projection 两个限定，就可以得到想要的数据</div><div class="line">5. 查询后返回一个cursor，可以通过cursor设定limit，也就是限定多少条拿出来，这种操作称为modify,</div><div class="line"></div><div class="line">#### db.collection.find( &#123; age: &#123; $gt: 18 &#125; &#125;, &#123; name: 1, address: 1 &#125; ).limit(5)  </div><div class="line">1. find() 有两个参数，一个是criteria ,一个是projection, 最后返回cursor给limit，skips,sort orders 使用</div><div class="line">2. &#123; name:1 ,address:1 &#125; ,表示拿出这两个fields，若_id:0 ,则不取出id</div><div class="line"></div><div class="line">#### de.collection.update(&#123;&apos;name&apos;:&apos;value&apos;&#125; , &#123;&apos;update document associate to name:value&apos;&#125;);</div><div class="line">1. 整体更新，var model= db.collection.findOne(&#123;&apos;criteria&apos;&#125;); model.name=&apos;value&apos;; --.update(&#123;&apos;criteria&apos;&#125;,model);  //这种更新不仅可以更新原有 fields，还可以加入新的fields</div><div class="line">2. 局部更新 ,db.col.update(&#123;&apos;criteria&apos;&#125; , &#123;$inc:&#123;age:10&#125;&#125;) 可以原子操作;</div><div class="line">	2.1 $set 局部修改, db.col.update(&#123;&apos;criteria&apos;&#125; , &#123;$set:&#123;&apos;newfield&apos;:&apos;value&apos;&#125;&#125;);</div><div class="line"></div><div class="line">3.upseted ,当没有满足update的查询情况的时候，就新增, 改第三个参数为 true</div><div class="line">	db.user.update(&#123;&apos;name&apos;:&apos;waite&apos;&#125;,&#123;$set:&#123;&apos;age&apos;:3443&#125;&#125;,true)</div><div class="line">4. </div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">#### db.collection.insert(&#123;&apos;name&apos;:&apos;new document associate to this collection&apos;&#125;);</div><div class="line"></div><div class="line">#### 索引</div></pre></td></tr></table></figure>
+<p>function go() {<br>    for(var i=0;i<1000;i++) {="" db.person.insert({'name':'lumin'+i="" ,="" 'age'="" :="" i});="" }="" <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">1. 上面的记录很多十万条，连插入的时候，在服务器上测试了很久，还是没插入成</div><div class="line">2. 为一个fields 为name 建立索引，db.col.ensureIndex(&#123;&apos;name&apos;:1&#125;);</div><div class="line">3. 建立唯一索引，唯一索引要求该fields中的值不能重复</div><div class="line">	db.person.ensureIndex(&#123;&quot;name&quot;:1&#125;,&#123;&quot;unique&quot;:true&#125;)</div><div class="line">4. 建立组合索引，对于多条件查询，比如查询90年 出生的name同学，可以在年龄和name两个field间建立组合索引</div><div class="line">	db.person.ensureIndex(&#123;&apos;name&apos;:1,&apos;birthday&apos;:1&#125;)</div><div class="line">	db.person.ensureIndex(&#123;&apos;birthday&apos;:1, &apos;name&apos;:1&#125;)</div><div class="line">	这里会产生两个索引，因为两个字段的排序，</div><div class="line">5. 删除索引 </div><div class="line">#### [索引参考,博客](http://www.cnblogs.com/huangxincheng/archive/2012/02/29/2372699.html)</div><div class="line"></div><div class="line"></div><div class="line">### source 安装，需要scons</div><div class="line">1. scons是一个现代化的有依赖管理能力的替代make的一个编译工作，用python编写，需要python2.7</div><div class="line">2. scons 安装及下载[官网](http://sourceforge.net/projects/scons/files/scons/2.4.1/)</div><div class="line">3. scons all //安装全部组件，包括mongo mongos mongod</div><div class="line">4. scons</div></pre></td></tr></table></1000;i++)></p>
+<p>use test<br>// 查找所有<br>db.restaurants.find()<br>// 查找拥有指定域和指定值<br>db.restaurants.find( { “borough”: “Manhattan” } )<br>// 多级查找<br>db.restaurants.find( { “address.zipcode”: “10075” } )<br>// 类似</p>
+<p>{<br>“grades” : [</p>
+<pre><code>   {
+      &quot;date&quot; : ISODate(&quot;2014-10-01T00:00:00Z&quot;),
+      &quot;grade&quot; : &quot;A&quot;,
+      &quot;score&quot; : 11
+   },
+   {
+      &quot;date&quot; : ISODate(&quot;2014-01-16T00:00:00Z&quot;),
+      &quot;grade&quot; : &quot;B&quot;,
+      &quot;score&quot; : 17
+   }
+]
+</code></pre><p>}<br>//即有内嵌数组，数组里面任然是文档,直接如下，得到拥有b的所有级别（只要有数组的内嵌文档有一行拥有即可）</p>
+<p>db.restaurants.find( { “grades.grade”: “B” } )</p>
+<p>// 指定查询运算条件<br>{ <field1>: { <operator1>: <value1> } }<br>// 查找拥有大于30的内嵌文档<br>db.restaurants.find( { “grades.score”: { $gt: 30 } } )<br>db.restaurants.find( { “grades.score”: { $lt: 10 } } )</value1></operator1></field1></p>
+<p>// 多条件查询，与<br>db.restaurants.find( { “cuisine”: “Italian”, “address.zipcode”: “10075” } )</p>
+<p>db.restaurants.find(<br>   { $or: [ { “cuisine”: “Italian” }, { “address.zipcode”: “10075” } ] }<br>)</p>
+<p>// 排序<br>db.restaurants.find().sort( { “borough”: 1, “address.zipcode”: 1 } )</p>
+<p>// 更新，默认只更新一条，可以加入参数更新多条符合条件的文档<br>db.restaurants.update(<br>    { “name” : “Juni” },<br>    {<br>      $set: { “cuisine”: “American (New)” },<br>      $currentDate: { “lastModified”: true }<br>    }<br>)</p>
+<p>db.restaurants.update(<br>  { “restaurant_id” : “41156888” },<br>  { $set: { “address.street”: “East 31st Street” } }<br>)</p>
+<p>db.restaurants.update(<br>  { “address.zipcode”: “10016”, cuisine: “Other” },<br>  {<br>    $set: { cuisine: “Category To Be Determined” },<br>    $currentDate: { “lastModified”: true }<br>  },<br>  { multi: true}<br>)</p>
+<p>// 每个集合内的每行文档相互独立，没有严格的key value格式限定，但是每一行文档的id是不变得<br>// 更新整个行，这里整个行的文档的格式会变成以下<br>db.restaurants.update(<br>   { “restaurant_id” : “41704620” },<br>   {<br>     “name” : “Vella 2”,<br>     “address” : {<br>              “coord” : [ -73.9557413, 40.7720266 ],<br>              “building” : “1480”,<br>              “street” : “2 Avenue”,<br>              “zipcode” : “10075”<br>     }<br>   },<br>//   { upsert: true } ,指定为true后，如果能找到匹配的就完全更新，否则插入新的一行文档<br>)</p>
+<p>// 删除所有符合条件<br>db.restaurants.remove( { “borough”: “Manhattan” } )<br>//只删除一行符合条件<br>db.restaurants.remove( { “borough”: “Queens” }, { justOne: true } )<br>//操作成功后返回如下对象<br>WriteResult({ “nRemoved” : 1 })</p>
+<p>//删除整个集合 的所有文档,但仍有剩余<br>db.restaurants.remove( { } )<br>The collection itself, as well as any indexes for the collection, remain.</p>
+<p>// 彻底删除<br>db.restaurants.drop() 返回true</p>
+<p>In MongoDB, write operations are atomic on the level of a single document. If a single remove operation removes multiple documents from a collection, the operation can interleave with other write operations on that collection. In the MongoDB Manual, see Atomicity.</p>
+<p>// 聚合，聚合是指分组，类似管道的操作</p>
+<p>// 每个stage相当于一个管道，前面的管道执行结果作为后一个管道的输入<br>db.collection.aggregate( [ <stage1>, <stage2>, … ] )</stage2></stage1></p>
+<p>// 将集合的文档行按照borough字段的值分组，并排序,输出会得到_id和count(count字段不一定要在文档行中，应该是统计后的输出字段)字段<br>db.restaurants.aggregate(<br>   [<br>     { $group: { “_id”: “$borough”, “count”: { $sum: 1 } } }<br>   ]<br>);</p>
+<p>// 先限定查询条件，再聚合处理（分组、统计）<br>db.restaurants.aggregate(<br>   [<br>     { $match: { “borough”: “Queens”, “cuisine”: “Brazilian” } },<br>     { $group: { “_id”: “$address.zipcode” , “count”: { $sum: 1 } } }<br>   ]<br>);</p>
+<p>// 索引,每个集合自动有_id字段，而且拥有递增索引</p>
+<p>// 为集合某一个字段新增一个索引<br>db.restaurants.createIndex( { “cuisine”: 1 } )</p>
+<p>// 结果为<br>{<br>  “createdCollectionAutomatically” : false,<br>  “numIndexesBefore” : 1,<br>  “numIndexesAfter” : 2, //说明新增后集合中有两个索引<br>  “ok” : 1<br>}</p>
+<p>// 增加复合索引<br>// 为一个字段增加递增，另一个增加递减的复合索引<br>db.restaurants.createIndex( { “cuisine”: 1, “address.zipcode”: -1 } )<br>```</p>
+<h4 id="mongo的clients-负责连接到单一个的mongoDB实例，或者副本实例，或者分片集群中"><a href="#mongo的clients-负责连接到单一个的mongoDB实例，或者副本实例，或者分片集群中" class="headerlink" title="mongo的clients, 负责连接到单一个的mongoDB实例，或者副本实例，或者分片集群中"></a>mongo的clients, 负责连接到单一个的mongoDB实例，或者副本实例，或者分片集群中</h4><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>原子操作类似事务，有利于保证数据的插入和完整性</p>
+<ol>
+<li>创建数据库 use my_db,如果没有，则新建,</li>
+<li>db 查看当前数据库</li>
+<li>show dbs 查看所有数据库,如果一个新建数据库是空的，则不显示</li>
+<li>db.dropDatabase() 删除当前数据库,删除后，仍然处于当前数据库，只是数据为空，所以不显示</li>
+<li>插入mongodb的原始数据是 json，但是实际储存是BSON, 它是一种类json的二进制形式</li>
+<li>更新，db.col.update( { “count” : { $gt : 1 } } , { $set : { “test2” : “OK”} } ) , $set为原子操作符，如果原集合中存在该文档对应的key “test2”则更新,如果没有该字段，不做任何</li>
+<li>更新中如果用 db.col.update( { “count” : { $gt : 5 } } , { $set : { “test5” : “OK”} },true,true ); ,后面两ture指的是 upsert  <boolean> , multi: <boolean>,,upsert为真如果匹配不成功，则新增一行文档，multi为真则是可以同时修改多行匹配条件的</boolean></boolean></li>
+<li>db.col.save({‘name’: ‘value’}) 新增一行文档</li>
+<li>db.col.save({‘_id’: objectId(‘fkdsjf’)}, ‘something’: ‘new’) 如果save方法指定了_id则会在该行文档修改<br>db.col.update({‘name’: ‘v’} , {‘some’: ‘new’}) 这里会直接替换掉匹配的行，因为没有了$set的原子操作，所以会更新</li>
+<li>db.col.update( { “count” : { $gt : 10 } } , { $inc : { “count” : 1} },false,false ); $inc为数字类型数据的原子操作</li>
+<li>db.col.find().pretty() 以漂亮的格式显示查询结果 </li>
+<li>and or的联合使用db.col.find({“somekey”: {$gt:50}, $or: [{“by”: “菜鸟教程”},{“title”: “MongoDB 教程”}]}).pretty()</li>
+<li>db.col.find({likes : {$lt :200, $gt : 100}}) ,查找大于100小于200</li>
+<li>$type操作符，丰富了查询的限定条件，$type的值代表着某个字段的值得数据类型，如$type: 1代表着Double类型db.col.find({“title” : {$type : 2}}), string类型</li>
+<li>db.col.find({},{“title”:1,_id:0}).limit(2)  限定只得到两条河条件的数据</li>
+<li>db.col.find({},{“title”:1,_id:0}).limit(1).skip(1)  跳过符合条件的第一条数据，这里将获得第二条 （应该是按照插入顺序，即_id排序)</li>
+<li>db.col.find({},{“title”:1,_id:0}).sort({“likes”:-1}) , 查询结果只显示title字段， _id如果不手动设定为0都会附带的, sort方法这里按照 likes (-1降序排序</li>
+<li><p>db.values.ensureIndex({open: 1, close: 1}, {background: true}) . 创建复合索引，并加参数在后台运行（不阻塞进程)</p>
+</li>
+<li><p>db.posts.find({post_text:{$regex:”w3cschool.cc”,$options:”$i”}}) 正则表达式的查找，设定$i为忽略大小写</p>
+</li>
+<li>db.posts.find({tags:{$regex:”tutorial”}}) ,tags字段的内容为数组，可以查找拥有tutorial的标签的数据</li>
+<li>title:eval(“/“+title+”/i”)    // 等同于 title:{$regex:title,$Option:”$i”} 类似模糊查询</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/mongoDB/" data-id="cizut7q3q000zt4ddqiu5m1zo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-learnAndsearch" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/03/learnAndsearch/" class="article-date">
@@ -85,73 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/learnAndsearch/" data-id="ciztrizz6000wb0dd51bfvurx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js.http" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/js.http/" class="article-date">
-  <time datetime="2017-03-03T11:20:16.285Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/03/js.http/">学习javascript的基本知识，以及面向对象，每学一个知识点，都要认真记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="js的起源"><a href="#js的起源" class="headerlink" title="js的起源"></a>js的起源</h3><p>js在1995年，由netscape公司的 Brendan Eich创建，因为Netscape与Sun合作，当时想借用Sun的java 之名，来推广js,故取名javascript;后来，微软为了进军浏览器，模仿js开发了JScript(因为不能重名),接着CEnvi 又推出了ScriptEase,这时，是三足鼎立的状态</p>
-<p>为了统一规格，出现了javaScript兼容于ECMA标准，ECMA只负责定义标准，不负责具体实现，这时js又被称为ECMAScript,到现在ECMA6,是力推，ECMA7是未来,js正在逐渐成长为一门完善了全能型语言</p>
-<h3 id="js的组成部分"><a href="#js的组成部分" class="headerlink" title="js的组成部分"></a>js的组成部分</h3><ol>
-<li>ECMASctipt ,描述了该语言的语法和基本对象,类似其他语言，nodejs主要部分在这里</li>
-<li>文档对象类型DOM,用于描述网页语言的操纵方法和接口</li>
-<li>BOM ,浏览器对象模型，描述了用于和浏览器交互的方法和接口</li>
-</ol>
-<h3 id="js的一般用途"><a href="#js的一般用途" class="headerlink" title="js的一般用途"></a>js的一般用途</h3><ol>
-<li>嵌入动态html页面</li>
-<li>响应监听浏览器事件</li>
-<li>读写html元素</li>
-<li>验证表单数据</li>
-<li>控制cookie等</li>
-<li>nodejs端服务器开发</li>
-</ol>
-<h3 id="js的安全性较差，就是当一条语句执行不了，就会导致下面的语句都无法执行，因此可以用try-catch-捕捉异常，抛出异常，才能让下面的语句也可以执行，出错时不至于全部完结"><a href="#js的安全性较差，就是当一条语句执行不了，就会导致下面的语句都无法执行，因此可以用try-catch-捕捉异常，抛出异常，才能让下面的语句也可以执行，出错时不至于全部完结" class="headerlink" title="js的安全性较差，就是当一条语句执行不了，就会导致下面的语句都无法执行，因此可以用try catch, 捕捉异常，抛出异常，才能让下面的语句也可以执行，出错时不至于全部完结"></a>js的安全性较差，就是当一条语句执行不了，就会导致下面的语句都无法执行，因此可以用try catch, 捕捉异常，抛出异常，才能让下面的语句也可以执行，出错时不至于全部完结</h3><h3 id="js为直译语言，因为主流浏览器解释引擎都是每次运行时逐行加载代码并解释，V8是将代码解译后运行的"><a href="#js为直译语言，因为主流浏览器解释引擎都是每次运行时逐行加载代码并解释，V8是将代码解译后运行的" class="headerlink" title="js为直译语言，因为主流浏览器解释引擎都是每次运行时逐行加载代码并解释，V8是将代码解译后运行的;"></a>js为直译语言，因为主流浏览器解释引擎都是每次运行时逐行加载代码并解释，V8是将代码解译后运行的;</h3><h3 id="DHTML-动态html-是结合了html-css-js-技术，动态创建交互，和动态ajax更新浏览器内容技术，不需要重新加载页面"><a href="#DHTML-动态html-是结合了html-css-js-技术，动态创建交互，和动态ajax更新浏览器内容技术，不需要重新加载页面" class="headerlink" title="DHTML,动态html ,是结合了html ,css, js 技术，动态创建交互，和动态ajax更新浏览器内容技术，不需要重新加载页面"></a>DHTML,动态html ,是结合了html ,css, js 技术，动态创建交互，和动态ajax更新浏览器内容技术，不需要重新加载页面</h3><h3 id="补充，字符集，字符编码，以及html头的accept"><a href="#补充，字符集，字符编码，以及html头的accept" class="headerlink" title="补充，字符集，字符编码，以及html头的accept"></a>补充，字符集，字符编码，以及html头的accept</h3><ol>
-<li>字符集，各国语言，字符的集合，比如所有的ASCII,Unicode,都是字符集，是人类可以识别的字符集合</li>
-<li>字符编码，将字符集转换为计算机可以识别的的字节的规则， 如UTF-8 将前8位用在ASCII,后面的扩展到2到四个字节，可以分别一一对应Unicode的所有字符</li>
-<li>客户端与服务端交换信息，首先需要request告诉服务器它接受的编码，和它请求传送数据的编码，然后服务器利用相应的编码规则解码请求信息，然后按照自己的默认规则运行程序，最后根据客户端可以接受的编码类型来返回数据，这时客户端根据返回的数据编码类型，解码即可</li>
-<li>当两个不同软件，当客户端与服务端交换信息，时，必须每次信息流都要告诉对方我用的是什么字符集，（或者说用的是什么编码，用的是json还是 HTML等），并且告诉对方我希望接受的编码和字符集是什么，当然这可以智能识别，但动态识别其实还是告诉了对方这些信息，只是较为底层</li>
-</ol>
-<h3 id="理解http协议为无状态"><a href="#理解http协议为无状态" class="headerlink" title="理解http协议为无状态"></a>理解http协议为无状态</h3><ol>
-<li>http为无状态是指，服务端对于客户端的事务处理不具备记忆功能，也就是服务器并不知道是否是同一个浏览器客户端发出的请求</li>
-<li>人为什么能记住对方，为什么能记住知识，是因为记忆，同样，在计算机世界，记忆靠内存来实现，靠总线来连接到cpu，cpu只负责计算，内存则通过保留记忆而模仿了人类的记忆</li>
-<li>cookie, 保存在浏览器端的信息，流程是，客户端填了表单（或者通过浏览器自带的保存数据表单），传到服务器认证后，服务器返回cookie, 浏览器端负责保存，二次请求时，客户端附带cookie,服务器检查，如果有cookie,则不继续执行数据库操作。这里需要真正验证cookie内容，预防客户端改了</li>
-<li>sesion., 保存在服务器内存的认证信息，当首次认证成功后，服务器设定sesion并返回session给客户端，二次请求时，客户端需要附带该session,当服务端检查该session为正确时，可以识别用户信息，了。</li>
-<li>不管是何种交换信息，何种认证都是建立在内存和储存（数据库—）之上的。</li>
-<li>其实网络的事务，或者说软件的事务，与人的思维是统一的，不然怎么叫人开发软件呢，计算机，即使内存，算法，计算的艺术。</li>
-</ol>
-<h3 id="多并发，或者说请求的生命周期，任何连接，都是通过识别是否认证，识别哪个用户，然后识别请求URL（请求内容），执行事务，（如果是耗时事务则，抛出事务，）继续处理后续请求。"><a href="#多并发，或者说请求的生命周期，任何连接，都是通过识别是否认证，识别哪个用户，然后识别请求URL（请求内容），执行事务，（如果是耗时事务则，抛出事务，）继续处理后续请求。" class="headerlink" title="多并发，或者说请求的生命周期，任何连接，都是通过识别是否认证，识别哪个用户，然后识别请求URL（请求内容），执行事务，（如果是耗时事务则，抛出事务，）继续处理后续请求。"></a>多并发，或者说请求的生命周期，任何连接，都是通过识别是否认证，识别哪个用户，然后识别请求URL（请求内容），执行事务，（如果是耗时事务则，抛出事务，）继续处理后续请求。</h3><p>最后返回。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/js.http/" data-id="ciztrizz4000vb0dd8u6zv8mo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/learnAndsearch/" data-id="cizut7q3g000ut4ddwws9uefj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,6 +282,7 @@
 </ol>
 <p>每个包都有一个composer.json文件，和一个composer.lock文件，.lock是为了锁定版本，如果存在.lock则不加载.json,执行composer install后，composer会下载包并读取该包下psr-4，并写入全局的composer.json 文件，这样就可以了</p>
 <p>使用，在运行开始处 ，require ‘vendor/autoload.php’;<br>就可以直接使用了</p>
+<p><strong>php命名空间：因为php不允许两个类名一致，其实跟用加前后缀实现类名区别的效果一致</strong></p>
 <ol>
 <li>使用一个包，一个类的通用方法<br>es5: require(‘./‘) 先加载该类（或者包入口的路径), 再new<br>es6: import some from ‘./‘ 加载对象中的某个方法或者全部类(即function) ,再使用</li>
 </ol>
@@ -270,7 +329,113 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/laravel/" data-id="ciztrizzc000yb0ddus4vbb4n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/laravel/" data-id="cizut7q3e000st4ddk5zz44ea" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js.http" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/js.http/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.285Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/js.http/">学习javascript的基本知识，以及面向对象，每学一个知识点，都要认真记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="js的起源"><a href="#js的起源" class="headerlink" title="js的起源"></a>js的起源</h3><p>js在1995年，由netscape公司的 Brendan Eich创建，因为Netscape与Sun合作，当时想借用Sun的java 之名，来推广js,故取名javascript;后来，微软为了进军浏览器，模仿js开发了JScript(因为不能重名),接着CEnvi 又推出了ScriptEase,这时，是三足鼎立的状态</p>
+<p>为了统一规格，出现了javaScript兼容于ECMA标准，ECMA只负责定义标准，不负责具体实现，这时js又被称为ECMAScript,到现在ECMA6,是力推，ECMA7是未来,js正在逐渐成长为一门完善了全能型语言</p>
+<h3 id="js的组成部分"><a href="#js的组成部分" class="headerlink" title="js的组成部分"></a>js的组成部分</h3><ol>
+<li>ECMASctipt ,描述了该语言的语法和基本对象,类似其他语言，nodejs主要部分在这里</li>
+<li>文档对象类型DOM,用于描述网页语言的操纵方法和接口</li>
+<li>BOM ,浏览器对象模型，描述了用于和浏览器交互的方法和接口</li>
+</ol>
+<h3 id="js的一般用途"><a href="#js的一般用途" class="headerlink" title="js的一般用途"></a>js的一般用途</h3><ol>
+<li>嵌入动态html页面</li>
+<li>响应监听浏览器事件</li>
+<li>读写html元素</li>
+<li>验证表单数据</li>
+<li>控制cookie等</li>
+<li>nodejs端服务器开发</li>
+</ol>
+<h3 id="js的安全性较差，就是当一条语句执行不了，就会导致下面的语句都无法执行，因此可以用try-catch-捕捉异常，抛出异常，才能让下面的语句也可以执行，出错时不至于全部完结"><a href="#js的安全性较差，就是当一条语句执行不了，就会导致下面的语句都无法执行，因此可以用try-catch-捕捉异常，抛出异常，才能让下面的语句也可以执行，出错时不至于全部完结" class="headerlink" title="js的安全性较差，就是当一条语句执行不了，就会导致下面的语句都无法执行，因此可以用try catch, 捕捉异常，抛出异常，才能让下面的语句也可以执行，出错时不至于全部完结"></a>js的安全性较差，就是当一条语句执行不了，就会导致下面的语句都无法执行，因此可以用try catch, 捕捉异常，抛出异常，才能让下面的语句也可以执行，出错时不至于全部完结</h3><h3 id="js为直译语言，因为主流浏览器解释引擎都是每次运行时逐行加载代码并解释，V8是将代码解译后运行的"><a href="#js为直译语言，因为主流浏览器解释引擎都是每次运行时逐行加载代码并解释，V8是将代码解译后运行的" class="headerlink" title="js为直译语言，因为主流浏览器解释引擎都是每次运行时逐行加载代码并解释，V8是将代码解译后运行的;"></a>js为直译语言，因为主流浏览器解释引擎都是每次运行时逐行加载代码并解释，V8是将代码解译后运行的;</h3><h3 id="DHTML-动态html-是结合了html-css-js-技术，动态创建交互，和动态ajax更新浏览器内容技术，不需要重新加载页面"><a href="#DHTML-动态html-是结合了html-css-js-技术，动态创建交互，和动态ajax更新浏览器内容技术，不需要重新加载页面" class="headerlink" title="DHTML,动态html ,是结合了html ,css, js 技术，动态创建交互，和动态ajax更新浏览器内容技术，不需要重新加载页面"></a>DHTML,动态html ,是结合了html ,css, js 技术，动态创建交互，和动态ajax更新浏览器内容技术，不需要重新加载页面</h3><h3 id="补充，字符集，字符编码，以及html头的accept"><a href="#补充，字符集，字符编码，以及html头的accept" class="headerlink" title="补充，字符集，字符编码，以及html头的accept"></a>补充，字符集，字符编码，以及html头的accept</h3><ol>
+<li>字符集，各国语言，字符的集合，比如所有的ASCII,Unicode,都是字符集，是人类可以识别的字符集合</li>
+<li>字符编码，将字符集转换为计算机可以识别的的字节的规则， 如UTF-8 将前8位用在ASCII,后面的扩展到2到四个字节，可以分别一一对应Unicode的所有字符</li>
+<li>客户端与服务端交换信息，首先需要request告诉服务器它接受的编码，和它请求传送数据的编码，然后服务器利用相应的编码规则解码请求信息，然后按照自己的默认规则运行程序，最后根据客户端可以接受的编码类型来返回数据，这时客户端根据返回的数据编码类型，解码即可</li>
+<li>当两个不同软件，当客户端与服务端交换信息，时，必须每次信息流都要告诉对方我用的是什么字符集，（或者说用的是什么编码，用的是json还是 HTML等），并且告诉对方我希望接受的编码和字符集是什么，当然这可以智能识别，但动态识别其实还是告诉了对方这些信息，只是较为底层</li>
+</ol>
+<h3 id="理解http协议为无状态"><a href="#理解http协议为无状态" class="headerlink" title="理解http协议为无状态"></a>理解http协议为无状态</h3><ol>
+<li>http为无状态是指，服务端对于客户端的事务处理不具备记忆功能，也就是服务器并不知道是否是同一个浏览器客户端发出的请求</li>
+<li>人为什么能记住对方，为什么能记住知识，是因为记忆，同样，在计算机世界，记忆靠内存来实现，靠总线来连接到cpu，cpu只负责计算，内存则通过保留记忆而模仿了人类的记忆</li>
+<li>cookie, 保存在浏览器端的信息，流程是，客户端填了表单（或者通过浏览器自带的保存数据表单），传到服务器认证后，服务器返回cookie, 浏览器端负责保存，二次请求时，客户端附带cookie,服务器检查，如果有cookie,则不继续执行数据库操作。这里需要真正验证cookie内容，预防客户端改了</li>
+<li>sesion., 保存在服务器内存的认证信息，当首次认证成功后，服务器设定sesion并返回session给客户端，二次请求时，客户端需要附带该session,当服务端检查该session为正确时，可以识别用户信息，了。</li>
+<li>不管是何种交换信息，何种认证都是建立在内存和储存（数据库—）之上的。</li>
+<li>其实网络的事务，或者说软件的事务，与人的思维是统一的，不然怎么叫人开发软件呢，计算机，即使内存，算法，计算的艺术。</li>
+</ol>
+<h3 id="多并发，或者说请求的生命周期，任何连接，都是通过识别是否认证，识别哪个用户，然后识别请求URL（请求内容），执行事务，（如果是耗时事务则，抛出事务，）继续处理后续请求。"><a href="#多并发，或者说请求的生命周期，任何连接，都是通过识别是否认证，识别哪个用户，然后识别请求URL（请求内容），执行事务，（如果是耗时事务则，抛出事务，）继续处理后续请求。" class="headerlink" title="多并发，或者说请求的生命周期，任何连接，都是通过识别是否认证，识别哪个用户，然后识别请求URL（请求内容），执行事务，（如果是耗时事务则，抛出事务，）继续处理后续请求。"></a>多并发，或者说请求的生命周期，任何连接，都是通过识别是否认证，识别哪个用户，然后识别请求URL（请求内容），执行事务，（如果是耗时事务则，抛出事务，）继续处理后续请求。</h3><p>最后返回。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/js.http/" data-id="cizut7q3n000xt4ddewz48wti" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jd" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/jd/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.284Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="电子商务站基础问题"><a href="#电子商务站基础问题" class="headerlink" title="电子商务站基础问题"></a>电子商务站基础问题</h5><hr>
+<ol>
+<li>防京东分类菜单</li>
+<li>文章频道无限分类</li>
+<li>登录注册</li>
+<li>长文章分页</li>
+<li>商品查看放大镜</li>
+<li>群发邮件</li>
+<li>商品搜索</li>
+<li>手机短信验证</li>
+<li>支付宝支付</li>
+<li>购物车</li>
+<li>订单</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/jd/" data-id="cizut7q3d000rt4dd9q9eqo5j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -344,47 +509,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/javascript.grammer/" data-id="ciztrizyy000rb0ddvwwqa11f" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jd" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/jd/" class="article-date">
-  <time datetime="2017-03-03T11:20:16.284Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="电子商务站基础问题"><a href="#电子商务站基础问题" class="headerlink" title="电子商务站基础问题"></a>电子商务站基础问题</h5><hr>
-<ol>
-<li>防京东分类菜单</li>
-<li>文章频道无限分类</li>
-<li>登录注册</li>
-<li>长文章分页</li>
-<li>商品查看放大镜</li>
-<li>群发邮件</li>
-<li>商品搜索</li>
-<li>手机短信验证</li>
-<li>支付宝支付</li>
-<li>购物车</li>
-<li>订单</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/jd/" data-id="ciztrizz1000tb0ddvp7yf0je" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/javascript.grammer/" data-id="cizut7q3a000pt4ddijzh5dqw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -499,11 +624,34 @@
 </li>
 <li>数组查找为O(1)，利于查找不利于增删，链表不利于查找，利于增删，哈希表是数组和链表的结合，有两者的优点<a href="http://www.cnblogs.com/xingzc/p/5765572.html">参考哈希表实现</a></li>
 </ol>
+<h5 id="php-高级面试题"><a href="#php-高级面试题" class="headerlink" title="php 高级面试题"></a>php 高级面试题</h5><ol>
+<li>php多重继承，php不支持多重继承，一般不要去搞多重继承。多重继承是指一个类继承了多个父类，而php是可以一个类连续继承下去的即a extends b b extends c.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">interface a </div><div class="line">interface b</div><div class="line">class a1 implements a</div><div class="line">class a2 implements b</div><div class="line">class all extends a implements b 然后在all内继续定义一个实现b接口的方法，其实是简单在构造器内实例化a2，并调用它</div><div class="line"></div><div class="line">class GraduateStudent extends User implements TeacherInterface&#123;</div><div class="line">	private $teacher ;</div><div class="line">	public function __construct()&#123;</div><div class="line">		$this-&gt;teacher=new Teacher();</div><div class="line">	&#125;</div><div class="line">	public function getLengthOfService()&#123;</div><div class="line">		return $this-&gt;teacher-&gt;getLengthOfService();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>####### php抽象类和接口区别</p>
+<ol>
+<li>抽象类里面至少拥有一个抽象方法，抽象类必须被子类继承并实现了所以方法后才可以实例化 </li>
+<li>接口可以定义常量，但不建议这样</li>
+<li>接口内只能定义为public</li>
+<li>接口间可以相互继承，不能相互实现</li>
+<li>在既需要接口，又需要实例变量和统一缺省方法的，就用抽象类</li>
+</ol>
+<p><a href="http://www.cnblogs.com/bluespot/p/4223056.html">高级面试题集合</a></p>
+<ol>
+<li>防sql注入方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">mysql_escape_string(strip_tags($arr[&quot;$val&quot;]));</div><div class="line">或</div><div class="line">function post_check($post)&#123;</div><div class="line">if(!get_magic_quotes_gpc())&#123;// 判断magic_quotes_gpc是否为打开 </div><div class="line">$post = addslashes($post);// 进行magic_quotes_gpc没有打开的情况对提交数据的过滤 </div><div class="line">&#125;</div><div class="line">$post = str_replace(&quot;_&quot;,&quot;\_&quot;, $post);// 把 &apos;_&apos;过滤掉</div><div class="line">$post = str_replace(&quot;%&quot;,&quot;\%&quot;, $post);// 把 &apos;%&apos;过滤掉</div><div class="line">$post = nl2br($post);// 回车转换 </div><div class="line">$post = htmlspecialchars($post);// html标记转换 </div><div class="line"></div><div class="line">return $post;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h6 id="http-tcp"><a href="#http-tcp" class="headerlink" title="http/tcp"></a>http/tcp</h6><ol>
+<li>https http，前者是加密传输，后者不加密，防窃听、防伪装</li>
+<li>http协议请求分为 请求行（请求方法）、消息报头（各种accept）、请求正文；响应分为响应行（200等）、响应头（location）、响应正文</li>
+<li><a href="http://www.cnblogs.com/royi123/archive/2013/06/14/3136702.html">深入浅出http</a></li>
+</ol>
+<p>####### 数据结构算法学习博客<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http://blog.csdn.net/column/details/xiu-note.html</div><div class="line">http://blog.csdn.net/oMengLiShuiXiang1234/article/details/51867800</div><div class="line">http://blog.csdn.net/omenglishuixiang1234/article/details/51234070</div></pre></td></tr></table></figure></p>
 </script></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/interview/" data-id="ciztrizyz000sb0dd7qj0oqa4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/interview/" data-id="cizut7q39000ot4ddjn1ucy6f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -562,7 +710,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/inernet/" data-id="ciztrizyx000qb0ddpj2d86ov" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/inernet/" data-id="cizut7q3b000qt4ddv818nvuk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -596,7 +744,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/image/" data-id="ciztrizz3000ub0ddqjit9qfc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/image/" data-id="cizut7q35000lt4ddes9wg2sw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -659,56 +807,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/graduation/" data-id="ciztrizys000mb0ddpmg2dkik" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-gulp" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/gulp/" class="article-date">
-  <time datetime="2017-03-03T11:20:16.280Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="这里是前端工具gulp和webpack的基础用法学习"><a href="#这里是前端工具gulp和webpack的基础用法学习" class="headerlink" title="这里是前端工具gulp和webpack的基础用法学习"></a>这里是前端工具gulp和webpack的基础用法学习</h4><hr>
-<h5 id="gulp-automate-and-enhance-my-wokflow"><a href="#gulp-automate-and-enhance-my-wokflow" class="headerlink" title="gulp ,automate and enhance my wokflow!"></a>gulp ,automate and enhance my wokflow!</h5><ul>
-<li>安装：npm install gulp-cli -g //全局安装cli</li>
-<li>npm install gulp –save-dev //install gulp in current project, and save detail in package.json</li>
-<li>创建gulpfile.js , 里面配置了所有gulp的工作，当前gulp会调用gulp自身和它的一些有用插件来自动完成所有工作</li>
-</ul>
-<h5 id="all-api-for-gulp-gulp-src-gulp-dest-gulp-task-gulp-watch"><a href="#all-api-for-gulp-gulp-src-gulp-dest-gulp-task-gulp-watch" class="headerlink" title="all api for gulp , gulp.src,gulp.dest, gulp.task, gulp.watch"></a>all api for gulp , gulp.src,gulp.dest, gulp.task, gulp.watch</h5><p>下面一一讲解这些api的用法</p>
-<p>先看代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">gulp.src(&apos;client/templates/*.jade&apos;) // 获取源文件(待处理文件)</div><div class="line">  .pipe(jade()) //通过pipe使文件作为输出，并输入给jade()处理后继续输出,这里实现了预编译jade语法的文件</div><div class="line">  .pipe(minify()) // 继续用minify处理,即压缩</div><div class="line">  .pipe(gulp.dest(&apos;build/minified_templates&apos;)); // gulp.dest输出到目的地</div></pre></td></tr></table></figure></p>
-<p>上面代码jade,minify方法需要npm install plugin,然后参照plugin使用它，gulp只起到输入，输出，和整合调用其他插件的作用</p>
-<p>gulp.src原型为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">gulp.src(globs[, options]) </div><div class="line">globs 一般是strings，或者strings 数组(即多个), 后面的options是附加设置</div><div class="line"></div><div class="line">// 如下目录</div><div class="line">client/</div><div class="line">  a.js</div><div class="line">  bob.js</div><div class="line">  bad.js</div><div class="line"></div><div class="line">gulp.src([&apos;client/*.js&apos;, &apos;!client/b*.js&apos;, &apos;client/bad.js&apos;]) // 只会匹配a.js, bad.js</div><div class="line"></div><div class="line">// options = &#123;</div><div class="line">	buffe: defualt(false) // 当为true时，读取文件将会以流steam形式，而不是全部读进缓冲区,这对读取大文件有用，但不是每个插件支持stream形式</div><div class="line">	read: true // 设置为flase会返回null,而且不会读取文件</div><div class="line">	base: &apos;string&apos; // 设置输出和输入 的路径问题，参考以下代码</div><div class="line">&#125;</div><div class="line"></div><div class="line">gulp.src(&apos;client/js/**/*.js&apos;) // </div><div class="line">  .pipe(minify())</div><div class="line">  .pipe(gulp.dest(&apos;build&apos;));  // Writes &apos;build/somedir/somefile.js&apos;</div><div class="line"></div><div class="line">gulp.src(&apos;client/js/**/*.js&apos;, &#123; base: &apos;client&apos; &#125;)</div><div class="line">  .pipe(minify())</div><div class="line">  .pipe(gulp.dest(&apos;build&apos;));  // Writes &apos;build/js/somedir/somefile.js&apos;</div></pre></td></tr></table></figure></p>
-<p>gulp.dest(path, [, options]) , path是在gulpfile目录基础下的子目录，如果没有就创建它,options取值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">options = &#123;</div><div class="line">	cwd: ?,</div><div class="line">	mode: 0777(默认),设定目录权限</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>gulp.task(name, [, deps, fn]), name是task的名字，deps是一个其他任务名数组，因为各个task之间是并发运行的，要保证当前task 在其他task之后运行就要把它写入数组中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gulp.task(&apos;mytask&apos;, [&apos;array&apos;, &apos;of&apos;, &apos;task&apos;, &apos;names&apos;], function() &#123;</div><div class="line">  // Do stuff</div><div class="line">&#125;); // 数组内的所有都会同时运行，mytask要在数组task后运行，需要数组内的任务正确使用promise等。</div><div class="line"></div><div class="line">以上所有的任务内容都是写在task回调中。</div></pre></td></tr></table></figure>
-<p>异步task的写法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">// 使用回调</div><div class="line">// run a command in a shell</div><div class="line">var exec = require(&apos;child_process&apos;).exec;</div><div class="line">gulp.task(&apos;jekyll&apos;, function(cb) &#123;</div><div class="line">  // build Jekyll</div><div class="line">  exec(&apos;jekyll build&apos;, function(err) &#123;</div><div class="line">    if (err) return cb(err); // return error</div><div class="line">    cb(); // finished task</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 返回一个stream</div><div class="line">gulp.task(&apos;somename&apos;, function() &#123;</div><div class="line">  var stream = gulp.src(&apos;client/**/*.js&apos;)</div><div class="line">    .pipe(minify())</div><div class="line">    .pipe(gulp.dest(&apos;build&apos;));</div><div class="line">  return stream;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 返回一个promise</div><div class="line">var Q = require(&apos;q&apos;);</div><div class="line"></div><div class="line">gulp.task(&apos;somename&apos;, function() &#123;</div><div class="line">  var deferred = Q.defer();</div><div class="line"></div><div class="line">  // do async stuff</div><div class="line">  setTimeout(function() &#123;</div><div class="line">    deferred.resolve();</div><div class="line">  &#125;, 1);</div><div class="line"></div><div class="line">  return deferred.promise;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<h5 id="任务互相依赖，如b依赖a的先完成，那么应该按照上面的异步写法写a-返回promise，等让gulp知道它什么时候完成，然后在b的options中声明依赖数组，gulp就自动知道了"><a href="#任务互相依赖，如b依赖a的先完成，那么应该按照上面的异步写法写a-返回promise，等让gulp知道它什么时候完成，然后在b的options中声明依赖数组，gulp就自动知道了" class="headerlink" title="任务互相依赖，如b依赖a的先完成，那么应该按照上面的异步写法写a,返回promise，等让gulp知道它什么时候完成，然后在b的options中声明依赖数组，gulp就自动知道了"></a>任务互相依赖，如b依赖a的先完成，那么应该按照上面的异步写法写a,返回promise，等让gulp知道它什么时候完成，然后在b的options中声明依赖数组，gulp就自动知道了</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var gulp = require(&apos;gulp&apos;);</div><div class="line"></div><div class="line">// takes in a callback so the engine knows when it&apos;ll be done</div><div class="line">gulp.task(&apos;one&apos;, function(cb) &#123;</div><div class="line">    // do stuff -- async or otherwise</div><div class="line">    cb(err); // if err is not null and not undefined, the run will stop, and note that it failed</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// identifies a dependent task must be complete before this one begins</div><div class="line">gulp.task(&apos;two&apos;, [&apos;one&apos;], function() &#123;</div><div class="line">    // task &apos;one&apos; is done now</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(&apos;default&apos;, [&apos;one&apos;, &apos;two&apos;]);</div></pre></td></tr></table></figure>
-<h5 id="gulp-watch-glob-opts-tasks-or-gulp-watch-glob-opts-cb"><a href="#gulp-watch-glob-opts-tasks-or-gulp-watch-glob-opts-cb" class="headerlink" title="gulp.watch(glob [, opts], tasks) or gulp.watch(glob [, opts, cb])"></a>gulp.watch(glob [, opts], tasks) or gulp.watch(glob [, opts, cb])</h5><p>glob是要监测的文件(or file数组),opts是监测的行为，如’reload’, tasks当发生这些监测行为时要运行的任务，或者使用cb,当行为发生时要运行的cb</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">cb(event) //cb中附带有event参数，可以读取发生该事件的上下文，如path, type</div><div class="line"></div><div class="line">gulp.watch(&apos;js/**/*.js&apos;, function(event) &#123;</div><div class="line">  console.log(&apos;File &apos; + event.path + &apos; was &apos; + event.type + &apos;, running tasks...&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var watcher = gulp.watch(&apos;js/**/*.js&apos;, [&apos;uglify&apos;,&apos;reload&apos;]);</div><div class="line">watcher.on(&apos;change&apos;, function(event) &#123;</div><div class="line">  console.log(&apos;File &apos; + event.path + &apos; was &apos; + event.type + &apos;, running tasks...&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h5 id="gulp插件，所有的自动化行为大多依赖插件完成"><a href="#gulp插件，所有的自动化行为大多依赖插件完成" class="headerlink" title="gulp插件，所有的自动化行为大多依赖插件完成"></a>gulp插件，所有的自动化行为大多依赖插件完成</h5><p>以下说明主要有用插件<br>编译Sass (gulp-ruby-sass)<br>Autoprefixer (gulp-autoprefixer)<br>缩小化(minify)CSS (gulp-minify-css)<br>JSHint (gulp-jshint)<br>拼接 (gulp-concat)<br>丑化(Uglify) (gulp-uglify)<br>图片压缩 (gulp-imagemin)<br>即时重整(LiveReload) (gulp-livereload)<br>清理档案 (gulp-clean)<br>图片快取，只有更改过得图片会进行压缩 (gulp-cache)<br>更动通知 (gulp-notify)</p>
-<p>// 安装插件命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-clean gulp-notify gulp-rename gulp-livereload gulp-cache --save-dev</div></pre></td></tr></table></figure></p>
-<p>// 使用插件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var gulp = require(&apos;gulp&apos;),  </div><div class="line">    sass = require(&apos;gulp-ruby-sass&apos;),</div><div class="line">    autoprefixer = require(&apos;gulp-autoprefixer&apos;),</div><div class="line">    minifycss = require(&apos;gulp-minify-css&apos;),</div><div class="line">    jshint = require(&apos;gulp-jshint&apos;),</div><div class="line">    uglify = require(&apos;gulp-uglify&apos;),</div><div class="line">    imagemin = require(&apos;gulp-imagemin&apos;),</div><div class="line">    rename = require(&apos;gulp-rename&apos;),</div><div class="line">    clean = require(&apos;gulp-clean&apos;),</div><div class="line">    concat = require(&apos;gulp-concat&apos;),</div><div class="line">    notify = require(&apos;gulp-notify&apos;),</div><div class="line">    cache = require(&apos;gulp-cache&apos;),</div><div class="line">    livereload = require(&apos;gulp-livereload&apos;);</div></pre></td></tr></table></figure></p>
-<p>简单任务: 编译sass, 自动加入浏览器前缀，重命名，最小化压缩， <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">gulp.task(&apos;styles&apos;, function() &#123;  </div><div class="line">  return gulp.src(&apos;src/styles/main.scss&apos;)</div><div class="line">    .pipe(sass(&#123; style: &apos;expanded&apos; &#125;))</div><div class="line">    .pipe(autoprefixer(&apos;last 2 version&apos;, &apos;safari 5&apos;, &apos;ie 8&apos;, &apos;ie 9&apos;, &apos;opera 12.1&apos;, &apos;ios 6&apos;, &apos;android 4&apos;))</div><div class="line">    .pipe(gulp.dest(&apos;dist/assets/css&apos;))</div><div class="line">    .pipe(rename(&#123;suffix: &apos;.min&apos;&#125;))</div><div class="line">    .pipe(minifycss())</div><div class="line">    .pipe(gulp.dest(&apos;dist/assets/css&apos;))</div><div class="line">    .pipe(notify(&#123; message: &apos;Styles task complete&apos; &#125;));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>jshint, 检查后压缩<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">gulp.task(&apos;scripts&apos;, function() &#123;  </div><div class="line">return gulp.src(&apos;src/scripts/**/*.js&apos;)</div><div class="line"> .pipe(jshint(&apos;.jshintrc&apos;))</div><div class="line"> .pipe(jshint.reporter(&apos;default&apos;))</div><div class="line"> .pipe(concat(&apos;main.js&apos;))</div><div class="line"> .pipe(gulp.dest(&apos;dist/assets/js&apos;))</div><div class="line"> .pipe(rename(&#123;suffix: &apos;.min&apos;&#125;))</div><div class="line"> .pipe(uglify())</div><div class="line"> .pipe(gulp.dest(&apos;dist/assets/js&apos;))</div><div class="line"> .pipe(notify(&#123; message: &apos;Scripts task complete&apos; &#125;));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p><a href="http://www.jianshu.com/p/3f2e13442555" target="_blank" rel="external">参考</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/gulp/" data-id="ciztrizyt000nb0dd9cxgsvhh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/graduation/" data-id="cizut7q38000nt4dd19xgu0gc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -752,11 +851,11 @@
       <ul>
         
           <li>
-            <a href="/2017/03/03/hexo/">(no title)</a>
+            <a href="/2017/03/03/yii/session/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/win7Clean/">(no title)</a>
+            <a href="/2017/03/03/hexo/">(no title)</a>
           </li>
         
           <li>
@@ -764,11 +863,11 @@
           </li>
         
           <li>
-            <a href="/2017/03/03/webpack/">(no title)</a>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/weixin/">(no title)</a>
+            <a href="/2017/03/03/webpack/">(no title)</a>
           </li>
         
       </ul>

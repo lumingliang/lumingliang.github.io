@@ -61,6 +61,69 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-centos/ubuntuUse" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/ubuntuUse/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.246Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="title-use-ubuntu"><a href="#title-use-ubuntu" class="headerlink" title="title:use ubuntu"></a>title:use ubuntu</h2><h2 id="查看系统版本和cpu"><a href="#查看系统版本和cpu" class="headerlink" title="查看系统版本和cpu"></a>查看系统版本和cpu</h2><h3 id="查看cpu"><a href="#查看cpu" class="headerlink" title="查看cpu"></a>查看cpu</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">more /proc/cpuinfo</div></pre></td></tr></table></figure>
+<h4 id="其中clflush-size-显示了系统是多少位"><a href="#其中clflush-size-显示了系统是多少位" class="headerlink" title="其中clflush size 显示了系统是多少位"></a>其中clflush size 显示了系统是多少位</h4><h3 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/issue</div></pre></td></tr></table></figure>
+<h3 id="yum使用"><a href="#yum使用" class="headerlink" title="yum使用"></a>yum使用</h3><ol>
+<li>配置仓库，修改默认仓库vi /etc/yum.repos.d/CentOS-Base.repo</li>
+<li>可以配置多个仓库，yum repolist all</li>
+<li>新增的话可以在/etc/yum.reops.d/目录下新建.reop文件</li>
+<li>yum [list|info|search|provides|whatprovides] xxxx</li>
+<li>yum [install|update] xxxx</li>
+<li>yum remove xxx</li>
+</ol>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><ol>
+<li>环境变量分为系统(/etc/profile)，用户(~/.bash_profile)，临时(export定义)三种</li>
+<li>set ,重置本地已有变量， unset xx清除变量，如set TEST = Test, unset $TEST;</li>
+<li>export 新增变量</li>
+<li>设置永久变量需要改配置文件，/etc/profile,~/.bashrc,~/.bash_profile,等,修改用法</li>
+<li>export NEW=something</li>
+<li>修改后马上生效，运行，source /etc/profile.</li>
+</ol>
+<h3 id="配置路径环境变量，使命令能在所有目录使用"><a href="#配置路径环境变量，使命令能在所有目录使用" class="headerlink" title="配置路径环境变量，使命令能在所有目录使用"></a>配置路径环境变量，使命令能在所有目录使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">1. export PATH=$PATH:/usr/locar/new/bin</div><div class="line">export PATH=$PATH:/usr/locar/new/bin</div><div class="line">这条命令的意思为: 使PATH自增:/usr/locar/new/bin,</div><div class="line">既PATH=PATH+&quot;:/usr/locar/new/bin&quot;;</div><div class="line"></div><div class="line">2.</div><div class="line">``` </div><div class="line">vi /etc/profile ,在适当位置添加，</div><div class="line">PATH=$PATH:/etc/apache/bin </div><div class="line">$source profile(source /etc/profile) </div><div class="line">或者</div><div class="line">./profile</div></pre></td></tr></table></figure>
+<h3 id="永久配置alias"><a href="#永久配置alias" class="headerlink" title="永久配置alias"></a>永久配置alias</h3><ol>
+<li>alias显示当前所有别名设置,</li>
+<li>使用alias l=’ls -al’;生成的是临时的</li>
+<li>.bash_profile 或.bashrc(依据不同ditribute)，</li>
+<li>或者自己新建.bash_alias文件，里面可以定义了</li>
+<li>**也可以用ln -s source dist配置当前可执行文件到/bin路径中<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">一些有用的 alias,</div><div class="line">1,模拟dos风格</div><div class="line">alias clr=clear</div><div class="line">alias cls=clear</div><div class="line">alias copy=&apos;cp -i&apos;</div><div class="line">alias del=&apos;rm -i&apos;</div><div class="line">alias delete=&apos;rm -i&apos;</div><div class="line">alias dir=&apos;ls -alg&apos;</div><div class="line">alias home=&apos;cd ~&apos;</div><div class="line">alias ls=&apos;ls -F&apos;</div><div class="line">alias md=mkdir</div><div class="line">alias move=&apos;mv -i&apos;</div><div class="line">alias type=more</div><div class="line"></div><div class="line">alias cd..=&apos;cd ..&apos;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="pptpd-vpn"><a href="#pptpd-vpn" class="headerlink" title="pptpd vpn ,"></a>pptpd vpn ,</h3><ol>
+<li>新增用户，vi etc/ppp/chap-secrets</li>
+<li>重启服务， /etc/init.d/pptpd restart</li>
+<li>若是可执行文件，可以直接复制到/usr/local/bin/jjjj下即可，</li>
+<li>查看所有端口信息：</li>
+</ol>
+<h5 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h5><ol>
+<li>chmod -R 777 dir 递归改读写权限</li>
+<li>chown -R own:own dir 递归赋予用户own 目录dir的权限</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/ubuntuUse/" data-id="cizut7q6d002jt4ddzijrqwc7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-centos/sh" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/03/centos/sh/" class="article-date">
@@ -101,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/sh/" data-id="ciztrj01l0029b0ddlr32cpfg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/sh/" data-id="cizut7q630027t4ddt1bnkymf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/lnpp/" data-id="ciztrj01h0025b0ddlicoc219" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/lnpp/" data-id="cizut7q69002ft4dddvqt4x5d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,14 +264,30 @@
 </ol>
 <p><a href="http://blog.jobbole.com/24006/" target="_blank" rel="external">mysql索引详解</a></p>
 <ol>
-<li>mysql里面的锁<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">页级:引擎 BDB。</div><div class="line">表级:引擎 MyISAM ， 理解为锁住整个表，可以同时读，写不行</div><div class="line">行级:引擎 INNODB ， 单独的一行记录加锁</div></pre></td></tr></table></figure>
+<li><p>mysql里面的锁</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">页级:引擎 BDB。</div><div class="line">表级:引擎 MyISAM ， 理解为锁住整个表，可以同时读，写不行</div><div class="line">行级:引擎 INNODB ， 单独的一行记录加锁</div></pre></td></tr></table></figure>
+</li>
+<li><p>尽量避免join，在join的过程中加入索引，尽量避免非顺序读取，如多个表关联的，可以分步骤、建立临时表，要先排序、或建立临时表再处理</p>
+<h5 id="建立索引的场景"><a href="#建立索引的场景" class="headerlink" title="建立索引的场景"></a>建立索引的场景</h5></li>
+<li>经常需要连接但没有指定外键的列上</li>
+<li>频繁排序或分组</li>
+<li>不同值较多的列上比较值时建立索引，但是如只有性别男、女少量值不需要建立</li>
+<li>如果排序列多个，可以建立复合索引</li>
+</ol>
+<p>使用系统工具观察优化<br>避免困难的正则表达式<br>使用临时表加速<br><a href="https://zm10.sm-tc.cn/?src=l4uLj8XQ0JLRnZOQmNGcjJuR0ZGai9CejYuWnJOa0Juai56Wk4zAlpvCyszHzsrKzM0%3D&amp;uid=facdd0a5edbb9690d198a0922a4ec7cb&amp;hid=9466756fa209444638af735ca3d682f1&amp;pos=3&amp;cid=9&amp;time=1488500412866&amp;from=click&amp;restype=1&amp;pagetype=0020004002000402&amp;bu=news_natural&amp;query=%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2&amp;mode=&amp;v=1&amp;uc_param_str=dnntnwvepffrgibijbprsvdsei" target="_blank" rel="external">海量数据优化查询</a></p>
+<h5 id="主从复制，用来备份，读写分离"><a href="#主从复制，用来备份，读写分离" class="headerlink" title="主从复制，用来备份，读写分离"></a>主从复制，用来备份，读写分离</h5><p>[参考]{<a href="http://www.cnblogs.com/alvin_xp/p/4162249.html}" target="_blank" rel="external">http://www.cnblogs.com/alvin_xp/p/4162249.html}</a></p>
+<h5 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h5><ol>
+<li>分片即是分布式部署，把数据水平分布到多个数据库多台服务器上，利用mysqlproxy代理来实现逻辑层透明化</li>
+<li><a href="http://blog.csdn.net/qq_36030412/article/category/6508370" target="_blank" rel="external">此人技术栈复合我的发展</a><h5 id="读写分离相关文章"><a href="#读写分离相关文章" class="headerlink" title="读写分离相关文章"></a>读写分离相关文章</h5><a href="http://blog.csdn.net/u013256816/article/details/48707505" target="_blank" rel="external">负载均衡、分布式集群</a><br><a href="http://www.cnblogs.com/alvin_xp/p/4162249.html" target="_blank" rel="external">主从复制配置</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">http://www.cnblogs.com/alvin_xp/p/4162249.html</div><div class="line">http://blog.sina.com.cn/s/blog_6e322ce70100zs9a.html</div><div class="line">http://www.jb51.net/article/29771.htm</div><div class="line">http://blog.sina.com.cn/s/blog_493a84550101eo7c.html</div></pre></td></tr></table></figure>
 </li>
 </ol>
+<h6 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h6><p>有普通索引、主键索引、全文索引、唯一索引、组合索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">alter table tname add unique indexName(column);</div><div class="line">alter table tname add primary key(column);</div><div class="line">alert table tname add index indexName(a, b, c);</div></pre></td></tr></table></figure></p>
+<h6 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">yum install mysql mysql-server mysql-devel -y</div><div class="line">开机启动 </div><div class="line">查看是否 chkconfig --list |grep mysql </div><div class="line">设定开机启动 chkconfig mysqld on </div><div class="line"># /etc/init.d/mysqld start     </div><div class="line"># service mysqld start </div><div class="line"> ps -ef |grep mysql|grep -v grep  可以查看到mysql的启动信息，如配置了哪些文件，错误日志在哪</div><div class="line"> datadir 数据存放目录 /var/lib/mysql</div><div class="line"> 查看用了哪个端口</div><div class="line">netstat -nutlp | grep mysql</div><div class="line">设置用户和密码权限，本地root登陆密码为空</div><div class="line">grant all on *.* to root@&apos;%&apos; identified by &apos;youpassword&apos;;</div><div class="line">刷新生效</div><div class="line">flush privileges;</div><div class="line">mysql --help | grep my.cnf 查看配置文件位置 /etc/my.cnf</div><div class="line"></div><div class="line">show databases;</div><div class="line">show tables;</div><div class="line">desc table;</div><div class="line">insert into tableName [(a,b)] values(a1,b1);</div><div class="line">update tableName set name=&apos;ff&apos; where id=1;</div><div class="line">explain sql;</div><div class="line"></div><div class="line">回话级profile</div><div class="line">set profiling=1;</div><div class="line">sql;</div><div class="line">sql;</div><div class="line">show profiles; #会把前面各个语句当做query 1 2来展示</div><div class="line">show profile for query 1;</div><div class="line">http://blog.itpub.net/29371470/viewspace-1355948/</div><div class="line"></div><div class="line"></div><div class="line">基本语法</div><div class="line">http://www.cnblogs.com/hateislove214/archive/2010/11/05/1869889.html</div><div class="line">http://www.cnblogs.com/zhangzhu/archive/2013/07/04/3172486.html</div><div class="line"></div><div class="line">expalin 用法</div><div class="line">http://blog.csdn.net/hjm4702192/article/details/21890157</div><div class="line">http://blog.csdn.net/lijingkuan/article/details/50432680</div><div class="line"></div><div class="line">面试题</div><div class="line">http://blog.csdn.net/lijingkuan/article/details/50741364</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/mysql/" data-id="ciztrj01k0028b0ddrszwazex" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/mysql/" data-id="cizut7q610025t4ddkom64zup" class="article-share-link">Share</a>
       
       
     </footer>
@@ -243,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/nat/" data-id="ciztrj01m002ab0dd4zdu529s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/nat/" data-id="cizut7q620026t4dd55ja025c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +366,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/linux_dir/" data-id="ciztrj01j0027b0ddt4ve0nud" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/linux_dir/" data-id="cizut7q600023t4ddad38tipb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -347,54 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/linuxCompile/" data-id="ciztrj01i0026b0ddjk4aehat" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-centos/linux.sofware.install" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/centos/linux.sofware.install/" class="article-date">
-  <time datetime="2017-03-03T11:20:16.242Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/03/centos/linux.sofware.install/">linux 下安装软件的几种方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="by-lumin-10-02-2016"><a href="#by-lumin-10-02-2016" class="headerlink" title="by lumin  10.02.2016"></a>by lumin  10.02.2016</h4><p>永远要记得查看这里日记</p>
-<hr>
-<h4 id="下载二进制安装包"><a href="#下载二进制安装包" class="headerlink" title="下载二进制安装包"></a>下载二进制安装包</h4><ol>
-<li>rpm 包是redhat系列的安装包，ubuntu要想使用需要使用alien工具转换为deb包</li>
-<li>deb包是ubuntu的专利，在图形界面点击就可以像win一样安装</li>
-<li>Linux Binaries (.tar.xz) 这种安装包是已经编译好的，解压既可以./运行, xz -d file.tar.z 解压，然后tar -xvf file.tar</li>
-</ol>
-<h4 id="使用包管理器"><a href="#使用包管理器" class="headerlink" title="使用包管理器"></a>使用包管理器</h4><ol>
-<li></li>
-</ol>
-<h4 id="使用源码"><a href="#使用源码" class="headerlink" title="使用源码"></a>使用源码</h4><p>tar.gz后缀一般是源码，需要make make install 等<br>一般步骤是：sudo ./configure、make、make install </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/linux.sofware.install/" data-id="ciztrj01g0024b0dd5ir9a6v9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/linuxCompile/" data-id="cizut7q5z0022t4ddrl1vyrig" class="article-share-link">Share</a>
       
       
     </footer>
@@ -484,7 +516,54 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/linuxCammand/" data-id="ciztrj01f0023b0dd2qcndcmq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/linuxCammand/" data-id="cizut7q5x0021t4ddeeefspn0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos/linux.sofware.install" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/linux.sofware.install/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.242Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/03/centos/linux.sofware.install/">linux 下安装软件的几种方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="by-lumin-10-02-2016"><a href="#by-lumin-10-02-2016" class="headerlink" title="by lumin  10.02.2016"></a>by lumin  10.02.2016</h4><p>永远要记得查看这里日记</p>
+<hr>
+<h4 id="下载二进制安装包"><a href="#下载二进制安装包" class="headerlink" title="下载二进制安装包"></a>下载二进制安装包</h4><ol>
+<li>rpm 包是redhat系列的安装包，ubuntu要想使用需要使用alien工具转换为deb包</li>
+<li>deb包是ubuntu的专利，在图形界面点击就可以像win一样安装</li>
+<li>Linux Binaries (.tar.xz) 这种安装包是已经编译好的，解压既可以./运行, xz -d file.tar.z 解压，然后tar -xvf file.tar</li>
+</ol>
+<h4 id="使用包管理器"><a href="#使用包管理器" class="headerlink" title="使用包管理器"></a>使用包管理器</h4><ol>
+<li></li>
+</ol>
+<h4 id="使用源码"><a href="#使用源码" class="headerlink" title="使用源码"></a>使用源码</h4><p>tar.gz后缀一般是源码，需要make make install 等<br>一般步骤是：sudo ./configure、make、make install </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/linux.sofware.install/" data-id="cizut7q5x0020t4ddvprawunz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -521,66 +600,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/command/" data-id="ciztrj01f0022b0ddnxqb9boq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-centos/basic" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/centos/basic/" class="article-date">
-  <time datetime="2017-03-03T11:20:16.240Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="用户与用户组"><a href="#用户与用户组" class="headerlink" title="用户与用户组"></a>用户与用户组</h5><ol>
-<li>语言本地化<br>//export LANG=zh_CN.gbk<br>export LANG=zh_CN<br>LC_CTYPE=”zh_CN.gbk”</li>
-</ol>
-<p>/etc/passwd保存用户id   /etc/group 保存用户组id等; /etc/passwd 保存用户id对应的基本信息，里面对应好了user 和 group id，以及保存了该用户的一些基本信息，密码分开在/etc/shadow中<br><em>登陆流程</em></p>
-<ol>
-<li><p>先找寻 /etc/passwd 里面是否有你输入的账号？如果没有则跳出，如果有的话则将该账号对应的 UID 与 GID (在 /etc/group 中) 读出来，另外，该账号的家目录与 shell 配置也一并读出；</p>
-</li>
-<li><p>再来则是核对口令表啦！这时 Linux 会进入 /etc/shadow 里面找出对应的账号与 UID，然后核对一下你刚刚输入的口令与里头的口令是否相符？</p>
-</li>
-<li><p>如果一切都 OK 的话，就进入 Shell 控管的阶段啰！</p>
-</li>
-</ol>
-<p>useradd -u 指定小于500 即系统账号 ，useradd时可能会发生Creating mailbox file:因为默认会在邮箱内做一些事情<br>userdel -r 删除某个账号<br>passwd 改变当前账户密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1. 假设有个组是g1，你想创建一个用户zs，创建之后这个用户zs就属于g1，可以使用以下命令：</div><div class="line">useradd -G g1 zs 或者</div><div class="line">useradd -g g1 zs</div><div class="line">没错，一个是大写G，一个是小写g，不同的是，使用大写，那么意思是新建的用户zs同时属于自己的zs组，也属于g1组，而小写g的意思就是zs只属于g1组。</div><div class="line">2. 假设有个组是g1，现在已经有一个用户zs，现在想更改zs的组，可以使用:</div><div class="line">usermod -g g1 zs 或者</div><div class="line">usermod -G g1 zs</div><div class="line">大小写的意思同上。</div></pre></td></tr></table></figure></p>
-<p>也可以直接加group名到/etc/group中指定的地方<br>/etc/ssh/sshd_config PasswordAuthentication no禁止密码登陆<br>service sshd restart</p>
-<ol>
-<li><p>每一个进程程序启动后，都会自己进入一个系统账号在后台运行，如php-fpm 以www运行，这样就可以自动操作具有该权限的目录</p>
-</li>
-<li><p>ps -ef  查看所有进程的具体信息</p>
-</li>
-<li><p>kill pid  kill -INT pid 杀死所有pid进程，并且所有该pid的子进程</p>
-</li>
-<li><p>两次tab键，查看可用命令</p>
-</li>
-<li>防火墙/etc/init.d/iptables status查看防火墙状态</li>
-<li><p>iptables -L -V 查看防火墙规则和状态<a href="http://blog.csdn.net/zhangzhizhen1988/article/details/8105386" target="_blank" rel="external">参考</a>设置防火墙规则<br>netstat -an | grep 23 (查看是否打开23端口)</p>
-</li>
-<li><p>netstat -lnp查看进程和端口关联状态</p>
-</li>
-<li>sockect = ip:port<br><strong>ip</strong>详解</li>
-<li>ip = 网络号+主机号，ip + 掩码与运算即可获取网络号，ip+掩码的精简形式是: ip/32 表示多少个8如4个8表示255.255.255.255，用精简形式还可以做ip规则匹配，另外网关是一个重要的东西</li>
-<li>ipv6用128位表示，每处分16位:分隔<br><a href="http://blog.csdn.net/yxwmzouzou/article/details/46643609" target="_blank" rel="external">http://blog.csdn.net/yxwmzouzou/article/details/46643609</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"># uname -a # 查看内核/操作系统/CPU信息 </div><div class="line"># head -n 1 /etc/issue # 查看操作系统版本 </div><div class="line"># cat /proc/cpuinfo # 查看CPU信息 </div><div class="line"># hostname # 查看计算机名 </div><div class="line"># lspci -tv # 列出所有PCI设备 </div><div class="line"># lsusb -tv # 列出所有USB设备 </div><div class="line"># lsmod # 列出加载的内核模块 </div><div class="line"># env # 查看环境变量资源 </div><div class="line"># free -m # 查看内存使用量和交换区使用量 </div><div class="line"># df -h # 查看各分区使用情况 </div><div class="line"># du -sh &lt;目录名&gt; # 查看指定目录的大小 </div><div class="line"># grep MemTotal /proc/meminfo # 查看内存总量 </div><div class="line"># grep MemFree /proc/meminfo # 查看空闲内存量 </div><div class="line"># uptime # 查看系统运行时间、用户数、负载 </div><div class="line"># cat /proc/loadavg # 查看系统负载磁盘和分区 </div><div class="line"># mount | column -t # 查看挂接的分区状态 </div><div class="line"># fdisk -l # 查看所有分区 </div><div class="line"># swapon -s # 查看所有交换分区 </div><div class="line"># hdparm -i /dev/hda # 查看磁盘参数(仅适用于IDE设备) </div><div class="line"># dmesg | grep IDE # 查看启动时IDE设备检测状况网络 </div><div class="line"># ifconfig # 查看所有网络接口的属性 </div><div class="line"># iptables -L # 查看防火墙设置 </div><div class="line"># route -n # 查看路由表 </div><div class="line"># netstat -lntp # 查看所有监听端口 </div><div class="line"># netstat -antp # 查看所有已经建立的连接 </div><div class="line"># netstat -s # 查看网络统计信息进程 </div><div class="line"># ps -ef # 查看所有进程 </div><div class="line"># top # 实时显示进程状态用户 </div><div class="line"># w # 查看活动用户 </div><div class="line"># id &lt;用户名&gt; # 查看指定用户信息 </div><div class="line"># last # 查看用户登录日志 </div><div class="line"># cut -d: -f1 /etc/passwd # 查看系统所有用户 </div><div class="line"># cut -d: -f1 /etc/group # 查看系统所有组 </div><div class="line"># crontab -l # 查看当前用户的计划任务服务 </div><div class="line"># chkconfig –list # 列出所有系统服务 </div><div class="line"># chkconfig –list | grep on # 列出所有启动的系统服务程序 </div><div class="line"># rpm -qa # 查看所有安装的软件包</div></pre></td></tr></table></figure>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/basic/" data-id="ciztrj01d0020b0ddzkm89raf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/command/" data-id="cizut7q68002dt4ddprlmabfb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -624,11 +644,11 @@
       <ul>
         
           <li>
-            <a href="/2017/03/03/hexo/">(no title)</a>
+            <a href="/2017/03/03/yii/session/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/win7Clean/">(no title)</a>
+            <a href="/2017/03/03/hexo/">(no title)</a>
           </li>
         
           <li>
@@ -636,11 +656,11 @@
           </li>
         
           <li>
-            <a href="/2017/03/03/webpack/">(no title)</a>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/weixin/">(no title)</a>
+            <a href="/2017/03/03/webpack/">(no title)</a>
           </li>
         
       </ul>

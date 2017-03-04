@@ -61,6 +61,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-centos/basic" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/centos/basic/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.240Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="用户与用户组"><a href="#用户与用户组" class="headerlink" title="用户与用户组"></a>用户与用户组</h5><ol>
+<li>语言本地化<br>//export LANG=zh_CN.gbk<br>export LANG=zh_CN<br>LC_CTYPE=”zh_CN.gbk”</li>
+</ol>
+<p>/etc/passwd保存用户id   /etc/group 保存用户组id等; /etc/passwd 保存用户id对应的基本信息，里面对应好了user 和 group id，以及保存了该用户的一些基本信息，密码分开在/etc/shadow中<br><em>登陆流程</em></p>
+<ol>
+<li><p>先找寻 /etc/passwd 里面是否有你输入的账号？如果没有则跳出，如果有的话则将该账号对应的 UID 与 GID (在 /etc/group 中) 读出来，另外，该账号的家目录与 shell 配置也一并读出；</p>
+</li>
+<li><p>再来则是核对口令表啦！这时 Linux 会进入 /etc/shadow 里面找出对应的账号与 UID，然后核对一下你刚刚输入的口令与里头的口令是否相符？</p>
+</li>
+<li><p>如果一切都 OK 的话，就进入 Shell 控管的阶段啰！</p>
+</li>
+</ol>
+<p>useradd -u 指定小于500 即系统账号 ，useradd时可能会发生Creating mailbox file:因为默认会在邮箱内做一些事情<br>userdel -r 删除某个账号<br>passwd 改变当前账户密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1. 假设有个组是g1，你想创建一个用户zs，创建之后这个用户zs就属于g1，可以使用以下命令：</div><div class="line">useradd -G g1 zs 或者</div><div class="line">useradd -g g1 zs</div><div class="line">没错，一个是大写G，一个是小写g，不同的是，使用大写，那么意思是新建的用户zs同时属于自己的zs组，也属于g1组，而小写g的意思就是zs只属于g1组。</div><div class="line">2. 假设有个组是g1，现在已经有一个用户zs，现在想更改zs的组，可以使用:</div><div class="line">usermod -g g1 zs 或者</div><div class="line">usermod -G g1 zs</div><div class="line">大小写的意思同上。</div></pre></td></tr></table></figure></p>
+<p>也可以直接加group名到/etc/group中指定的地方<br>/etc/ssh/sshd_config PasswordAuthentication no禁止密码登陆<br>service sshd restart</p>
+<ol>
+<li><p>每一个进程程序启动后，都会自己进入一个系统账号在后台运行，如php-fpm 以www运行，这样就可以自动操作具有该权限的目录</p>
+</li>
+<li><p>ps -ef  查看所有进程的具体信息</p>
+</li>
+<li><p>kill pid  kill -INT pid 杀死所有pid进程，并且所有该pid的子进程</p>
+</li>
+<li><p>两次tab键，查看可用命令</p>
+</li>
+<li>防火墙/etc/init.d/iptables status查看防火墙状态</li>
+<li><p>iptables -L -V 查看防火墙规则和状态<a href="http://blog.csdn.net/zhangzhizhen1988/article/details/8105386" target="_blank" rel="external">参考</a>设置防火墙规则<br>netstat -an | grep 23 (查看是否打开23端口)</p>
+</li>
+<li><p>netstat -lnp查看进程和端口关联状态</p>
+</li>
+<li>sockect = ip:port<br><strong>ip</strong>详解</li>
+<li>ip = 网络号+主机号，ip + 掩码与运算即可获取网络号，ip+掩码的精简形式是: ip/32 表示多少个8如4个8表示255.255.255.255，用精简形式还可以做ip规则匹配，另外网关是一个重要的东西</li>
+<li>ipv6用128位表示，每处分16位:分隔<br><a href="http://blog.csdn.net/yxwmzouzou/article/details/46643609" target="_blank" rel="external">http://blog.csdn.net/yxwmzouzou/article/details/46643609</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"># uname -a # 查看内核/操作系统/CPU信息 </div><div class="line"># head -n 1 /etc/issue # 查看操作系统版本 </div><div class="line"># cat /proc/cpuinfo # 查看CPU信息 </div><div class="line"># hostname # 查看计算机名 </div><div class="line"># lspci -tv # 列出所有PCI设备 </div><div class="line"># lsusb -tv # 列出所有USB设备 </div><div class="line"># lsmod # 列出加载的内核模块 </div><div class="line"># env # 查看环境变量资源 </div><div class="line"># free -m # 查看内存使用量和交换区使用量 </div><div class="line"># df -h # 查看各分区使用情况 </div><div class="line"># du -sh &lt;目录名&gt; # 查看指定目录的大小 </div><div class="line"># grep MemTotal /proc/meminfo # 查看内存总量 </div><div class="line"># grep MemFree /proc/meminfo # 查看空闲内存量 </div><div class="line"># uptime # 查看系统运行时间、用户数、负载 </div><div class="line"># cat /proc/loadavg # 查看系统负载磁盘和分区 </div><div class="line"># mount | column -t # 查看挂接的分区状态 </div><div class="line"># fdisk -l # 查看所有分区 </div><div class="line"># swapon -s # 查看所有交换分区 </div><div class="line"># hdparm -i /dev/hda # 查看磁盘参数(仅适用于IDE设备) </div><div class="line"># dmesg | grep IDE # 查看启动时IDE设备检测状况网络 </div><div class="line"># ifconfig # 查看所有网络接口的属性 </div><div class="line"># iptables -L # 查看防火墙设置 </div><div class="line"># route -n # 查看路由表 </div><div class="line"># netstat -lntp # 查看所有监听端口 </div><div class="line"># netstat -antp # 查看所有已经建立的连接 </div><div class="line"># netstat -s # 查看网络统计信息进程 </div><div class="line"># ps -ef # 查看所有进程 </div><div class="line"># top # 实时显示进程状态用户 </div><div class="line"># w # 查看活动用户 </div><div class="line"># id &lt;用户名&gt; # 查看指定用户信息 </div><div class="line"># last # 查看用户登录日志 </div><div class="line"># cut -d: -f1 /etc/passwd # 查看系统所有用户 </div><div class="line"># cut -d: -f1 /etc/group # 查看系统所有组 </div><div class="line"># crontab -l # 查看当前用户的计划任务服务 </div><div class="line"># chkconfig –list # 列出所有系统服务 </div><div class="line"># chkconfig –list | grep on # 列出所有启动的系统服务程序 </div><div class="line"># rpm -qa # 查看所有安装的软件包</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/centos/basic/" data-id="cizut7q600024t4ddhesqmrwz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-centos/bingfa" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/03/centos/bingfa/" class="article-date">
@@ -84,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/centos/bingfa/" data-id="ciztrj01c001zb0ddcjba5dqo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/centos/bingfa/" data-id="cizut7q5w001zt4dd3gvg9xen" class="article-share-link">Share</a>
       
       
     </footer>
@@ -138,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/c/basic/" data-id="ciztrj01e0021b0ddeqbzrzc1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/c/basic/" data-id="cizut7q6o002rt4ddfbmczbcy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -178,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/telnet/" data-id="ciztrj00a001mb0ddvnzxnj65" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/telnet/" data-id="cizut7q4n001jt4ddt0g5o2bt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -241,7 +300,50 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/TCPIP/" data-id="ciztrizxd0000b0dd5kc574gg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/TCPIP/" data-id="cizut7q50001ut4ddea13i1qp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ssh" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/ssh/" class="article-date">
+  <time datetime="2017-03-03T11:20:16.224Z" itemprop="datePublished">2017-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="title-ssh远程登录linux"><a href="#title-ssh远程登录linux" class="headerlink" title="title:ssh远程登录linux"></a>title:ssh远程登录linux</h2><h3 id="ssh提供了一套远程登录操纵另外一台主机的密钥对，就像安装了一把锁和钥匙一样，公匙放在服务器上，私匙放在客户机上，公私匙由客户机产生。"><a href="#ssh提供了一套远程登录操纵另外一台主机的密钥对，就像安装了一把锁和钥匙一样，公匙放在服务器上，私匙放在客户机上，公私匙由客户机产生。" class="headerlink" title="ssh提供了一套远程登录操纵另外一台主机的密钥对，就像安装了一把锁和钥匙一样，公匙放在服务器上，私匙放在客户机上，公私匙由客户机产生。"></a>ssh提供了一套远程登录操纵另外一台主机的密钥对，就像安装了一把锁和钥匙一样，公匙放在服务器上，私匙放在客户机上，公私匙由客户机产生。</h3><h4 id="步骤如下"><a href="#步骤如下" class="headerlink" title="步骤如下"></a>步骤如下</h4><ol>
+<li>客户机 ssh-keygen -t rsa -P ‘’ -f ‘filename’,默认在.ssh下生产名为filename的公私匙</li>
+</ol>
+<p>case ‘Bg_Post.php’:<br>case ‘Bg_Post.php’:</p>
+<ol>
+<li>客户机 scp .ssh/filename.pub user@192.168.10.107:~/ ,复制公匙到服务器，</li>
+<li>chmod 700 .ssh , 服务器~/.ssh 文件需要为700权限</li>
+<li>cat filename.pub &gt;&gt; .ssh/authorized_keys(此文件权限为600), 将公匙追加到服务器.ssh /xx中,一般到这就可以了，ssh user@ip;</li>
+<li>修改 /etc/ssh/sshd_config, 指向公匙位置 </li>
+<li>也可以用ssh -i local.pub root@ip 登录到服务器</li>
+</ol>
+<h3 id="传输文件夹"><a href="#传输文件夹" class="headerlink" title="传输文件夹"></a>传输文件夹</h3><ol>
+<li>服务器到本地 (<strong>在本地运行</strong>)<br>scp -r user@your.server.example.com:/path/to/foo /home/user/Desktop/</li>
+<li>本地到服务器（<strong>在本地运行</strong>）<br>scp -r /path/to/dir user@ip:/dir/</li>
+<li>传单个文件则去掉r<br>scp -i “sinapo-new.pem” ubuntu@52.74.209.168:~/ /d/nodejs</li>
+</ol>
+<p>```<br>tar -czf som.tar.gz dir<br>scp -r ubuntu@52.74.209.168:~/monitor.tar.gz ~/</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/03/ssh/" data-id="cizut7q4k001gt4ddj1dy5b7u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -433,50 +535,7 @@ ctry+e: 下滚一行。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/sublime/" data-id="ciztrj00a001lb0ddqiqybjll" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ssh" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/ssh/" class="article-date">
-  <time datetime="2017-03-03T11:20:16.224Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="title-ssh远程登录linux"><a href="#title-ssh远程登录linux" class="headerlink" title="title:ssh远程登录linux"></a>title:ssh远程登录linux</h2><h3 id="ssh提供了一套远程登录操纵另外一台主机的密钥对，就像安装了一把锁和钥匙一样，公匙放在服务器上，私匙放在客户机上，公私匙由客户机产生。"><a href="#ssh提供了一套远程登录操纵另外一台主机的密钥对，就像安装了一把锁和钥匙一样，公匙放在服务器上，私匙放在客户机上，公私匙由客户机产生。" class="headerlink" title="ssh提供了一套远程登录操纵另外一台主机的密钥对，就像安装了一把锁和钥匙一样，公匙放在服务器上，私匙放在客户机上，公私匙由客户机产生。"></a>ssh提供了一套远程登录操纵另外一台主机的密钥对，就像安装了一把锁和钥匙一样，公匙放在服务器上，私匙放在客户机上，公私匙由客户机产生。</h3><h4 id="步骤如下"><a href="#步骤如下" class="headerlink" title="步骤如下"></a>步骤如下</h4><ol>
-<li>客户机 ssh-keygen -t rsa -P ‘’ -f ‘filename’,默认在.ssh下生产名为filename的公私匙</li>
-</ol>
-<p>case ‘Bg_Post.php’:<br>case ‘Bg_Post.php’:</p>
-<ol>
-<li>客户机 scp .ssh/filename.pub user@192.168.10.107:~/ ,复制公匙到服务器，</li>
-<li>chmod 700 .ssh , 服务器~/.ssh 文件需要为700权限</li>
-<li>cat filename.pub &gt;&gt; .ssh/authorized_keys(此文件权限为600), 将公匙追加到服务器.ssh /xx中,一般到这就可以了，ssh user@ip;</li>
-<li>修改 /etc/ssh/sshd_config, 指向公匙位置 </li>
-<li>也可以用ssh -i local.pub root@ip 登录到服务器</li>
-</ol>
-<h3 id="传输文件夹"><a href="#传输文件夹" class="headerlink" title="传输文件夹"></a>传输文件夹</h3><ol>
-<li>服务器到本地 (<strong>在本地运行</strong>)<br>scp -r user@your.server.example.com:/path/to/foo /home/user/Desktop/</li>
-<li>本地到服务器（<strong>在本地运行</strong>）<br>scp -r /path/to/dir user@ip:/dir/</li>
-<li>传单个文件则去掉r<br>scp -i “sinapo-new.pem” ubuntu@52.74.209.168:~/ /d/nodejs</li>
-</ol>
-<p>```<br>tar -czf som.tar.gz dir<br>scp -r ubuntu@52.74.209.168:~/monitor.tar.gz ~/</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/ssh/" data-id="ciztrj009001kb0dd7h0zdffg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/sublime/" data-id="cizut7q4l001ht4ddxsh86ln5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -509,7 +568,7 @@ ctry+e: 下滚一行。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/sphinx/" data-id="ciztrj007001ib0ddvos0wk4i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/sphinx/" data-id="cizut7q5b001xt4dd8m763mcg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -551,7 +610,7 @@ ctry+e: 下滚一行。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/seo/" data-id="ciztrj008001jb0dd16g3pl2d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/seo/" data-id="cizut7q4i001et4ddfn9lb712" class="article-share-link">Share</a>
       
       
     </footer>
@@ -598,45 +657,7 @@ ctry+e: 下滚一行。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/ruby/" data-id="ciztrj006001hb0ddyop6gb5b" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-rescue" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/03/rescue/" class="article-date">
-  <time datetime="2017-03-03T11:20:16.220Z" itemprop="datePublished">2017-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/03/rescue/">研究递归算法的使用和原理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="递归算法是为了让程序更加易读，易于思维，而且能应付复杂的问题，递归算法的本质是在一个函数内间接或者直接调用函数自身，每一次调用都是一个级别，每一个级别共享主程序代码，但是每个级别都有一份属于自己的变量环境，可以把每个级别的调用，当做独立的函数体，递归先是必须达到最终的非递归条件，然后再逐级返回，最后退出"><a href="#递归算法是为了让程序更加易读，易于思维，而且能应付复杂的问题，递归算法的本质是在一个函数内间接或者直接调用函数自身，每一次调用都是一个级别，每一个级别共享主程序代码，但是每个级别都有一份属于自己的变量环境，可以把每个级别的调用，当做独立的函数体，递归先是必须达到最终的非递归条件，然后再逐级返回，最后退出" class="headerlink" title="递归算法是为了让程序更加易读，易于思维，而且能应付复杂的问题，递归算法的本质是在一个函数内间接或者直接调用函数自身，每一次调用都是一个级别，每一个级别共享主程序代码，但是每个级别都有一份属于自己的变量环境，可以把每个级别的调用，当做独立的函数体，递归先是必须达到最终的非递归条件，然后再逐级返回，最后退出"></a>递归算法是为了让程序更加易读，易于思维，而且能应付复杂的问题，递归算法的本质是在一个函数内间接或者直接调用函数自身，每一次调用都是一个级别，每一个级别共享主程序代码，但是每个级别都有一份属于自己的变量环境，可以把每个级别的调用，当做独立的函数体，递归先是必须达到最终的非递归条件，然后再逐级返回，最后退出</h3><h3 id="递归的本质还是函数的执行，但是由于每一层的递归都有自己的私有变量-当返回到该层时，后续语句执行仍然用的该层产生时的变量，每一个递归层之间是独立的-所以非常容易增加了内存消耗，另外由于每一个层次之间的切换，创建，都花了cpu时间，所以本质上以时间空间，换思维的便捷性，不过对于大多数场合来说，都是值得的。推荐使用递归"><a href="#递归的本质还是函数的执行，但是由于每一层的递归都有自己的私有变量-当返回到该层时，后续语句执行仍然用的该层产生时的变量，每一个递归层之间是独立的-所以非常容易增加了内存消耗，另外由于每一个层次之间的切换，创建，都花了cpu时间，所以本质上以时间空间，换思维的便捷性，不过对于大多数场合来说，都是值得的。推荐使用递归" class="headerlink" title="递归的本质还是函数的执行，但是由于每一层的递归都有自己的私有变量[当返回到该层时，后续语句执行仍然用的该层产生时的变量，每一个递归层之间是独立的],所以非常容易增加了内存消耗，另外由于每一个层次之间的切换，创建，都花了cpu时间，所以本质上以时间空间，换思维的便捷性，不过对于大多数场合来说，都是值得的。推荐使用递归"></a>递归的本质还是函数的执行，但是由于每一层的递归都有自己的私有变量[当返回到该层时，后续语句执行仍然用的该层产生时的变量，每一个递归层之间是独立的],所以非常容易增加了内存消耗，另外由于每一个层次之间的切换，创建，都花了cpu时间，所以本质上以时间空间，换思维的便捷性，不过对于大多数场合来说，都是值得的。推荐使用递归</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"> #include&lt;stdio.h&gt;</div><div class="line">  void up_and_down(int);</div><div class="line"> int main(void)</div><div class="line"> &#123;</div><div class="line">    up_and_down(1);</div><div class="line">    return 0;</div><div class="line"> &#125;</div><div class="line"> void up_and_down(int n)</div><div class="line"> &#123;</div><div class="line">     printf(&quot;Level %d:n location %p\n&quot;,n,&amp;n); /* 1 */</div><div class="line">     if(n&lt;4)</div><div class="line">       up_and_down(n+1);</div><div class="line">     printf(&quot;Level %d:n location %p\n&quot;,n,&amp;n); /* 2 */</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">输出结果</div><div class="line">Level 1:n location 0240FF48 //后面的是变量的地址，从变量地址可以看出，每一个层都有一个自己的独立变量集合,而且执行规则是先到达最后一层，然后倒数返回，每返回一层，就执行该层未完成的后面代码，（用的是该层的独立变量）</div><div class="line">Level 2:n location 0240FF28</div><div class="line">Level 3:n location 0240FF08</div><div class="line">Level 4:n location 0240FEE8</div><div class="line">Level 4:n location 0240FEE8</div><div class="line">Level 3:n location 0240FF08</div><div class="line">Level 2:n location 0240FF28</div><div class="line">Level 1:n location 0240FF48</div></pre></td></tr></table></figure>
-<h3 id="js中的递归不像常规一样，需要将一切的动作都放在回调函数中，然后利用回调函数传递回调函数，层层回调"><a href="#js中的递归不像常规一样，需要将一切的动作都放在回调函数中，然后利用回调函数传递回调函数，层层回调" class="headerlink" title="js中的递归不像常规一样，需要将一切的动作都放在回调函数中，然后利用回调函数传递回调函数，层层回调"></a>js中的递归不像常规一样，需要将一切的动作都放在回调函数中，然后利用回调函数传递回调函数，层层回调</h3><p>可参考以下递归创建目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function mkdirs(dirname, mode, callback)&#123;</div><div class="line">    fs.exists(dirname, function (exists)&#123;</div><div class="line">        if(exists)&#123;</div><div class="line">            callback();</div><div class="line">        &#125;else&#123;</div><div class="line">            console.log(&apos;path.dirname&apos;+path.dirname(dirname));</div><div class="line">			mkdirs(path.dirname(dirname), mode, function ()&#123;</div><div class="line">				console.log(&apos;dirname&apos;+dirname);</div><div class="line">				fs.mkdir(dirname, mode, callback);</div><div class="line">			&#125;); // 递归思维，人只需要考虑相邻两层的变化，如果不存在这个目录，那么就先创建这个目录的上层目录，再创建本目录</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="js中的promise是为了解决层层回调问题，对于解决递归要比较强的思维，所以，不推荐用promise来简化递归的创建，后续可以试着使用generate"><a href="#js中的promise是为了解决层层回调问题，对于解决递归要比较强的思维，所以，不推荐用promise来简化递归的创建，后续可以试着使用generate" class="headerlink" title="js中的promise是为了解决层层回调问题，对于解决递归要比较强的思维，所以，不推荐用promise来简化递归的创建，后续可以试着使用generate"></a>js中的promise是为了解决层层回调问题，对于解决递归要比较强的思维，所以，不推荐用promise来简化递归的创建，后续可以试着使用generate</h3><h3 id="深入理解promise-参考"><a href="#深入理解promise-参考" class="headerlink" title="深入理解promise 参考"></a>深入理解promise <a href="http://www.jb51.net/article/70101.htm" target="_blank" rel="external">参考</a></h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/03/rescue/" data-id="ciztrj005001gb0ddlgyka50n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/03/ruby/" data-id="cizut7q5c001yt4ddje0pxjiw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -680,11 +701,11 @@ ctry+e: 下滚一行。
       <ul>
         
           <li>
-            <a href="/2017/03/03/hexo/">(no title)</a>
+            <a href="/2017/03/03/yii/session/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/win7Clean/">(no title)</a>
+            <a href="/2017/03/03/hexo/">(no title)</a>
           </li>
         
           <li>
@@ -692,11 +713,11 @@ ctry+e: 下滚一行。
           </li>
         
           <li>
-            <a href="/2017/03/03/webpack/">(no title)</a>
+            <a href="/2017/03/03/win7Clean/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/03/03/weixin/">(no title)</a>
+            <a href="/2017/03/03/webpack/">(no title)</a>
           </li>
         
       </ul>
